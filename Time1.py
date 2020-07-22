@@ -15,7 +15,7 @@ class Time(object):
     """
 
 def print_time(t):
-    print '%.2d:%.2d:%.2d' % (t.hour, t.minute, t.second)
+    print ('%.2d:%.2d:%.2d' % (t.hour, t.minute, t.second))
 
 
 def int_to_time(seconds):
@@ -62,18 +62,18 @@ def main():
     noon_time.minute = 0
     noon_time.second = 0
 
-    print 'Starts at',
+    print ('Starts at',)
     print_time(noon_time)
 
     # and the run time of the movie is 109 minutes...
     movie_minutes = 109
     run_time = int_to_time(movie_minutes * 60)
-    print 'Run time',
+    print ('Run time',)
     print_time(run_time)
 
     # what time does the movie end?
     end_time = add_times(noon_time, run_time)
-    print 'Ends at',
+    print ('Ends at',)
     print_time(end_time)
 
 if __name__ == '__main__':
