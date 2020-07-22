@@ -1,0 +1,707 @@
+<column><name>General.Eriref</name>
+<value>HY36767</value></column>
+<column><name>General.Heading</name>
+<value>[SKT 5G NSA CD] 19.Q4_IP3_EC2 eNB crash - Emca 4 -&quot;&lt;!BBMC.542!&gt; bbueme_releaseue_ovl.c:231: DBC: nrOfBearersForUe == req.nrOfRelRadioBearersn&quot;</value></column>
+<column><name>General.MHO date</name>
+<value>2020-04-10</value></column>
+<column><name>General.Status code</name>
+<value>PR</value></column>
+<column><name>Node level.Product no &amp; R-Stat</name>
+<value>CXP 902 4418/6@R80F51</value></column>
+<column><name>Customer/Project.Customer/Proj</name>
+<value>RAN_CD</value></column>
+<column><name>Observation.Observation</name>
+<value>1.        Description
+===================
+ New crash observed on SKT 5G CD network, 19.Q4_IP3_EC2
+ 
+2020-04-08 08:28:15 LLOG  0001 DUS5201     No:   16. Program restart. Reason: Snapshot request. Program: lratBbomArmLm.bin. PMD: pmd-bbmcBbOmMeThrea-9632-20200408-082815. Extra: BB Restart: Emca 4:DSP 1: &quot;&lt;!BBMC.542!&gt; bbueme_releaseue_ovl.c:231: DBC: nrOfBearersForUe == req.nrOfRelRadioBearersn&quot;
+ 
+ 
+2.        Frequency and number of nodes affected 
+=========================================
+- 3 times on 3 nodes (CXP9024418/6_R80F51)
+ 
+-Count of crash per sw pkg
+ 
+
+	
+		
+			CXP9024418/6_R73C96
+			4
+		
+		
+			CXP9024418/6_R80F30
+			5
+		
+		
+			CXP9024418/6_R80F51
+			3
+		
+	
+
+ 
+ 
+3.        Lgp output (lgg for RU crash)
+====================================
+ 2020-04-08 08:28:15 LLOG  0001 DUS5201     No:   16. Program restart. Reason: Snapshot request. Program: lratBbomArmLm.bin. PMD: pmd-bbmcBbOmMeThrea-9632-20200408-082815. Extra: BB Restart: Emca 4:DSP 1: &quot;&lt;!BBMC.542!&gt; bbueme_releaseue_ovl.c:231: DBC: nrOfBearersForUe == req.nrOfRelRadioBearersn&quot;
+4.        Llog output
+=================
+ ---------------------------------------------------
+No:       16
+Reason:   Snapshot request
+Time:     2020-04-08 08:28:15
+Program:  lratBbomArmLm.bin
+Pid:      7659
+Rank:     -
+Signal:   -
+PMD:      pmd-bbmcBbOmMeThrea-9632-20200408-082815
+Extra:    BB Restart: Emca 4:DSP 1: &quot;&lt;!BBMC.542!&gt; bbueme_releaseue_ovl.c:231: DBC: nrOfBearersForUe == req.nrOfRelRadioBearersn&quot;
+---------------------------------------------------
+No:       17
+Reason:   Restart request
+Time:     2020-04-08 08:29:09
+Program:  lratBbomArmLm.bin
+Pid:      7659
+Rank:     Program
+Signal:   SIGABRT
+PMD:      pmd-bbmcBbOmMeThrea-7659-20200408-082909
+Extra:    Recovery action initiated by BB via BCI, faultId: 0x301 (SwError), faultDescription: Emca 4:DSP 0: &quot;LDM Alloc error: Out of memorynalloc /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc:169
+---------------------------------------------------
+No:       18
+Reason:   Escalation
+Time:     2020-04-08 08:29:16
+Program:  lratPgGrp
+Pid:      -
+Rank:     Program Group
+Signal:   -
+PMD:      -
+Extra:    Local
+coli&gt;
+coli&gt;
+5.        CDAE Output
+===================
+ No access to CDAE to decode EMCA dump
+6.        PMD Stack Trace
+===========================
+ 
+7.        Logs (lgaoevspgm)
+=======================
+ 2020-04-08 08:24:28 AL   m      Service Degraded                    EUtranCellFDD=donggu-sujeong-TA2_27
+2020-04-08 08:24:28 AL   m      Service Degraded                    EUtranCellFDD=donggu-sujeong-TA2_07
+2020-04-08 08:28:13 PGM   OUT  UnOperational    BP  010100  CXP2030023_27_R51F16  Lrat LRAT BB stopped due to unrecoverable problem
+2020-04-08 08:28:15 LLOG  0001 DUS5201     No:   16. Program restart. Reason: Snapshot request. Program: lratBbomArmLm.bin. PMD: pmd-bbmcBbOmMeThrea-9632-20200408-082815. Extra: BB Restart: Emca 4:DSP 1: &quot;&lt;!BBMC.542!&gt; bbueme_releaseue_ovl.c:231: DBC: nrOfBearersForUe == req.nrOfRelRadioBearersn&quot;
+2020-04-08 08:28:18 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 59 139 151 175 179 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:22 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_13
+2020-04-08 08:28:22 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 139 151 175 179 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:23 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_32
+2020-04-08 08:28:23 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_33
+2020-04-08 08:28:23 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_42
+2020-04-08 08:28:23 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_00
+2020-04-08 08:28:23 AL   *      Service Degraded                    EUtranCellFDD=donggu-sujeong-TA2_27
+2020-04-08 08:28:23 AL   M      Service Unavailable                 EUtranCellFDD=donggu-sujeong-TA2_27
+2020-04-08 08:28:23 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 139 151 175 179 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:23 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 139 151 175 179 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:23 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 175 179 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:23 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:23 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:24 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_01
+2020-04-08 08:28:24 AL   m      Linearization Disturbance Performance Degraded FieldReplaceableUnit=07-B09-RRUS2212-0  (Linearization fault [ DL/B ])
+2020-04-08 08:28:24 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_02
+2020-04-08 08:28:24 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:24 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:24 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:24 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:24 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:24 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:33 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_04
+2020-04-08 08:28:33 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_06
+2020-04-08 08:28:33 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_08
+2020-04-08 08:28:33 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_09
+2020-04-08 08:28:33 AL   w      Cell Service Unavailable Auto Recovery Initiated Alert EUtranCellFDD=donggu-sujeong-TA2_10
+2020-04-08 08:28:33 AL   *      Linearization Disturbance Performance Degraded FieldReplaceableUnit=07-B09-RRUS2212-0  (Linearization fault [ DL/B ])
+2020-04-08 08:28:33 AL   *      Service Degraded                    EUtranCellFDD=donggu-sujeong-TA2_07
+2020-04-08 08:28:33 AL   *      Service Unavailable                 EUtranCellFDD=donggu-sujeong-TA2_27
+2020-04-08 08:28:33 SERV  OUT  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:28:33 SERV  OUT  UnOperational    CELL 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-08 08:29:09 LLOG  0001 DUS5201     No:   17. Program restart. Reason: Restart request. Program: lratBbomArmLm.bin. Rank: Program. Signal: SIGABRT. PMD: pmd-bbmcBbOmMeThrea-7659-20200408-082909. Extra: Recovery action initiated by BB via BCI, faultId: 0x301 (SwError), faultDescription: Emca 4:DSP 0: &quot;LDM Alloc error: Out of memorynalloc /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc:169
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC1739925_27_R56F19    ProgramFailure
+2020-04-08 08:29:16 PGM   OUT  UnOperational    lratPgGrp_              ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC1739243_27_R89F24    ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC2011256_1_R57F22     ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC1737450_27_R79F24    ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC1737448_27_R89F66    ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC1737447_27_R91F36    ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC1737449_27_R91F30    ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC2011091_1_R61F22     ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC2011497_1_R37F22     ProgramErrEscalated
+2020-04-08 08:29:16 PGM   OUT  UnOperational    CXC2011647_1_R26F22     ProgramErrEscalated
+2020-04-08 08:29:16 PGM   IN   Starting         CXC1737447_27_R91F36
+8.        Trace And Error (from PMD and GCPU dump if applicable)
+==============================================================
+ n/a
+9.        Hardware Inventory (invh)
+================================
+ Node: RadioNode L   CXP9024418/6_R80F51 (19.Q4)
+ 
+=====================================================================================================================================
+FRU               LNH      BOARD     ST FAULT OPER MAINT STAT PRODUCTNUMBER   REV     SERIAL        DATE      TEMP  UPT
+=====================================================================================================================================
+1                 000100   DUS5201    1   OFF   ON   OFF   ON KDU137925/31    R5A     CD3R300007    20170426             (Bb5216)
+XMU03             BXP_1024 XMU0301    1   OFF   ON   OFF  N/A KDU137949/1     R2A     CD3R307169    20170426             (BbR503)
+13-E-RRUS2212-0   BXP_2049 RRU2212B7  1   OFF   ON   OFF  N/A KRC161628/2     R1D     D827282679    20180405             (Radio2212B7)
+12-F-RRUS2212-0   BXP_2050 RRU2212B7  1   OFF   ON   OFF  N/A KRC161628/2     R1D     D826125615    20170727             (Radio2212B7)
+06-B10-RRUS11-0   BXP_2052 RRUS11B5   1   OFF   ON   OFF  N/A KRC161285/1     R1F     CB4L244322    20111101
+04-B12-RRUS11-0   BXP_2054 RRUS11B5   1   OFF   ON   OFF  N/A KRC161285/1     R1F     CB4L008026    20111015
+02-A14-RRUS12-0   BXP_2056 RRUS12B3   1   OFF   ON   OFF  N/A KRC161282/3     R1B     CB4P248556    20121106
+01-A15-RRUS12-0   BXP_2057 RRUS12B3   1   OFF   ON   OFF  N/A KRC161282/3     R1B     CB4T478806    20140423
+00-A16-RRUS12-0   BXP_2058 RRUS12B3   1   OFF   ON   OFF  N/A KRC161282/3     R1B     CB4P739719    20130106
+10-C05-RRUS13-0   BXP_2060 RRUS13B1*  1   OFF   ON   OFF  N/A KRC161466/2     R1F     D820416030    20150109             (RRUS13B1)
+09-C06-RRUS13-0   BXP_2061 RRUS13B1*  1   OFF   ON   OFF  N/A KRC161466/2     R1F     D820408100    20150108             (RRUS13B1)
+08-C07-RRUS13-0   BXP_2062 RRUS13B1*  1   OFF   ON   OFF  N/A KRC161466/2     R1F     D820547413    20150130             (RRUS13B1)
+07-B09-RRUS2212-0 BXP_2063 RRU2212B7  1    ON   ON   OFF  N/A KRC161628/2     R1D     D826326195    20170908             (Radio2212B7)
+42-F-RRUS11-1     BXP_2064 RRUS11B5   1   OFF   ON   OFF  N/A KRC161285/1     R1G     CB4L543284    20111201
+03-A13-RRUS12-0   Z??_01              0     ?    ?     ?    ?
+05-B11-RRUS11-0   Z??_02   RRUS11     L     ?    ?     ?    ? KRC161285/1     R1G     CB4L543284    20111201             (RRUS11B5)
+11-C04-RRUS13-0   Z??_03              0     ?    ?     ?    ?
+14-D-RRUS2212-0   Z??_04              L     ?    ?     ?    ?
+37-B09-RRUS11-1   Z??_05              L     ?    ?     ?    ?
+43-E-RRUS11-1     Z??_06              L     ?    ?     ?    ?
+44-D-RRUS11-1     Z??_07              L     ?    ?     ?    ?
+SUP               Z??_08   SUP6601    1   OFF   ON   N/A  N/A 1/BFL901009/4   R2E     BR85094167    20161101
+-------------------------------------------------------------------------------------------------------------------------------------
+10.        Workaround
+==================
+ n/a
+11.        Steps to reproduce
+==========================
+ n/a
+12.        Suspected Duplicates
+============================
+HY13957</value></column>
+<column><name>Answer.Answer</name>
+<value></value></column>
+<column><name>Enclosures.Filename</name>
+<value>donggu-sujeong-TA2_200410_165402_KST_MSRBS-L_CXP9024418-6_R80F51_dcgm.zip</value></column>
+<column><name>Enclosures.Description</name>
+<value>dcgm</value></column>
+</row>
+<row>
+
+
+
+<column><name>General.Eriref</name>
+<value>HY36762</value></column>
+<column><name>General.Heading</name>
+<value>[SKT 5G NSA CD] 19.Q4_IP3_EC2 eNB crash - Emca 4 &quot;&lt;!UPCUL.2045!&gt; ulmacce_catmscheduler.c:1776: DBC: fifoCnt == 1n&quot;</value></column>
+<column><name>General.MHO date</name>
+<value>2020-04-10</value></column>
+<column><name>General.Status code</name>
+<value>RE</value></column>
+<column><name>Node level.Product no &amp; R-Stat</name>
+<value>CXP 902 4418/6@R80F51</value></column>
+<column><name>Customer/Project.Customer/Proj</name>
+<value>RAN_CD</value></column>
+<column><name>Observation.Observation</name>
+<value>1.        Description
+===================
+ New crash observed on SKT 5G CD network, 19.Q4_IP3_EC2, CXP9024418/6_R80F51
+ 
+ 2020-04-09 11:34:38 LLOG  0001 DUS5201     No:   14. Program restart. Reason: Snapshot request. Program: lratBbomArmLm.bin. PMD: pmd-bbmcBbOmMeThrea-27893-20200409-113438. Extra: BB Restart: Emca 4:DSP 43: &quot;&lt;!UPCUL.2045!&gt; ulmacce_catmscheduler.c:1776: DBC: fifoCnt == 1n&quot;
+ 
+ 
+2.        Frequency and number of nodes affected 
+=========================================
+Count of crash on R80F51: 5 times on 4 node
+Count of crash per sw pkg:
+
+	
+		
+			CXP9024418/6_R80C97
+			2
+		
+		
+			CXP9024418/6_R80F30
+			9
+		
+		
+			CXP9024418/6_R80F51
+			5
+		
+	
+
+ 
+ 
+3.        Lgp output (lgg for RU crash)
+====================================
+ 2020-04-09 11:34:38 LLOG  0001 DUS5201     No:   14. Program restart. Reason: Snapshot request. Program: lratBbomArmLm.bin. PMD: pmd-bbmcBbOmMeThrea-27893-20200409-113438. Extra: BB Restart: Emca 4:DSP 43: &quot;&lt;!UPCUL.2045!&gt; ulmacce_catmscheduler.c:1776: DBC: fifoCnt == 1n&quot;
+4.        Llog output
+=================
+ ---------------------------------------------------
+No:       14
+Reason:   Snapshot request
+Time:     2020-04-09 11:34:38
+Program:  lratBbomArmLm.bin
+Pid:      7490
+Rank:     -
+Signal:   -
+PMD:      pmd-bbmcBbOmMeThrea-27893-20200409-113438
+Extra:    BB Restart: Emca 4:DSP 43: &quot;&lt;!UPCUL.2045!&gt; ulmacce_catmscheduler.c:1776: DBC: fifoCnt == 1n&quot;
+coli&gt;
+coli&gt;
+5.        CDAE Output
+===================
+ No access to CDA to decode EMCA dump
+6.        PMD Stack Trace
+===========================
+ 
+7.        Logs (lgaoevspgm)
+=======================
+ 2020-04-09 11:34:35 PGM   OUT  UnOperational    BP  010100  CXP2030023_27_R51F16  Lrat LRAT BB stopped due to unrecoverable problem
+2020-04-09 11:34:38 LLOG  0001 DUS5201     No:   14. Program restart. Reason: Snapshot request. Program: lratBbomArmLm.bin. PMD: pmd-bbmcBbOmMeThrea-27893-20200409-113438. Extra: BB Restart: Emca 4:DSP 43: &quot;&lt;!UPCUL.2045!&gt; ulmacce_catmscheduler.c:1776: DBC: fifoCnt == 1n&quot;
+2020-04-09 11:34:39 PGM   IN   Starting         BP  010100  CXP2030023_27_R51F16  Lrat LRAT BB restarted
+2020-04-09 11:34:40 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 59 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:46 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:46 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:46 SERV  OUT_PARTIAL  UnOperational    CELL 47 51 55 59 111 131 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:47 SERV  OUT_PARTIAL  UnOperational    CELL 47 55 59 111 131 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:47 SERV  OUT_PARTIAL  UnOperational    CELL 47 55 59 111 131 135 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:47 SERV  OUT_PARTIAL  UnOperational    CELL 47 55 59 111 131 135 139 151 171 175 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:48 SERV  OUT_PARTIAL  UnOperational    CELL 47 55 59 111 131 135 139 151 171 175 179 3 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:48 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 111 131 135 139 151 171 175 179 3 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:48 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 111 131 135 139 151 171 175 179 3 7 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:49 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 111 135 139 151 171 175 179 3 7 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:49 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 135 139 151 171 175 179 3 7 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:51 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 175 179 3 7 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:52 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 3 7 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:53 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 7 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:53 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: Manual
+2020-04-09 11:34:54 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 11 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:55 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 11 15 19 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:59 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 11 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:34:59 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: Manual
+2020-04-09 11:35:00 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 23 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:04 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: Manual
+2020-04-09 11:35:06 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27 31  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:06 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27 31 35  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:07 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27 31 35 39  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:12 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27 35 39  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:12 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27 35 39 43  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:13 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27 39 43  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:13 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27 43  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: System
+2020-04-09 11:35:19 SERV  OUT_PARTIAL  UnOperational    CELL 47 59 139 151 171 179 15 27  Lrat Weighting factor: 35 percent, Existing CellIds: 47 51 55 59 111 131 135 139 151 171 175 179 3 7 11 15 19 23 27 31 35 39 43 , Cause: Manual
+8.        Trace And Error (from PMD and GCPU dump if applicable)
+==============================================================
+ n/a
+9.        Hardware Inventory (invh)
+================================
+ Node: RadioNode L   CXP9024418/6_R80F51 (19.Q4)
+ 
+=====================================================================================================================================
+FRU               LNH      BOARD     ST FAULT OPER MAINT STAT PRODUCTNUMBER   REV     SERIAL        DATE      TEMP  UPT
+=====================================================================================================================================
+1                 000100   DUS5201    1   OFF   ON   OFF   ON KDU137925/31    R1D/A   D16Q700848    20150806             (Bb5216)
+XMU03             BXP_1024 XMU0301    1   OFF   ON   OFF  N/A KDU137949/1     R1H     D16S881895    20160411             (BbR503)
+13-E-RRUS2212-0   BXP_2049 RRU2212B7  1   OFF   ON   OFF  N/A KRC161628/2     R1D     D825885469    20170602             (Radio2212B7)
+12-F-RRUS2212-0   BXP_2050 RRU2212B7  1   OFF   ON   OFF  N/A KRC161628/2     R1D     D825981937    20170623             (Radio2212B7)
+05-B11-RRUS11-0   BXP_2053 RRUS11B5   1   OFF   ON   OFF  N/A KRC161285/1     R1E/A   CB4K758068    20110926
+04-B12-RRUS11-0   BXP_2054 RRUS11B5   1   OFF   ON   OFF  N/A KRC161285/1     R1G     CB4L714613    20111217
+02-A14-RRUS12-0   BXP_2056 RRUS12B3   1   OFF   ON   OFF  N/A KRC161282/3     R1B     CB4R950252    20131022
+01-A15-RRUS12-0   BXP_2057 RRUS12B3   1   OFF   ON   OFF  N/A KRC161282/3     R1B     CB4P183374    20121031
+00-A16-RRUS12-0   BXP_2058 RRUS12B3   1   OFF   ON   OFF  N/A KRC161282/3     R1B     CB4P164480    20121029
+10-C05-RRUS13-0   BXP_2060 RRUS13B1*  1   OFF   ON   OFF  N/A KRC161466/2     R1F     D820548754    20150130             (RRUS13B1)
+09-C06-RRUS13-0   BXP_2061 RRUS13B1*  1   OFF   ON   OFF  N/A KRC161466/2     R1F     D820746853    20150222             (RRUS13B1)
+08-C07-RRUS13-0   BXP_2062 RRUS13B1*  1   OFF   ON   OFF  N/A KRC161466/2     R1F     D820498862    20150124             (RRUS13B1)
+07-B09-RRUS2212-0 BXP_2063 RRU2212B7  1   OFF   ON   OFF  N/A KRC161628/2     R1D     D826371568    20170918             (Radio2212B7)
+43-E-RRUS11-1     BXP_2064 RRUS11B5   1   OFF   ON   OFF  N/A KRC161285/1     R1G     CB4L421451    20111120
+03-A13-RRUS12-0   Z??_01              0     ?    ?     ?    ?
+06-B10-RRUS11-0   Z??_02   RRUS13B1   0     ?    ?     ?    ? KRC161466/2     R1F     D820548754    20150130
+11-C04-RRUS13-0   Z??_03              0     ?    ?     ?    ?
+14-D-RRUS2212-0   Z??_04              0     ?    ?     ?    ?
+37-B09-RRUS11-1   Z??_05              L     ?    ?     ?    ?
+42-F-RRUS11-1     Z??_06              L     ?    ?     ?    ?
+44-D-RRUS11-1     Z??_07              L     ?    ?     ?    ?
+SUP               Z??_08   SUP6601    1   OFF   ON   N/A  N/A 1/BFL901009/4   R2A     BR88432982    20131021
+-------------------------------------------------------------------------------------------------------------------------------------
+ 
+10.        Workaround
+==================
+ n/a
+11.        Steps to reproduce
+==========================
+ n/a
+12.        Suspected Duplicates
+============================
+HY15921</value></column>
+<column><name>Answer.Answer</name>
+<value></value></column>
+<column><name>Enclosures.Filename</name>
+<value>yeonje-b-TA6_200410_164830_KST_MSRBS-L_CXP9024418-6_R80F51_dcgm.zip</value></column>
+<column><name>Enclosures.Description</name>
+<value>dcgm</value></column>
+</row>
+<row>
+
+<column><name>General.Eriref</name>
+<value>HY36676</value></column>
+<column><name>General.Heading</name>
+<value>19.Q4 G2 DUS5201 BB Restart: Emca 4:DSP 51: &quot;&lt;!UPCUL.2047!&gt; ulmacce_msg3coord_sched_msg2_cfm_thread.c:297: DBC: successn&quot;</value></column>
+<column><name>General.MHO date</name>
+<value>2020-04-09</value></column>
+<column><name>General.Status code</name>
+<value>AS</value></column>
+<column><name>Node level.Product no &amp; R-Stat</name>
+<value>CXP 902 4418/6@R80F30</value></column>
+<column><name>Customer/Project.Customer/Proj</name>
+<value>Telstra Mobility (AU)</value></column>
+<column><name>Observation.Observation</name>
+<value>1. Description
+===================
+Observed BB crash once on one Node at 2020-04-04 06:37:07. The crash resulted into all cells being unoperational and operational.
+There were no activities during the time when crash happened on the Node. But there were few SC changes done couple of hours before the crash.
+As per customer this was done as regular activity to align the system constants. And those SC were same as set on other good sites as well.
+After the crash one cell went into sleeping and stopped carrying traffic.
+
+2020-04-04 06:37:07 LPMD  0001 DUS5201     File=pmd-bbmcBbOmMeThrea-20582-20200404-063707.tgz.gpg_with_llog.tgz
+
+Investigation of the crash required.Below cell went into sleeping immediately after the crash. 
+So we are suspecting that this crash is the reason of cell went to sleep.Also to mention that cell was later recovered when the BB was restarted.
+So it would be good to know if this crash could result into cell sleep?
+
+Report from 2020-04-04 04:15 UTC to 2020-04-06 03:14 UTC (187 ropfiles)
+Node SW: CXP9024418/6_R80F30 (19.Q4)         pmraattcbra pmrasucccbra
+2020-04-04 06:15 EUtranCellFDD=FRWDKM6         708          443
+2020-04-04 06:30 EUtranCellFDD=FRWDKM6         550          356
+2020-04-04 06:45 EUtranCellFDD=FRWDKM6         123            0
+2020-04-04 07:00 EUtranCellFDD=FRWDKM6         152            0
+2020-04-04 07:15 EUtranCellFDD=FRWDKM6         125            0
+
+
+
+2. Frequency and number of nodes affected
+==========================================
+Only one nodes impacted till now. Below find the details of the crash happened on node.
+
+No:       93
+Reason:   Snapshot request
+Time:     2020-04-04 06:37:07
+Program:  lratBbomArmLm.bin
+Pid:      7754
+Rank:     -
+Signal:   -
+PMD:      pmd-bbmcBbOmMeThrea-20582-20200404-063707
+Extra:    BB Restart: Emca 4:DSP 51: &quot;&lt;!UPCUL.2047!&gt; ulmacce_msg3coord_sched_msg2_cfm_thread.c:297: DBC: successn&quot;
+
+
+
+3. Lgp output (lgg for RU crash)
+=====================================
+2019-08-22 22:10:48 LPMD  0001 DUS5201     File=pmd-bbmcBbOmMeThrea-18042-20190822-221048.tgz.gpg_with_llog.tgz
+2019-11-21 22:04:44 LPMD  0001 DUS5201     File=pmd-dubc_server-6558-20191121-220444.tgz.gpg_with_llog.tgz
+2019-11-21 22:25:51 LPMD  0001 DUS5201     File=pmd-dubc_server-6011-20191121-222551.tgz.gpg_with_llog.tgz
+2019-11-21 22:44:38 LPMD  0001 DUS5201     File=pmd-dubc_server-6592-20191121-224438.tgz.gpg_with_llog.tgz
+2019-11-21 23:00:00 LPMD  0001 DUS5201     File=pmd-dubc_server-6001-20191121-230000.tgz.gpg_with_llog.tgz
+2019-11-21 23:13:39 LPMD  0001 DUS5201     File=pmd-dubc_server-6322-20191121-231339.tgz.gpg_with_llog.tgz
+2020-04-04 06:37:07 LPMD  0001 DUS5201     File=pmd-bbmcBbOmMeThrea-20582-20200404-063707.tgz.gpg_with_llog.tgz
+
+
+4. Llog output
+===================
+No:       93
+Reason:   Snapshot request
+Time:     2020-04-04 06:37:07
+Program:  lratBbomArmLm.bin
+Pid:      7754
+Rank:     -
+Signal:   -
+PMD:      pmd-bbmcBbOmMeThrea-20582-20200404-063707
+Extra:    BB Restart: Emca 4:DSP 51: &quot;&lt;!UPCUL.2047!&gt; ulmacce_msg3coord_sched_msg2_cfm_thread.c:297: DBC: successn&quot;
+
+
+5. CDAE Output
+===================
+Cdae report
+cm_1-3 html text
+Container revision: CXP2030023_27-R51F11 (role: bbUpUl1LteRdbfBlm4Trinity, built: 2020-01-17 10:55:47) 
+
+Fatal error: 
+DSP status (all dsps) 
+-&gt; DSP 0 is in application FATAL ERROR state: 
+Desc: /repo/eduxjia/bbi/legacy/lpp/kernel/src/error/lpp_error_stop_order.c:59: Stop received because emca 4 crashed 
+
+Stack unwind on DSP0 current process 
+Current process isr 
+Stack trace: 
+
+#0 in function xxLPP_internalFatalError at lpp_error_fatal_error.asm:591 (LPM:0xda523, CM:0x0da523, DP:0x1865) [Asm Res] 
+#1 in function LPP_stopOrder at lpp_error_stop_order.s:105 (LPM:0xda672, CM:0x0da672, DP:0x007c) [C Res] 
+#2 in function unknown (LPM:0x541c0000, CM:0x541c0000, DP:0x9ec8) [Asm Res] 
+process: ulCellPe_sigDisp has been interrupted by Int4 - MAIL 
+#3 in function unknown (LPM:0x80a588, CM:0x80a588, DP:0x1fe0) [Asm Res] 
+#4 in function BBBASE_RTR_SPARK_staticProcReceive at bbbase_rtr_spark.s:2887 (LPM:0xce37a, CM:0x0ce37a, DP:0x2018) [C Res] 
+#5 in function ulCellPe_sigDisp at ulcellpe_pe.s:2524 (LPM:0x8f979, CM:0x08f979, DP:0x201b) [C Res] 
+#6 in function LPP_exitFunction at lpp_proc_exit.s:40 (LPM:0xdd070, CM:0x0dd070, DP:0x202a) [C Res] 
+#7 in function unknown (LPM:0xe360b, CM:0x0e360b, DP:0x0000) [Asm Res] 
+
+Fatal error occurred at BFN: 0x3b322442 
+cm_2-3 html text
+Container revision: CXP2030023_27-R51F11 (role: bbUpUl2LteRdbfBlm4Trinity, built: 2020-01-17 10:55:59) 
+
+Fatal error: 
+DSP status (all dsps) 
+-&gt; DSP 0 is in application FATAL ERROR state: 
+Desc: /repo/eduxjia/bbi/legacy/lpp/kernel/src/error/lpp_error_stop_order.c:59: Stop received because emca 4 crashed 
+
+Stack unwind on DSP0 current process 
+Current process isr 
+Stack trace: 
+
+#0 in function xxLPP_internalFatalError at lpp_error_fatal_error.asm:591 (LPM:0xa8393, CM:0x0a8393, DP:0x1d45) [Asm Res] 
+#1 in function LPP_stopOrder at lpp_error_stop_order.s:105 (LPM:0xa84e2, CM:0x0a84e2, DP:0x0600) [C Res] 
+#2 in function LPP_errorHandleDirq at lpp_boot.asm:78 (LPM:0x00000, CM:0x000000, DP:0x0000) [Asm Res] 
+process: ulCellPe_sigDisp has been interrupted by Int4 - MAIL 
+#3 in function LPP_errorHandleDirq at lpp_boot.asm:78 (LPM:0x00000, CM:0x000000, DP:0x24c0) [Asm Res] 
+#4 in function BBBASE_RTR_SPARK_staticProcReceive at bbbase_rtr_spark.s:2887 (LPM:0x9b63a, CM:0x09b63a, DP:0x24f8) [C Res] 
+#5 in function ulCellPe_sigDisp at ulcellpe_pe.s:2524 (LPM:0x8d43d, CM:0x08d43d, DP:0x24fb) [C Res] 
+#6 in function LPP_exitFunction at lpp_proc_exit.s:40 (LPM:0xaaee0, CM:0x0aaee0, DP:0x250a) [C Res] 
+#7 in function unknown (LPM:0xb147b, CM:0x0b147b, DP:0x0000) [Asm Res] 
+
+Fatal error occurred at BFN: 0x3b322447 
+cm_3-3 html text
+Container revision: CXP2030023_27-R51F11 (role: bbUpDlLteRdbfBlm4Trinity, built: 2020-01-17 10:56:10) 
+
+Fatal error: 
+DSP status (all dsps) 
+-&gt; DSP 0 is in application FATAL ERROR state: 
+Desc: /repo/eduxjia/bbi/legacy/lpp/kernel/src/error/lpp_error_stop_order.c:59: Stop received because emca 4 crashed 
+
+Stack unwind on DSP0 current process 
+Current process isr 
+Stack trace: 
+
+#0 in function xxLPP_internalFatalError at lpp_error_fatal_error.asm:591 (LPM:0xb7983, CM:0x0b7983, DP:0x2489) [Asm Res] 
+#1 in function LPP_stopOrder at lpp_error_stop_order.s:105 (LPM:0xb7ad2, CM:0x0b7ad2, DP:0x004b) [C Res] 
+#2 in function unknown (LPM:0x652e03b3, CM:0x652e03b3, DP:0x0002) [Asm Res] 
+#3 in function bbiEthDrv_readReg32 at bbiEthDrv_reg.s:822 (LPM:0x102da, CM:0x0102da, DP:0x0000) [Asm Res] 
+process: dlCellPe_sigDisp has been interrupted by Int4 - MAIL 
+#4 in function LPP_errorHandleDirq at lpp_boot.asm:78 (LPM:0x00000, CM:0x000000, DP:0x2bd2) [Asm Res] 
+#5 in function BBBASE_RTR_SPARK_staticProcReceive at bbbase_rtr_spark.s:2887 (LPM:0xacaef, CM:0x0acaef, DP:0x2c0a) [C Res] 
+#6 in function dlCellPe_sigDisp at dlcellpe_pe.s:115 (LPM:0x391cc, CM:0x0391cc, DP:0x2c0d) [C Res] 
+#7 in function LPP_exitFunction at lpp_proc_exit.s:40 (LPM:0xba4d0, CM:0x0ba4d0, DP:0x2c1c) [C Res] 
+#8 in function unknown (LPM:0xc0a6b, CM:0x0c0a6b, DP:0x0000) [Asm Res] 
+
+Fatal error occurred at BFN: 0x3b32245b 
+cm_4-3 html text
+Container revision: CXP2030023_27-R51F11 (role: bbUpcLteRdbfBlm4Trinity, built: 2020-01-17 10:56:27) 
+
+Fatal error: 
+DSP status (all dsps) 
+-&gt; DSP 51 is in application FATAL ERROR state: 
+Desc: ulmacce_msg3coord_sched_msg2_cfm_thread.c:297: DBC: success 
+
+
+Stack unwind on DSP51 current process 
+Currently running thread ulMacCeScheduleMsg2CfmThread 
+Stack trace: 
+
+#0 in function xxLPP_internalFatalError at lpp_error_fatal_error.asm:591 (LPM:0x15ff0b, CM:0x15ff0b, DP:0x3017) [Asm Res] 
+#1 in function ULMACCE_MSG3COORD_scheduleMsg2CfmThread at ulmacce_msg3coord_sched_msg2_cfm_thread.s:2075 (LPM:0x974c8, CM:0x0974c8, DP:0x3fd8) [C Res] 
+#2 in function LPP_threadLoad at lpp_thr_load.asm:476 (LPM:0x1687a9, CM:0x1687a9, DP:0x0000) [Asm Res] 
+
+Fatal error occurred at BFN: 0x3b316133 
+
+
+6. PMD Stack Trace
+=======================
+Your unique id for symbols: 7F5CD127687CAE35062B66CF5E1BD76E
+__libc_do_syscall
+__libc_signal_restore_set
+__libc_signal_restore_set
+dumphooks_run
+__libc_do_syscall
+__libc_signal_restore_set
+__libc_signal_restore_set
+restart_line_and_file
+eri_ng_snapshot_request
+thread_start
+start_thread
+Your unique id for Source Code Lines: 832CB40197AF9BD9DF54035C8B31E1D1
+$ Snapshot request $ - $ - $ 7754 $ 0 $ - $ - $ BB Restart: Emca 4:X: &quot;&lt;!UPCUL.2047!&gt; ulmacce_msg3coord_sched_msg2_cfm_thread.c:297: DBC:
+success\n&quot;
+return INTERNAL_SYSCALL (rt_sigprocmask, err, X, SIG_SETMASK, set, NULL,
+return INTERNAL_SYSCALL (rt_sigprocmask, err, X, SIG_SETMASK, set, NULL,
+raise(signo);
+return INTERNAL_SYSCALL (rt_sigprocmask, err, X, SIG_SETMASK, set, NULL,
+return INTERNAL_SYSCALL (rt_sigprocmask, err, X, SIG_SETMASK, set, NULL,
+raise(SIGABRT);
+restart_line_and_file(X,
+(func)();
+ret = pd-&gt;start_routine (pd-&gt;arg);
+
+
+7. Logs (LGOAEVPM)
+=======================
+2020-04-04 03:42:27 COLI INFO   c679166 /misc/cmds
+2020-04-04 03:42:28 COLI INFO   c679166 /cm/sysconread
+2020-04-04 03:42:30 COLI INFO   c679166 /cm/sysconwrite 3840 0
+2020-04-04 03:42:31 COLI INFO   c679166 /cm/sysconwrite 3900 1
+2020-04-04 03:42:33 COLI INFO   c679166 /cm/sysconwrite 4045 1
+2020-04-04 03:42:34 COLI INFO   c679166 /cm/sysconwrite 4052 2
+2020-04-04 03:42:36 COLI INFO   c679166 /cm/sysconwrite 4072 1
+2020-04-04 03:42:37 COLI INFO   c679166 /cm/sysconwrite 4224 1
+2020-04-04 03:42:39 COLI INFO   c679166 /cm/sysconwrite 4090 2
+2020-04-04 03:42:40 COLI INFO   c679166 /cm/sysconwrite 3771 1
+2020-04-04 03:42:42 COLI INFO   c679166 /cm/sysconwrite 4221 1
+2020-04-04 03:42:43 COLI INFO   c679166 /cm/sysconread
+2020-04-04 06:37:05 PGM   OUT  UnOperational    BP  010100  CXP2030023_27_R51F11  Lrat LRAT BB stopped due to unrecoverable problem
+2020-04-04 06:37:05 SERV  OUT  UnOperational    NBIOTCELL 93            Lrat Weighting factor: 100 percent, Existing CellIds: 93 , Cause: Manual
+2020-04-04 06:37:05 SERV  OUT_PARTIAL  UnOperational    CELL 23                 Lrat Weighting factor: 12 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:07 LPMD  0001 DUS5201     File=pmd-bbmcBbOmMeThrea-20582-20200404-063707.tgz.gpg_with_llog.tgz
+2020-04-04 06:37:08 SERV  OUT_PARTIAL  UnOperational    CELL 23 33              Lrat Weighting factor: 25 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:08 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 3            Lrat Weighting factor: 37 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:08 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 3 6          Lrat Weighting factor: 50 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:09 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 3 6 13       Lrat Weighting factor: 62 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:09 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 3 6 13 53    Lrat Weighting factor: 75 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:09 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 3 6 13 53 43  Lrat Weighting factor: 87 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:10 SERV  OUT  UnOperational    CELL 23 33 3 6 13 53 43 46  Lrat Weighting factor: 100 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:10 PGM   IN   Starting         BP  010100  CXP2030023_27_R51F11  Lrat LRAT BB restarted
+2020-04-04 06:37:13 SERV  IN   Operational      NBIOTCELL               Lrat Weighting factor: 0 percent, Existing CellIds: 93
+2020-04-04 06:37:14 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 6 13 53 43 46  Lrat Weighting factor: 87 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:14 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 13 53 43 46  Lrat Weighting factor: 75 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:14 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 13 43 46     Lrat Weighting factor: 62 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:14 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 13 46        Lrat Weighting factor: 50 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:14 SERV  OUT_PARTIAL  UnOperational    CELL 23 33 13           Lrat Weighting factor: 37 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:14 SERV  OUT_PARTIAL  UnOperational    CELL 23 33              Lrat Weighting factor: 25 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:15 SERV  OUT_PARTIAL  UnOperational    CELL 33                 Lrat Weighting factor: 12 percent, Existing CellIds: 23 33 3 6 13 53 43 46 , Cause: System
+2020-04-04 06:37:16 SERV  IN   Operational      CELL                    Lrat Weighting factor: 0 percent, Existing CellIds: 23 33 3 6 13 53 43 46
+2020-04-04 10:28:13 MO-N INFO   n106500 ACT ManagedElement=QLD_FRWD25_FRENCHVILLE_570673,SystemFunctions=1,LogM=1 className: LogM, actionName exportAvailabilityLog
+2020-04-04 10:28:13 MO-N INFO   n106500 ACT ManagedElement=QLD_FRWD25_FRENCHVILLE_570673,SystemFunctions=1,LogM=1,Log=AuditTrailLog className: Log, actionName export
+2020-04-04 10:28:13 MO-N INFO   n106500 ACT ManagedElement=QLD_FRWD25_FRENCHVILLE_570673,SystemFunctions=1,LogM=1,Log=AlarmLog className: Log, actionName export
+2020-04-04 10:28:35 COLI INFO   n106500 /fruacc/lhlist ldn
+2020-04-04 10:28:44 COLI INFO   n106500 /diagm/llog -l
+2020-04-04 10:28:44 COLI INFO   n106500 /fruacc/lhsh BXP_1024 llog -l
+2020-04-04 10:28:44 COLI INFO   n106500 /fruacc/lhsh BXP_2051 llog -l
+2020-04-04 10:28:45 COLI INFO   n106500 /fruacc/lhsh BXP_2050 llog -l
+2020-04-04 10:28:45 COLI INFO   n106500 /fruacc/lhsh BXP_2048 llog -l
+2020-04-04 10:28:45 COLI INFO   n106500 /fruacc/lhsh BXP_2049 llog -l
+2020-04-04 10:28:46 COLI INFO   n106500 /fruacc/lhsh BXP_2053 llog -l
+2020-04-04 10:28:46 COLI INFO   n106500 /fruacc/lhsh BXP_2052 llog -l
+2020-04-04 13:53:24 OTHR  PeriodicLogging QLD_FRWD25_FRENCHVILLE_570673;FRWD QLD_FRWD25_FRENCHVILLE_570673 CXP9024418_6 R80F30 BASEBAND UP=CXP9024418_6-R80F30
+2020-04-04 17:31:27 COLI INFO   d662282 /diagm/bbte la -v
+2020-04-04 17:31:27 COLI INFO   d662282 /misc/cmds
+2020-04-04 17:31:27 COLI INFO   d662282 /board/hwpid
+
+
+8. Trace And Error (from PMD and GCPU dump if applicable)
+==============================================================
+OFFLINE_QLD_FRWD25_FRENCHVILLE_570673_DCG_K&gt; ter | grep &quot;2020-04-04&quot;
+
+200408-19:07:23 OFFLINE_QLD_FRWD25_FRENCHVILLE_570673_dcg_k 20.0a MSRBS_NODE_MODEL_19.Q4_423.28070.65_e4d6 stopfile=/tmp/1434
+[2020-04-04 06:37:05.556856598] (+50446.779197062) du1 com_ericsson_rpt_l1bpmgr:MSG_REC_STR: { cpu_id = 10 }, { procname = &quot;rptL1BpMgrProc&quot; }, { file_line = &quot;rpt/l1_bp_mgr/protocols/base/src/protocol_base.cc:46&quot;, prot_id = 0, prot_rev = 0, prot_ver = 0, msg_id = 24150727, msg_data = &quot;{&quot;name&quot;:&quot;BBI_BMC_XBM_DISAPPEARED_IND&quot;,&quot;xbmHandle&quot;:0}&quot; }
+[2020-04-04 06:37:05.692477880] (+0.135621282) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 8 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=35, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:06.315770849] (+0.623292969) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 10 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=20, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:08.088835724] (+1.773064875) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 315, info = &quot;EMCA_ID: 2&quot; }
+[2020-04-04 06:37:08.088898973] (+0.000063249) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 316, info = &quot;EMCA_PCEP: 0x10&quot; }
+[2020-04-04 06:37:08.088911645] (+0.000012672) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 319, info = &quot;MAC: 02:00:01:0b:00:01&quot; }
+[2020-04-04 06:37:08.089120427] (+0.000208782) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 315, info = &quot;EMCA_ID: 4&quot; }
+[2020-04-04 06:37:08.089124989] (+0.000004562) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 316, info = &quot;EMCA_PCEP: 0x10&quot; }
+[2020-04-04 06:37:08.089131692] (+0.000006703) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 319, info = &quot;MAC: 02:00:01:07:00:01&quot; }
+[2020-04-04 06:37:08.089290036] (+0.000158344) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 315, info = &quot;EMCA_ID: 3&quot; }
+[2020-04-04 06:37:08.089294692] (+0.000004656) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 316, info = &quot;EMCA_PCEP: 0x10&quot; }
+[2020-04-04 06:37:08.089299380] (+0.000004688) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 319, info = &quot;MAC: 02:00:01:05:00:01&quot; }
+[2020-04-04 06:37:08.089454801] (+0.000155421) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 315, info = &quot;EMCA_ID: 1&quot; }
+[2020-04-04 06:37:08.089458380] (+0.000003579) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 316, info = &quot;EMCA_PCEP: 0x10&quot; }
+[2020-04-04 06:37:08.089463989] (+0.000005609) du1 com_ericsson_ulh:mhp_info: { cpu_id = 6 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/cm.c&quot;, line = 319, info = &quot;MAC: 02:00:01:09:00:01&quot; }
+[2020-04-04 06:37:08.155075286] (+0.065611297) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 694, info = &quot;[LNH]: emca4: connected (state: 0)&quot; }
+[2020-04-04 06:37:08.155359176] (+0.000283890) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 506, info = &quot;[LNH]: link emca4/ published&quot; }
+[2020-04-04 06:37:08.161457287] (+0.006098111) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 694, info = &quot;[LNH]: emca2: connected (state: 0)&quot; }
+[2020-04-04 06:37:08.161568301] (+0.000111014) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 506, info = &quot;[LNH]: link emca2/ published&quot; }
+[2020-04-04 06:37:08.171080817] (+0.009512516) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 694, info = &quot;[LNH]: emca1: connected (state: 0)&quot; }
+[2020-04-04 06:37:08.171292802] (+0.000211985) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 506, info = &quot;[LNH]: link emca1/ published&quot; }
+[2020-04-04 06:37:08.176084318] (+0.004791516) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 694, info = &quot;[LNH]: emca3: connected (state: 0)&quot; }
+[2020-04-04 06:37:08.176202380] (+0.000118062) du1 com_ericsson_ulh:mhp_info: { cpu_id = 4 }, { procname = &quot;mhp3lnh&quot; }, { file = &quot;../../git/emcalnh/lh.c&quot;, line = 506, info = &quot;[LNH]: link emca3/ published&quot; }
+[2020-04-04 06:37:08.212506848] (+0.036304468) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 10 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=34, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:08.592302677] (+0.379795829) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 10 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=26, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:09.054150302] (+0.461847625) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 3 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=31, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:09.289439942] (+0.235289640) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 3 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=28, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:09.543542114] (+0.254102172) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 3 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=29, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:09.979382646] (+0.435840532) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 2 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:170&quot;, msg = &quot;Accept unsubscription: serverRef=30, reqMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_UNSUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:11.545276052] (+1.565893406) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 2 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=34, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:11.925290427] (+0.380014375) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 3 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=10, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:11.947181614] (+0.021891187) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 2 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=28, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:12.028350411] (+0.081168797) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 2 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=26, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:12.493430692] (+0.465080281) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 3 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=35, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:12.519830318] (+0.026399626) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 1 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=29, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:12.571566521] (+0.051736203) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 10 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=30, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:13.883706958] (+1.312140437) du1 com_ericsson_cp_an:DEBUG_SYSTEM: { cpu_id = 11 }, { procname = &quot;analyticsArm&quot; }, { file_line = &quot;an_model_status/impl/src/service_provider_impl.cc:124&quot;, msg = &quot;Accept subscription: serverRef=20, reqMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_REQ {modelType MCPC_BINARY}, cfmMessage=CP_EXTIF_ANMODEL_STATUS_SUBSCRIBE_CFM {modelType MCPC_BINARY}&quot; }
+[2020-04-04 06:37:20.191766568] (+6.308059610) du1 com_ericsson_rpt_l1bpmgr:MSG_REC_STR: { cpu_id = 10 }, { procname = &quot;rptL1BpMgrProc&quot; }, { file_line = &quot;rpt/l1_bp_mgr/protocols/base/src/protocol_base.cc:46&quot;, prot_id = 0, prot_rev = 0, prot_ver = 0, msg_id = 24150744, msg_data = &quot;{&quot;name&quot;:&quot;BBI_BMC_XBM_APPEARED2_IND&quot;,&quot;instanceName&quot;:&quot;LRAT&quot;,&quot;xbmHandle&quot;:0,&quot;connectionInterfaces&quot;:[{&quot;index&quot;:0,&quot;name&quot;:&quot;E5ESS&quot;,&quot;maxTxCapacity&quot;:2,&quot;numXbmConnections&quot;:1,&quot;maxRxCapacity&quot;:2}]}&quot; }
+[2020-04-04 17:38:32.433632989] (+39672.241866421) du1 com_ericsson_plf_capi:capiTaskCntNotice: { cpu_id = 11 }, { procname = &quot;Cls_capiServer_&quot; }, { file = &quot;../../git/server/../server/src/proc_cnt.c&quot;, linenumber = 958, msg = &quot;Directory /proc/16491/task not found. errno 2 &quot; }
+[2020-04-04 17:38:33.178228271] (+0.744595282) du1 com_ericsson_plf_capi:capiTaskCntNotice: { cpu_id = 9 }, { procname = &quot;Cls_capiServer_&quot; }, { file = &quot;../../git/server/../server/src/proc_cnt.c&quot;, linenumber = 958, msg = &quot;Directory /proc/16454/task not found. errno 2 &quot; }
+[2020-04-04 17:38:33.180819801] (+0.002591530) du1 com_ericsson_plf_capi:capiTaskCntNotice: { cpu_id = 9 }, { procname = &quot;Cls_capiServer_&quot; }, { file = &quot;../../git/server/../server/src/proc_cnt.c&quot;, linenumber = 958, msg = &quot;Directory /proc/16491/task not found. errno 2 &quot; }
+
+
+9. Hardware Inventory (invh)
+================================
+
+Node: RadioNode L   CXP9024418/6_R80F30 (19.Q4)
+
+=====================================================================================================================================
+FRU               LNH      BOARD     ST FAULT OPER MAINT STAT PRODUCTNUMBER   REV     SERIAL        DATE      TEMP  UPT
+=====================================================================================================================================
+DU-1              000100   DUS5201    1   OFF   ON   OFF   ON KDU137925/31    R5A     CD3U049155    20171027             (Bb5216)
+R503-FRWD-1       BXP_1024 XMU0301    1   OFF   ON   OFF  N/A KDU137949/1     R2A     CD3W900800    20180503             (BbR503)
+RRU-FRWD-2100-3-1 BXP_2048 RRU4415B1  1   OFF   ON   OFF  N/A KRC161635/1     R5B/A   B441630161    20180717             (Radio4415B1)
+RRU-FRWD-2600-3-1 BXP_2049 RRUS32B7A  1   OFF   ON   OFF  N/A KRC161602/1     R1C     D16X125562    20170910
+RRU-FRWD-1800-6-1 BXP_2050 RRU4415B3  1   OFF   ON   OFF  N/A KRC161637/1     R5H     D827417453    20180509             (Radio4415B3)
+RRU-FRWD-1800-3-1 BXP_2051 RRU4415B3  1   OFF   ON   OFF  N/A KRC161637/1     R5H     D827417464    20180509             (Radio4415B3)
+RU-FRWD-700-3-2   BXP_2052 RUS02B28B  1   OFF   ON   OFF  N/A KRC161382/1     R1C     CB4V187513    20140917
+RU-FRWD-700-3-1   BXP_2053 RUS02B28B  1   OFF   ON   OFF  N/A KRC161382/1     R1C     CB4V187505    20140917
+-------------------------------------------------------------------------------------------------------------------------------------
+
+=====================================================================================================================================
+AntennaNearUnit                                         ST  TYPE   PRODUCTNR       REV        UNIQUEID             RfPort
+=====================================================================================================================================
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=RET-FRWD-1-1     1  S-RET  RV4PX308R-V2    332        AR00018IN0222951841  FieldReplaceableUnit=RRU-FRWD-2600-3-1,RfPort=R
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=RET-FRWD-1-2     1  S-RET  RV4PX308R-V2    332        AR00018IN0222951842  FieldReplaceableUnit=RRU-FRWD-2600-3-1,RfPort=R
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=RET-FRWD-1-3     1  S-RET  RV4PX308R-V2    332        AR00018IN0222951843  FieldReplaceableUnit=RRU-FRWD-2600-3-1,RfPort=R
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=RET-FRWD-1-4     1  S-RET  RV4PX308R-V2    332        AR00018IN0222951844  FieldReplaceableUnit=RRU-FRWD-2600-3-1,RfPort=R
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=RET-FRWD-1-5     1  S-RET  RV4PX308R-V2    332        AR00018IN0222951845  FieldReplaceableUnit=RRU-FRWD-2600-3-1,RfPort=R
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=RET-FRWD-2       1  M-RET  2NPX210R-V1     332        AR00013CN0100427341  FieldReplaceableUnit=RRU-FRWD-1800-3-1,RfPort=R
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=RET-FRWD-3       0  M-RET                                                  FieldReplaceableUnit=RRU-FRWD-1800-6-1,RfPort=R
+AntennaUnitGroup=FRWD_3,AntennaNearUnit=TMA-FRWD-700-1   1  TMA    TMA2094F01V1-1  ?-R953052  TRAN1142703814       FieldReplaceableUnit=RU-FRWD-700-3-1,RfPort=A
+-------------------------------------------------------------------------------------------------------------------------------------
+
+=====================================================================================================================================
+XPBOARD  ST FAULT OPER PRODUCTNUMBER REV SERIAL/NAME DATE      TEMP MO
+=====================================================================================================================================
+RBS6202                111/BFM111111 R5A CB4L11111   11111111       Cabinet=FRWD-1
+RBS6601                102/BFL901009 R5A CB4L11111   11111111       Cabinet=FRWD-2
+-------------------------------------------------------------------------------------------------------------------------------------
+
+=====================================================================================================================================
+BOARD   LNH    PORT T S OpMode        AutoNeg MacAddress        VlanIds     LOS BER
+=====================================================================================================================================
+DUS5201 000100 TN_A E 1 1G_FULL_SLAVE true    98:C5:DB:46:14:D4 11,588,3889
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+10. Workaround
+==================
+no workaround identified yet
+
+
+11. Steps to reproduce
+==========================
+crash is sporadic , don&#039;t know how to reproduce
+
+12. Suspected Duplicates
+============================
+NA</value></column>
+<column><name>Answer.Answer</name>
+<value></value></column>
+<column><name>Enclosures.Filename</name>
+<value>QLD_FRWD25_FRENCHVILLE_570673_200406_101029_AEST_MSRBS-L_CXP9024418-6_R80F30_dcgm.zip</value></column>
+<column><name>Enclosures.Description</name>
+<value>DCGM</value></column>
+</row>
+<row>

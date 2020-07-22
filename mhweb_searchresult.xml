@@ -1,0 +1,172 @@
+<column><name>General.Eriref</name>
+<value>HY29946</value></column>
+<column><name>General.Heading</name>
+<value>AAS C2: LTE 10TM TM7 low throughput</value></column>
+<column><name>General.Total days</name>
+<value>28</value></column>
+<column><name>General.Status code</name>
+<value>FI</value></column>
+<column><name>Node level.Product no &amp; R-Stat</name>
+<value>CXP 902 4418/12@R56A103</value></column>
+<column><name>Observation.Observation</name>
+<value>1 E F F E C T 
+============
+1.1	Trouble summary and/or commercial effect
+-----------------------------------------------------------------------
+Throughput of LTE bandwidth 10M TM7 is very low during feature parity check in AAS system. A couple of UPs from main track are compared, the result shows this degradation starts one day and afterwards it is bad.
+1.2 Last working SW version (Upgrade Package or Lm etc), where the fault has NOT been seen 
+----------------------------------------------------------------------------------------
+Last good UP is CXP9024418/12_R56A96.
+=====================================================================================
+200303-15:54            BackupName                               SwVersion
+=====================================================================================
+LastCreatedBackup:      CXP9024418/12_R56A96_256qam              CXP9024418/12_R56A96
+LastRestoredBackup:
+-------------------------------------------------------------------------------------
+Current SwVersion:      CXP9024418/12_R56A96 (20.Q1)
+BrmHouseKeeping:        ENABLED (max: 20 backups)
+BrmFailSafe:            IDLE
+RestoreEscalationList:  s[1] = Escalation_default_20200303T074605+0000
+1.3 Observed System impact 
+----------------------------------------
+Impact on traffic.
+1.4. Conditions
+-----------------------
+No condition.
+2   T R O U B L E  D E S C R I P T I O N
+=================================
+2.1. Detailed trouble description 
+-----------------------------------------
+For LTE 10M,
+- TM3 OK
+- TM7 NOK (tput is about 6Mbps, expectation is 34Mbps)
+- TM8 OK
+2.2	Configuration Data 
+---------------------------------------------------
+set . channelBandwidth 10000
+set . subframeassignment 2
+set . specialSubframePattern 7
+set . pdcchCfiMode 5
+set . ulSrsEnable 1
+set CXC4011969 featureState 1
+set . dl256QamEnabled 1
+set CXC4011946 featureState 1
+set . ul64qamEnabled true
+2.3 Frequency of fault (fails/trials)
+-----------------------------------------------
+Every time.
+2.4 Is the fault reproducible? 
+-----------------------------------------
+Yes.
+2.5 Step-by-step procedure in order to reproduce the fault
+-------------------------------------------------------------------------------
+Step1. Activate one LTE 10Mhz cell with transmission mode 7
+Step2. Attach one UE and start downlink udp traffic</value></column>
+<column><name>Answer.Answer</name>
+<value>CAUSE OF FAULT
+-------------------------------
+The issue was observed after this commit: https://gerrit.ericsson.se/#/c/6604522/, where some optimization were done to reduce cycle handling control indication per UE.  however, the TTI info depth was set 2 using pingpong buffer, this depth was considered to be small that would result in the information would be overwritten in TTI info buffer, the situation will be worse after this optimization done.
+KPI/SYSTEM IMPACT
+-------------------------------
+High bler for TM7 traffic in 10MHz cell.
+FAULT DETECTION METHOD
+---------------------
+internal counters and code check.
+SOLUTION
+-----------------
+extend the TTI info depth from 2 to 5, see commit: https://gerrit.ericsson.se/#/c/7137193/
+OTHER INFORMATION  
+--------------------------------
+Describe what is the reason for the slip
+This kind of fault( timing related) is difficult to detect/gate by domain MCT test,  because test framework can&#039;t simulate the exact timing in UPC as node test.
+The node CI test cases for TM7 single UE are propsed to detect this kind of fault in earlier phase.
+Have we written (or modified) a test case that will catch this specific fault?
+From OPO(Ellision Lin), test manager(Michael Ou) already planned a QU function TM7 case, which is under tuning.
+What should we do to prevent similar slips in the future?
+Add TM7 case in node CI test.
+WHICH RELEASES/TRACKS/HW(DUL/DUS) DOES THE TR NEED TO BE MAPPED/DELVERED TO?
+-----------------------------------------------------------------------------------------------
+N/A
+Contact Information
+--------------------
+exngyao</value></column>
+<column><name>Enclosures.Filename</name>
+<value>10M_TM7_OK_R56A96.png</value></column>
+<column><name>Corrected.Product no &amp; R-State</name>
+<value>CXP 902 4418/15@R6A11</value></column>
+</row>
+<row>
+<column><name>General.Eriref</name>
+<value>HY29946</value></column>
+<column><name>General.Heading</name>
+<value>AAS C2: LTE 10TM TM7 low throughput</value></column>
+<column><name>General.Total days</name>
+<value>28</value></column>
+<column><name>General.Status code</name>
+<value>FI</value></column>
+<column><name>Node level.Product no &amp; R-Stat</name>
+<value>CXP 902 4418/12@R56A103</value></column>
+<column><name>Observation.Observation</name>
+<value>1 E F F E C T 
+============
+1.1	Trouble summary and/or commercial effect
+-----------------------------------------------------------------------
+Throughput of LTE bandwidth 10M TM7 is very low during feature parity check in AAS system. A couple of UPs from main track are compared, the result shows this degradation starts one day and afterwards it is bad.
+1.2 Last working SW version (Upgrade Package or Lm etc), where the fault has NOT been seen 
+----------------------------------------------------------------------------------------
+Last good UP is CXP9024418/12_R56A96.
+=====================================================================================
+200303-15:54            BackupName                               SwVersion
+=====================================================================================
+LastCreatedBackup:      CXP9024418/12_R56A96_256qam              CXP9024418/12_R56A96
+LastRestoredBackup:
+-------------------------------------------------------------------------------------
+Current SwVersion:      CXP9024418/12_R56A96 (20.Q1)
+BrmHouseKeeping:        ENABLED (max: 20 backups)
+BrmFailSafe:            IDLE
+RestoreEscalationList:  s[1] = Escalation_default_20200303T074605+0000
+1.3 Observed System impact 
+----------------------------------------
+Impact on traffic.
+1.4. Conditions
+-----------------------
+No condition.
+2   T R O U B L E  D E S C R I P T I O N
+=================================
+2.1. Detailed trouble description 
+-----------------------------------------
+For LTE 10M,
+- TM3 OK
+- TM7 NOK (tput is about 6Mbps, expectation is 34Mbps)
+- TM8 OK
+2.2	Configuration Data 
+---------------------------------------------------
+set . channelBandwidth 10000
+set . subframeassignment 2
+set . specialSubframePattern 7
+set . pdcchCfiMode 5
+set . ulSrsEnable 1
+set CXC4011969 featureState 1
+set . dl256QamEnabled 1
+set CXC4011946 featureState 1
+set . ul64qamEnabled true
+2.3 Frequency of fault (fails/trials)
+-----------------------------------------------
+Every time.
+2.4 Is the fault reproducible? 
+-----------------------------------------
+Yes.
+2.5 Step-by-step procedure in order to reproduce the fault
+-------------------------------------------------------------------------------
+Step1. Activate one LTE 10Mhz cell with transmission mode 7
+Step2. Attach one UE and start downlink udp traffic</value></column>
+<column><name>Answer.Answer</name>
+<value>CAUSE OF FAULT
+-------------------------------
+The issue was observed after this commit: https://gerrit.ericsson.se/#/c/6604522/, where some optimization were done to reduce cycle handling control indication per UE.  however, the TTI info depth was set 2 using pingpong buffer, this depth was considered to be small that would result in the information would be overwritten in TTI info buffer, the situation will be worse after this optimization done.
+KPI/SYSTEM IMPACT
+-------------------------------
+High bler for TM7 traffic in 10MHz cell.
+FAULT DETECTION METHOD
+---------------------
+internal counters and code check.

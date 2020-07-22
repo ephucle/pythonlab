@@ -1,0 +1,413 @@
+/mnt/c/working/02-Project/16-SKT_5G_Project/06-ProjectTasks/00_TRMappingTool/SKT_5G_CD_Crash_Report_Tool_PA9_9_70.xlsm
+HX55984 | Trying to free a cm ptr that points
+HX52351 | lhsh_shelld. Signal: 6
+HX88253 | Program restart. Reason: Program Crash. Program: radioapp.elf. Signal: 11. PMD: /var/log/pmd/pmd-tmoSchedulerTx
+HX54355 | Complete service outage
+HX56719 | sysConstHandlerLmU. Signal: SIGABRT. PMD: pmd-cmd
+HX56959 | bbiEthDrv_softSendThread
+HX57833 | Stack overflownin
+HX57614 | UPCUEDLNR.150
+HX96248 | CMC supervision.nIllegal access by rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:934
+HX59010 | rhai_bbm_start
+HX59153 | Emca 1:DSP 0: "Colossus fatalnFault code/Signal num rpc
+HX63009 | bbiXbmc_utils_send.h:189: Trying to s rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HX59171 | ULL1MDBFUNR.88
+HX59165 | Second value is out of range
+HX59301 | ULL1MDBFUNR.190
+HX59875 | sync-ptp-
+HX59670 | LPP_send to invalid virtual pid\
+HX60654 | bbiEqmhEmca. Signal: 6
+HX60711 | radioapp.elf. Signal: 7. PMD: /var/log/pmd/pmd-dpPollProc
+HX61073 | Boot loader code was called
+HX61239 | rhd-trxd. Signal: 7
+HX61255 | sync-local
+HX64706 | rccBbrsNrArm. Signal: 6
+HX61321 | DLSCCOMMONPENR.21
+HX85427 | sync-riptp-
+HX63020 | richw_commond. Signal: 7
+HX59990 | Failed to load EMCAs 1, 2, 3, 4 due to eqmhStatus=1
+HX61483 | Restart during NR slot info supervision for XBM
+HX61517 | Timeout received in state INOPERABLE c2_carrier_state_inoperable
+HX61523 | Internal connection unexpectedly lost
+HX85427 | ipt-portman
+HX61520 | Program: rbsNcLm. Signal: SIGSEGV
+HX61581 | bbiEthDrv_portConf_trinity
+HY16430 | Program: lratCellArmLm. Signal: SIGSEGV. PMD: pmd-LmCellPT
+HX61616 | pmd-consul
+HY18764 | Program: rcNwifX2Arm. Signal: SIGABRT
+HX61922 | DLL1NRMDBFUPE_SSBTOR_unknownSignalHa
+HX61915 | ULL1NRCOMMON_MEASSESL_unknown
+HX61970 |  Unexpected handleInternalLockScReq, state
+HX61962 | pmd-cra_main_thread
+HX62046 | pmd-Nss_tum2_tumgr
+HX61875 | BBM3, Internal Trinity Local
+HX61834 | WAITING_FOR_OPERABLE_IND_FROM_RCC_CARRIER
+HX62063 | RBS_IW_TDCI_BFN_ADJUSTMENT_COMPLETED2_IND
+HX62066 | only support for 1 active connection/subscription is supported
+HX62067 | Batch already ongoing which is not yet confirmed, can't accept new
+HX62068 | itcworld. Signal: 13
+HX96802 | <!UPCUL.1459!> ulmacce_uecoord_ue_reconfigured_update.c
+HX62376 | message {BearerConfigResponse}
+HX62472 | rhd-iqmuxd. Signal: 7
+HX62479 | rhd-bbad. Signal: 7
+HX62492 | BB Restart: BBM2, Internal Trinity CM (Common Memory)
+HX61348 | A thread ID was received that was out of range
+HX96268 | "<!RPCBBUE.234!> rpcbbueme_common_tra rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:942
+HX63261 | bbiNsProxy. Signal: 6
+HX63285 | Unexpected handleLoopbackBbResourceAvailableInd
+HX63344 | message {UeContextSetupConfirm}
+HX63346 | DLPDCPNR.513
+HX63329 | RPCMIA.91
+HY11574 | faultDescription: Comprehensive Fault /repo/catbuilder/esekilxv10442.workspace.1/build/work/dusg2/du-bc/du-bc-/git/src/bc/bc_restart.c
+HX63524 |  Program: rbsNcLm. Signal: SIGSEGV. PMD: pmd-nc_main
+HX63634 | noOfAntennasTx
+HX93937 | Extra: Restart due to hanging of lock cell for cellIds
+HX95773 | Program: lratCellArmLm. Signal: SIGABRT. PMD: pmd-LmCellPT
+HX63633 | DLL1MDBFUPENR.118
+HX95786 | Colossus warning/alarmnMail payload: rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:934
+HX63641 | ExceptionalTemperatureTooHigh
+HX96268 | RPCBBUE.236
+HX64383 | <!Unknown modType!> dll1nrcommon_spl
+HY37588 | "LDM Alloc error: Out of memorynalloc /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc:169
+HX65156 | Caught exception from sys service at service subscription: Service discovery domain local
+HY11568 | DBC: error bitMapBbUeRunningNumber not equal to 1: bbUeRef
+HX65458 | leaked unhandled ap:Exception exception, data = TimeoutException{cause{TIMEOUT_EXTERNAL_RESPONSE}} alfred-out
+HX65447 | Program Crash. Program: apc. Signal: SIGABRT. PMD: pmd-apcMain
+HX65459 |  rpcSectorCarrierNrArm. Signal: SIGSEGV. PMD: pmd-rpcSc
+HX57914 | Colossus fatalnFault code/Signal num rpc
+HX66473 | Trying to free a cm ptr that points outside pool, or memory overwrite detected at allocnaddress
+HY11767 | bbbase_trses_fatalerror_ovl.c:
+HX66605 | bbiTcbb_instructions.h:
+HX85427 | sync-ri-ptp
+HX57909 | <!UPCUEDLNR.150!> upcuedlnrce_common
+HX59731 | bbiXioDrv_storage.c:
+HX66761 | Unexpected handleCgciC2CarrierResourceInfoChangedInd
+HX68621 | rcControlNrArm. Signal: SIGSEGV. PMD: pmd-rcControlNrC1
+HX68637 | Signal: SIGABRT. PMD: pmd-snmpd
+HX68625 | Program: tcplkm. Signal: SIGSEGV. PMD: pmd-cm_tcp_transp
+HY33577 | Program: kernel. Rank: Cold. PMD: pmd-kernel
+HX68628 | Extra: Caught exception from sys service at service subscription: Service discovery domain local is unavailable
+HY13193 | Program: ipt-epd. Signal: SIGABRT. PMD: pmd-ipt-epd
+HX66621 | Extra: Recovery action initiated by BB via BCI, faultId: 0x301 (SwError), faultDescription: Contact next level of support and provide log files rpc/
+HX99375 | faultDescription: Emca 3:DSP 0: "Colossus fatalnFault code/Signal num rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:997
+HX68629 | Colossus warning/alarmnMail payload: rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:945
+HX61834 | Timeout received in state SETTING_UP, during procedure WAITING_FOR_CAPABILITY
+HX69915 | Signal: SIGSEGV. PMD: pmd-RpUeH3
+HX70041 | Extra: Caught exception from sys service at service registration : Service discovery domain local 
+HX66058 | Program: bc-server. Rank: Cold. Extra: Recovery action, faultId: 0x301 (SwError), faultDescription: Contact next level of support and provide log files required by Data Collect
+HX65983 | Extra: Caught exception from sys service at service registration : Service discovery domain fa is unavailable
+HX65983 | Extra: Caught exception from casper at service registration : Service discovery domain fa is unavailable
+HX65983 | Extra: Caught exception from sys service at service subscription: Service discovery domain fa is unavailable ue
+HX70156 | rccBbrsNrArm. Signal: 11
+HY13843 | mhp3lnh. Signal: SIGABRT. PMD: pmd-mhp3lnh
+HX70421 | lratCellArmLm. Signal: SIGILL. PMD: pmd-LmCellPT
+HX70444 | Extra: [state={CONTEXT_MODIFICATION}] UnexpectedMsg
+CSR3727854 | Program: BbHs.rcs. Signal: SIGABRT. PMD: pmd-BbHs.rcs
+HX71076 | Unhandled interrupt: Software controlled LPM breakpoint
+HX68819 | Extra: Unexpected timers running in state-transition to DEAD, [1]{{routingInfo RI
+HX61875 | BBM1, Internal Trinity Local
+HX61875 | BBM4, Internal Trinity Local
+HX64118 | Recovery action initiated by BB via BCI, faultId: 0x301 (SwError), faultDescription: Contact next level of support and provide log files /local/lmr-lm-builds_gmake_small_fem111
+HX70871 | Program restart. Reason: Program Crash. Program: rbsAntcLm. Signal: SIGSEGV. PMD: pmd-antc_thread-
+HX76277 | control/variant/nr/procedure/src/send_execute_commit_cfm_proc_impl
+HX57544 | Emca 2:DSP 0: "Colossus fatalnFault code/Signal num rpc
+HX74715 | upcueulnrce_common_ rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl
+HX73921 | ull1nrcommon_pusc rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl
+HX74254 | ull1nrcommon_pus rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl
+HX74392 | /variant/nr_en_dc/handler/context/src/ue_context_handler_impl
+HX65458 |  Extra: CP AdditionalContextRejectRelease RI
+HX85461 | Extra: UeMatcherRemoveSingleException{ ueId
+HX74715 | upcueulnrce_common_c rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl
+HX66455 | Program: rpcBbrsNrLocalArm. Signal: SIGSEGV. PMD: pmd-rpcBbrsNrLocalA
+HX70871 | Program: rbsAntcLm. Signal: SIGSEGV. PMD: pmd-antc_thread
+HX67885 | Program: rbsAntcLm. Signal: SIGABRT. PMD: pmd-antc_threa
+HX73535 | Program: lratCentralArmLm. Signal: SIGABRT. PMD: pmd-LmCentralTraffi
+HX73535 | Program: ns. Signal: SIGABRT. PMD: pmd-ose_ns
+HX73048 | Program: lratCentralArmLm. Signal: SIGABRT. PMD: pmd-LmCentralConfig
+HX51984 | Program: lratMonitorArmLm. Signal: SIGABRT. PMD: pmd-LmMonitorPT
+HW85284 | Signal: SIGSEGV. PMD: pmd-bbiDiagHandler
+CSR3727854 | Program: BbEul.rcs. Signal: SIGABRT. PMD: pmd-BbEul.rcs
+HX61959 | No pmEventHeader set ue/variant/nr_en_dc/ue_obs/handler/src/handler_impl
+HX72545 | Extra: link manager with service type RES_MGMT_SECTOR_CARRIER does not exist rpc/control/variant/nr_central/procedure/src/request_bbrs_service_proc_impl
+HX67340 | rbsNcLm. Signal: SIGABRT. PMD: pmd-Cat_AisPmfwkPmi
+HY34263 | Program Crash. Program: lratMonitorArmLm. Signal: SIGABRT. PMD: pmd-csAdaptor_mo_to
+HY34263 | Program Crash. Program: rbsAntcLm. Signal: SIGABRT. PMD: pmd-Antc_AisPmfwkPm
+HX81665 | Buffer endmark overwritten. Possible rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:896
+HX79756 | Program: ppeArmLm. Signal: SIGSEGV. PMD: pmd-ppeArmLm
+HX79690 | Illegal semaphore id used when calli rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:896
+HX79429 | Trying to make null service {X2DedServiceRef}{globalEnbId } unavailable. ue/variant/nr_en_dc/handler/context/src/service_manager_impl.cc:83
+HX79706 | Unhandled interrupt: LDM protection
+HX79429 | handleReset not implemented
+HX78038 | <!RPCBBUE.20!> rpcbbueme_bbueref_all rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HX75752 | Timeout received in state SETTING_UP, during procedure WAITING_FOR_OPERABLE_IND_FROM_RCC_CARRIER c2_carrier_state_setting_up.cc
+HX70683 | <!UPCDL.2663!> dlmacce_process_dlsu_thread.c:1230: DBC: dlsr.id=54, dlsr.sessionType=2, dlsr.bbuere
+HX77147 | Extra: rhai_bbm_start returned -4 /local/repo/bbijenkins/fem004-eiffel002/workspace/release-track-cl2-build-deploy-cpm-mtr19.19/bbi/build_cpm/components/eqmh/files/eqmhEmcaSwU/src/bbiEqmhEmca_ethProxy.cc:956
+HX96299 | Program: ppObsNrArm. Signal: SIGABRT.
+HX81500 | <!UPCDL.2663!> dlmacce_process_dlsu_ /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc
+HX81624 | <!BBMC.609!> bbueme_releaseue_ovl.c:7 /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc
+HX82376 | <!UPULMAC.691!> ulmacpe_foh_postbundle.c:417: DBC: l1Alloc_p->l1.ttiBundlingCounter == 7n
+HX97721 | Colossus warning/alarmnMail payload: rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:942
+HX82032 | <!UPCDL.320!> dlmacce_filterull1measrprt.c
+HX82136 | CM memory header overwritten. Possibl rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HY35579 | LDM monitor interrupt!" rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1114
+HX81601 | <!UPCDL.1194!> dlmacce_cfr2cqiformatc /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc
+HX82187 | <!UPCUL.504!> ulmacce_celladmin_handl /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc
+HX82379 | <!UPCUL.770!> ulmacce_uecoord_ue_reconfigured_update.c:528: DBC: cmUeSes_p->shdSeSes.seValidPart.ca
+HX82376 | <!UPULMAC.691!> ulmacpe_foh_postbundle.c:417: DBC: l1Alloc_p->l1.ttiBundlingCounter
+HX82401 | Program: lratCellArmLm. Signal: SIGQUIT
+HY16430 | LPP_send to invalid virtual pidnpid:
+HX82321 | ulmacpe_cell_release.c:204: UPULMACPE /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc
+HX82187 | <!UPCUL.504!> ulmacce_celladmin_hand /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc
+HX81601 | <!UPCDL.2663!> dlmacce_process_dlsu_thread.c:1230: DBC: dlsr.id
+HX73535 | Program restart. Reason: Program Crash. Program: ns. Signal: SIGABRT. PMD: pmd-ose_ns
+HX82707 | Program Terminated Abnormally. Program: lratCellArmLm. Rank: Program. Extra: terminated by signal 6
+HX82716 | <!UPULMAC.763!> ulmacpe_msdh_sched.h:139: DBC: schedUe_p->pucch.bbUeRef == bbUeRefn
+HX82729 | Program: rcNwifXnArm. Signal: SIGABRT
+HX82722 | Extra: Unable to reach target host, ux:casper_r3_ux_
+HX83381 | CM Alloc error; zero size/too large block/out of memnalloc at
+HX87739 | Program Crash. Program: lratCellArmLm. Signal: SIGSEGV. PMD: pmd-LmCellDuTraffic
+HX83420 | Program: lratCellArmLm. Signal: SIGSEGV. PMD: pmd-LmCellOmfPT26
+HY51988 | Program Crash. Program: BbEul.rcs. Signal: SIGABRT. PMD: pmd-c11_lits-tmo-se
+HX83433 | <!UPCUL.2047!> ulmacce_msg3coord_sched_msg2_cfm_thread.c:295: DBC: successn
+HX83581 | <!UPCDL.994!> dlmacce_postschedfo_init.c
+HX86188 | <!ULL1MDBFLNR.126!> ull1nrmdbflpe_meascoord_handlemeasdeactivatetimerind.c
+HX85761 | bbiCbb_instanceRouter_public_internal.h:61: DBC: A message to an instance router must have a p
+HX85779 | dlscnrcommonpe_coordtor_nondlsymbolactivity_initactivity.c:67: DLSCNRCOMMONPE_coordTor_nonDlS
+HX61875 | BBM2, Internal Trinity Local
+HX83677 | cause{NOT_ENOUGH_USER_PLANE_PROCESSING_RESOURCES}}}, serviceRef {F1cUeServiceRef}{}}) ue/share/handler/controller/src/actor_impl.cc:71
+HX87047 | Wrong type of message received, expected
+HX87021 | No E6 state set. Is this an E1 bearer?
+HX87054 | Bearer is not associated with a UE context
+HX88094 | <!ULRLCNR.9!> ulrlcnrpe_mergesegment rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HX88103 | <!Another L1 Alloc Ind came before pr rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HX88111 | rpc/control/shared/conf_data/src/conf_object_reader_impl.cc
+HX88522 | Program Crash. Program: rcNwifN2Arm. Signal: SIGABRT
+HX88480 | RejectException{cause{TRANSPORT_RESOURCE_UNAVAILABLE}} ue/variant/nr_en_dc/handler/context/src/ue_context_factory_impl.cc:129
+HX86050 | "Stack overflownin: ..."
+HX90665 | <!ULL1MDBFUNR.230!> ull1nrmdbfupe_me
+HY19070 | Extra: UeMatcherRemoveSingleExpectedOneException
+HX91316 | <!ULL1MDBFLNR.95!> ull1nrmdbflpe_puschcoord_handlepuschdeactivatetimerind.c
+HX91605 | Extra: apMsgQueue is not empty ap_executor.h:104
+HX91861 | CM Alloc error; zero size/too large rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:896
+HX91861 | CM Alloc error; zero size/too large b rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:896
+HX92151 | Illegal semaphore id used when calling LPP_acquireSem(). Only dynamically allocated semaphore
+HX92649 | Extra: ICM CCR PLL LoL
+HX92659 | Extra: Unable to start name-server proxy, error code: 2
+HX96278 | Program restart. Reason: Program Crash. Program:. Signal: SIGSEGV. PMD: pmd-bbiMcsCtrl.bin
+HX93935 | bbiXbmc_utils_send.h:222: BB specifie rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HX93992 | Program restart. Reason: Program Crash. Program: radioapp.elf. Signal: 6. PMD: /var/log/pmd/pmd-WorkerTaskAas
+HX94908 | dlmacce_catm_schedresult.c:375
+HX95174 | Program Crash. Program: rcObsNrArm. Signal: SIGABRT. PMD: pmd-rcObsMRC1
+HX95255 | CM Alloc error; zero size/too large rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:942
+HX95614 | "Trying to free a deallocated CM buff rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:934
+HX96575 | Program: eri_ng_snapshot_req. PMD: /var/log/pmd/pmd-generated. Extra: BB Restart: BBM3, Internal Trinity CM 
+HX97383 | Program: rpcObsNrArm. Signal: SIGABRT. PMD: pmd-rpcObsMRP
+HX99090 | Unable to reach target host, utls
+HX97386 | Restart triggered by slot info supervision for XBM
+HX97336 | Timer handle is invalidn0x4623d332" rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:942
+HX98823 | startEventType{InitiatedSgnbModificationAttempt}} while handling event {InitiatedSgnbModificationSuccess}{{UE}
+HX98841 | Extra: Recovery action initiated by BB via BCI, faultId: 0x301 (SwError), faultDescription: Emca 4:DSP 1: "LPP_send to invalid virtual pidnpid
+HX99093 | rpcSectorCarrierNrArm. Signal: SIGABRT. PMD: pmd-rpcScM
+HY10300 | CMC supervision.nIllegal access by p rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:997
+HY10307 | SupervisionTimeout({serviceId
+HY10321 | Program: BbHs.rcs. Signal: SIGABRT. PMD: pmd-c9_lits-tmo-ser
+HY10599 | Invalid CM/EM addressnUsage of an i rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HX98441 | Another L1 Alloc Ind came before p rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc
+HY10892 | state={ADDITIONAL_CONTEXT_SETUP}] UnexpectedMsg(RI
+HX93741 | Program restart. Reason: Program Crash. Program: lratCellArmLm. Signal: SIGBUS. PMD: pmd-LmCellPT
+HY12656 | "CMC supervision.nIllegal access by p rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:965
+HY12661 | Extra: Recovery action initiated by DU via BCI, faultId: 0x300 (HwfForEvaluation), faultDescription: Comprehensive Fault /repo/catbuilder/fem038-eiffel002
+HY12920 | "CMC supervision.nIllegal access by rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:997
+HY13197 | "bbiTcbb_ULL1NRMDBFLPE_beamServer_ULL1NRMDBFLPE_BEAMSERVER_suspendresume_error_threadIdEntry.c
+HY13815 | CMC supervision.nIllegal access by rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:942
+HY13843 | Program: bbiBmcServer. Signal: SIGABRT. PMD: pmd-bbiBmcServer
+HY13897 | Program: bc-server. Rank: Cold. Extra: RADIO_RECOVERY_TIMEOUT RESET at 3600 sec
+HY13897 | Program: bc-server. Rank: Cold. Extra: Application ordered restart, faultId: 0xf06e (Restart), faultDescription: Application ordered restart
+HY12996 | Program: bc-server. Rank: Cold. Extra: Recovery action, faultId: 0x301 (SwError), faultDescription: Complete service outage
+HY14411 | Program: c2-oam. Rank: Cold. Extra: Restart ordered due to link recovery timeout
+HY14793 | Board restart. Reason: Ordered restart. Program: bc-server. Rank: Cold. Extra: Recovery action, faultId: 0x301 (SwError), faultDescription: Emca .* "Illegal semaphore id used when calling LPP_acquireSem(). Onl
+HY14822 | Program: bc-server. Rank: Cold. Extra: Recovery action, faultId: 0x521 (HwfDegradedForEvaluation), faultDescription: Partial service outage
+HY11779 | CMC supervision.nIllegal access by rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:965
+HY15356 | Program: ngr2.elf. Rank: Cold. Extra: Application ordered restart, faultId: 0xf06e
+HY15591 | Program: bc-server. Rank: Cold. Extra: Board restart, faultId: 0x0 (Default), faultDescription: Caused by restartUnit action from OMF
+HY16665 | "LDM Alloc error: Out of memory\nalloc at: strid: e
+HY16673 | bbiCbb_envelopeTx_public_internal.h:174: DBC: msgSizeInWords
+HY17190 | Program restart. Reason: Program Crash. Program: radioapp.elf. Signal: 7. Extra: CXP2030006%4_R31B14
+HY17824 | CMC supervision.nIllegal access by rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY17707 | Extra: Service already exist in services map tc/variant/nr/context/src/context_impl.cc:297
+HY18742 | Program Crash. Program: rcNwifF1Arm. Signal: SIGSEGV. PMD: pmd-rcNwifF1Arm
+HY18747 | Extra: Illegal pscon state: NOTIFY_IND_RECEIVED control/variant/nr/procedure/src/pscon_subscribe_proc_impl.cc:87
+HY18757 | Extra: Not allowed to overwrite existing service, serviceRef ResourceMgmtServiceRef{} paging/share/services/base/src/services_impl.cc:28
+HY19019 | Program Crash. Program: radioapp.elf. Signal: 7. Extra: CXP2030006%7_R18B16
+HY31368 | "<!DLSCPE.522!> dlscpe_axcinfotor_handleaxcinfoslottick.c:423
+HY19024 | "<!DLSCPE.522!> dlscpe_axcinfotor_handleaxcinfoslottick.c:423: DBC: calWindowStopOffsetInRadio
+HY19031 | Timer handle is invalid\n
+HY19547 | Program restart. Reason: Program Crash. Program: rbsNcLm. Signal: SIGILL
+HY20178 | Extra: BB Restart: BBM4, Internal Trinity CM (Common Memory) Error 23
+HY20174 | Attempt to free a semaphore that is already free\nLPP_freeSem was called with semaphore id 16
+HY21347 | Buffer endmark overwritten. Possible rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HX86633 | "<!RPCBBUE.234!> rpcbbueme_common_tra rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:934
+HY21818 | Program restart. Reason: Program Crash. Program:. Signal: SIGSEGV. PMD: pmd-RcUeH4CP0
+HY21824 | Program Crash. Program: rcNwifX2Arm. Signal: SIGSEGV
+HY21826 | Extra: Could not find link with link_id =
+HY21835 | Extra: Not allowed to overwrite existing service, serviceRef ResourceMgmtServiceRef{} rpc/paging/share/services/base/src/services_impl.cc:34
+HY21840 | Program Crash. Program: rcNwifF1Arm. Signal: SIGABRT
+HY22452 | Program Crash. Program: rpcControlNrCentralArm. Signal: SIGSEGV. PMD: pmd-rpcCtrlNrCen
+HY22460 | Restart request. Program: tnrh. Rank: Program. Signal: SIGABRT. PMD: pmd-tnrh-mon
+HY22462 | Program Crash. Program: rpcNwifF1NrArm. Signal: SIGSEGV. PMD: pmd-rpcNwifF1NrArm
+HY32479 | "Illegal semaphore id used when calli rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY22699 | "Trying to free a deallocated CM buff rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HX97753 | Restart request. Program: rpcSectorCarrierNrArm. Rank: Program. Signal: SIGABRT. PMD: pmd-rpcScM 
+HY20897 | Program Crash. Program: rcNwifE1Arm. Signal: SIGABRT. PMD: pmd-rcNwifE1Arm 
+HY20897 | Restart request. Program: rcNwifXnArm. Rank: Program. Signal: SIGABRT. PMD: pmd-rcNwifXnArm 
+HY13593 | Restart request. Program: ppeArmLm. Rank: Program. Signal: SIGABRT. PMD: pmd-ppeArmLm 
+HY13593 | Program Crash. Program: rpcMcsRouterNrArm. Signal: SIGABRT. PMD: pmd-rpcMcsRtrH_1 
+HY21140 | Program Crash. Program: rcNwifE1Arm. Signal: SIGSEGV. PMD: pmd-rcNwifE1Arm 
+HY17695 | Restart request. Program: tn-oam-agent. Rank: Program. Signal: SIGABRT. PMD: pmd-tn-oam-agen-mon 
+HY18764 | Restart request. Program: rcNwifX2Arm. Rank: Program. Signal: SIGABRT. PMD: pmd-rcNwifX2Arm 
+HY33193 | Branch required ripple compensation but received CgciUplinkCarrierBranchGetRipple
+HY33193 | Branch required ripple compensation but received CgciDownlinkCarrierBranchGetRipple
+HY25896 | Extra: Failed to get service from serviceRef {IroObsEventServiceRef}{} tc/variant/nr/traffic_handler/impl/src/traffic_handler_impl.cc:321
+HY33638 | CM Alloc error; zero size/too large rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY27929 | Extra: bearerCtxt has an invalid x2Teid ppf/ppe/ppBearerCtrl/e1_bearer_controller/src/tsigtpu_request_builder.cc:698
+HY26562 | CM Alloc error; zero size/too large b rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY23493 | SW Error. BB Rejected a ReleaseRequest - restart ordered to avoid sleeping cells: {"rejectMessage":{"type":"nr_f1 user.cc:452
+HY27382 | CMC supervision.nIllegal access by p rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY27383 | Memory overwrite detected at cm allo rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY27404 | Program restart. Reason: Program Crash. Program: rpcControlNrCentralArm. Signal: SIGABRT. PMD: pmd-rpcCtrlNrCen
+HY27677 | ULSCNRMDBFPE_SYMBOLFFT_unknownSignalHandler.c:86: ULSCNRMDBFPE_symbolFft received an unknown
+HY27929 | Extra: bearerCtxt has an invalid x2Teid ppf/ppe/ppBearerCtrl/e1_bearer_controller/src/tsigtpu_request_builder.cc:689
+HY29913 | <!UPCDL.2663!> dlmacce_process_dlsu_thread.c:1029: DBC: dlsr.id
+HY21664 | Extra: getRequestAs can't deliver since innerMsg optional has no value. ppf/ppe/ppBearerCtrl/e1_bearer/src/preallocated_state.cc:195
+HY30882 | <!UPCUL.2045!> ulmacce_catmscheduler.c:1775: DBC: fifoCnt == 1n
+HY30885 | <!BBMC.1484!> bbueme_storage.c:3073: /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc:169
+HY30891 | Trying to free a deallocated CM buffe rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY31400 | Extra: Unexpected handleCgciDownlinkCarrierBranchGetRippleCompensationDataRej
+HY31207 | Program: rpcBbrsNrLocalArm. Signal: SIGABRT. PMD: pmd-rpcBbrsNrLocalA
+HY31351 | Extra: EQMH_ERROR: Init sequences failed: HwProgramSequence failed /local/repo/bbijenkins/fem004-eiffel002/workspace/release-track-cl2-build-deploy-cpm-main/bbi/build_cpm/components/eqmh/files/eqmhEmcaSwU/src/bbiEqmhEmca_trinity.cc:118
+HY31400 | Extra: Unexpected handleCgciUplinkCarrierBranchGetRippleCompensationDataRej. State = CARRIER_ENABLED. SC context = sc_id=0 ldn=ManagedElement=1,GNBDUFunction=1,NRSectorCarrier=02 c1_carrier_state_base.cc:581
+HY31633 | Program restart. Reason: Program Crash. Program: rcNwifNgArm. Signal: SIGABRT. PMD: pmd-rcNwifNgArm
+HY32035 | Extra: Dispatcher lockup in process dpsd, aborting... /local/fem110/oge_rh_6/workspace/jk0-40469-109732-1/blocks/tnCommonBl/tnTroubleshootingLU/files/src/TnWatchdogImpl.cc:121
+HY32061 | "Illegal semaphore id used when callin rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY32183 | Program restart. Reason: Program Crash. Program: radioapp.elf. Signal: 7. Extra: CXP2030006%5_R23B35
+HY32253 | <!UPCDL.1084!> dlmacce_uecoord_getbbconfig_update.c:173: DBC: cmUeSession_p != ((__cm void*)0)n
+HY32659 | Trying to free a cm ptr that points rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1114
+HY31400 | Extra: Unexpected handleCgciUplinkCarrierBranchGetRippleCompensationDataRej. State = CARRIER_ACTIVATING. SC context = sc_id=0
+HY32856 | "<!ULL1MDBFUNR.64!> ull1nrmdbfupe_prac rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1114
+HY36589 | "CMC supervision.nIllegal access by rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1114
+HX98707 | Extra: was set to {} rpc/ue/variant/nr/protocol/rrc/util/impl/src/cell_group_config_builder_factory_impl.cc:480
+HY32856 | "<!ULL1MDBFUNR.64!> ull1nrmdbfupe_pra rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY32659 | Trying to free a cm ptr that points o rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1114
+HY33439 | Program Crash. Program: rbsNcLm. Signal: SIGABRT. PMD: pmd-nc_main_thread
+HY33548 | Extra: UeRef has not been allocated ue/variant/access/handler/context/src/ue_context_handler_impl.cc:201
+HY36089 | "ulmacpe_cell_release.c:207: UPULMACPE /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc:169
+HY34122 | "bbiItc_distrib_16bSigMap.c:72: OSE-signal 0xffff0819 (-63463) cannot be mapped to LPP-signal"
+HY34324 | LPP fatal error detected. Faultcode = 1639 rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY34532 | <!UPCDL.2663!> dlmacce_process_dlsu_thread.c:1235: DBC: dlsr.id
+HY31400 | Extra: Unexpected handleCgci
+HY35583 | Program: rhsd_bb6630. Signal: SIGABRT. PMD: pmd-fn_exc_queue
+HY36061 | "<!ULL1MDBFUNR.64!> ull1nrmdbfupe_pra rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1114
+HY36762 | "<!UPCUL.2045!> ulmacce_catmscheduler.c:1776: DBC: fifoCnt == 1n"
+HY36767 | "<!BBMC.542!> bbueme_releaseue_ovl.c:231: DBC: nrOfBearersForUe == req.nrOfRelRadioBearersn"
+HY36876 | Program Crash. Program: radioapp.elf. Signal: 7. Extra: CXP2030006%5_R26C72
+HY37023 | "<!UPCUL.2186!> ulmacce_sevalidfo_feedback_ovl.c:501: DBC: cellIndex=
+HY37040 | "bbiEqmhAgent_thread.c:110: EMCA cras rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY37607 | Extra: Got a multiUe message with no running transaction to handle it rpc/ue/share/handler/multiue/impl/src/handler.cc:220
+HY37614 | Kernel Crash. Rank: Cold. PMD: /var/log/pmd/pmd-ramoops-pmd
+HY37779 | Extra: Unhandled std::exception _Map_base::at ue/share/sys/error_handler/src/exception_handler.cc:65
+HY21757 | "<!UPCDL.1194!> dlmacce_cfr2cqiformat /local/lmr-lm-builds_gmake_small_fem111/workspace/LM_BUILD_lratBbomAasArmLm/bbmc/bbOmMeBl/bbOmMeRcsSwU/src/bbomme_svc_basic_handling_eh_rcs.cc:169
+HY38165 | Extra: Systemized SW restart due to: Reception of ScmiDlSectorCarrierConfigureRippleCompRej from BB with cause=0 errorDescription='nai ipecm e,nOGiVle osntcvrtesbadbnwdh'. RPC SC state=C1_CONFIGURING for sc_id=2 bbr_service_state_c1_configuring.cc:283
+HY38213 | Program Crash. Program: hdlclnh. Signal: SIGABRT. PMD: pmd-hdlc_lnh
+HY22675 | "<!UPCUL.2186!> ulmacce_sevalidfo_feedback_ovl.c:467: DBC: cellIndex
+HY38234 | Program: tn-oam-agent. Signal: SIGABRT. PMD: pmd-tn-oam-agent
+HY38526 | Program Terminated Abnormally. Program: bbiEqmhEmca. Rank: Program. Extra: terminated by signal 6
+HY38693 | "<!UPCUL.2434!> ulmacce_uecoord_sched_result_thread.c:1691: DBC: bbUeRef=
+HY38720 | "<!ULL1MDBFUNR.64!> ull1nrmdbfupe_prac rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY38735 | "<!UPCUL.2047!> ulmacce_msg3coord_sched_msg2_cfm_thread.c:297: DBC: successn"
+HY48485 | Extra: BB Restart: Small FSInfo err: cellid=
+HY38970 | "<!ULL1MDBFUNR.397!> ull1nrmdbfupe_pu rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY22945 | Reason: Program Terminated Abnormally. Program: consul.sh. Rank: Program. Extra: terminated by signal 1
+HY39560 | Colossus fatalnFault code/Signal num rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY39566 | Extra: Recovery action initiated by BB via BCI, faultId: 0x306 (MissingSfInfo), faultDescription: SLOT INFO missing rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1011
+HY11585 | is duplicated: shares IP addresses and the port with new one t /local/fem110/workspace/tn-build-all-
+HY40114 | Program Crash. Program: rbsNcLm. Signal: SIGABRT. PMD: pmd-cmd_proc
+HY32506 | "CMC supervision.nIllegal access by p rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY35749 | "CMC supervision.nIllegal access by rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY40977 | "<!DLL1MDBFUPENR.344!> dll1nrmdbfupe_ rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY44683 | Extra: AdoptNew Multiple reset messages are not expected {message {InResetInd}{cause LINK_BREAK, ueRefs
+HY41011 | <!BBMC.676!> bbueme_uesetup_ovl.c:377: DBC: checkBbInternalBearerIdentity == 0n"
+HY32110 | Extra: ipt_phi_poll ERROR
+HY31351 | Extra: EQMH_ERROR: Init sequences failed: HwProgramSequence failed
+HY41236 | Program Crash. Program: l1pmi-server. Signal: SIGABRT. PMD: pmd-l1pmi-server
+HY41262 | Extra: Received unexpected ScmiDlSectorCarrierConfigureRippleCompRej with cause = 0 n, state = C1_CONFIGURING, sector carrier index = 0. Systemized SW restart. bbr_service_state_c1_configuring.cc:277
+HY41289 | "<!BBMC.563!> bbueme_storage.c:964: DBC: bbUeRunningNumber out of range: bbUeRunningNumber = 524287
+HY41482 | "bbiEthDrv_boot_trinity.c:88: ETH waitForLink rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY41518 | "<!RPCBBUE.234!> rpcbbueme_common_tra rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY41846 | "<!ULL1MDBFUNR.397!> ull1nrmdbfupe_pu rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY42509 | "bbiTraceDest_config.c:142: DBC: ethDrvStatus == bbiEthDrv_statusE_success\n"
+HY42645 | "<!ULL1COMMONNR.291!> ull1nrcommon_meassesl_beamdatareceierpost.c:102: DBC: Not found Activity
+HY43376 | "ULL1BPNRCOMMON_L1BPPUSCH_unknownSign rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY45202 | "CM Alloc error; zero size/too large rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY43505 | Extra: UeDataStoreGetNonExistingException{ ueId
+HY43811 | "DLL1NRMDBFUPE_PDCCHPROCTOR_unknownSi rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY41262 | Extra: Received unexpected ScmiDlSectorCarrierConfigureRippleCompRej with cause = 0 n, state = C1_CONFIGURING, sector carrier index = 1. Systemized SW restart. bbr_service_state_c1_configuring.cc:277
+HY41262 | Extra: Received unexpected ScmiDlSectorCarrierConfigureRippleCompRej with cause = 0 n, state = C1_CONFIGURING, sector carrier index = 2. Systemized SW restart. bbr_service_state_c1_configuring.cc:277
+HY38165 | Extra: Systemized SW restart due to: Reception of ScmiDlSectorCarrierConfigureRippleCompRej from BB with cause=0 errorDescription='nai ipecm e,nOGiVle osntcvrtesbadbnwdh'. RPC SC state=C1_CONFIGURING for sc_id=0 bbr_service_state_c1_configuring.cc:283
+HY38165 | Extra: Systemized SW restart due to: Reception of ScmiDlSectorCarrierConfigureRippleCompRej from BB with cause=0 errorDescription='nai ipecm e,nOGiVle osntcvrtesbadbnwdh'. RPC SC state=C1_CONFIGURING for sc_id=1 bbr_service_state_c1_configuring.cc:283
+HY43892 | "Buffer endmark overwritten. Possible rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY39566 | Extra: Recovery action initiated by BB via BCI, faultId: 0x306 (MissingSfInfo), faultDescription: SLOT INFO missing rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1152
+HY44284 | "Colossus warning/alarmnMail payload: rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY45206 | "CM Alloc error; zero size/too large b rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY45210 | "Buffer endmark overwritten. Possible rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY45811 | Extra: Recovery action initiated by DU via BCI, faultId: 0x300 (HwfForEvaluation), faultDescription: Comprehensive Fault /dev/shm/catbuilder/fem038-eiffel002/esekilx6157/IC-Delivery-DUBC-ARM-bpug2-MTR_20.19_17_0/build/work/bpug2/du-bc/du-bc-/git/src/bc/bc_restart.c:114
+HY45818 | Emca 3:DSP 55: "LDM monitor interrupt!"
+HY45818 | Emca 1:DSP 55: "LDM monitor interrupt!"
+HY45818 | Emca 3:DSP 36: "LDM monitor interrupt!"
+HY45818 | Emca 3:DSP 29: "LDM monitor interrupt!"
+HY45818 | Emca 2:DSP 26: "LDM monitor interrupt!"
+HY45818 | Emca 3:DSP 21: "LDM monitor interrupt!"
+HY45818 | Emca 2:DSP 22: "LDM monitor interrupt!"
+HY45818 | Emca 3:DSP 10: "LDM monitor interrupt!"
+HY45958 | "remote_hwa_error_thread.c:63: ERROR rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY45958 | "remote_hwa_error_thread.c:63: ERROR c rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY46010 | "Colossus fatalnSigno: 0x33" rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY47581 | "CM memory header overwritten. Possib rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY46493 | "LDM monitor interrupt!" rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY46659 | "<!RPCBBUE.234!> rpcbbueme_common_tran rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY46659 | "<!RPCBBUE.234!> rpcbbueme_common_tra rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY44683 | Extra: AdoptNew Multiple reset messages are not expected {message {InResetInd}{cause LOCKED, ueRefs
+HY47581 | "CM memory header overwritten. Possibl rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY47332 | "Unhandled interrupt: LDM protection" rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY46992 | "Unexpected SED received on TOR 0nSE rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY46993 | "bbiEthDrv_boot_trinity.c:88: ETH waitForLink rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY47096 | "ULL1NRMDBFUPE_PUSCHCOLLECTOR_unknownS rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY47096 | "ULL1NRMDBFUPE_PUSCHCOLLECTOR_unknown rpc/baseband_resource_set/handler/src/eqmhi_baseband_state_machine_impl.cc:1136
+HY47242 | Program Crash. Program: apc. Signal: SIGABRT. PMD: pmd-Apc_AisPmfwkPmi
+HY47798 | Program Crash. Program: lratCentralArmLm. Signal: SIGSEGV. PMD: pmd-LmCentralTraffi
+HY47775 | "<!BBMC.1565!> bbueme_addradiobearers_ovl.c:1280: DBC: isValidPhyBearerIndexn"
+HY47781 | Program Crash. Program: rbsNcLm. Signal: SIGABRT. PMD: pmd-Rrc_AisPmfwkPmi
+HY44582 | , possibly caused by a remote process c
+HY43910 | Extra: Recovery action initiated by BB via BCI, faultId: 0x301 (SwError), faultDescription: Small FSInfo err: cellid=
+CPHA-781 | Program Crash. Program: bbiEqmhEmca. Rank: Cold. Signal: 6. PMD: /var/log/pmd/pmd-bbiEqmhEmca
+HY36876 | Board restart. Reason: Kernel Crash. Rank: Cold. Extra: faultId: 0xf06e -
+HY50609 | "CMC supervision.\nIllegal access by port
+HY48286 | Program Crash. Program: richw_commond. Rank: Cold. Signal: 7. PMD: /var/log/pmd/pmd-CPRI_COMMON_
+HY48290 | "BFN offset is too big\nMaximum number of cycles to add is:
+HY48981 | Program Crash. Program: ngr2.elf. Rank: Cold. Signal: 11. PMD: /var/log/pmd/pmd-trDcProc
+HY45624 | Board restart. Reason: HW watchdog (wdtrace 0). Rank: Cold
+HY13897 | Board restart. Reason: Ordered restart. Program: bc-server. Rank: Cold. Extra: faultId: 0xf06e RADIO_RECOVERY_TIMEOUT RESET at 3600 sec
+CPHA-797 | Board restart. Reason: Ordered restart. Program: ngr2.elf. Rank: Cold. Extra: Recovery action, faultId: 0x513 (LinearizationFaultPartial), faultDescription: Linearization fault [
+CPHA-798 | Board restart. Reason: Ordered restart. Program: bc-server. Rank: Cold. Extra: Recovery action, faultId: 0x301 (SwError), faultDescription: Internal error: handleDumpDone
+HY49160 | "<!BBMC.563!> bbueme_storage.c:976: DBC: bbUeRunningNumber out of range: bbUeRunningNumber = 524287
+CPHA-797 | Board restart.Reason: Ordered restart. Program: ngr2.elf. Rank: Cold. Extra: Recovery action, faultId: 0x513 (LinearizationFaultPartial), faultDescription: Linearization fault
+HY48955 | Extra: Systemized SW restart due to: Reception of ScmiDlSectorCarrierConfigureRippleCompRej from BB with cause=0 errorDescription='Invalid ripple comp req, nrOfGainValues does not cover the subband bandwidth'
+HY49583 | "<!UPCOMMON.97!> uppdcpcommon_ue_list_rb_add_remove.c:450: DBC: addBearer bbBearerRef not NULL=
+CPHA-850 | Board restart. Reason: Ordered restart. Program: lh_supd. Rank: Cold. Extra: Restart ordered due to Link timeout
+CPHA-851 | Board restart. Reason: Ordered restart. Program: ngr2.elf. Rank: Cold. Extra: faultId: 0xf06e Internal restart board signal: RADIO_RECOVERY_TIMEOUT, Restart reason: Board is restarted due to recovery timeout
+CPHA-852 | Board restart. Reason: MMI reset. Rank: Cold. Extra: faultId: 0xf06e -
+CPHA-853 | Board restart. Reason: Ordered restart. Program: ngr2.elf. Rank: Cold. Extra: Internal restart board signal: RADIO_RECOVERY_TIMEOUT, Restart reason: Board is restarted due to recovery timeout
+HY50681 | Board restart. Reason: Ordered immediate restart. Program: restart. Rank: Cold. Extra: faultId: 0xf06e Immediate
+HY50687 | Board restart. Reason: Ordered immediate restart. Program: restart. Rank: Cold. Extra: Immediate
+CPHA-791 | Board restart. Reason: Ordered restart. Program: lh_supd. Rank: Cold. Extra: Restart ordered due to initial Link timeout
+CPHA-791 | Board restart. Reason: Ordered restart. Program: lh_supd. Rank: Cold. Extra: faultId: 0xf06e Restart ordered due to initial Link timeout
+HY40531 | Extra: Failed to encode iro::obs_event::rev1 message, reason: ue::Mapper::OutOfRangeException{ desc , element

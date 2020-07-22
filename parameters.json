@@ -1,0 +1,11 @@
+{
+    "nodename": "ulsan-mugeo-W99",
+    "crash_count": 15,
+    "crash_node": 13,
+    "hw": "eNB",
+    "sign": "Program restart. Reason: Program Crash. Program: BbEul.rcs. Signal: SIGABRT. PMD: pmd-c11_lits-tmo-se",
+    "kst": "",
+    "utc": "2020/07/06 06:57:44",
+    "sw": "MTR20.19",
+    "matched_TR": []
+}

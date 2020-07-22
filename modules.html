@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Modules &mdash; Python Practice Book 0.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Object Oriented Programming" href="object_oriented_programming.html" />
+    <link rel="prev" title="2. Working with Data" href="working-with-data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Practice Book
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working-with-data.html">2. Working with Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#standard-library">3.1. Standard Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#os-module">3.1.1. os module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#urllib-module">3.1.2. urllib module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#re-module">3.1.3. re module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#json-module">3.1.4. json module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zipfile-module">3.1.5. zipfile module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-third-party-modules">3.2. Installing third-party modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">4. Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">5. Iterators &amp; Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functional-programming.html">6. Functional Programming</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Practice Book</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Modules</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modules">
+<h1>3. Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<p>Modules are reusable libraries of code in Python. Python comes with many standard library modules.</p>
+<p>A module is imported using the <cite>import</cite> statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">())</span>
+<span class="go">&#39;Fri Mar 30 12:59:21 2012&#39;</span>
+</pre></div>
+</div>
+<p>In this example, we’ve imported the <cite>time</cite> module and called the <cite>asctime</cite>
+function from that module, which returns current time as a string.</p>
+<p>There is also another way to use the import statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">asctime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asctime</span><span class="p">()</span>
+<span class="go">&#39;Fri Mar 30 13:01:37 2012&#39;</span>
+</pre></div>
+</div>
+<p>Here were imported just the <cite>asctime</cite> function from the <cite>time</cite> module.</p>
+<p>The <cite>pydoc</cite> command provides help on any module or a function.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pydoc time
+Help on module time:
+
+NAME
+    time - This module provides various functions to manipulate time values.
+...
+
+$ pydoc time.asctime
+Help on built-in function asctime in time:
+
+time.asctime = asctime(...)
+    asctime([tuple]) -&gt; string
+...
+</pre></div>
+</div>
+<p>On Windows, the <cite>pydoc</cite> command is not available. The work-around is to use, the built-in <cite>help</cite> function.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; help(&#39;time&#39;)
+Help on module time:
+
+NAME
+    time - This module provides various functions to manipulate time values.
+...
+</pre></div>
+</div>
+<p>Writing our own modules is very simple.</p>
+<p>For example, create a file called <cite>num.py</cite> with the following content.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">def</span> <span class="nf">cube</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>Now open Python interterter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">num</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">27</span>
+</pre></div>
+</div>
+<p>Thats all we’ve written a python library.</p>
+<p>Try <cite>pydoc num</cite> (<cite>pydoc.bat numbers</cite> on Windows) to see documentation for this numbers modules. It won’t have any documentation as we haven’t providied anything yet.</p>
+<p>In Python, it is possible to associate documentation for each module, function using docstrings. Docstrings are strings written at the top of the module or at the beginning of a function.</p>
+<p>Lets try to document our <cite>num</cite> module by changing the contents of <cite>num.py</cite></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;The num module provides utilties to work on numbers.</span>
+
+<span class="sd">Current it provides square and cube.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes square of a number.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">def</span> <span class="nf">cube</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes cube of a number.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>The pydoc command will now show us the doumentation nicely formatted.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Help on module num:
+
+NAME
+    num - The num module provides utilties to work on numbers.
+
+FILE
+    /Users/anand/num.py
+
+DESCRIPTION
+    Current it provides square and cube.
+
+FUNCTIONS
+    cube(x)
+        Computes cube of a number.
+
+    square(x)
+        Computes square of a number.
+</pre></div>
+</div>
+<p>Under the hood, python stores the documentation as a special field called <cite>__doc__</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">getcwd() -&gt; path</span>
+
+<span class="go">Return a string representing the current working directory.</span>
+</pre></div>
+</div>
+<div class="section" id="standard-library">
+<h2>3.1. Standard Library<a class="headerlink" href="#standard-library" title="Permalink to this headline">¶</a></h2>
+<p>Python comes with many standard library modules. Lets look at some of the most commonly used ones.</p>
+<div class="section" id="os-module">
+<h3>3.1.1. os module<a class="headerlink" href="#os-module" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>os</cite> and <cite>os.path</cite> modules provides functionality to work with files, directories etc.</p>
+<p><strong>Problem 1: </strong>Write a program to list all files in the given directory.</p>
+<p><strong>Problem 2: </strong>Write a program <cite>extcount.py</cite> to count number of files for each
+extension in the given directory. The program should take a directory name
+ as argument and print count and extension for each available file extension.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python extcount.py src/
+14 py
+4 txt
+1 csv
+</pre></div>
+</div>
+<p><strong>Problem 3: </strong>Write a program to list all the files in the given directory along
+with their length and last modification time. The output should contain one
+line for each file containing filename, length and modification date separated
+by tabs.<p>Hint: see help for <code class="docutils literal notranslate"><span class="pre">os.stat</span></code>.</p>
+</p>
+<p><strong>Problem 4: </strong>Write a program to print directory tree. The program should take
+path of a directory as argument and print all the files in it recursively as
+a tree.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python dirtree.py foo
+foo
+|-- a.txt
+|-- b.txt
+|-- code
+|   |-- a.py
+|   |-- b.py
+|   |-- docs
+|   |   |-- a.txt
+|   |   \-- b.txt
+|   \-- x.py
+\-- z.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="urllib-module">
+<h3>3.1.2. urllib module<a class="headerlink" href="#urllib-module" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>urllib</cite> module provides functionality to download webpages.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;http://python.org/&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="go">Date: Fri, 30 Mar 2012 09:24:55 GMT</span>
+<span class="go">Server: Apache/2.2.16 (Debian)</span>
+<span class="go">Last-Modified: Fri, 30 Mar 2012 08:42:25 GMT</span>
+<span class="go">ETag: &quot;105800d-4b7b-4bc71d1db9e40&quot;</span>
+<span class="go">Accept-Ranges: bytes</span>
+<span class="go">Content-Length: 19323</span>
+<span class="go">Connection: close</span>
+<span class="go">Content-Type: text/html</span>
+<span class="go">X-Pad: avoid browser bug</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span>
+<span class="go">&#39;text/html&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Problem 5: </strong>Write a program wget.py to download a given URL. The program should accept a URL as argument, download it and save it with the basename of the URL. If the URL ends with a /, consider the basename as index.html.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python wget.py http://docs.python.org/tutorial/interpreter.html
+saving http://docs.python.org/tutorial/interpreter.html as interpreter.html.
+
+$ python wget.py http://docs.python.org/tutorial/
+saving http://docs.python.org/tutorial/ as index.html.
+</pre></div>
+</div>
+</div>
+<div class="section" id="re-module">
+<h3>3.1.3. re module<a class="headerlink" href="#re-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem 6: </strong>Write a program antihtml.py that takes a URL as argument, downloads the html from web and print it after stripping html tags.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python antihtml.py index.html
+...
+The Python interpreter is usually installed as /usr/local/bin/python on
+those machines where it is available; putting /usr/local/bin in your
+...
+</pre></div>
+</div>
+<p><strong>Problem 7: </strong>Write a function <cite>make_slug</cite> that takes a name converts it into a slug. A slug is a string where spaces and special characters are replaced by a hyphen, typically used to create blog post URL from post title. It should also make sure there are no more than one hyphen in any place and there are no hyphens at the biginning and end of the slug.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">make_slug</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&#39;hello-world&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">make_slug</span><span class="p">(</span><span class="s2">&quot;hello  world!&quot;</span><span class="p">)</span>
+<span class="go">&#39;hello-world&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">make_slug</span><span class="p">(</span><span class="s2">&quot; --hello-  world--&quot;</span><span class="p">)</span>
+<span class="go">&#39;hello-world&#39;</span>
+</pre></div>
+</div>
+<p><strong>Problem 8: </strong>Write a program <cite>links.py</cite> that takes URL of a webpage as argument
+and prints all the URLs linked from that webpage.</p>
+<p><strong>Problem 9: </strong>Write a regular expression to validate a phone number.</p>
+</div>
+<div class="section" id="json-module">
+<h3>3.1.4. json module<a class="headerlink" href="#json-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem 10: </strong>Write a program myip.py to print the external IP address of the
+machine. Use the response from <code class="docutils literal notranslate"><span class="pre">http://httpbin.org/get</span></code> and read the IP
+address from there. The program should print only the IP address and nothing
+else.</p>
+</div>
+<div class="section" id="zipfile-module">
+<h3>3.1.5. zipfile module<a class="headerlink" href="#zipfile-module" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>zipfile</cite> module provides interface to read and write zip files.</p>
+<p>Here are some examples to demonstate the power of zipfile module.</p>
+<p>The following example prints names of all the files in a zip archive.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s2">&quot;a.zip&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following example prints each file in the zip archive.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s2">&quot;a.zip&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;FILE:&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Problem 11: </strong>Write a python program <cite>zip.py</cite> to create a zip file. The program should take name of zip file as first argument and files to add as rest of the arguments.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python zip.py foo.zip file1.txt file2.txt
+</pre></div>
+</div>
+<p><strong>Problem 12: </strong>Write a program <cite>mydoc.py</cite> to implement the functionality of pydoc. The program should take the module name as argument and print documentation for the module and each of the functions defined in that module.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python mydoc.py os
+Help on module os:
+
+DESCRIPTION
+
+os - OS routines for Mac, NT, or Posix depending on what system we&#39;re on.
+...
+
+FUNCTIONS
+
+getcwd()
+    ...
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Hints:</dt><dd><ul class="simple">
+<li><p>The <cite>dir</cite> function to get all entries of a module</p></li>
+<li><p>The <cite>inspect.isfunction</cite> function can be used to test if given object is a function</p></li>
+<li><p><cite>x.__doc__</cite> gives the docstring for x.</p></li>
+<li><p>The <cite>__import__</cite> function can be used to import a module by name</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="installing-third-party-modules">
+<h2>3.2. Installing third-party modules<a class="headerlink" href="#installing-third-party-modules" title="Permalink to this headline">¶</a></h2>
+<p>PyPI, The Python Package Index maintains the list of Python packages available. The third-party module developers usually register at PyPI and uploads their packages there.</p>
+<p>The standard way to installing a python module is using <cite>pip</cite> or <cite>easy_install</cite>. Pip is more modern and perferred.</p>
+<p>Lets start with installing <cite>easy_install</cite>.</p>
+<ul class="simple">
+<li><p>Download the easy_install install script <a class="reference external" href="http://peak.telecommunity.com/dist/ez_setup.py">ez_setup.py</a>.</p></li>
+<li><p>Run it using Python.</p></li>
+</ul>
+<p>That will install <code class="docutils literal notranslate"><span class="pre">easy_install</span></code>, the script used to install third-party python packages.</p>
+<p>Before installing new packages, lets understand how to manage virtual environments for installing python packages.</p>
+<p>Earlier the only way of installing python packages was system wide. When used this way, packages installed for one project can conflict with other and create trouble. So people invented a way to create isolated Python environment to install packages. This tool is called <a class="reference external" href="http://www.virtualenv.org/">virtualenv</a>.</p>
+<p>To install <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>:</p>
+<blockquote>
+<div><p>$ easy_install virtualenv</p>
+</div></blockquote>
+<p>Installing virtualenv also installs the <cite>pip</cite> command, a better replace for <cite>easy_install</cite>.</p>
+<p>Once it is installed, create a new virtual env by running the <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> command.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ virtualenv testenv
+</pre></div>
+</div>
+<p>Now to switch to that env.</p>
+<p>On UNIX/Mac OS X:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ source testenv/bin/activate
+</pre></div>
+</div>
+<p>On Windows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; testenv\Scripts\activate
+</pre></div>
+</div>
+<p>Now the virtualenv <cite>testenv</cite> is activated.</p>
+<p>Now all the packages installed will be limited to this virtualenv. Lets try to install a third-party package.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pip install tablib
+</pre></div>
+</div>
+<p>This installs a third-party library called <code class="docutils literal notranslate"><span class="pre">tablib</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tablib</span></code> library is a small little library to work with tabular data and write csv and Excel files.</p>
+<p>Here is a simple example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">tablib</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+
+<span class="c1"># Add rows</span>
+<span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># save as csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">csv</span><span class="p">)</span>
+
+<span class="c1"># save as Excel</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.xls&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">xls</span><span class="p">)</span>
+
+<span class="c1"># save as Excel 07+</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.xlsx&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">xlsx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is even possible to create multi-sheet excel files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sheet1</span> <span class="o">=</span> <span class="n">tablib</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<span class="n">sheet1</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sheet1</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">sheet2</span> <span class="o">=</span> <span class="n">tablib</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<span class="n">sheet2</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sheet2</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+
+<span class="n">book</span> <span class="o">=</span> <span class="n">tablib</span><span class="o">.</span><span class="n">Databook</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">])</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;book.xlsx&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">xlsx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Problem 13: </strong>Write a program <code class="docutils literal notranslate"><span class="pre">csv2xls.py</span></code> that reads a csv file and exports
+it as Excel file. The prigram should take two arguments. The name of the csv
+file to read as first argument and the name of the Excel file to write as the
+second argument.</p>
+<p><strong>Problem 14: </strong>Create a new virtualenv and install BeautifulSoup. BeautifulSoup
+is very good library for parsing HTML. Try using it to extract all HTML
+links from a webpage.</p>
+<p>Read the <a class="reference external" href="http://www.crummy.com/software/BeautifulSoup/bs3/documentation.html">BeautifulSoup documentation</a> to get started.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="object_oriented_programming.html" class="btn btn-neutral float-right" title="4. Object Oriented Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="working-with-data.html" class="btn btn-neutral float-left" title="2. Working with Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Anand Chitipothu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

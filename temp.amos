@@ -1,0 +1,4 @@
+l+ script.amos.log
+lgg | grep -i "Program restart. Reason: Program Crash. Program: radioapp.elf. Signal: 7. Extra: CXP2030006%5_R23B35"
+invh
+l-
