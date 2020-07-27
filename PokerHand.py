@@ -14,6 +14,9 @@ License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
 import sys
 from Card1 import *
 import itertools
+import numpy as np
+import matplotlib.pyplot as plt
+
 
 def check_continuity(lst):
 	'''
@@ -198,7 +201,7 @@ class PokerHand(Hand):
 			self.d['highcard'] = 1
 		
 		list_of_label_with_value = list(self.d.items())
-		print("All class found:",list_of_label_with_value) 
+		#print("All class found:",list_of_label_with_value) 
 		#dict_items([('straightflush', 0), ('fourkind', 0), ('fullhouse', 0), ('flush', 0), ('straight', 0), ('threekind', 0), ('twopair', 0), ('pair', 1), ('highcard', 0)])
 		
 		index= 0
@@ -246,8 +249,41 @@ def deal_to_hand_and_test():
 
 	print("--- test classify---")
 	print(f"highest_class = {hand.classify()}")
+
+def tinh_xac_suat():
+	''' 
+	counts the number of times various classifications appear
+	'''
+	
+	
+	hand = PokerHand()
+	labels = hand.all_labels #['straightflush', 'fourkind', 'fullhouse', 'flush', 'straight', 'threekind', 'twopair', 'pair', 'highcard']
+	count_dict = {}
+	for label in labels:
+		count_dict[label] = 0
+	print(count_dict) #{'straightflush': 0, 'fourkind': 0, 'fullhouse': 0, 'flush': 0, 'straight': 0, 'threekind': 0, 'twopair': 0, 'pair': 0, 'highcard': 0}
+	
+	#chia bai randome 1000 lan
+	print("Tien hanh chia bai 1000 lan va tinh xac suat....")
+	for i in range(1000):
+		deck = Deck()
+		deck.shuffle()
+		hand = PokerHand()
+		deck.move_cards(hand, 7)
+		highest_class = hand.classify()
+		count_dict[highest_class] += 1
+	#ket qua sau 1000 lan chia bai randome
+	print("result of dict after 1000 times of divide cards", count_dict)
+	
+	#result of dict after 1000 times of divide cards {'straightflush': 0, 'fourkind': 0, 'fullhouse': 30, 'flush': 33, 'straight': 41, 'threekind': 49, 'twopair': 229, 'pair': 428, 'highcard': 190}
+	#ve do thi cho de nhin
+	plt.bar(list(count_dict.keys()), count_dict.values(), color='g')
+	plt.show()
 	
 if __name__ == '__main__':
+	tinh_xac_suat()
+	sys.exit()
+	
 	#deal_to_hand_and_test()
 	#sys.exit()
 	
