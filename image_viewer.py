@@ -54,10 +54,6 @@ def callback(event):
 
 canvas.bind("<Button-1>", callback)  #<Button-1>: is mouse left button
 
-
-
-
-
 g.mainloop()
 
 #Starting with this example, write a program that takes the name of a directory and loops through all the files, displaying any files that PIL recognizes as images. You can use a try statement to catch the files PIL doesn’t recognize.
