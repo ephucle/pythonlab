@@ -265,7 +265,8 @@ def tinh_xac_suat():
 	
 	#chia bai randome 1000 lan
 	print("Tien hanh chia bai 1000 lan va tinh xac suat....")
-	for i in range(1000):
+	num_of_poker_draw = 1000
+	for i in range(num_of_poker_draw):
 		deck = Deck()
 		deck.shuffle()
 		hand = PokerHand()
@@ -277,6 +278,10 @@ def tinh_xac_suat():
 	
 	#result of dict after 1000 times of divide cards {'straightflush': 0, 'fourkind': 0, 'fullhouse': 30, 'flush': 33, 'straight': 41, 'threekind': 49, 'twopair': 229, 'pair': 428, 'highcard': 190}
 	#ve do thi cho de nhin
+	print("Table of the classifications and their probabilities:")
+	for poker_class in count_dict:
+		print(poker_class, f"{100*count_dict[poker_class]/num_of_poker_draw}%")
+	
 	plt.bar(list(count_dict.keys()), count_dict.values(), color='g')
 	plt.show()
 	

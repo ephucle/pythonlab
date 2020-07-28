@@ -146,20 +146,7 @@ class Hand(Deck):
 		self.cards = []
 		self.label = label
 def main2():
-	#hand = Hand('new hand')
-	#print (hand.cards)
-	#print (hand.label)
-	
-	#deck = Deck()
-	#card = deck.pop_card()
-	#hand.add_card(card)
-	#print (hand)
-	
-	##test move card.
-	#deck.move_cards(hand, 3)
-	#print("all card in hand after move:")
-	#print(hand)  #luc nay hand se co 4 card
-	
+
 	print("Test deal_hands")
 	deck = Deck()
 
