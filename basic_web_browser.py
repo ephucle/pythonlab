@@ -2,6 +2,14 @@ from tkinter import *
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
+
+
+#message = 'And now for something completely different'
+#n = 17
+#pi = 3.1415926535897932
+
+#lumpy.object_diagram()
+
 master = Tk()
 master.title( "Basic Web Brower using tkinter" )
 
