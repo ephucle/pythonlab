@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    def __init__(self, length, width):
+    def __init__(self, length=10, width=20):
         self.length = length
         self.width = width
 

@@ -1,12 +1,11 @@
 from swampy.Lumpy import Lumpy
 
+from PokerHand import *
 lumpy = Lumpy()
 lumpy.make_reference()
 
-message = 'And now for something completely different'
-n = 17
-pi = 3.1415926535897932
+deck = Deck()
+hand = PokerHand()
+deck.move_cards(hand, 7)
 
-from PokerHand import *
-
-lumpy.object_diagram()
+lumpy.class_diagram()
