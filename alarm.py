@@ -12,8 +12,6 @@ def play_sound():
 	print("Start to play music")
 	pygame.mixer.music.play()
 
-
-
 # Set up the drawing window
 screen = pygame.display.set_mode([500, 500])
 
@@ -21,7 +19,8 @@ screen = pygame.display.set_mode([500, 500])
 white = (255,255,255) 
 green = (0, 255, 0) 
 blue = (0, 0, 128)
-
+purple = (102, 0, 102)
+lightblue= (0, 0, 255)
 # light shade of the button 
 color_light = (170,170,170) 
 
@@ -37,26 +36,23 @@ width = screen.get_width()
 height = screen.get_height()
 
 # defining a font 
-#smallfont = pygame.font.SysFont('Corbel',20)
-smallfont = pygame.font.SysFont('freesansbold.ttf',20)
+smallfont = pygame.font.SysFont('freesansbold.ttf',30)
+bigfont = pygame.font.SysFont('freesansbold.ttf',50)
 
 # rendering a text written in 
 # this font 
 
 
-text = smallfont.render('Play Sound' , True , white)
-text_stop = smallfont.render('Stop Sound' , True , white)
+text_play = smallfont.render('Play' , True , white)
+text_stop = smallfont.render('Stop Music' , True , white)
 schedule_time = "20200731_093500"
 alarm_setting_text = smallfont.render(schedule_time , True , white)
 
 #this test for alarm
-current = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-#text2 = smallfont.render('GeeksForGeeks', True, green, blue)
-text2 = smallfont.render(current, True, green, blue)
+current = datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+text2 = bigfont.render(current, True, green, blue)
 textRect = text2.get_rect()  # text surface object 
-textRect.center = (width // 2, height // 2 + 50)   # set the center of the rectangular object. 
-
-
+textRect.center = (width // 2, height // 2)   # set the center of the rectangular object. 
 
 
 Clock = pygame.time.Clock()
@@ -75,14 +71,18 @@ while running:
 		if event.type == pygame.MOUSEBUTTONDOWN: 
 			#if the mouse is clicked on the 
 			# button the game is terminated 
-			if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40: 
-				#pygame.quit()
+			if 0 <= mouse[0] <= 200 and height -200 <= mouse[1] <= height: 
 				play_sound()
 			
+			if 0 <= mouse[0] <= 140 and 0 <= mouse[1] <= 140: 
+				print("stop music")
+				pygame.mixer.music.stop()
+			
 		if event.type == CLOCKTICK:
-			current = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-			text2 = smallfont.render(current, True, green, blue)
+			current = datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+			text2 = bigfont.render(current, True, green, blue)
 			screen.blit(text2, textRect)  #draw one image onto another
+			textRect.center = (width // 2, height // 2)
 			
 			#neu cung thoi gian thi play sound
 			if current == schedule_time:
@@ -96,39 +96,32 @@ while running:
 	# at the center coordinate. 
 	screen.blit(text2, textRect) 
 	
-	
-	## Draw a solid blue circle in the center
-	#pygame.draw.circle(screen, (0, 0, 255), (250, 250), 75)
-	
 	# stores the (x,y) coordinates into 
 	# the variable as a tuple 
 	mouse = pygame.mouse.get_pos() 
 	
 	# if mouse is hovered on a button it 
-	# changes to lighter shade  
-	if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40: 
-		pygame.draw.rect(screen,color_light,[width/2,height/2,140,40]) 
+	# changes to lighter shade 
+	##add another button, cho chuc nang doi mau neu chuot di chuyen qua no
+	if 0 <= mouse[0] <= 140 and height - 140 <= mouse[1] <= height: 
+		pygame.draw.rect(screen,lightblue,[0,height - 200,200,height]) 
 	else: 
-		pygame.draw.rect(screen,color_dark,[width/2,height/2,140,40])
+		pygame.draw.rect(screen,purple,[0,height - 200,200,height]) 
 	
-	
+	#add another button, cho chuc nang doi mau neu chuot di chuyen qua no
+	if 0 <= mouse[0] <= 140 and 0 <= mouse[1] <= 140: 
+		pygame.draw.rect(screen,green,[0,0,140,140]) 
+	else: 
+		pygame.draw.rect(screen,blue,[0,0,140,140]) 
 	
 	# superimposing the text onto our button 
-	screen.blit(text , (width/2+20,height/2)) 
-	screen.blit(alarm_setting_text , (width/2+20,height/2 + 20)) 
-	
+	screen.blit(text_play , (0,height-140 + 10)) 
+	screen.blit(alarm_setting_text , (0, height-140+ 50)) 
+	screen.blit(text_stop , (0+10,0)) 
 
-
-	
 	# Flip the display
 	pygame.display.flip()
 	
 # Done! Time to quit.
 pygame.quit()
 
-
-
-#screen.blit(...) method of pygame.Surface instance
-#    blit(source, dest, area=None, special_flags=0) -> Rect
-#    draw one image onto another
-#(END)
