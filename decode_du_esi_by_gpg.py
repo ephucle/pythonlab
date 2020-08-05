@@ -3,13 +3,35 @@
 #note
 #support to run from cygwin only due to gpg does not work on WSL 
 #(Unable to contact server main-csdp.internal.ericsson.com. Please run while connected to Ericsson Corporate Network.)
+#usage:
+#./decode_du_esi_by_gpg.py -d -r bs-yeonje-yeonjeb-GX19
+#./decode_du_esi_by_gpg.py -d bs-yeonje-yeonjeb-GX19
+#./decode_du_esi_by_gpg.py -r bs-yeonje-yeonjeb-GX19
+#./decode_du_esi_by_gpg.py bs-yeonje-yeonjeb-GX19
 
 from zipfile import ZipFile
 import os,sys, datetime, subprocess
 import shutil
+import argparse
+
+parser = argparse.ArgumentParser(description='ESI decode')
+parser.add_argument(dest='nodename', type=str, help="nodename")
+#parser.add_argument('-d', '--maxDepth', dest='maxDepth', type=int, help="Max depth for tree expansion")
+parser.add_argument('-d', '--du', dest='esi_du', action='store_true', help='Parsing ESI DU')
+parser.add_argument('-r', '--ru', dest='esi_ru', action='store_true', help='Parsing ESI RU')
+
+nodename = parser.parse_args().nodename
+esi_du = parser.parse_args().esi_du
+esi_ru = parser.parse_args().esi_ru
+
+print("nodename:", nodename)
+print("esi du flag:", esi_du)
+print("esi ru flag:", esi_ru)
+#sys.exit()
+
 #root_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM"
 root_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM"
-nodename = "bs-yeonje-yeonjeb-GX19"
+#nodename = "bs-yeonje-yeonjeb-GX19"
 date = datetime.date.today().strftime("%Y-%m-%d")
 
 #check if folder exist
@@ -62,28 +84,36 @@ with ZipFile(dcgm_file_path) as myzip:
 		print("ru esi path", ru_esi_path) #['rcslogs/esi.ru_05-F-AIR3239.20200804T030930+0000.tar.gz.gpg', 'rcslogs/esi.ru_02-C-AIR3239.20200804T031326+0000.tar.gz.gpg', 'rcslogs/esi.ru_01-B-AIR3239.20200804T031439+0000.tar.gz.gpg', 'rcslogs/esi.ru_00-A-AIR3239.20200804T031501+0000.tar.gz.gpg', 'rcslogs/esi.ru_04-E-AIR3239.20200804T031047+0000.tar.gz.gpg', 'rcslogs/esi.ru_03-D-AIR3239.20200804T031213+0000.tar.gz.gpg']
 		
 		#extract ESI DU
-		myzip_logfiles.extract(du_esi_path, target_folder_path)
-		esi_du_folder = os.path.join(target_folder_path,"rcslogs")
-		global esi_du_filepath
-		esi_du_filepath = os.path.join(esi_du_folder, du_esi_filename)
-		print (f"Successful extract {du_esi_path} to {esi_du_folder}")  
+		if esi_du:
+			myzip_logfiles.extract(du_esi_path, target_folder_path)
+			esi_du_folder = os.path.join(target_folder_path,"rcslogs")
+			global esi_du_filepath
+			esi_du_filepath = os.path.join(esi_du_folder, du_esi_filename)
+			print (f"Successful extract {du_esi_path} to {esi_du_folder}")  
 		
-		#Successful extract rcslogs/esi.du1.20200804T030752+0000.tar.gz.gpg to /mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/bs-yeonje-yeonjeb-GX19_2020-08-04/rcslogs
+		if esi_ru:
+			global esi_ru_filepaths
+			esi_ru_filepaths = []
+			for path in ru_esi_path:
+				temp , ru_esi_filename = os.path.split(path)
+				myzip_logfiles.extract(path, target_folder_path)
+				esi_ru_folder = os.path.join(target_folder_path,"rcslogs")
+				global esi_ru_filepath
+				esi_ru_filepath = os.path.join(esi_ru_folder, ru_esi_filename)
+				esi_ru_filepaths.append(esi_ru_filepath)
+				print (f"Successful extract {ru_esi_filename} to {esi_ru_filepath}")  
 
-
-#['bs-yeonje-yeonjeb-GX19_bgpmrf.log.gz', 'bs-yeonje-yeonjeb-GX19_dcg_e2.log.gz', 'bs-yeonje-yeonjeb-GX19_dcg_m.log.gz', 'bs-yeonje-yeonjeb-GX19_enmfiles.zip', 'bs-yeonje-yeonjeb-GX19_logfiles.zip', 'bs-yeonje-yeonjeb-GX19_modump.zip', 'bs-yeonje-yeonjeb-GX19_ropfiles.zip', 'bs-yeonje-yeonjeb-GX19_wrateventlog_traffic.zip', 'bs-yeonje-yeonjeb-GX19_xml.zip', 'bglog_1.log.gz', 'dcgziplog.txt']
-
-
-#['rcslogs/SupportUnitLog_20200627__051434.cfg', 'rcslogs/AlertLog_20200627__051434_20200802__161428.cfg', 'rcslogs/esi.ru_05-F-AIR3239.20200804T030930+0000.tar.gz.gpg', 'rcslogs/esi.ru_02-C-AIR3239.20200804T031326+0000.tar.gz.gpg', 'rcslogs/SwErrorAlarmLog_20200627__051434.log', 'rcslogs/UnitTemperatureLevelLog_20200803__000006_20200804__000004.log', 'rcslogs/SupportUnitLog_20200719__000534_20200728__000534.log', 'rcslogs/AlertLog_20200802__161428.log', 'rcslogs/esi.du1.20200804T030752+0000.tar.gz.gpg', 'rcslogs/SupportUnitLog_20200627__051434_20200719__000534.log', 'rcslogs/SwmLog_20200627051434Z', 'rcslogs/UnitTemperatureLevelLog_20200803__000003_20200803__000006.log', 'rcslogs/AlertLog_20200627__051434_20200802__161428.log', 'rcslogs/TnNetworkLog_20200627__051434.cfg', 'rcslogs/SecurityLog_20200722163514Z', 'rcslogs/TnNetworkLog_20200627__051434.log', 'rcslogs/TnApplicationLog_20200627__051434.cfg', 'rcslogs/esi.ru_01-B-AIR3239.20200804T031439+0000.tar.gz.gpg', 'rcslogs/RBS_CS_AVAILABILITY_LOG_20200804030747.xml.gz', 'rcslogs/UnitTemperatureLevelLog_20200804__000004.log', 'rcslogs/esi.ru_00-A-AIR3239.20200804T031501+0000.tar.gz.gpg', 'rcslogs/TnApplicationLog_20200627__051434.log', 'rcslogs/AiLog_19700101000027Z', 'rcslogs/esi.ru_04-E-AIR3239.20200804T031047+0000.tar.gz.gpg', 'rcslogs/AuditTrailLog_20200715185827Z', 'rcslogs/esi.ru_03-D-AIR3239.20200804T031213+0000.tar.gz.gpg', 'rcslogs/ClimateLog_20200627__051434.log', 'rcslogs/PowerSupplyLog_20200627__051434.log', 'rcslogs/PowerSupplyLog_20200627__051434.cfg', 'rcslogs/saLogAlarm_20200627__051333.log', 'rcslogs/ClimateLog_20200627__051434.cfg', 'rcslogs/AlertLog_20200802__161428.cfg', 'rcslogs/UnitTemperatureLevelLog_20200627__051434.cfg', 'rcslogs/saLogAlarm_20200627__051333.cfg', 'rcslogs/PowerDistributionLog_20200627__051434.log', 'rcslogs/BatteryLog_20200627__051434.cfg', 'rcslogs/PowerDistributionLog_20200627__051434.cfg', 'rcslogs/BatteryLog_20200627__051434.log', 'rcslogs/SupportUnitLog_20200728__000534.log', 'rcslogs/SwErrorAlarmLog_20200627__051434.cfg', 'rcslogs/date.log', 'llog.log', 'teread.log', 'pmdzpm.log']
 
 
 def create_moshell_script():
 	global moshell_script_path
 	moshell_script_path =  os.path.join(target_folder_path, nodename + "_script.mos")
 	file = open(moshell_script_path,"w+")
-
-	file.write("gpg "+ esi_du_filepath+"\n" )
-	
+	if esi_du:
+		file.write("gpg "+ esi_du_filepath+"\n" )
+	if esi_ru:
+		for path in esi_ru_filepaths:
+			file.write("gpg "+ path+"\n" )
 	file.close()
 	print(f"Successful created amos script {moshell_script_path}")
 	
