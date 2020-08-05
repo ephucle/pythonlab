@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#note
+######################################################################################################
 #support to run from cygwin only due to gpg does not work on WSL 
 #(Unable to contact server main-csdp.internal.ericsson.com. Please run while connected to Ericsson Corporate Network.)
 #usage:
@@ -8,7 +8,19 @@
 #./decode_du_esi_by_gpg.py -d bs-yeonje-yeonjeb-GX19
 #./decode_du_esi_by_gpg.py -r bs-yeonje-yeonjeb-GX19
 #./decode_du_esi_by_gpg.py bs-yeonje-yeonjeb-GX19
-
+#[~/tool_script/python/pythonlab]$ ./decode_du_esi_by_gpg.py -h
+#usage: decode_du_esi_by_gpg.py [-h] [-d] [-r] nodename
+#
+#ESI decode
+#
+#positional arguments:
+#  nodename    nodename
+#
+#optional arguments:
+#  -h, --help  show this help message and exit
+#  -d, --du    Parsing ESI DU
+#  -r, --ru    Parsing ESI RU
+######################################################################################################
 from zipfile import ZipFile
 import os,sys, datetime, subprocess
 import shutil
@@ -16,7 +28,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='ESI decode')
 parser.add_argument(dest='nodename', type=str, help="nodename")
-#parser.add_argument('-d', '--maxDepth', dest='maxDepth', type=int, help="Max depth for tree expansion")
+
 parser.add_argument('-d', '--du', dest='esi_du', action='store_true', help='Parsing ESI DU')
 parser.add_argument('-r', '--ru', dest='esi_ru', action='store_true', help='Parsing ESI RU')
 
@@ -27,11 +39,23 @@ esi_ru = parser.parse_args().esi_ru
 print("nodename:", nodename)
 print("esi du flag:", esi_du)
 print("esi ru flag:", esi_ru)
-#sys.exit()
+
 
 #root_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM"
 root_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM"
 #nodename = "bs-yeonje-yeonjeb-GX19"
+
+#dcgm_file_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/bs-yeonje-yeonjeb-GX19_200804_120521_KST_MSRBS-N_CXP9024418-12_R69B43_dcgm.zip"
+
+#dcgm_file_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/bs-yeonje-yeonjeb-GX19_200804_120521_KST_MSRBS-N_CXP9024418-12_R69B43_dcgm.zip"
+
+dcgm_filepaths = [os.path.join(root_path, file) for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and nodename in file]
+dcgm_filepaths.sort()
+#get the latest file
+dcgm_file_path = dcgm_filepaths[-1]
+print("dcgm_file_path", dcgm_file_path)
+
+
 date = datetime.date.today().strftime("%Y-%m-%d")
 
 #check if folder exist
@@ -45,21 +69,17 @@ else:
 	print(f"Folder {target_folder_path} existed")
 	
 
-if not os.path.isfile(os.path.join(target_folder_path,"bs-yeonje-yeonjeb-GX19_modump.zip")):
-	source = os.path.join(root_path, "bs-yeonje-yeonjeb-GX19_modump.zip")
-	target = os.path.join(target_folder_path, "bs-yeonje-yeonjeb-GX19_modump.zip")
+if not os.path.isfile(os.path.join(target_folder_path,"modump.zip")):
+	source = os.path.join(root_path, "modump.zip")
+	target = os.path.join(target_folder_path, "modump.zip")
 	shutil.copyfile(source, target)
 	print(f"Successful copy {source} to {target}")
 else:
-	print(f"File bs-yeonje-yeonjeb-GX19_modump.zip existed in {target_folder_path}")
-
-#dcgm_file_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/bs-yeonje-yeonjeb-GX19_200804_120521_KST_MSRBS-N_CXP9024418-12_R69B43_dcgm.zip"
-dcgm_file_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/bs-yeonje-yeonjeb-GX19_200804_120521_KST_MSRBS-N_CXP9024418-12_R69B43_dcgm.zip"
+	print(f"File modump.zip existed in {target_folder_path}")
 
 
 
-#bs-yeonje-yeonjeb-GX19_logfiles.zip
-#bs-yeonje-yeonjeb-GX19
+
 with ZipFile(dcgm_file_path) as myzip:
 	namelist = myzip.namelist()
 	#print(namelist)
@@ -130,7 +150,7 @@ def decode_esi_by_gpg():
 	output_filepath = os.path.join(target_folder_path,nodename + "_script_output.log")
 	#find moshell path on WSL or cygwin
 	moshell_path = subprocess.getoutput('which moshell')
-	modump_path = os.path.join(target_folder_path, "bs-yeonje-yeonjeb-GX19_modump.zip")
+	modump_path = os.path.join(target_folder_path, "modump.zip")
 	print (">>> moshell path:", moshell_path )
 	
 	full_script = moshell_path + " " + modump_path + " " + moshell_script_path + " | tee " + output_filepath
