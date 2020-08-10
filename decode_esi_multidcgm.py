@@ -3,6 +3,7 @@
 #version 1.2 08Aug2020.
 #support import function for gui
 #summary result after decode
+#2020/08/10 13:43 fix issue on option -r
 
 ######################################################################################################
 #support CYGWIN and WSL (window subsystem for linux)
@@ -103,10 +104,14 @@ def extract_modump_logfiles(dcgm_file_path, nodename, target_folder_path):
 					print (f">>> Successful extract {ru_esi_filename} to {esi_ru_filepath}") 
 	return modump_path, logfiles_path, esi_du_filepath, esi_ru_filepaths
 
-def create_moshell_script(nodename, target_folder_path):
+def create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths):
 	#global moshell_script_path
 	moshell_script_path =  os.path.join(target_folder_path, nodename + "_script.mos")
 	file = open(moshell_script_path,"w+")
+	#change default retry time to avoid issue network notstable during decode time
+	#file.write("#change default retry time from 3 to 100 to avoid issue network notstable during decode time"+"\n" )
+	#file.write("uv gpg_retry=100"+"\n" )
+	
 	if esi_du:
 		file.write("gpg "+ esi_du_filepath+"\n" )
 	if esi_ru:
@@ -194,31 +199,31 @@ def main():
 		#decode 1 DCGM dua vao nodename
 		target_folder_path = create_target_folder(nodename, root_path)
 		modump_path, logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_modump_logfiles(dcgm_file_path,nodename, target_folder_path)
-		moshell_script_path = create_moshell_script(nodename, target_folder_path)
+		moshell_script_path = create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths)
 		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path)
 		
 		#clear log after finish decrypted
 		os.remove(modump_path)
-		print(f"{modump_path} has just been removed" )
+		#print(f"{modump_path} has just been removed" )
 		
 		
 		#remove temp moshell script
 		os.remove(moshell_script_path)
-		print(f"{moshell_script_path} has just been removed" )
+		#print(f"{moshell_script_path} has just been removed" )
 		
 		#remove logfilepath
 		os.remove(logfiles_path)
-		print(f"{logfiles_path} has just been removed" )
+		#print(f"{logfiles_path} has just been removed" )
 		
 		#remove esi gpg file
 		if esi_du:
 			os.remove(esi_du_filepath)
-			print(f"{esi_du_filepath} has just been removed" )
+			#print(f"{esi_du_filepath} has just been removed" )
 		
 		if esi_ru:
 			for esi_ru_filepath in esi_ru_filepaths:
 				os.remove(esi_ru_filepath)
-				print(f"{esi_ru_filepath} has just been removed" )
+				#print(f"{esi_ru_filepath} has just been removed" )
 		
 		#summary output
 		count = 0
@@ -242,6 +247,11 @@ def main():
 	else:
 		#truong hop nay xu ly nhieu file dcgm cung 1 luc
 		output_filepaths = []
+		input_nodenames = set()
+		
+		count = 0
+		success_output_list = []
+		success_nodenames = set()
 		for dcgm_file_path in dcgm_filepaths:
 			#print(path)
 			temp_path, dcgm_filename = os.path.split(dcgm_file_path)
@@ -249,52 +259,73 @@ def main():
 			#extract nodename from dcgm filename
 			nodename =  re.match("(\S+)_\d{6}_\d{6}_\S+_dcgm.zip", dcgm_filename).group(1)
 			print(nodename)
+			input_nodenames.add(nodename)
 			
 			target_folder_path = create_target_folder(nodename, root_path)
 			modump_path, logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_modump_logfiles(dcgm_file_path, nodename, target_folder_path)
-			moshell_script_path = create_moshell_script(nodename, target_folder_path)
+			
+			moshell_script_path = create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths)
 			output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path)
 			output_filepaths.append(output_filepath)
 			#clear log after finish decrypted
 			os.remove(modump_path)
-			print(f"{modump_path} has just been removed" )
+			#print(f"{modump_path} has just been removed" )
 		
 			#remove temp moshell script
 			os.remove(moshell_script_path)
-			print(f"{moshell_script_path} has just been removed" )
+			#print(f"{moshell_script_path} has just been removed" )
 		
 			#remove logfilepath
 			os.remove(logfiles_path)
-			print(f"{logfiles_path} has just been removed" )
+			#print(f"{logfiles_path} has just been removed" )
 		
-			#remove esi gpg file
+			##remove esi gpg file
 			if esi_du:
 				os.remove(esi_du_filepath)
-				print(f">>> {esi_du_filepath} has just been removed" )
+				#print(f">>> {esi_du_filepath} has just been removed" )
 			if esi_ru:
 				for esi_ru_filepath in esi_ru_filepaths:
 					os.remove(esi_ru_filepath)
-					print(f">>> {esi_ru_filepath} has just been removed" )
-			#summary decode result
-			count = 0
-			success_output_list = []
-			for path in output_filepaths:
-				#print(path)
-				with open (path) as infile:
-					lines = (line.strip() for line in infile.readlines())
-					for line in lines:
-						m = re.match("GPG File has been successfully decrypted and saved to (\S+)", line) 
-						if m:
-						#GPG File has been successfully decrypted and saved to /cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/dg-dalseo-skb-10-45_2020-08-07/rcslogs/esi.du1.20200807T032628+0000.tar.gz
-							success_output_file = m.group(1)
-							#print(success_output_file)
-							success_output_list.append(success_output_file)
-							count += 1
-			if count == 0 :
-				print(f">>> Fail to decoded all dcgm")
-			else:
-				print(">>> Successful decode to below files")
-				print("\n".join(success_output_list))
+					#print(f">>> {esi_ru_filepath} has just been removed" )
+		
+		
+		#summary decode result
+		for path in output_filepaths:
+			with open (path) as infile:
+				lines = (line.strip() for line in infile.readlines())
+				for line in lines:
+					#line = GPG File has been successfully decrypted and saved to /cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/dg-dalseo-skb-10-45_2020-08-07/rcslogs/esi.du1.20200807T032628+0000.tar.gz
+					m = re.match("GPG File has been successfully decrypted and saved to (\S+)", line) 
+					if m:
+						success_output_file = m.group(1) #/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/dg-dalseo-skb-10-45_2020-08-07/rcslogs/esi.du1.20200807T032628+0000.tar.gz
+						
+						temp_path = success_output_file.partition("/rcslogs/")[0]
+						temp_path2 , nodename_date = os.path.split(temp_path)
+						nodename = nodename_date.partition("_")[0]
+						success_nodenames.add(nodename)
+						#print(success_output_file)
+						success_output_list.append(success_output_file)
+						count += 1
+		#print("success nodename", success_nodenames)
+		if count == 0 :
+			print(f">>> Failed to decoded ALL dcgm:")
+			print("\n".join(dcgm_filepaths))
+			
+		else:
+			print(">>> Successful decode to below du, ru ESI files")
+			print("\n".join(success_output_list))
+			if len(success_nodenames) < len(input_nodenames):  #truong hop nay chi decode thanh cong vai esi, fail vai esi
+				print("Detail:")
+				print("#"*20)
+				print("Failure nodes:")
+				fail_nodes = input_nodenames.difference(success_nodenames)
+				fail_nodes = list(fail_nodes)
+				print("\n".join(fail_nodes))
+				
+				print("Success nodes:")
+				success_nodenames = list(success_nodenames)
+				print("\n".join(success_nodenames))
+				print("#"*20)
 			
 
 
