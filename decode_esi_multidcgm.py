@@ -109,8 +109,8 @@ def create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_
 	moshell_script_path =  os.path.join(target_folder_path, nodename + "_script.mos")
 	file = open(moshell_script_path,"w+")
 	#change default retry time to avoid issue network notstable during decode time
-	#file.write("#change default retry time from 3 to 100 to avoid issue network notstable during decode time"+"\n" )
-	#file.write("uv gpg_retry=100"+"\n" )
+	file.write("#change default retry time from 3 to 100 to avoid issue network notstable during decode time"+"\n" )
+	file.write("uv gpg_retry=100"+"\n" )
 	
 	if esi_du:
 		file.write("gpg "+ esi_du_filepath+"\n" )
