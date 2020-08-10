@@ -30,11 +30,11 @@ if sys.platform == "cygwin":
 	default_dcgm_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM"
 
 
-def create_target_folder(nodename):
+def create_target_folder(nodename,root_path):
 	'''create a target folder to extract log, if folder does not exist'''
 	
 	#in case script is import importing, root_path =  default dcgm path
-	root_path = default_dcgm_path
+	#root_path = default_dcgm_path
 	target_folder = nodename+"_"+date
 	target_folder_path = os.path.join(root_path, target_folder)
 	
@@ -192,7 +192,7 @@ def main():
 
 	if decode_all_dcgm_flag == False:
 		#decode 1 DCGM dua vao nodename
-		target_folder_path = create_target_folder(nodename)
+		target_folder_path = create_target_folder(nodename, root_path)
 		modump_path, logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_modump_logfiles(dcgm_file_path,nodename, target_folder_path)
 		moshell_script_path = create_moshell_script(nodename, target_folder_path)
 		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path)
@@ -250,7 +250,7 @@ def main():
 			nodename =  re.match("(\S+)_\d{6}_\d{6}_\S+_dcgm.zip", dcgm_filename).group(1)
 			print(nodename)
 			
-			target_folder_path = create_target_folder(nodename)
+			target_folder_path = create_target_folder(nodename, root_path)
 			modump_path, logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_modump_logfiles(dcgm_file_path, nodename, target_folder_path)
 			moshell_script_path = create_moshell_script(nodename, target_folder_path)
 			output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path)
@@ -279,7 +279,7 @@ def main():
 			count = 0
 			success_output_list = []
 			for path in output_filepaths:
-				print(path)
+				#print(path)
 				with open (path) as infile:
 					lines = (line.strip() for line in infile.readlines())
 					for line in lines:
