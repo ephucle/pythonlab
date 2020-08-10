@@ -34,7 +34,7 @@ def update_time_labels():
 	current_dt_kst = convert_datetime_timezone(current_dt_hcm,"Asia/Ho_Chi_Minh","Asia/Seoul")
 	current_dt_swd = convert_datetime_timezone(current_dt_hcm,"Asia/Ho_Chi_Minh","Europe/Stockholm")
 	
-	text = "VN " + current_dt_hcm_hours
+	text =         "VN " + current_dt_hcm_hours
 	text += "\n" + "KR " + current_dt_kst
 	text += "\n" + "SW " + current_dt_swd
 	
