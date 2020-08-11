@@ -4,6 +4,7 @@
 #support import function for gui
 #summary result after decode
 #2020/08/10 13:43 fix issue on option -r
+#V1.3 2020/08/10, 20:33: support moshell to modump 1 time, speed up decode multi dcgm
 
 ######################################################################################################
 #support CYGWIN and WSL (window subsystem for linux)
@@ -22,20 +23,27 @@ import shutil
 import argparse
 import re
 
-#note: you can set your default dcgm path here, or using option --path to set dcgm folder path
 
+#note: you can set your default dcgm path here, or using option --path to set dcgm folder path
 date = datetime.date.today().strftime("%Y-%m-%d")
 if sys.platform == "linux":
-	default_dcgm_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM"
+	default_dcgm_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
 if sys.platform == "cygwin":
-	default_dcgm_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM"
+	default_dcgm_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
+if sys.platform == "win32":  #to support run in window
+	root_path= 'C:\\working\\02-Project\\16-SKT_5G_Project\\03-1-DCGM\\'
+
+CRED = '\033[91m'
+CEND = '\033[0m'
+
+
 
 
 def create_target_folder(nodename,root_path):
 	'''create a target folder to extract log, if folder does not exist'''
 	
 	#in case script is import importing, root_path =  default dcgm path
-	#root_path = default_dcgm_path
+	
 	target_folder = nodename+"_"+date
 	target_folder_path = os.path.join(root_path, target_folder)
 	
@@ -46,24 +54,28 @@ def create_target_folder(nodename,root_path):
 		print(f">>> Folder {target_folder_path} existed")
 	return target_folder_path
 
-def extract_modump_logfiles(dcgm_file_path, nodename, target_folder_path):
+def extract_modump(dcgm_file_path, root_path):
+	modump_path = ""
+	with ZipFile(dcgm_file_path) as myzip:
+		namelist = myzip.namelist()
+		for item in namelist:
+			if "_modump.zip" in item:
+				modump_filename = item
+				myzip.extract(modump_filename, root_path)
+				print(f">>> Successful extract {modump_filename} to {root_path}")
+				modump_path = os.path.join(root_path, modump_filename)
+	return modump_path
+
+
+def extract_logfiles(dcgm_file_path, nodename, target_folder_path, esi_du, esi_ru):
 	with ZipFile(dcgm_file_path) as myzip:
 		namelist = myzip.namelist()
 		
-		#extract modump
-		modump_filename = nodename + "_modump.zip"
-		myzip.extract(modump_filename, target_folder_path)
-		print(f">>> Successful extract {modump_filename} to {target_folder_path}")
-		#global modump_path
-		global modump_path
-		modump_path = os.path.join(target_folder_path, modump_filename)
-		
-		
-		
 		logfiles_name = nodename + "_logfiles.zip"
+		
 		myzip.extract(logfiles_name, target_folder_path)
 		print (f">>> Successful extract {logfiles_name} to {target_folder_path}")
-		#global logfiles_path
+		
 		logfiles_path = os.path.join(target_folder_path, logfiles_name)
 		with ZipFile(logfiles_path) as myzip_logfiles:
 			namelist_logfiles = myzip_logfiles.namelist()
@@ -76,18 +88,19 @@ def extract_modump_logfiles(dcgm_file_path, nodename, target_folder_path):
 				if "esi.ru_" in item:
 					ru_esi_path.append(item) 
 			
-			global esi_du, esi_ru
+			#global esi_du, esi_ru
 			if esi_du:
 				print(">>> du esi path", du_esi_path) #rcslogs/esi.du1.20200804T030752+0000.tar.gz.gpg
 			temp , du_esi_filename = os.path.split(du_esi_path)
 			if esi_ru:
-				print(">>> ru esi path", ru_esi_path) #['rcslogs/esi.ru_05-F-AIR3239.20200804T030930+0000.tar.gz.gpg', 'rcslogs/esi.ru_02-C-AIR3239.20200804T031326+0000.tar.gz.gpg', 'rcslogs/esi.ru_01-B-AIR3239.20200804T031439+0000.tar.gz.gpg', 'rcslogs/esi.ru_00-A-AIR3239.20200804T031501+0000.tar.gz.gpg', 'rcslogs/esi.ru_04-E-AIR3239.20200804T031047+0000.tar.gz.gpg', 'rcslogs/esi.ru_03-D-AIR3239.20200804T031213+0000.tar.gz.gpg']
+				print(">>> ru esi path", ru_esi_path)
 			
 			#extract ESI DU
+			esi_du_filepath = []
 			if esi_du:
 				myzip_logfiles.extract(du_esi_path, target_folder_path)
 				esi_du_folder = os.path.join(target_folder_path,"rcslogs")
-				global esi_du_filepath
+				#global esi_du_filepath
 				esi_du_filepath = os.path.join(esi_du_folder, du_esi_filename)
 				print (f">>> Successful extract {du_esi_path} to {esi_du_folder}")  
 			
@@ -102,16 +115,18 @@ def extract_modump_logfiles(dcgm_file_path, nodename, target_folder_path):
 					esi_ru_filepath = os.path.join(esi_ru_folder, ru_esi_filename)
 					esi_ru_filepaths.append(esi_ru_filepath)
 					print (f">>> Successful extract {ru_esi_filename} to {esi_ru_filepath}") 
-	return modump_path, logfiles_path, esi_du_filepath, esi_ru_filepaths
+	return logfiles_path, esi_du_filepath, esi_ru_filepaths
 
-def create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths):
-	#global moshell_script_path
-	moshell_script_path =  os.path.join(target_folder_path, nodename + "_script.mos")
-	file = open(moshell_script_path,"w+")
-	#change default retry time to avoid issue network notstable during decode time
-	file.write("#change default retry time from 3 to 100 to avoid issue network notstable during decode time"+"\n" )
-	file.write("uv gpg_retry=100"+"\n" )
+def create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths,esi_du, esi_ru, append_flag = False):
 	
+	#moshell_script_path =  os.path.join(target_folder_path, nodename + "_script.mos")
+	moshell_script_path =  os.path.join(root_path,  "gpg_script.mos")
+	if not append_flag:
+		file = open(moshell_script_path,"w+")  # ghi de tu dau, writing and reading
+		file.write("#change default retry time from 3 to 20 to avoid issue network notstable during decode time"+"\n" )
+		file.write("uv gpg_retry=20"+"\n" )
+	if append_flag:
+		file = open(moshell_script_path,"a+") # append, writing and reading
 	if esi_du:
 		file.write("gpg "+ esi_du_filepath+"\n" )
 	if esi_ru:
@@ -119,27 +134,16 @@ def create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_
 			file.write("gpg "+ path+"\n" )
 	file.close()
 	print(f">>> Successful created amos script {moshell_script_path}")
-	
-	print(">>> Content of amos script:")
-	print("*"*30)
-	with open(moshell_script_path) as infile:
-		print(infile.read())
-	print("*"*30)
+
 	return moshell_script_path
 
 
-def decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path):
-	#global output_filepath
+def decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path):
+	
 	output_filepath = os.path.join(target_folder_path,nodename + "_script_output.log")
-	#find moshell path on WSL or cygwin
 	moshell_path = subprocess.getoutput('which moshell')
-	#print (">>> moshell path:", moshell_path )
-	global modump_path
 	full_script = moshell_path + " " + modump_path + " " + moshell_script_path + " | tee " + output_filepath
 	
-	#print("\n")
-	#print (">>> Full bash script:",full_script)
-	#print("\n")
 	print (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"),"Decoding esi file by gpg...")
 	
 	#call bash script, to see the progress on terminal
@@ -157,12 +161,12 @@ def main():
 	
 
 	nodename = parser.parse_args().nodename
+	global root_path
 	root_path = parser.parse_args().dcgm_path
 	global esi_du, esi_ru
 	
 	esi_du = parser.parse_args().esi_du
 	esi_ru = parser.parse_args().esi_ru
-
 
 	#toi thieu phai co 1 thang duoc decode, neu user ghi ro action -d or -r
 	decode_all_dcgm_flag = False
@@ -191,39 +195,43 @@ def main():
 		
 	else:
 		dcgm_filepaths = [os.path.join(root_path, file) for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
-		print(">>> dcgm_filepaths:",dcgm_filepaths)
-		print(f">>> No of dcgm found: {len(dcgm_filepaths)}")
-		
+		print(CRED + f">>> No of dcgm found: {len(dcgm_filepaths)}" + CEND)
+		print(">>> dcgm_filepaths:")
+		print(CRED+ "\n".join(dcgm_filepaths)+CEND)
+
 
 	if decode_all_dcgm_flag == False:
 		#decode 1 DCGM dua vao nodename
 		target_folder_path = create_target_folder(nodename, root_path)
-		modump_path, logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_modump_logfiles(dcgm_file_path,nodename, target_folder_path)
-		moshell_script_path = create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths)
-		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path)
+		modump_path = extract_modump(dcgm_file_path, root_path)
+		#modump_path, logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_modump_logfiles(dcgm_file_path,nodename, target_folder_path)
+		logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_logfiles(dcgm_file_path,nodename, target_folder_path,esi_du, esi_ru)
+		moshell_script_path = create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths, esi_du, esi_ru, append_flag=False)
+		
+		#print amos script
+		print(">>> Content of amos script:")
+		print("*"*30)
+		with open(moshell_script_path) as infile:
+			print(infile.read())
+		print("*"*30)
+		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path)
 		
 		#clear log after finish decrypted
 		os.remove(modump_path)
-		#print(f"{modump_path} has just been removed" )
-		
 		
 		#remove temp moshell script
 		os.remove(moshell_script_path)
-		#print(f"{moshell_script_path} has just been removed" )
 		
 		#remove logfilepath
 		os.remove(logfiles_path)
-		#print(f"{logfiles_path} has just been removed" )
 		
 		#remove esi gpg file
 		if esi_du:
 			os.remove(esi_du_filepath)
-			#print(f"{esi_du_filepath} has just been removed" )
 		
 		if esi_ru:
 			for esi_ru_filepath in esi_ru_filepaths:
 				os.remove(esi_ru_filepath)
-				#print(f"{esi_ru_filepath} has just been removed" )
 		
 		#summary output
 		count = 0
@@ -252,6 +260,11 @@ def main():
 		count = 0
 		success_output_list = []
 		success_nodenames = set()
+		
+		#lay 1 dcgm va extract modump, de dung chung cho tat ca
+		modump_path = extract_modump(dcgm_filepaths[0], root_path)
+		
+		count_dcgm = 1
 		for dcgm_file_path in dcgm_filepaths:
 			#print(path)
 			temp_path, dcgm_filename = os.path.split(dcgm_file_path)
@@ -262,32 +275,42 @@ def main():
 			input_nodenames.add(nodename)
 			
 			target_folder_path = create_target_folder(nodename, root_path)
-			modump_path, logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_modump_logfiles(dcgm_file_path, nodename, target_folder_path)
 			
-			moshell_script_path = create_moshell_script(nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths)
-			output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path)
-			output_filepaths.append(output_filepath)
-			#clear log after finish decrypted
-			os.remove(modump_path)
-			#print(f"{modump_path} has just been removed" )
+			logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_logfiles(dcgm_file_path, nodename, target_folder_path,esi_du, esi_ru)
+			if count_dcgm == 1:
+				moshell_script_path = create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths ,esi_du, esi_ru, append_flag=False)
+			else:
+				moshell_script_path = create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths ,esi_du, esi_ru, append_flag=True)
+			count_dcgm +=1
 		
-			#remove temp moshell script
-			os.remove(moshell_script_path)
-			#print(f"{moshell_script_path} has just been removed" )
+		#start decode ESI
+		print(">>> Content of amos script:")
+		print("*"*30)
+		with open(moshell_script_path) as infile:
+			print(infile.read())
+		print("*"*30)
+		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path)
+		output_filepaths.append(output_filepath)
+			
 		
-			#remove logfilepath
-			os.remove(logfiles_path)
-			#print(f"{logfiles_path} has just been removed" )
 		
-			##remove esi gpg file
-			if esi_du:
-				os.remove(esi_du_filepath)
-				#print(f">>> {esi_du_filepath} has just been removed" )
-			if esi_ru:
-				for esi_ru_filepath in esi_ru_filepaths:
-					os.remove(esi_ru_filepath)
-					#print(f">>> {esi_ru_filepath} has just been removed" )
 		
+		#remove common modump
+		os.remove(modump_path)
+		print(f"{modump_path} has just been removed" )
+		
+		#remove logfiles.zip
+		os.remove(logfiles_path)
+		
+		#remove amos script
+		os.remove(moshell_script_path)
+		
+		#remove esi log
+		if esi_du:
+			os.remove(esi_du_filepath)
+		if esi_ru:
+			for path in esi_ru_filepaths:
+				os.remove(path)
 		
 		#summary decode result
 		for path in output_filepaths:
@@ -309,22 +332,23 @@ def main():
 		#print("success nodename", success_nodenames)
 		if count == 0 :
 			print(f">>> Failed to decoded ALL dcgm:")
-			print("\n".join(dcgm_filepaths))
+			print(CRED + "\n".join(dcgm_filepaths) + CEND)
 			
 		else:
 			print(">>> Successful decode to below du, ru ESI files")
-			print("\n".join(success_output_list))
+			print(CRED + "\n".join(success_output_list) + CEND)
 			if len(success_nodenames) < len(input_nodenames):  #truong hop nay chi decode thanh cong vai esi, fail vai esi
 				print("Detail:")
 				print("#"*20)
 				print("Failure nodes:")
 				fail_nodes = input_nodenames.difference(success_nodenames)
 				fail_nodes = list(fail_nodes)
-				print("\n".join(fail_nodes))
+				
+				print(CRED + "\n".join(fail_nodes) + CEND)
 				
 				print("Success nodes:")
 				success_nodenames = list(success_nodenames)
-				print("\n".join(success_nodenames))
+				print(CRED + "\n".join(success_nodenames) + CEND)
 				print("#"*20)
 			
 
