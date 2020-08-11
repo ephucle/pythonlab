@@ -23,16 +23,7 @@ import shutil
 import argparse
 import re
 
-
-#note: you can set your default dcgm path here, or using option --path to set dcgm folder path
 date = datetime.date.today().strftime("%Y-%m-%d")
-if sys.platform == "linux":
-	default_dcgm_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
-if sys.platform == "cygwin":
-	default_dcgm_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
-if sys.platform == "win32":  #to support run in window
-	root_path= 'C:\\working\\02-Project\\16-SKT_5G_Project\\03-1-DCGM\\'
-
 CRED = '\033[91m'
 CEND = '\033[0m'
 
@@ -152,13 +143,26 @@ def decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_
 	return output_filepath
 
 def main():
+
+	#note: you can set your default dcgm path here, or using option --path to set dcgm folder path
+	
+	#if sys.platform == "linux":
+	#	default_dcgm_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
+	#if sys.platform == "cygwin":
+	#	default_dcgm_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
+	#if sys.platform == "win32":  #to support run in window
+	#	root_path= 'C:\\working\\02-Project\\16-SKT_5G_Project\\03-1-DCGM\\'
+	
+	#default default_dcgm_path  is home folder
+	default_dcgm_path = os.path.expanduser('~')
 	parser = argparse.ArgumentParser(description='ESI decode')
 
-	parser.add_argument("--path", dest="dcgm_path", action="store", type=str, help="path of dcgm folder", default=default_dcgm_path)
-	parser.add_argument("--nodename",dest='nodename', type=str, help="nodename")
+	#parser.add_argument("--path", dest="dcgm_path", action="store", type=str, help="path of dcgm folder", default=default_dcgm_path)
+	parser. add_argument('dcgm_path', type=str, help='Input dcgm folder path', default=default_dcgm_path )
+	
 	parser.add_argument('-d', '--du', dest='esi_du', action='store_true', help='Parsing ESI DU')
 	parser.add_argument('-r', '--ru', dest='esi_ru', action='store_true', help='Parsing ESI RU')
-	
+	parser.add_argument("--nodename",dest='nodename', type=str, help="nodename")
 
 	nodename = parser.parse_args().nodename
 	global root_path
@@ -196,6 +200,9 @@ def main():
 	else:
 		dcgm_filepaths = [os.path.join(root_path, file) for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
 		print(CRED + f">>> No of dcgm found: {len(dcgm_filepaths)}" + CEND)
+		if len(dcgm_filepaths) == 0:
+			print("Please select correct dcgm_folder_path")
+			sys.exit()
 		print(">>> dcgm_filepaths:")
 		print(CRED+ "\n".join(dcgm_filepaths)+CEND)
 
