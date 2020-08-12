@@ -114,8 +114,8 @@ def create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepa
 	moshell_script_path =  os.path.join(root_path,  "gpg_script.mos")
 	if not append_flag:
 		file = open(moshell_script_path,"w+")  # ghi de tu dau, writing and reading
-		file.write("#change default retry time from 3 to 20 to avoid issue network notstable during decode time"+"\n" )
-		file.write("uv gpg_retry=20"+"\n" )
+		#file.write("#change default retry time from 3 to 20 to avoid issue network notstable during decode time"+"\n" )
+		#file.write("uv gpg_retry=20"+"\n" )
 	if append_flag:
 		file = open(moshell_script_path,"a+") # append, writing and reading
 	if esi_du:
@@ -129,13 +129,14 @@ def create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepa
 	return moshell_script_path
 
 
-def decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path):
+def decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path, root_path):
 	
-	output_filepath = os.path.join(target_folder_path,nodename + "_script_output.log")
+	#output_filepath = os.path.join(target_folder_path,nodename + "_script_output.log")
+	output_filepath = os.path.join(root_path , "moshell_output_log.txt")
 	moshell_path = subprocess.getoutput('which moshell')
 	full_script = moshell_path + " " + modump_path + " " + moshell_script_path + " | tee " + output_filepath
 	
-	print (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"),"Decoding esi file by gpg...")
+	print (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"),"Start call bash/moshell script")
 	
 	#call bash script, to see the progress on terminal
 	os.system(full_script)
@@ -144,14 +145,6 @@ def decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_
 
 def main():
 
-	#note: you can set your default dcgm path here, or using option --path to set dcgm folder path
-	
-	#if sys.platform == "linux":
-	#	default_dcgm_path = "/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
-	#if sys.platform == "cygwin":
-	#	default_dcgm_path = "/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/"
-	#if sys.platform == "win32":  #to support run in window
-	#	root_path= 'C:\\working\\02-Project\\16-SKT_5G_Project\\03-1-DCGM\\'
 	
 	#default default_dcgm_path  is home folder
 	default_dcgm_path = os.path.expanduser('~')
@@ -221,7 +214,7 @@ def main():
 		with open(moshell_script_path) as infile:
 			print(infile.read())
 		print("*"*30)
-		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path)
+		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path, root_path)
 		
 		#clear log after finish decrypted
 		os.remove(modump_path)
@@ -296,7 +289,7 @@ def main():
 		with open(moshell_script_path) as infile:
 			print(infile.read())
 		print("*"*30)
-		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path)
+		output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path, root_path)
 		output_filepaths.append(output_filepath)
 			
 		

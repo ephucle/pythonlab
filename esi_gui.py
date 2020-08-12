@@ -1,17 +1,43 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.8
+
 import tkinter as tk
 from tkinter import *
 from tkinter.ttk import *
 from tkinter import filedialog
-
 import os, sys
 from decode_esi_multidcgm import *
+import concurrent.futures
+import time, datetime, re
+
+count_decode_done_for_gpg = 0 
+def current_time_stamp():
+	return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
+
+def read_file(filename, target_count):
+	global count_decode_done_for_gpg
+	while count_decode_done_for_gpg < target_count:
+		time.sleep(10)  #nghi 10s, doc file 1 lan
+		print(current_time_stamp(), "start reading file")
+		
+		temp_count = 0
+		with open(filename) as infile:
+			lines = [line.strip() for line in infile.readlines()]
+			for line in lines:
+				
+				if "GPG File has been successfully decrypted and saved to" in line or "Failed. Please try again" in line:
+					temp_count += 1
+		count_decode_done_for_gpg = temp_count
+		print(current_time_stamp(), "end reading file")
+		print(current_time_stamp(),"count  count_decode_done_for_gpg inside readfile func", count_decode_done_for_gpg)
+		
+		
+		
+		
+
 def descypt():
 	#CLEAR LOG TEXT BOX
 	log_textbox.delete('1.0', END)
-	
 	log_textbox.insert(tk.END, ">>> Start decode ESI log:"+"\n")
-	#dcgm_filenames = dcgm_paths_listbox.get(0, tk.END)
 	
 	all_dcgm_names = dcgm_paths_listbox.get(0, tk.END)
 	sel_idx = dcgm_paths_listbox.curselection()
@@ -19,6 +45,7 @@ def descypt():
 	log_textbox.insert(tk.END, ">>> Selected DCGM:"+"\n")
 	log_textbox.insert(tk.END, "\n".join(dcgm_filenames)+"\n")
 	global root_path
+	print("root_path inside descypt", root_path)
 	dcgm_filepaths = [os.path.join(root_path,filename) for filename in dcgm_filenames]
 	print(dcgm_filepaths)
 	
@@ -37,7 +64,7 @@ def descypt():
 	output_filepaths = []
 	input_nodenames = set()
 	
-	count = 0
+	count_success = 0
 	success_output_list = []
 	success_nodenames = set()
 	
@@ -59,13 +86,27 @@ def descypt():
 		logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_logfiles(dcgm_file_path, nodename, target_folder_path,esi_du, esi_ru)
 		if count_dcgm == 1:
 			moshell_script_path = create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths , esi_du, esi_ru,append_flag=False)
+			
 		else:
 			moshell_script_path = create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths, esi_du, esi_ru,append_flag=True)
+			
 		count_dcgm +=1
+		count_gpg_file = 0
+		with open(moshell_script_path) as infile:
+			lines = [line.strip() for line in infile.readlines()]
+			for line in lines:
+				if "gpg " in line:
+					count_gpg_file += 1
+					log_textbox.insert(tk.END, line + "\n")
+					
+		root.update_idletasks()
+		
+		print(">>> No of gpg file need to decode", count_gpg_file)
+		#doan nay da manual test ok
 		
 		#test update trang thai progress bar
-		progress['value'] = 20
-		root.update_idletasks() 
+		#progress['value'] = 20
+		#root.update_idletasks() 
 	
 	#start decode ESI
 	print(">>> Content of amos script:")
@@ -77,26 +118,44 @@ def descypt():
 	print("*"*30)
 	
 	log_textbox.insert(tk.END, ">>> Create moshell script successful\n")
-	progress['value'] = 30  # so 50% o day chua chinh xac lam
+	progress['value'] = 30
+	root.update_idletasks()
+
+	log_textbox.insert(tk.END, ">>> Start test ThreadPoolExecutor\n")
 	root.update_idletasks()
 	
+	##################################threading ##################################
+	#using thread, running decode esi, and check moshell output log at the same time
 	
-	log_textbox.insert(tk.END, ">>> Running GPG....\n")
-	output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path)
-	output_filepaths.append(output_filepath)
+	print(current_time_stamp(),"Start test ThreadPoolExecutor")
+	
+	output_filepath = os.path.join(root_path , "moshell_output_log.txt")  #moshell log file
+	
+	global count_decode_done_for_gpg
+	#reset it every time
+	count_decode_done_for_gpg = 0
+	
+	no_of_thread = 2
+	print("count_decode_done_for_gpg BEFORE", count_decode_done_for_gpg)
+	with concurrent.futures.ThreadPoolExecutor(max_workers=no_of_thread) as executor:
+		executor.submit(decode_esi_by_gpg, nodename, target_folder_path, moshell_script_path, modump_path, root_path) 
+		executor.submit(read_file, output_filepath, count_gpg_file)  #target, count toi so count_gpg_file, thi xong
+	print(current_time_stamp(),"End test ThreadPoolExecutor")
+	print("count_decode_done_for_gpg AFTER", count_decode_done_for_gpg)
+	#############################################################################################
+	
+	#output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path, root_path)
+	print("output moshell log:", output_filepath)
+	
+	
+	log_textbox.insert(tk.END, "moshell output path:" + output_filepath+"\n")
 	
 	progress['value'] = 95
 	root.update_idletasks()
 	
-	#remove common modump
+	#remove common modump, #remove logfiles.zip , #remove amos script
 	os.remove(modump_path)
-	print(f"{modump_path} has just been removed" )
-	
-	
-	#remove logfiles.zip
 	os.remove(logfiles_path)
-	
-	#remove amos script
 	os.remove(moshell_script_path)
 	
 	#remove esi log
@@ -120,9 +179,9 @@ def descypt():
 					success_nodenames.add(nodename)
 					
 					success_output_list.append(success_output_file)
-					count += 1
+					count_success += 1
 	
-	if count == 0 :
+	if count_success == 0 :
 		print(f">>> Failed to decoded ALL dcgm:")
 		print(CRED+ "\n".join(dcgm_filepaths)+ CEND)
 		
@@ -130,6 +189,7 @@ def descypt():
 		log_textbox.insert(tk.END, "\n".join(list(input_nodenames)) +"\n")
 		
 	else:
+		
 		print(">>> Successful decode ALL ESI files, as below")
 		log_textbox.insert(tk.END, "Successful decode ALL ESI files, as below:\n")
 		print("\n".join(success_output_list))
@@ -153,9 +213,11 @@ def descypt():
 			print(CRED + "\n".join(success_nodenames) + CEND)
 			log_textbox.insert(tk.END, "\nSuccess decode node:\n" + "\n".join(success_nodenames)+"\n")
 			print("#"*20)
+	
+	log_textbox.insert(tk.END, "\n" + "Decode procedure finished!"+"\n")
 	progress['value'] = 100
-	log_textbox.insert(tk.END, "\n" + "Decode DONE!!!"+"\n")
 	root.update_idletasks()
+	
 def CurSelet(event):
 	widget = event.widget
 	
@@ -165,8 +227,10 @@ def CurSelet(event):
 	print(sel_list)
 	
 	#thu cho show sel_list vao text box de test
+	
+	log_textbox.delete('1.0', END)
 	for dcgm_filename in sel_list:
-		log_textbox.insert(tk.END, dcgm_filename)
+		log_textbox.insert(tk.END, dcgm_filename+"\n")
 
 def var_states():
 	'''print state of selection box du_esi and ru_esi to terminal'''
@@ -175,15 +239,15 @@ def var_states():
 	#print("du_esi: %d,\ru_esi: %d" % (var1.get(), var2.get()))
 def browse_button():
 	global folder_path
-	select_folder_path = filedialog.askdirectory()
+	global root_path
+	root_path = filedialog.askdirectory()
 	
-	print(select_folder_path)
-	folder_path.set(select_folder_path)
+	print("root_path after browse_button:",root_path)
+	folder_path.set(root_path)
 	
-	#delete listbox
+	#update dcgm_paths_listbox
 	dcgm_paths_listbox.delete(0, END)
-	#update list box
-	dcgm_filenames = [ file for file in os.listdir(select_folder_path) if os.path.isfile(os.path.join(select_folder_path, file)) and "_dcgm.zip" in file]
+	dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
 	for item in dcgm_filenames:
 		dcgm_paths_listbox.insert(END, item)
 
@@ -191,12 +255,18 @@ root = tk.Tk()
 #https://www.delftstack.com/howto/python-tkinter/how-to-set-height-and-width-of-tkinter-entry-widget/
 root.geometry("550x650")
 #https://stackoverflow.com/questions/36575890/how-to-set-a-tkinter-window-to-a-constant-size/36575951
-root.resizable(0, 0) #Don't allow resizing in the x or y direction
+#root.resizable(0, 0) #Don't allow resizing in the x or y direction
 
 
 #set root_path to home folder, work for both window and linux
 #https://stackoverflow.com/questions/13923079/tkinter-home-directory
+global root_path
 root_path = os.path.expanduser('~')
+
+#this is for speed up testing during code ==> remove when finished
+root_path = os.path.join(root_path,"test_esi")
+
+print("initial root_path: ", root_path)
 
 button = tk.Button(root,text = "Select DCGM folder",command=browse_button).grid(row=0, column=0,sticky=W)
 
@@ -211,7 +281,7 @@ dcgm_paths_listbox.bind('<<ListboxSelect>>',CurSelet)
 
 dcgm_paths_listbox.grid(row=3, column=0, sticky=W)
 
-log_textbox = Text(root, height=20, width=90)  #height = 20 row
+log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
 log_textbox.grid(row=9, column=0, sticky=W)
 #log_textbox.insert(tk.END, "Just a text Widget\nin two lines\n")
 
@@ -223,8 +293,10 @@ for item in dcgm_filenames:
 
 
 # Progress bar widget , https://www.geeksforgeeks.org/progressbar-widget-in-tkinter-python/
-progress = Progressbar(root, orient = HORIZONTAL,  length = 500, mode = 'determinate')
-progress.grid(row=4, column=0, sticky=W)
+progress = Progressbar(root, orient = HORIZONTAL,  length = 540, mode = 'determinate')
+progress_var = DoubleVar() #here you have ints but when calc. %'s usually floats
+
+progress.grid(row=4, column=0, sticky=W, padx = 5, pady = 5)
 
 #https://www.python-course.eu/tkinter_checkboxes.php
 var1 = IntVar(value=1)  #default select for esi_du
