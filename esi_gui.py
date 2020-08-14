@@ -25,7 +25,7 @@ def read_file():
 	while count_decode_done_for_gpg < count_gpg_file:
 		time.sleep(10)  #nghi 10s, doc file 1 lan ==> ko nen dung sleep ben trong gui
 		if os.path.isfile(output_filepath):
-			successfully_lines = [line for line in open(output_filepath) if "GPG File has been successfully decrypted" in line]
+			successfully_lines = [line for line in open(output_filepath) if "GPG File has been successfully decrypted" in line or '''>>>>>> Failed. Please try again.''' in line]
 			count_decode_done_for_gpg = len(successfully_lines)
 			print("count_decode_done_for_gpg during read_file funtion:", count_decode_done_for_gpg)
 		
@@ -54,12 +54,30 @@ def descypt():
 	global esi_du, esi_ru
 	esi_du = var1.get()
 	esi_ru = var2.get()
+	esi_ru0 = vars0.get()
+	esi_ru1 = vars1.get()
+	esi_ru2 = vars2.get()
+	esi_ru3 = vars3.get()
+	esi_ru4 = vars4.get()
+	esi_ru5 = vars5.get()
 	
+	
+	selected_sector = (esi_ru0,esi_ru1,esi_ru2,esi_ru3, esi_ru4, esi_ru5)
+	if any(selected_sector):
+		esi_ru = 1
 	if esi_du == 0 and esi_ru == 0:
 		esi_du =1
 	print("esi_du:", esi_du)
 	print("esi_ru:", esi_ru)
+	print("esi_ru0:", esi_ru0)
+	print("esi_ru1:", esi_ru1)
+	print("esi_ru2:", esi_ru2)
+	print("esi_ru3:", esi_ru3)
+	print("esi_ru4:", esi_ru4)
+	print("esi_ru5:", esi_ru5)
 	
+	print("selected_sector",selected_sector)
+	#sys.exit()
 	
 	input_nodenames = set()
 	
@@ -81,8 +99,8 @@ def descypt():
 		input_nodenames.add(nodename)
 		
 		target_folder_path = create_target_folder(nodename, root_path)
-		
-		logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_logfiles(dcgm_file_path, nodename, target_folder_path,esi_du, esi_ru)
+		#extract du and ru esi , save path to esi_du_filepath, esi_ru_filepaths
+		logfiles_path , esi_du_filepath, esi_ru_filepaths = extract_logfiles(dcgm_file_path, nodename, target_folder_path,esi_du, esi_ru, selected_sector = selected_sector)
 		if count_dcgm == 1:
 			moshell_script_path = create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths , esi_du, esi_ru,append_flag=False)
 			
@@ -304,6 +322,21 @@ du_checkbox = Checkbutton(root, text="DU ESI", variable=var1).grid(row=5, column
 #default select
 
 ru_checkbox = Checkbutton(root, text="RU ESI", variable=var2).grid(row=6, column=0, sticky=W)
+
+vars0 = IntVar()
+vars1 = IntVar()
+vars2 = IntVar()
+vars3 = IntVar()
+vars4 = IntVar()
+vars5 = IntVar()
+sector0_checkbox = Checkbutton(root, text="S0", variable=vars0).grid(row=6, column=0, sticky=W, padx=35)
+sector1_checkbox = Checkbutton(root, text="S1", variable=vars1).grid(row=6, column=0, sticky=W, padx=75)
+sector2_checkbox = Checkbutton(root, text="S2", variable=vars2).grid(row=6, column=0, sticky=W, padx=115)
+sector3_checkbox = Checkbutton(root, text="S3", variable=vars3).grid(row=6, column=0, sticky=W, padx=155)
+sector4_checkbox = Checkbutton(root, text="S4", variable=vars4).grid(row=6, column=0, sticky=W, padx=195)
+sector5_checkbox = Checkbutton(root, text="S5", variable=vars5).grid(row=6, column=0, sticky=W, padx=235)
+
+
 button = tk.Button(root,text = "Decrypt",command=descypt).grid(row=7, column=0,sticky=W)
 button_quit = tk.Button(root,text = "Quit", command=quit).grid(row=8, column=0, sticky=W)
 

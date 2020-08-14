@@ -58,7 +58,12 @@ def extract_modump(dcgm_file_path, root_path):
 	return modump_path
 
 
-def extract_logfiles(dcgm_file_path, nodename, target_folder_path, esi_du, esi_ru):
+def extract_logfiles(dcgm_file_path, nodename, target_folder_path, esi_du, esi_ru, selected_sector=(1,1,1,1,1,1)):
+	sectorname = ("esi.ru_00" , "esi.ru_01", "esi.ru_02", "esi.ru_03", "esi.ru_04", "esi.ru_05")
+	selected_sector_dict = dict(zip (sectorname,selected_sector))
+	print("selected_sector_dict", selected_sector_dict)
+	
+	
 	with ZipFile(dcgm_file_path) as myzip:
 		namelist = myzip.namelist()
 		
@@ -98,6 +103,16 @@ def extract_logfiles(dcgm_file_path, nodename, target_folder_path, esi_du, esi_r
 			esi_ru_filepaths = []
 			if esi_ru:
 				#global esi_ru_filepaths
+				#filter sector, help to save time, no need to decode all ru
+				filter_ru_path = []
+				for path in ru_esi_path:
+					for key in selected_sector_dict:
+						if selected_sector_dict[key] > 0 and key in path:
+							filter_ru_path.append(path)
+				print("filter_ru_path", filter_ru_path)
+				ru_esi_path = filter_ru_path
+				#sys.exit()
+				
 				for path in ru_esi_path:
 					temp , ru_esi_filename = os.path.split(path)
 					myzip_logfiles.extract(path, target_folder_path)
