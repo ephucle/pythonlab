@@ -2,7 +2,9 @@
 
 import tkinter as tk
 from tkinter import *
-from tkinter.ttk import *
+#from tkinter.ttk import *
+from tkinter.ttk import Progressbar
+
 from tkinter import filedialog
 import os, sys
 from decode_esi_multidcgm import *
@@ -13,26 +15,25 @@ count_decode_done_for_gpg = 0
 def current_time_stamp():
 	return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
-def read_file(filename, target_count):
-	global count_decode_done_for_gpg
-	while count_decode_done_for_gpg < target_count:
-		time.sleep(10)  #nghi 10s, doc file 1 lan
-		print(current_time_stamp(), "start reading file")
-		
-		temp_count = 0
-		with open(filename) as infile:
-			lines = [line.strip() for line in infile.readlines()]
-			for line in lines:
-				
-				if "GPG File has been successfully decrypted and saved to" in line or "Failed. Please try again" in line:
-					temp_count += 1
-		count_decode_done_for_gpg = temp_count
-		print(current_time_stamp(), "end reading file")
-		print(current_time_stamp(),"count  count_decode_done_for_gpg inside readfile func", count_decode_done_for_gpg)
+#def read_file(filename, target_count):
+def read_file():
+	global count_gpg_file
+	global count_decode_done_for_gpg, output_filepath
+	
+	print("START READFILE FUNC,count_gpg_file", count_gpg_file)
+	print("START READFILE FUNC, count_decode_done_for_gpg", count_decode_done_for_gpg)
+	while count_decode_done_for_gpg < count_gpg_file:
+		time.sleep(10)  #nghi 10s, doc file 1 lan ==> ko nen dung sleep ben trong gui
+		if os.path.isfile(output_filepath):
+			successfully_lines = [line for line in open(output_filepath) if "GPG File has been successfully decrypted" in line]
+			count_decode_done_for_gpg = len(successfully_lines)
+			print("count_decode_done_for_gpg during read_file funtion:", count_decode_done_for_gpg)
 		
 		
-		
-		
+		percent_finished = int(100*(count_decode_done_for_gpg/count_gpg_file))
+		print("percent_finished", percent_finished)
+		#barVar.set(percent_finished)
+
 
 def descypt():
 	#CLEAR LOG TEXT BOX
@@ -60,8 +61,6 @@ def descypt():
 	print("esi_ru:", esi_ru)
 	
 	
-	
-	output_filepaths = []
 	input_nodenames = set()
 	
 	count_success = 0
@@ -91,6 +90,7 @@ def descypt():
 			moshell_script_path = create_moshell_script(root_path, nodename, target_folder_path, esi_du_filepath, esi_ru_filepaths, esi_du, esi_ru,append_flag=True)
 			
 		count_dcgm +=1
+		global count_gpg_file
 		count_gpg_file = 0
 		with open(moshell_script_path) as infile:
 			lines = [line.strip() for line in infile.readlines()]
@@ -102,11 +102,6 @@ def descypt():
 		root.update_idletasks()
 		
 		print(">>> No of gpg file need to decode", count_gpg_file)
-		#doan nay da manual test ok
-		
-		#test update trang thai progress bar
-		#progress['value'] = 20
-		#root.update_idletasks() 
 	
 	#start decode ESI
 	print(">>> Content of amos script:")
@@ -118,8 +113,9 @@ def descypt():
 	print("*"*30)
 	
 	log_textbox.insert(tk.END, ">>> Create moshell script successful\n")
-	progress['value'] = 30
-	root.update_idletasks()
+	#progress['value'] = 30
+	#root.update_idletasks()
+	barVar.set(30)
 
 	log_textbox.insert(tk.END, ">>> Start test ThreadPoolExecutor\n")
 	root.update_idletasks()
@@ -128,7 +124,7 @@ def descypt():
 	#using thread, running decode esi, and check moshell output log at the same time
 	
 	print(current_time_stamp(),"Start test ThreadPoolExecutor")
-	
+	global output_filepath
 	output_filepath = os.path.join(root_path , "moshell_output_log.txt")  #moshell log file
 	
 	global count_decode_done_for_gpg
@@ -136,12 +132,12 @@ def descypt():
 	count_decode_done_for_gpg = 0
 	
 	no_of_thread = 2
-	print("count_decode_done_for_gpg BEFORE", count_decode_done_for_gpg)
+	print("count_decode_done_for_gpg BEFORE ThreadPoolExecutor", count_decode_done_for_gpg)
 	with concurrent.futures.ThreadPoolExecutor(max_workers=no_of_thread) as executor:
 		executor.submit(decode_esi_by_gpg, nodename, target_folder_path, moshell_script_path, modump_path, root_path) 
-		executor.submit(read_file, output_filepath, count_gpg_file)  #target, count toi so count_gpg_file, thi xong
-	print(current_time_stamp(),"End test ThreadPoolExecutor")
-	print("count_decode_done_for_gpg AFTER", count_decode_done_for_gpg)
+		executor.submit(read_file)  #target, count toi so count_gpg_file, thi xong
+	print("End test ThreadPoolExecutor")
+	print("count_decode_done_for_gpg AFTER ThreadPoolExecutor", count_decode_done_for_gpg)
 	#############################################################################################
 	
 	#output_filepath = decode_esi_by_gpg(nodename, target_folder_path, moshell_script_path, modump_path, root_path)
@@ -150,13 +146,17 @@ def descypt():
 	
 	log_textbox.insert(tk.END, "moshell output path:" + output_filepath+"\n")
 	
-	progress['value'] = 95
-	root.update_idletasks()
+	#progress['value'] = 95
+	#root.update_idletasks()
+	
+	barVar.set(95)
 	
 	#remove common modump, #remove logfiles.zip , #remove amos script
+	print("Cleaning temp log file")
 	os.remove(modump_path)
 	os.remove(logfiles_path)
 	os.remove(moshell_script_path)
+	#os.remove(output_filepath)
 	
 	#remove esi log
 	if esi_du:
@@ -166,20 +166,19 @@ def descypt():
 			os.remove(path)
 	
 	#summary decode result
-	for path in output_filepaths:
-		with open (path) as infile:
-			lines = (line.strip() for line in infile.readlines())
-			for line in lines:
-				m = re.match("GPG File has been successfully decrypted and saved to (\S+)", line) 
-				if m:
-					success_output_file = m.group(1) 
-					temp_path = success_output_file.partition("/rcslogs/")[0]
-					temp_path2 , nodename_date = os.path.split(temp_path)
-					nodename = nodename_date.partition("_")[0]
-					success_nodenames.add(nodename)
-					
-					success_output_list.append(success_output_file)
-					count_success += 1
+	with open (output_filepath) as infile:
+		lines = (line.strip() for line in infile.readlines())
+		for line in lines:
+			m = re.match("GPG File has been successfully decrypted and saved to (\S+)", line) 
+			if m:
+				success_output_file = m.group(1) 
+				temp_path = success_output_file.partition("/rcslogs/")[0]
+				temp_path2 , nodename_date = os.path.split(temp_path)
+				nodename = nodename_date.partition("_")[0]
+				success_nodenames.add(nodename)
+				
+				success_output_list.append(success_output_file)
+				count_success += 1
 	
 	if count_success == 0 :
 		print(f">>> Failed to decoded ALL dcgm:")
@@ -215,8 +214,9 @@ def descypt():
 			print("#"*20)
 	
 	log_textbox.insert(tk.END, "\n" + "Decode procedure finished!"+"\n")
-	progress['value'] = 100
-	root.update_idletasks()
+	#progress['value'] = 100
+	#root.update_idletasks()
+	barVar.set(100)
 	
 def CurSelet(event):
 	widget = event.widget
@@ -225,10 +225,9 @@ def CurSelet(event):
 	sel_idx = widget.curselection()
 	sel_list = [all_items[item] for item in sel_idx]
 	print(sel_list)
-	
-	#thu cho show sel_list vao text box de test
-	
-	log_textbox.delete('1.0', END)
+
+	#log_textbox.delete('1.0', END)
+	log_textbox.insert(tk.END, "*************"+"\n")
 	for dcgm_filename in sel_list:
 		log_textbox.insert(tk.END, dcgm_filename+"\n")
 
@@ -252,10 +251,7 @@ def browse_button():
 		dcgm_paths_listbox.insert(END, item)
 
 root = tk.Tk()
-#https://www.delftstack.com/howto/python-tkinter/how-to-set-height-and-width-of-tkinter-entry-widget/
 root.geometry("550x650")
-#https://stackoverflow.com/questions/36575890/how-to-set-a-tkinter-window-to-a-constant-size/36575951
-#root.resizable(0, 0) #Don't allow resizing in the x or y direction
 
 
 #set root_path to home folder, work for both window and linux
@@ -283,7 +279,6 @@ dcgm_paths_listbox.grid(row=3, column=0, sticky=W)
 
 log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
 log_textbox.grid(row=9, column=0, sticky=W)
-#log_textbox.insert(tk.END, "Just a text Widget\nin two lines\n")
 
 
 dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
@@ -293,8 +288,12 @@ for item in dcgm_filenames:
 
 
 # Progress bar widget , https://www.geeksforgeeks.org/progressbar-widget-in-tkinter-python/
-progress = Progressbar(root, orient = HORIZONTAL,  length = 540, mode = 'determinate')
-progress_var = DoubleVar() #here you have ints but when calc. %'s usually floats
+#progress = Progressbar(root, orient = HORIZONTAL,  length = 540, mode = 'determinate')
+
+barVar = tk.DoubleVar()
+barVar.set(0)
+progress = Progressbar(root, orient = HORIZONTAL,  length = 540, mode = 'determinate', variable=barVar)
+
 
 progress.grid(row=4, column=0, sticky=W, padx = 5, pady = 5)
 
