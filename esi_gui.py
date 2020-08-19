@@ -20,10 +20,10 @@ def read_file():
 	global count_gpg_file
 	global count_decode_done_for_gpg, output_filepath
 	
-	print("START READFILE FUNC,count_gpg_file", count_gpg_file)
-	print("START READFILE FUNC, count_decode_done_for_gpg", count_decode_done_for_gpg)
+	#print("START READFILE FUNC,count_gpg_file", count_gpg_file)
+	#print("START READFILE FUNC, count_decode_done_for_gpg", count_decode_done_for_gpg)
 	while count_decode_done_for_gpg < count_gpg_file:
-		time.sleep(10)  #nghi 10s, doc file 1 lan ==> ko nen dung sleep ben trong gui
+		time.sleep(3)  #nghi 10s, doc file 1 lan ==> ko nen dung sleep ben trong gui
 		if os.path.isfile(output_filepath):
 			successfully_lines = [line for line in open(output_filepath) if "GPG File has been successfully decrypted" in line or '''>>>>>> Failed. Please try again.''' in line]
 			count_decode_done_for_gpg = len(successfully_lines)
@@ -35,31 +35,38 @@ def read_file():
 		#barVar.set(percent_finished)
 
 
-def descypt():
+def decrypt():
 	#CLEAR LOG TEXT BOX
 	log_textbox.delete('1.0', END)
 	log_textbox.insert(tk.END, ">>> Start decode ESI log:"+"\n")
-	
+
 	all_dcgm_names = dcgm_paths_listbox.get(0, tk.END)
 	sel_idx = dcgm_paths_listbox.curselection()
 	dcgm_filenames = [all_dcgm_names[index] for index in sel_idx]
-	log_textbox.insert(tk.END, ">>> Selected DCGM:"+"\n")
-	log_textbox.insert(tk.END, "\n".join(dcgm_filenames)+"\n")
+	if len(dcgm_filenames) > 0:
+		log_textbox.insert(tk.END, ">>> Selected DCGM:"+"\n")
+		log_textbox.insert(tk.END, "\n".join(dcgm_filenames)+"\n")
+	else:
+		log_textbox.insert(tk.END, ">>> Please selected at least a DCGM"+"\n")
+		
+		
 	global root_path
-	print("root_path inside descypt", root_path)
+	print("root_path inside decrypt", root_path)
 	dcgm_filepaths = [os.path.join(root_path,filename) for filename in dcgm_filenames]
 	print(dcgm_filepaths)
 	
 	#test ok
 	global esi_du, esi_ru
+	esi_ru = 0
 	esi_du = var1.get()
-	esi_ru = var2.get()
+	
 	esi_ru0 = vars0.get()
 	esi_ru1 = vars1.get()
 	esi_ru2 = vars2.get()
 	esi_ru3 = vars3.get()
 	esi_ru4 = vars4.get()
 	esi_ru5 = vars5.get()
+	
 	
 	
 	selected_sector = (esi_ru0,esi_ru1,esi_ru2,esi_ru3, esi_ru4, esi_ru5)
@@ -110,15 +117,18 @@ def descypt():
 		count_dcgm +=1
 		global count_gpg_file
 		count_gpg_file = 0
+		log_textbox.insert(tk.END, ">>> gpg file:" + "\n")
 		with open(moshell_script_path) as infile:
 			lines = [line.strip() for line in infile.readlines()]
 			for line in lines:
-				if "gpg " in line:
+				if "gpg " in line: #
 					count_gpg_file += 1
-					log_textbox.insert(tk.END, line + "\n")
+					gpg_filepath = line.split()[-1]
+					#log_textbox.insert(tk.END, line + "\n")
+					log_textbox.insert(tk.END, gpg_filepath + "\n")
 					
 		root.update_idletasks()
-		
+		log_textbox.insert(tk.END, "******" + "\n")
 		print(">>> No of gpg file need to decode", count_gpg_file)
 	
 	#start decode ESI
@@ -135,7 +145,7 @@ def descypt():
 	#root.update_idletasks()
 	barVar.set(30)
 
-	log_textbox.insert(tk.END, ">>> Start test ThreadPoolExecutor\n")
+	#log_textbox.insert(tk.END, ">>> Start test ThreadPoolExecutor\n")
 	root.update_idletasks()
 	
 	##################################threading ##################################
@@ -232,8 +242,6 @@ def descypt():
 			print("#"*20)
 	
 	log_textbox.insert(tk.END, "\n" + "Decode procedure finished!"+"\n")
-	#progress['value'] = 100
-	#root.update_idletasks()
 	barVar.set(100)
 	
 def CurSelet(event):
@@ -252,7 +260,7 @@ def CurSelet(event):
 def var_states():
 	'''print state of selection box du_esi and ru_esi to terminal'''
 	print("du_esi:", var1.get())
-	print("ru_esi:", var2.get())
+	#print("ru_esi:", var2.get())
 	#print("du_esi: %d,\ru_esi: %d" % (var1.get(), var2.get()))
 def browse_button():
 	global folder_path
@@ -268,8 +276,13 @@ def browse_button():
 	for item in dcgm_filenames:
 		dcgm_paths_listbox.insert(END, item)
 
+def print_to_textbox(text_string):
+	log_textbox.insert(tk.END, text_string + "\n")
+	root.update_idletasks()
+
 root = tk.Tk()
-root.geometry("550x650")
+root.title("ESI decrypt tool")
+root.geometry("550x550")
 
 
 #set root_path to home folder, work for both window and linux
@@ -278,7 +291,8 @@ global root_path
 root_path = os.path.expanduser('~')
 
 #this is for speed up testing during code ==> remove when finished
-root_path = os.path.join(root_path,"test_esi")
+#root_path = os.path.join(root_path,"test_esi")
+#root_path = os.path.join(root_path,"abc")
 
 print("initial root_path: ", root_path)
 
@@ -298,8 +312,12 @@ dcgm_paths_listbox.grid(row=3, column=0, sticky=W)
 log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
 log_textbox.grid(row=9, column=0, sticky=W)
 
+try:
+	dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
+except FileNotFoundError:
+	print("pls select a corrected dcgm folder")
+	sys.exit()
 
-dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
 for item in dcgm_filenames:
 	dcgm_paths_listbox.insert(END, item)
 
@@ -317,11 +335,10 @@ progress.grid(row=4, column=0, sticky=W, padx = 5, pady = 5)
 
 #https://www.python-course.eu/tkinter_checkboxes.php
 var1 = IntVar(value=1)  #default select for esi_du
-var2 = IntVar()
-du_checkbox = Checkbutton(root, text="DU ESI", variable=var1).grid(row=5, column=0, sticky=W)
-#default select
 
-ru_checkbox = Checkbutton(root, text="RU ESI", variable=var2).grid(row=6, column=0, sticky=W)
+du_checkbox = Checkbutton(root, text="DU ESI", variable=var1).grid(row=5, column=0, sticky=W, padx=5)
+
+
 
 vars0 = IntVar()
 vars1 = IntVar()
@@ -329,16 +346,22 @@ vars2 = IntVar()
 vars3 = IntVar()
 vars4 = IntVar()
 vars5 = IntVar()
-sector0_checkbox = Checkbutton(root, text="S0", variable=vars0).grid(row=6, column=0, sticky=W, padx=35)
-sector1_checkbox = Checkbutton(root, text="S1", variable=vars1).grid(row=6, column=0, sticky=W, padx=75)
-sector2_checkbox = Checkbutton(root, text="S2", variable=vars2).grid(row=6, column=0, sticky=W, padx=115)
-sector3_checkbox = Checkbutton(root, text="S3", variable=vars3).grid(row=6, column=0, sticky=W, padx=155)
-sector4_checkbox = Checkbutton(root, text="S4", variable=vars4).grid(row=6, column=0, sticky=W, padx=195)
-sector5_checkbox = Checkbutton(root, text="S5", variable=vars5).grid(row=6, column=0, sticky=W, padx=235)
+sector0_checkbox = Checkbutton(root, text="RU0", variable=vars0).grid(row=6, column=0, sticky=W, padx=5)
+sector1_checkbox = Checkbutton(root, text="RU1", variable=vars1).grid(row=6, column=0, sticky=W, padx=50)
+sector2_checkbox = Checkbutton(root, text="RU2", variable=vars2).grid(row=6, column=0, sticky=W, padx=95)
+sector3_checkbox = Checkbutton(root, text="RU3", variable=vars3).grid(row=6, column=0, sticky=W, padx=140)
+sector4_checkbox = Checkbutton(root, text="RU4", variable=vars4).grid(row=6, column=0, sticky=W, padx=185)
+sector5_checkbox = Checkbutton(root, text="RU5", variable=vars5).grid(row=6, column=0, sticky=W, padx=230)
 
 
-button = tk.Button(root,text = "Decrypt",command=descypt).grid(row=7, column=0,sticky=W)
+button = tk.Button(root,text = "Decrypt",command=decrypt).grid(row=7, column=0,sticky=W)
 button_quit = tk.Button(root,text = "Quit", command=quit).grid(row=8, column=0, sticky=W)
+# Dictionary with options
+tkvar = StringVar(root)
+choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
+tkvar.set('Pizza') # set the default option
+popupMenu = OptionMenu(root, tkvar, *choices)
+popupMenu.grid(row = 8, column =0, padx = 30)
 
 
 root.mainloop()

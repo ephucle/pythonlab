@@ -1,42 +1,36 @@
 #!/usr/bin/env python3
-#./mydoc.py 'sys'
+import sys
+import importlib
 
-#Problem 12: Write a program mydoc.py to implement the functionality of pydoc. The program should take the module name as argument and print documentation for the module and each of the functions defined in that module
+target_module_name = sys.argv[1]
 
-import sys,inspect
-from importlib import __import__
+print("target_module_name", target_module_name, type(target_module_name))
 
-#The dir function to get all entries of a module
-#The inspect.isfunction function can be used to test if given object is a function
-#x.__doc__ gives the docstring for x.
-#The __import__ function can be used to import a module by name
+module = importlib.import_module(target_module_name)
+print(module)  #<module 'collections' from '/usr/lib/python3.6/collections/__init__.py'>
+module_items = dir(module)
+
+print("attribule and method inside module", module_items)
+
+print("Test callable for each attribute_name:")
+function_list = []
+attribute_list = []
+for attribute_name in module_items:
+	#https://stackoverflow.com/questions/3061/calling-a-function-of-a-module-by-using-its-name-a-string
+	method_to_call = getattr(module, attribute_name)
+	print(attribute_name, callable(method_to_call))
+	if callable(method_to_call):
+		function_list.append(attribute_name)
+		print("--------Help of function", attribute_name, "as below:---------")
+		print(method_to_call.__doc__)
+	else :
+		attribute_list.append(attribute_name)
 
 
-module_name = sys.argv[1]
-print(module_name)
+print("list of function of ", target_module_name, "is:")
+print("\n".join(function_list))
 
-all_items = dir(module_name)
-for i, item in enumerate(all_items):
-	print(i, item)
-	print(f"{i}, try to import")
-	try:
-		x = __import__( item )
-		print("import successful")
-		print (type(x))
-		print(callable(print))
-	except:
-		print(f"{i}, import item: {item} failure")
+print("list of attributes of ", target_module_name, "is:")
+print("\n".join(attribute_list))
 
-#check function
-#callable(print)
 
-#__import__(name, globals=None, locals=None, fromlist=(), level=0)
-#    Import a module.
-#
-#    The 'globals' argument is used to infer where the import is occurring from
-#    to handle relative imports. The 'locals' argument is ignored. The
-#    'fromlist' argument specifies what should exist as attributes on the module
-#    being imported (e.g. ``from module import <fromlist>``).  The 'level'
-#    argument represents the package location to import from in a relative
-#    import (e.g. ``from ..pkg import mod`` would have a 'level' of 2).
-#(END)

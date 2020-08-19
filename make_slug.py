@@ -11,7 +11,7 @@ def make_slug(text):
 	#>>> make_slug(" --hello-  world--")
 	#'hello-world'
 	'''
-	#print(special_character)
+	
 	print(f"Origin text:{text}")
 	
 	#replace end special character with ""

@@ -12,3 +12,5 @@ for f in onlyfiles:
 	file_stats = os.stat(file_path)
 	
 	print(f,file_stats.st_size, datetime.datetime.fromtimestamp(file_stats.st_mtime))
+
+	

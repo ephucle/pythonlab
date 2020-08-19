@@ -33,4 +33,4 @@ def pretty_print_folder(root):
 			pretty_print_folder(new_root)
 
 
-pretty_print_folder('./test')
+pretty_print_folder(root)

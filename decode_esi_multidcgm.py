@@ -166,7 +166,7 @@ def main():
 	parser = argparse.ArgumentParser(description='ESI decode')
 
 	#parser.add_argument("--path", dest="dcgm_path", action="store", type=str, help="path of dcgm folder", default=default_dcgm_path)
-	parser. add_argument('dcgm_path', type=str, help='Input dcgm folder path', default=default_dcgm_path )
+	parser.add_argument('dcgm_path', type=str, help='Input dcgm folder path', default=default_dcgm_path )
 	
 	parser.add_argument('-d', '--du', dest='esi_du', action='store_true', help='Parsing ESI DU')
 	parser.add_argument('-r', '--ru', dest='esi_ru', action='store_true', help='Parsing ESI RU')

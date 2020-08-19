@@ -1,0 +1,3 @@
+[console_scripts]
+wpc = wsl_path_converter.main:main
+

@@ -1,20 +1,28 @@
+#!/usr/bin/env python3.8
 from tkinter import *
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import pickle
 
-
-
-#message = 'And now for something completely different'
-#n = 17
-#pi = 3.1415926535897932
-
-#lumpy.object_diagram()
 
 master = Tk()
 master.title( "Basic Web Brower using tkinter" )
 
+#width  = master.winfo_screenwidth()
+#height = master.winfo_screenheight()
+
+width  = 800
+height = 600
+master.geometry(f'{width}x{height}')
+
 text = Text(master, width=200)
 text.pack()
+
+pages_set ={"https://vnexpress.net/", "https://tuoitre.vn/"}
+with open("page_list.db", "wb") as file:
+	pickle.dump(pages_set,file)
+
+
 
 #this support select color of background
 var_of_option = StringVar(master)
