@@ -1,5 +1,4 @@
 #!/usr/bin/env python3.8
-
 import tkinter as tk
 from tkinter import *
 #from tkinter.ttk import *
