@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.8
 import tkinter as tk
 from tkinter import *
-#from tkinter.ttk import *
 from tkinter.ttk import Progressbar
 
 from tkinter import filedialog
@@ -14,7 +13,6 @@ count_decode_done_for_gpg = 0
 def current_time_stamp():
 	return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
-#def read_file(filename, target_count):
 def read_file():
 	global count_gpg_file
 	global count_decode_done_for_gpg, output_filepath
@@ -23,13 +21,11 @@ def read_file():
 	#print("START READFILE FUNC, count_decode_done_for_gpg", count_decode_done_for_gpg)
 	while count_decode_done_for_gpg < count_gpg_file:
 		time.sleep(3)  #nghi 10s, doc file 1 lan ==> ko nen dung sleep ben trong gui
-		#if os.path.isfile(output_filepath):
-		try:
+		if os.path.isfile(output_filepath):
 			successfully_lines = [line for line in open(output_filepath) if "GPG File has been successfully decrypted" in line or '''>>>>>> Failed. Please try again.''' in line]
 			count_decode_done_for_gpg = len(successfully_lines)
 			print("count_decode_done_for_gpg during read_file funtion:", count_decode_done_for_gpg)
-		except FileNotFoundError:
-			time.sleep(3) #cho 3 giay thi kiem tra lai file
+		
 		
 		percent_finished = int(100*(count_decode_done_for_gpg/count_gpg_file))
 		print("percent_finished", percent_finished)
@@ -185,7 +181,7 @@ def decrypt():
 	os.remove(modump_path)
 	os.remove(logfiles_path)
 	os.remove(moshell_script_path)
-	
+	#os.remove(output_filepath)
 	
 	#remove esi log
 	if esi_du:
@@ -243,7 +239,6 @@ def decrypt():
 			print("#"*20)
 	
 	log_textbox.insert(tk.END, "\n" + "Decode procedure finished!"+"\n")
-	os.remove(output_filepath)
 	barVar.set(100)
 	
 def CurSelet(event):
@@ -311,7 +306,7 @@ dcgm_paths_listbox.bind('<<ListboxSelect>>',CurSelet)
 
 dcgm_paths_listbox.grid(row=3, column=0, sticky=W)
 
-log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
+log_textbox = Text(root, height=15, width=100, padx = 10, pady =10)  #height = 20 row
 log_textbox.grid(row=9, column=0, sticky=W)
 
 try:

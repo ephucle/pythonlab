@@ -1,4 +1,12 @@
-Exercise 2  
-Write a function called sed that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
 
-If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit. Solution: http://thinkpython.com/code/sed.py.
+SubNetwork,ManagedElement,ENodeBFunction,GUtraNetwork,ExternalGNodeBFunction,ExternalGUtranCell
+NodeId	ENodeBFunctionId	GUtraNetworkId	ExternalGNodeBFunctionId	ExternalGUtranCellId	physicalLayerCellIdGroup	physicalLayerSubCellId
+namgu-daeyeon-W109	1	1	1180026	4505-00000000001180026-0	283	0
+namgu-daeyeon-W109	1	1	1180026	4505-00000000001180026-1	251	1
+namgu-daeyeon-W109	1	1	1180026	4505-00000000001180026-2	111	0
+namgu-daeyeon-W109	1	1	1181580	4505-00000000001181580-0	133	0
+namgu-daeyeon-W109	1	1	1181580	4505-00000000001181580-1	281	1
+namgu-daeyeon-W109	1	1	1181580	4505-00000000001181580-2	60	0
+namgu-daeyeon-W109	1	1	1181580	4505-00000000001181580-3	65	1
+namgu-daeyeon-W109	1	1	1181580	4505-00000000001181580-4	10	0
+namgu-daeyeon-W109	1	1	1181580	4505-00000000001181580-5	163	1 let 
