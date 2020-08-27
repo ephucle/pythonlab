@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.8
 import tkinter as tk
 from tkinter import *
-#from tkinter.ttk import *
 from tkinter.ttk import Progressbar
 
 from tkinter import filedialog
@@ -282,6 +281,25 @@ def print_to_textbox(text_string):
 	log_textbox.insert(tk.END, text_string + "\n")
 	root.update_idletasks()
 
+def OptionMenu_SelectionEvent(event): # I'm not sure on the arguments here, it works though
+	global root_path
+	global folder_path
+	
+	## do something
+	print("Option menu selected")
+	selected_path = tkvar_fav_dir.get()
+	
+	print("value selected:",selected_path)
+	#neu path ton tai tren may client thi set root path ve gia tri duoc chon
+	if os.path.isdir(selected_path):
+		root_path = selected_path
+		folder_path.set(root_path)  #set label
+		#update dcgm_paths_listbox
+		dcgm_paths_listbox.delete(0, END)
+		dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
+		for item in dcgm_filenames:
+			dcgm_paths_listbox.insert(END, item)
+
 root = tk.Tk()
 root.title("ESI decrypt tool")
 root.geometry("550x550")
@@ -300,6 +318,13 @@ print("initial root_path: ", root_path)
 
 button = tk.Button(root,text = "Select DCGM folder",command=browse_button).grid(row=0, column=0,sticky=W)
 
+# Dictionary with options
+tkvar_fav_dir = StringVar(root)
+choices = {root_path, '/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM'}
+tkvar_fav_dir.set(root_path) # set the default option
+favorite_path_optionmenu = OptionMenu(root, tkvar_fav_dir, *choices, command = OptionMenu_SelectionEvent)
+favorite_path_optionmenu.grid(row = 0, column =0, sticky=W,padx = 150)
+
 #default value to home folder
 folder_path = StringVar(root, value=root_path)
 lb1 = Label(root, textvariable = folder_path).grid(row=1, column=0, sticky=W)
@@ -311,8 +336,7 @@ dcgm_paths_listbox.bind('<<ListboxSelect>>',CurSelet)
 
 dcgm_paths_listbox.grid(row=3, column=0, sticky=W)
 
-log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
-log_textbox.grid(row=9, column=0, sticky=W)
+
 
 try:
 	dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
@@ -348,22 +372,26 @@ vars2 = IntVar()
 vars3 = IntVar()
 vars4 = IntVar()
 vars5 = IntVar()
-sector0_checkbox = Checkbutton(root, text="RU0", variable=vars0).grid(row=6, column=0, sticky=W, padx=5)
-sector1_checkbox = Checkbutton(root, text="RU1", variable=vars1).grid(row=6, column=0, sticky=W, padx=50)
-sector2_checkbox = Checkbutton(root, text="RU2", variable=vars2).grid(row=6, column=0, sticky=W, padx=95)
-sector3_checkbox = Checkbutton(root, text="RU3", variable=vars3).grid(row=6, column=0, sticky=W, padx=140)
-sector4_checkbox = Checkbutton(root, text="RU4", variable=vars4).grid(row=6, column=0, sticky=W, padx=185)
-sector5_checkbox = Checkbutton(root, text="RU5", variable=vars5).grid(row=6, column=0, sticky=W, padx=230)
+sector0_checkbox = Checkbutton(root, text="RU0_2048", variable=vars0).grid(row=6, column=0, sticky=W, padx=5)
+sector1_checkbox = Checkbutton(root, text="RU1_2049", variable=vars1).grid(row=6, column=0, sticky=W, padx=80)
+sector2_checkbox = Checkbutton(root, text="RU2_2050", variable=vars2).grid(row=6, column=0, sticky=W, padx=155)
+sector3_checkbox = Checkbutton(root, text="RU3_2051", variable=vars3).grid(row=6, column=0, sticky=W, padx=230)
+sector4_checkbox = Checkbutton(root, text="RU4_2052", variable=vars4).grid(row=6, column=0, sticky=W, padx=305)
+sector5_checkbox = Checkbutton(root, text="RU5_2053", variable=vars5).grid(row=6, column=0, sticky=W, padx=380)
 
 
 button = tk.Button(root,text = "Decrypt",command=decrypt).grid(row=7, column=0,sticky=W)
 button_quit = tk.Button(root,text = "Quit", command=quit).grid(row=8, column=0, sticky=W)
+
+log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
+log_textbox.grid(row=9, column=0, sticky=W)
+
 # Dictionary with options
-#tkvar = StringVar(root)
-#choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
-#tkvar.set('Pizza') # set the default option
-#popupMenu = OptionMenu(root, tkvar, *choices)
-#popupMenu.grid(row = 8, column =0, padx = 30)
+tkvar = StringVar(root)
+choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
+tkvar.set('Pizza') # set the default option
+pmd_optionmenu = OptionMenu(root, tkvar, *choices)
+pmd_optionmenu.grid(row = 7, column =0, sticky=W,padx = 75)
 
 
 root.mainloop()
