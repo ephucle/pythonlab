@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter.ttk import Progressbar
-
+from pathlib import Path
 from tkinter import filedialog
 import os, sys
 from decode_esi_multidcgm import *
@@ -292,11 +292,12 @@ def OptionMenu_SelectionEvent(event): # I'm not sure on the arguments here, it w
 	print("value selected:",selected_path)
 	#neu path ton tai tren may client thi set root path ve gia tri duoc chon
 	if os.path.isdir(selected_path):
-		root_path = selected_path
+		root_path = Path(selected_path)
 		folder_path.set(root_path)  #set label
 		#update dcgm_paths_listbox
 		dcgm_paths_listbox.delete(0, END)
 		dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
+		dcgm_filenames.sort()
 		for item in dcgm_filenames:
 			dcgm_paths_listbox.insert(END, item)
 
@@ -320,8 +321,14 @@ button = tk.Button(root,text = "Select DCGM folder",command=browse_button).grid(
 
 # Dictionary with options
 tkvar_fav_dir = StringVar(root)
-choices = {root_path, '/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM'}
-tkvar_fav_dir.set(root_path) # set the default option
+choices = {
+	'favorite path',
+	root_path, 
+	'/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM',
+	'/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM'
+}
+
+tkvar_fav_dir.set('favorite_path') # set the default option
 favorite_path_optionmenu = OptionMenu(root, tkvar_fav_dir, *choices, command = OptionMenu_SelectionEvent)
 favorite_path_optionmenu.grid(row = 0, column =0, sticky=W,padx = 150)
 
