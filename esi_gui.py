@@ -152,6 +152,8 @@ def decrypt():
 	#using thread, running decode esi, and check moshell output log at the same time
 	
 	print(current_time_stamp(),"Start test ThreadPoolExecutor")
+	print_to_textbox(current_time_stamp() + "Start decode esi file by gpg moshell..")
+	print_to_textbox("please keep patient, and wait some minute..")
 	global output_filepath
 	output_filepath = os.path.join(root_path , "moshell_output_log.txt")  #moshell log file
 	
