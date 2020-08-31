@@ -299,7 +299,15 @@ def OptionMenu_SelectionEvent(event): # I'm not sure on the arguments here, it w
 		#update dcgm_paths_listbox
 		dcgm_paths_listbox.delete(0, END)
 		dcgm_filenames = [ file for file in os.listdir(root_path) if os.path.isfile(os.path.join(root_path, file)) and "_dcgm.zip" in file]
-		dcgm_filenames.sort()
+		
+		#this function help user to file the latest dcgm quickly.
+		def func_sort_mtime(filename):
+			global root_path
+			filepath = os.path.join(root_path,filename)
+			return os.stat(filepath).st_mtime
+		
+		dcgm_filenames.sort(key = func_sort_mtime)
+		
 		for item in dcgm_filenames:
 			dcgm_paths_listbox.insert(END, item)
 

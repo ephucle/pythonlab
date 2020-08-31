@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 import codecs
 
-trid = "HY59201"
+trid = "HY55970"
 
 #https://stackoverflow.com/questions/31062789/how-to-load-default-profile-in-chrome-using-python-selenium-webdriver
 
@@ -44,7 +44,7 @@ window_after_title = driver.title
 print(window_after_title)
 
 #save page (save new window)
-output_filepath = "C:\\Users\\ephucle\\Documents\\HY59201.html"
+output_filepath = "C:\\Users\\ephucle\\Documents\\"+ trid + ".html"
 
 #with open(output_filepath, "w") as f:
 file_object = codecs.open(output_filepath, "w", "utf-8")
