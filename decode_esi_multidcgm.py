@@ -367,6 +367,31 @@ def main():
 				print("#"*20)
 			
 
+def get_pmd_path_from_tgz(tgz_file_path):
+	esi_path, name = os.path.split(tgz_file_path)
+	print(esi_path, name)  #/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/metro2dg-dalseo-hosan-10-B4_2020-09-01/rcslogs esi.du1.20200901T025304+0000.tar.gz
+	
+	with tarfile.open(tgz_file_path, "r:gz") as tar:
+		all_files = tar.getnames()
+		pmd_paths = [path for path in all_files if "pmd" in path and path.endswith(".tgz")]
+		
+		#try to extract all
+		#for pmd_path in pmd_paths:
+		#	print("extracting ", pmd_path)
+		#	tar.extract(pmd_path, esi_path)
+			
+		
+	return pmd_paths
+
+def extract_pmd_from_du_dump(tgz_file_path, pmdfiles):
+	esi_path, name = os.path.split(tgz_file_path)
+	with tarfile.open(tgz_file_path, "r:gz") as tar:
+		for pmd_path in pmdfiles:
+			tar.extract(pmd_path, esi_path)
+			print("successful extracting", pmd_path)
+	print("check again unzip output")
+	print("all file below", esi_path)
+	print("\n".join(myfunc.ls(esi_path)))
 
 if __name__ == "__main__":
 	main()

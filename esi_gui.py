@@ -6,6 +6,8 @@ from pathlib import Path
 from tkinter import filedialog
 import os, sys
 from decode_esi_multidcgm import *
+from decode_esi_multidcgm import get_pmd_path_from_tgz, extract_pmd_from_du_dump
+
 import concurrent.futures
 import time, datetime, re
 
@@ -157,6 +159,9 @@ def decrypt():
 	global output_filepath
 	output_filepath = os.path.join(root_path , "moshell_output_log.txt")  #moshell log file
 	
+	#remove file if file exist
+	if os.path.isfile(output_filepath):
+		os.remove(output_filepath)
 	global count_decode_done_for_gpg
 	#reset it every time
 	count_decode_done_for_gpg = 0
@@ -196,12 +201,13 @@ def decrypt():
 			os.remove(path)
 	
 	#summary decode result
+	success_output_file = []
 	with open (output_filepath) as infile:
 		lines = (line.strip() for line in infile.readlines())
 		for line in lines:
 			m = re.match("GPG File has been successfully decrypted and saved to (\S+)", line) 
 			if m:
-				success_output_file = m.group(1) 
+				success_output_file = m.group(1)  #/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/metro2dg-dalseo-hosan-10-B4_2020-09-01/rcslogs/esi.du1.20200901T025304+0000.tar.gz
 				temp_path = success_output_file.partition("/rcslogs/")[0]
 				temp_path2 , nodename_date = os.path.split(temp_path)
 				nodename = nodename_date.partition("_")[0]
@@ -244,7 +250,19 @@ def decrypt():
 			print("#"*20)
 	
 	log_textbox.insert(tk.END, "\n" + "Decode procedure finished!"+"\n")
-	os.remove(output_filepath)
+	
+	#update list of pmd from here
+	pmd_paths = []
+	global list_of_pmd_optionmenu
+	if len(success_output_file) > 0:
+		for filepath in success_output_file:
+			pmd_paths.extend(get_pmd_path_from_tgz(filepath))
+	
+	#update pmd option menu
+	list_of_pmd_optionmenu = pmd_paths
+	#####
+	
+	#os.remove(output_filepath)
 	barVar.set(100)
 	
 def CurSelet(event):
@@ -321,9 +339,7 @@ root.geometry("550x550")
 global root_path
 root_path = os.path.expanduser('~')
 
-#this is for speed up testing during code ==> remove when finished
-#root_path = os.path.join(root_path,"test_esi")
-#root_path = os.path.join(root_path,"abc")
+
 
 print("initial root_path: ", root_path)
 
@@ -390,14 +406,17 @@ vars3 = IntVar()
 vars4 = IntVar()
 vars5 = IntVar()
 sector0_checkbox = Checkbutton(root, text="RU0_2048", variable=vars0).grid(row=6, column=0, sticky=W, padx=5)
-sector1_checkbox = Checkbutton(root, text="RU1_2049", variable=vars1).grid(row=6, column=0, sticky=W, padx=80)
-sector2_checkbox = Checkbutton(root, text="RU2_2050", variable=vars2).grid(row=6, column=0, sticky=W, padx=155)
-sector3_checkbox = Checkbutton(root, text="RU3_2051", variable=vars3).grid(row=6, column=0, sticky=W, padx=230)
-sector4_checkbox = Checkbutton(root, text="RU4_2052", variable=vars4).grid(row=6, column=0, sticky=W, padx=305)
-sector5_checkbox = Checkbutton(root, text="RU5_2053", variable=vars5).grid(row=6, column=0, sticky=W, padx=380)
+sector1_checkbox = Checkbutton(root, text="RU1_2049", variable=vars1).grid(row=6, column=0, sticky=W, padx=90)
+sector2_checkbox = Checkbutton(root, text="RU2_2050", variable=vars2).grid(row=6, column=0, sticky=W, padx=175)
+sector3_checkbox = Checkbutton(root, text="RU3_2051", variable=vars3).grid(row=6, column=0, sticky=W, padx=260)
+sector4_checkbox = Checkbutton(root, text="RU4_2052", variable=vars4).grid(row=6, column=0, sticky=W, padx=345)
+sector5_checkbox = Checkbutton(root, text="RU5_2053", variable=vars5).grid(row=6, column=0, sticky=W, padx=430)
 
 
 button = tk.Button(root,text = "Decrypt",command=decrypt).grid(row=7, column=0,sticky=W)
+
+zip_back_dcgm = IntVar(value=1) #set default value to 1
+combine_checkbox = Checkbutton(root, text="create_decrypted_dcgm", variable=zip_back_dcgm).grid(row=7, column=0, sticky=W, padx=80)
 button_quit = tk.Button(root,text = "Quit", command=quit).grid(row=8, column=0, sticky=W)
 
 log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
@@ -405,10 +424,10 @@ log_textbox.grid(row=9, column=0, sticky=W)
 
 # Dictionary with options
 tkvar = StringVar(root)
-choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
+list_of_pmd_optionmenu = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
 tkvar.set('Pizza') # set the default option
-pmd_optionmenu = OptionMenu(root, tkvar, *choices)
-pmd_optionmenu.grid(row = 7, column =0, sticky=W,padx = 75)
+pmd_optionmenu = OptionMenu(root, tkvar, *list_of_pmd_optionmenu)
+pmd_optionmenu.grid(row = 8, column =0, sticky=W,padx = 75)
 
 
 root.mainloop()
