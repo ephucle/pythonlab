@@ -7,7 +7,7 @@ from tkinter import filedialog
 import os, sys
 from decode_esi_multidcgm import *
 from decode_esi_multidcgm import get_pmd_path_from_tgz, extract_pmd_from_du_dump
-
+#import tarfile
 import concurrent.futures
 import time, datetime, re
 
@@ -38,6 +38,7 @@ def read_file():
 
 
 def decrypt():
+	
 	#CLEAR LOG TEXT BOX
 	log_textbox.delete('1.0', END)
 	log_textbox.insert(tk.END, ">>> Start decode ESI log:"+"\n")
@@ -201,7 +202,7 @@ def decrypt():
 			os.remove(path)
 	
 	#summary decode result
-	success_output_file = []
+	success_output_filepaths = []
 	with open (output_filepath) as infile:
 		lines = (line.strip() for line in infile.readlines())
 		for line in lines:
@@ -213,7 +214,7 @@ def decrypt():
 				nodename = nodename_date.partition("_")[0]
 				success_nodenames.add(nodename)
 				
-				success_output_list.append(success_output_file)
+				success_output_filepaths.append(success_output_file)
 				count_success += 1
 	
 	if count_success == 0 :
@@ -252,17 +253,20 @@ def decrypt():
 	log_textbox.insert(tk.END, "\n" + "Decode procedure finished!"+"\n")
 	
 	#update list of pmd from here
+	#test only
+	menu = pmd_optionmenu["menu"]
+	menu.delete(0, "end")
+	#success_output_filepaths = ['/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/metro4-dongrae-oncheon-GX33_2020-09-02/rcslogs/esi.du1.20200824T033855+0000.tar.gz']
 	pmd_paths = []
-	global list_of_pmd_optionmenu
-	if len(success_output_file) > 0:
-		for filepath in success_output_file:
+	
+	if len(success_output_filepaths) > 0:
+		for filepath in success_output_filepaths:
 			pmd_paths.extend(get_pmd_path_from_tgz(filepath))
-	
-	#update pmd option menu
-	list_of_pmd_optionmenu = pmd_paths
+	print("pmd_paths", pmd_paths)
+	for path in pmd_paths:
+		menu.add_command(label=path, command=lambda value=path: omvar.set(value))
+	root.update_idletasks()
 	#####
-	
-	#os.remove(output_filepath)
 	barVar.set(100)
 	
 def CurSelet(event):
@@ -423,10 +427,12 @@ log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20
 log_textbox.grid(row=9, column=0, sticky=W)
 
 # Dictionary with options
-tkvar = StringVar(root)
-list_of_pmd_optionmenu = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
-tkvar.set('Pizza') # set the default option
-pmd_optionmenu = OptionMenu(root, tkvar, *list_of_pmd_optionmenu)
+omvar = StringVar()
+#pmd_paths = get_pmd_path_from_tgz('/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/metro4-dongrae-oncheon-GX33_2020-09-01/rcslogs/esi.du1.20200824T033855+0000.tar.gz')
+list_of_pmd_optionmenu = { 'pmd crash dump'}
+#list_of_pmd_optionmenu = pmd_paths
+omvar.set('pmd crash dump') # set the default option
+pmd_optionmenu = OptionMenu(root, omvar, *list_of_pmd_optionmenu)
 pmd_optionmenu.grid(row = 8, column =0, sticky=W,padx = 75)
 
 

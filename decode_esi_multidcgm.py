@@ -22,7 +22,7 @@ import os,sys, datetime, subprocess
 import shutil
 import argparse
 import re
-
+import tarfile
 date = datetime.date.today().strftime("%Y-%m-%d")
 CRED = '\033[91m'
 CEND = '\033[0m'
