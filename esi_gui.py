@@ -7,7 +7,6 @@ from tkinter import filedialog
 import os, sys
 from decode_esi_multidcgm import *
 from decode_esi_multidcgm import get_pmd_path_from_tgz, extract_pmd_from_du_dump
-#import tarfile
 import concurrent.futures
 import time, datetime, re
 
@@ -28,7 +27,7 @@ def read_file():
 		try:
 			successfully_lines = [line for line in open(output_filepath) if "GPG File has been successfully decrypted" in line or '''>>>>>> Failed. Please try again.''' in line]
 			count_decode_done_for_gpg = len(successfully_lines)
-			print("count_decode_done_for_gpg during read_file funtion:", count_decode_done_for_gpg)
+			print("\nCount successful decoded:", count_decode_done_for_gpg)
 		except FileNotFoundError:
 			time.sleep(3) #cho 3 giay thi kiem tra lai file
 		
@@ -227,9 +226,11 @@ def decrypt():
 	else:
 		
 		print(">>> Successful decode ALL ESI files, as below")
-		log_textbox.insert(tk.END, "Successful decode ALL ESI files, as below:\n")
-		print("\n".join(success_output_list))
-		log_textbox.insert(tk.END, "\n".join(success_output_list) + "\n")
+		print("\n".join(success_output_filepaths))
+		
+		print_to_textbox("Successful decode ALL ESI files, as below:")
+		print_to_textbox("\n".join(success_output_filepaths))
+		
 		
 		if len(success_nodenames) < len(input_nodenames):  #truong hop nay chi decode thanh cong vai esi, fail vai esi
 			print("Detail:")
@@ -251,18 +252,23 @@ def decrypt():
 			print("#"*20)
 	
 	log_textbox.insert(tk.END, "\n" + "Decode procedure finished!"+"\n")
+
+	#show pmd file to om menu
+	#success_output_filepaths = ['/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/metro4-dongrae-oncheon-GX33_2020-09-02/rcslogs/esi.du1.20200824T033855+0000.tar.gz']
 	
-	#update list of pmd from here
-	#test only
+	pmd_paths = []  ##rcs/dumps/pmd/80/pmd-nc_main_thread-5893-20200831-024152.tgz
+	global dict_pmd_tgz  #content pmd path, decode esi path
+	dict_pmd_tgz = {}
+	if len(success_output_filepaths) > 0:
+		for filepath_du_esi_decoded in success_output_filepaths:
+			pmd_paths.extend(get_pmd_path_from_tgz(filepath_du_esi_decoded))
+			for pmd in get_pmd_path_from_tgz(filepath_du_esi_decoded):
+				dict_pmd_tgz[pmd] = filepath_du_esi_decoded
+	print("pmd_paths", pmd_paths)
+	print("dict_pmd_tgz", dict_pmd_tgz)
+	
 	menu = pmd_optionmenu["menu"]
 	menu.delete(0, "end")
-	#success_output_filepaths = ['/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM/metro4-dongrae-oncheon-GX33_2020-09-02/rcslogs/esi.du1.20200824T033855+0000.tar.gz']
-	pmd_paths = []
-	
-	if len(success_output_filepaths) > 0:
-		for filepath in success_output_filepaths:
-			pmd_paths.extend(get_pmd_path_from_tgz(filepath))
-	print("pmd_paths", pmd_paths)
 	for path in pmd_paths:
 		menu.add_command(label=path, command=lambda value=path: omvar.set(value))
 	root.update_idletasks()
@@ -333,6 +339,26 @@ def OptionMenu_SelectionEvent(event): # I'm not sure on the arguments here, it w
 		for item in dcgm_filenames:
 			dcgm_paths_listbox.insert(END, item)
 
+
+def extract_dump():
+	print("extract button pressed")
+	pmd_short_path = omvar.get()
+	print("current selected value in om", pmd_short_path)
+	
+	print("dict_pmd_tgz", dict_pmd_tgz)
+	du_esi_decoded_path = dict_pmd_tgz[pmd_short_path]
+	print("du esi path:", du_esi_decoded_path)
+	print("extracting pmd...")
+	pmd_files = []
+	pmd_files.append(pmd_short_path)
+	extract_pmd_from_du_dump(du_esi_decoded_path, pmd_files)
+	print("Successful extract", pmd_files, "to", os.path.split(du_esi_decoded_path)[0])
+	
+	print_to_textbox("*"*10)
+	print_to_textbox("Successful extract "+ str( pmd_files)+ " to " + os.path.split(du_esi_decoded_path)[0])
+	print_to_textbox("*"*10)
+
+	
 root = tk.Tk()
 root.title("ESI decrypt tool")
 root.geometry("550x550")
@@ -424,7 +450,7 @@ combine_checkbox = Checkbutton(root, text="create_decrypted_dcgm", variable=zip_
 button_quit = tk.Button(root,text = "Quit", command=quit).grid(row=8, column=0, sticky=W)
 
 log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
-log_textbox.grid(row=9, column=0, sticky=W)
+log_textbox.grid(row=10, column=0, sticky=W)
 
 # Dictionary with options
 omvar = StringVar()
@@ -435,5 +461,7 @@ omvar.set('pmd crash dump') # set the default option
 pmd_optionmenu = OptionMenu(root, omvar, *list_of_pmd_optionmenu)
 pmd_optionmenu.grid(row = 8, column =0, sticky=W,padx = 75)
 
+button_extract_dump = Button(root, text="Extract dump", command=extract_dump)
+button_extract_dump.grid(row = 9, column =0, sticky=W,padx = 75)
 
 root.mainloop()

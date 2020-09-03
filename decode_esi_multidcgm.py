@@ -383,6 +383,21 @@ def get_pmd_path_from_tgz(tgz_file_path):
 		
 	return pmd_paths
 
+def ls(folder_path):
+	'''
+	>>> ls('/mnt/c/cygwin/home/ephucle/tool_script/python/test')
+	['/mnt/c/cygwin/home/ephucle/tool_script/python/test/helloworld.py2', '/mnt/c/cygwin/home/ephucle/tool_script/python/test/helloworld.py3', '/mnt/c/cygwin/home/ephucle/tool_script/python/test/tmp.txt']
+	
+	'''
+	filenames = []
+	for path, subdirs, files in os.walk(folder_path):
+		for name in files:
+			if "~$" not in name:
+				filenames.append(os.path.join(path,name))
+	sorted(filenames)
+	
+	return filenames
+
 def extract_pmd_from_du_dump(tgz_file_path, pmdfiles):
 	esi_path, name = os.path.split(tgz_file_path)
 	with tarfile.open(tgz_file_path, "r:gz") as tar:
@@ -391,7 +406,7 @@ def extract_pmd_from_du_dump(tgz_file_path, pmdfiles):
 			print("successful extracting", pmd_path)
 	print("check again unzip output")
 	print("all file below", esi_path)
-	print("\n".join(myfunc.ls(esi_path)))
+	print("\n".join(ls(esi_path)))
 
 if __name__ == "__main__":
 	main()
