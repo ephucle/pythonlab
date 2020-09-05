@@ -118,6 +118,23 @@ def check_stock_value():
 	print_to_textbox("*"*10)
 	print("*"*10)
 	
+	#check threshhold
+	global entry_lowerthreshold_var, entry_upperthreshold_var
+	#auto set thresh hold by below rule
+	entry_lowerthreshold_var.set(giathamchieu*0.95)
+	entry_upperthreshold_var.set(giathamchieu*1.05)
+	
+	lower_threshhold = float(entry_lowerthreshold_var.get())
+	upper_threshhold = float(entry_upperthreshold_var.get())
+	if lower_threshhold <= giakhoplenh <= upper_threshhold:
+		pass #normal, do nothing
+	if giakhoplenh < lower_threshhold:
+		print("ALERT!!, lower than threshhold")
+		print_to_textbox("ALERT!!, lower than threshhold")
+	if upper_threshhold < giakhoplenh:
+		print("ALERT!!, higher than threshhold")
+		print_to_textbox("ALERT!!, higher than threshhold")
+	
 	#save data to data frame, so that we can save data to csv quickly
 	#df = pd.DataFrame(columns = ['datetime', 'stockcode','TC','KL'])
 	#https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.append.html
@@ -150,7 +167,7 @@ def gui():
 	global root
 	root = tk.Tk()
 	root.title("VN Stock Check")
-	root.geometry("300x280")
+	root.geometry("280x270")
 	
 	# Dictionary with options
 	global tkvar_stockcode
@@ -168,8 +185,8 @@ def gui():
 	
 	global entry_interval,entry_times
 	
-	label_interval = Label(text="Refresh")
-	label_interval.grid(row=0, column=0, sticky=W, padx=70)
+	label_interval = Label(text="refresh")
+	label_interval.grid(row=0, column=0, sticky=W, padx=75)
 	
 	#entry_interval_var = tk.IntVar(value=10)
 	#entry_interval = Entry(root, width=5)
@@ -189,15 +206,15 @@ def gui():
 	refresh_om = OptionMenu(root, tkvar_refresh_duration, *choices)
 	refresh_om.grid(row = 0, column =0, sticky=W,padx = 120)
 	
-	label_times = Label(text="times")
-	label_times.grid(row=0, column=0, sticky=W, padx=210)
+	label_times = Label(text="counts")
+	label_times.grid(row=0, column=0, sticky=W, padx=200)
 	global entry_times_var
 	entry_times_var = IntVar(value=3)
 	
 	entry_times = Entry(root, width=5, textvariable=entry_times_var)
 	#entry_times.insert(0, 10)  #default check 10 time
 	
-	entry_times.grid(row = 0, column=0, sticky=W, padx = 250)
+	entry_times.grid(row = 0, column=0, sticky=W, padx = 240)
 	
 	button_check = Button(text="check stock", command = check_stock_value)
 	button_check.grid(row=1, column=0, sticky=W, padx=5)
@@ -207,8 +224,21 @@ def gui():
 	
 	#main_textbox = Text(root, height=15, width=50, padx = 5, pady =5)
 	global main_textbox
-	main_textbox = Text(root, width=30, height=10)
+	main_textbox = Text(root, width=33, height=10)
 	main_textbox.grid(row=2, column=0, sticky=W, padx=5, pady=5)
+	
+	label_lower = Label(text="lower").grid(row=3, column=0, sticky=W, padx=5)
+	global entry_lowerthreshold_var, entry_upperthreshold_var
+	#entry_lowerthreshold_var = tk.IntVar(value=10)
+	entry_lowerthreshold_var = tk.DoubleVar(value=10)
+	entry_lowerthreshold = Entry(root, width=5, textvariable=entry_lowerthreshold_var)
+	entry_lowerthreshold.grid(row = 3, column=0, sticky=W, padx = 55)
+	
+	label_upper = Label(text="upper").grid(row=3, column=0, sticky=W, padx=100)
+	#entry_upperthreshold_var = tk.IntVar(value=30)
+	entry_upperthreshold_var = tk.DoubleVar(value=30)
+	entry_upperthreshold = Entry(root, width=5, textvariable=entry_upperthreshold_var)
+	entry_upperthreshold.grid(row = 3, column=0, sticky=W, padx = 150)
 	
 	root.mainloop()
 
