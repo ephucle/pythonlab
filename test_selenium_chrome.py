@@ -1,13 +1,22 @@
+#!/usr/bin/env python3
 import time
 from selenium import webdriver
+import os
 
-#driver = webdriver.Chrome('/path/to/chromedriver')  # Optional argument, if not specified will search path.
-driver = webdriver.Chrome('C:\\Users\\ephucle\\Downloads\\chromedriver.exe')  # Optional argument, if not specified will search path.
+path_of_driver = 'C:\\Users\\ephucle\\Downloads\\chromedriver.exe'
+if not os.path.isfile(path_of_driver):
+	print(path_of_driver, "is not found in this system")
+	print("you can switch to window and run this script")
+	raise FileNotFoundError  #exit
+
+#driver = webdriver.Chrome(path_of_driver)  # Optional argument, if not specified will search path.
+driver = webdriver.Chrome()
+
+
 
 driver.get('http://www.google.com/');
-time.sleep(5) # Let the user actually see something!
 search_box = driver.find_element_by_name('q')
-search_box.send_keys('ChromeDriver')
+search_box.send_keys('Hello World')
 search_box.submit()
 time.sleep(20) # Let the user actually see something!
 driver.quit()
