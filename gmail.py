@@ -6,7 +6,8 @@ import sys, os
 
 def sendemail(tolist, body, subject):
 	try:
-		with open(os.getenv("HOME")+ os.sep +"netrc.json") as json_file:
+		#with open(os.getenv("HOME")+ os.sep +"netrc.json") as json_file:
+		with open(os.path.expanduser('~')+ os.sep +"netrc.json") as json_file:
 			data = json.load(json_file)
 	except:
 		print(os.getenv("HOME")+ os.sep +"netrc.json", "does not exist")
