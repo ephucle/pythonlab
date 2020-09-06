@@ -8,12 +8,53 @@ by Hoang Le P
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time, datetime
-import sys
+import sys, os
 #from twilio.rest import Client   #pip install twilio
 import tkinter as tk
 from tkinter import *
 import re
 import pandas as pd
+
+#to support send email funtion
+import smtplib,json
+def sendemail(tolist, body, subject):
+	'''
+	send email by gmail
+	tolist = ['abc@gmail.com', 'xyz@hostmail.com']
+	body =  string
+	subject = string
+	'''
+	try:
+		
+		#with open(os.getenv("HOME")+ os.sep +"netrc.json") as json_file:
+		with open(os.path.expanduser('~')+ os.sep +"netrc.json") as json_file:
+			data = json.load(json_file)
+	except:
+		print(os.getenv("HOME")+ os.sep +"netrc.json", "does not exist")
+	gmail_user = data['login']
+	gmail_password = data['password']
+	sent_from = gmail_user
+	email_text = """\
+From: %s
+To: %s
+Subject: %s
+
+%s
+""" % (sent_from, ", ".join(tolist), subject, body)
+	print(email_text)
+	try:
+		server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+		server.ehlo()
+		server.login(gmail_user, gmail_password)
+		print("Sending email....")
+		print_to_textbox("Sending email....")
+		server.sendmail(sent_from, tolist, email_text)
+		server.close()
+		print ('Email sent to:\n', "\n".join(tolist))
+		print_to_textbox ('Email sent to:\n'+ "\n".join(tolist))
+	except:
+		print ('Something went wrong, cannot sent email')
+		print_to_textbox ('Something went wrong, cannot sent email')
 
 
 def get_price(stock_name = "VIC"):
@@ -121,19 +162,31 @@ def check_stock_value():
 	#check threshhold
 	global entry_lowerthreshold_var, entry_upperthreshold_var
 	#auto set thresh hold by below rule
-	entry_lowerthreshold_var.set(giathamchieu*0.95)
-	entry_upperthreshold_var.set(giathamchieu*1.05)
+	#entry_lowerthreshold_var.set(giathamchieu*0.95)
+	#entry_upperthreshold_var.set(giathamchieu*1.05)
 	
 	lower_threshhold = float(entry_lowerthreshold_var.get())
 	upper_threshhold = float(entry_upperthreshold_var.get())
 	if lower_threshhold <= giakhoplenh <= upper_threshhold:
 		pass #normal, do nothing
+	global sendemail_var
 	if giakhoplenh < lower_threshhold:
 		print("ALERT!!, lower than threshhold")
 		print_to_textbox("ALERT!!, lower than threshhold")
+		
+		if sendemail_var.get(): sendemail(
+									tolist = ['lephuchoang@gmail.com'],  
+									subject='Stock Alert',
+									body=f"LOWER than threshhold, {timestamp} stockcode:{stockcode} TC:{giathamchieu} KL:{giakhoplenh}"
+									)
 	if upper_threshhold < giakhoplenh:
 		print("ALERT!!, higher than threshhold")
 		print_to_textbox("ALERT!!, higher than threshhold")
+		if sendemail_var.get():  sendemail(
+										tolist = ['lephuchoang@gmail.com'],  
+										subject='Stock Alert',
+										body=f"HIGHER than threshhold, {timestamp} stockcode:{stockcode} TC:{giathamchieu} KL:{giakhoplenh}"
+							)
 	
 	#save data to data frame, so that we can save data to csv quickly
 	#df = pd.DataFrame(columns = ['datetime', 'stockcode','TC','KL'])
@@ -187,11 +240,7 @@ def gui():
 	
 	label_interval = Label(text="refresh")
 	label_interval.grid(row=0, column=0, sticky=W, padx=75)
-	
-	#entry_interval_var = tk.IntVar(value=10)
-	#entry_interval = Entry(root, width=5)
-	#entry_interval.insert(0, 30)  #default check every 30 second
-	#entry_interval.grid(row = 0, column=0, sticky=W, padx = 120)
+
 	
 	global tkvar_refresh_duration
 	tkvar_refresh_duration = StringVar(root)
@@ -212,7 +261,6 @@ def gui():
 	entry_times_var = IntVar(value=3)
 	
 	entry_times = Entry(root, width=5, textvariable=entry_times_var)
-	#entry_times.insert(0, 10)  #default check 10 time
 	
 	entry_times.grid(row = 0, column=0, sticky=W, padx = 240)
 	
@@ -222,23 +270,27 @@ def gui():
 	button_save_to_csv = Button(text="save to csv", command = save_to_csv)
 	button_save_to_csv.grid(row=1, column=0, sticky=W, padx=100)
 	
-	#main_textbox = Text(root, height=15, width=50, padx = 5, pady =5)
+	
 	global main_textbox
 	main_textbox = Text(root, width=33, height=10)
 	main_textbox.grid(row=2, column=0, sticky=W, padx=5, pady=5)
 	
 	label_lower = Label(text="lower").grid(row=3, column=0, sticky=W, padx=5)
 	global entry_lowerthreshold_var, entry_upperthreshold_var
-	#entry_lowerthreshold_var = tk.IntVar(value=10)
+	
 	entry_lowerthreshold_var = tk.DoubleVar(value=10)
 	entry_lowerthreshold = Entry(root, width=5, textvariable=entry_lowerthreshold_var)
 	entry_lowerthreshold.grid(row = 3, column=0, sticky=W, padx = 55)
 	
 	label_upper = Label(text="upper").grid(row=3, column=0, sticky=W, padx=100)
-	#entry_upperthreshold_var = tk.IntVar(value=30)
+	
 	entry_upperthreshold_var = tk.DoubleVar(value=30)
 	entry_upperthreshold = Entry(root, width=5, textvariable=entry_upperthreshold_var)
 	entry_upperthreshold.grid(row = 3, column=0, sticky=W, padx = 150)
+	
+	global sendemail_var
+	sendemail_var = IntVar(value=1)
+	sendemail_checkbox = Checkbutton(root, text="send email", variable=sendemail_var).grid(row=3, column=0, sticky=W, padx=180)
 	
 	root.mainloop()
 
