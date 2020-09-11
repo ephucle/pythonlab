@@ -264,6 +264,8 @@ def decrypt():
 			pmd_paths.extend(get_pmd_path_from_tgz(filepath_du_esi_decoded))
 			for pmd in get_pmd_path_from_tgz(filepath_du_esi_decoded):
 				dict_pmd_tgz[pmd] = filepath_du_esi_decoded
+	pmd_paths.sort()
+	pmd_paths = pmd_paths[-10:]  #get last 10 pmd
 	print("pmd_paths", pmd_paths)
 	print("dict_pmd_tgz", dict_pmd_tgz)
 	

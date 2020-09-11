@@ -153,10 +153,11 @@ def check_stock_value():
 	print("giakhoplenh", stockcode, giakhoplenh)
 	
 	#print_to_textbox(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"))
-	print_to_textbox(timestamp)
-	print_to_textbox("giathamchieu " +  stockcode + " " + str( giathamchieu))
-	print_to_textbox("giakhoplenh " + stockcode + " "+ str(giakhoplenh))
-	print_to_textbox("*"*10)
+	#print_to_textbox(timestamp)
+	#print_to_textbox("giathamchieu " +  stockcode + " " + str( giathamchieu))
+	#print_to_textbox("giakhoplenh " + stockcode + " "+ str(giakhoplenh))
+	print_to_textbox(f"{timestamp} | {stockcode} | TC {giathamchieu} | KL {giakhoplenh}")
+	#print_to_textbox("*"*10)
 	print("*"*10)
 	
 	#check threshhold
@@ -219,7 +220,7 @@ def save_to_csv():
 def gui():
 	global root
 	root = tk.Tk()
-	root.title("VN Stock Check")
+	root.title("stock app, http://shorturl.at/eHNP4")
 	root.geometry("280x270")
 	
 	# Dictionary with options
@@ -274,6 +275,7 @@ def gui():
 	global main_textbox
 	main_textbox = Text(root, width=33, height=10)
 	main_textbox.grid(row=2, column=0, sticky=W, padx=5, pady=5)
+	print_to_textbox("Source code: http://shorturl.at/eHNP4")
 	
 	label_lower = Label(text="lower").grid(row=3, column=0, sticky=W, padx=5)
 	global entry_lowerthreshold_var, entry_upperthreshold_var

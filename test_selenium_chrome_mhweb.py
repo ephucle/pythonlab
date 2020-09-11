@@ -18,10 +18,11 @@ driver = webdriver.Chrome(executable_path='C:\\Users\\ephucle\\Downloads\\chrome
 
 driver.get('https://mhweb.ericsson.se/')
 
-time.sleep(10) # Let the user actually see something!
+#time.sleep(10) # Let the user actually see something!
+driver.implicitly_wait(15)
 search_box = driver.find_element_by_name('frm_smartOpenInput')
 search_box.send_keys(trid)
-
+driver.implicitly_wait(15)
 #https://stackoverflow.com/questions/10629815/how-to-switch-to-new-window-in-selenium-for-python
 window_before = driver.window_handles[0]
 #print (window_before)
@@ -52,7 +53,12 @@ html = driver.page_source
 file_object.write(html)
 print("Save successful", output_filepath)
 
-time.sleep(6000) # Let the user actually see something!
+answer_element = driver.find_element_by_id('frm_ccTranswertext_valueIframeEnv')
+print("answer")
+print(answer_element.get_attribute('value'))
+#frm_ccTranswertext_valueIframeEnv
+
+time.sleep(3600) # Let the user actually see something!
 driver.quit()
 
 #search field
@@ -60,3 +66,4 @@ driver.quit()
 
 #"Open button"
 #<input id="frm_openObject" name="frm_openObject" onclick="jsf.util.chain(this,event,&quot;page.toolbar.openButtonClick();&quot;,&quot;RichFaces.ajax(\&quot;frm_openObject\&quot;,event,{\&quot;incId\&quot;:\&quot;1\&quot;} )&quot;);return false;" value="Open" onmousedown="RichFaces.component('frm_smartOpen').setValue(jQuery('#frm_smartOpenInput').val());" type="submit" tabindex="11">
+
