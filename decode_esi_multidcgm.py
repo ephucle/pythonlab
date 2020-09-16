@@ -35,7 +35,8 @@ def create_target_folder(nodename,root_path):
 	
 	#in case script is import importing, root_path =  default dcgm path
 	
-	target_folder = nodename+"_"+date
+	#target_folder = nodename+"_"+date
+	target_folder = date+ "_"+ nodename  #to avoid moshell issue
 	target_folder_path = os.path.join(root_path, target_folder)
 	
 	if not os.path.isdir(target_folder_path):

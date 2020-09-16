@@ -6,7 +6,7 @@ from pathlib import Path
 from tkinter import filedialog
 import os, sys
 from decode_esi_multidcgm import *
-from decode_esi_multidcgm import get_pmd_path_from_tgz, extract_pmd_from_du_dump
+from decode_esi_multidcgm import get_pmd_path_from_tgz, extract_pmd_from_du_dump, extract_logfiles, create_target_folder
 import concurrent.futures
 import time, datetime, re
 
