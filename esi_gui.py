@@ -389,6 +389,7 @@ choices = {
 tkvar_fav_dir.set('favorite_path') # set the default option
 favorite_path_optionmenu = OptionMenu(root, tkvar_fav_dir, *choices, command = OptionMenu_SelectionEvent)
 favorite_path_optionmenu.grid(row = 0, column =0, sticky=W,padx = 150)
+favorite_path_optionmenu.config(bg = "SpringGreen2")
 
 #default value to home folder
 folder_path = StringVar(root, value=root_path)
@@ -445,11 +446,11 @@ sector4_checkbox = Checkbutton(root, text="RU4_2052", variable=vars4).grid(row=6
 sector5_checkbox = Checkbutton(root, text="RU5_2053", variable=vars5).grid(row=6, column=0, sticky=W, padx=430)
 
 
-button = tk.Button(root,text = "Decrypt",command=decrypt).grid(row=7, column=0,sticky=W)
+button = tk.Button(root,text = "Decrypt",command=decrypt, bg="green2").grid(row=7, column=0,sticky=W)
 
 zip_back_dcgm = IntVar(value=1) #set default value to 1
 combine_checkbox = Checkbutton(root, text="create_decrypted_dcgm", variable=zip_back_dcgm).grid(row=7, column=0, sticky=W, padx=80)
-button_quit = tk.Button(root,text = "Quit", command=quit).grid(row=8, column=0, sticky=W)
+button_quit = tk.Button(root,text = "Quit", command=quit, bg="sandy brown").grid(row=8, column=0, sticky=W)
 
 log_textbox = Text(root, height=15, width=85, padx = 10, pady =10)  #height = 20 row
 log_textbox.grid(row=10, column=0, sticky=W)

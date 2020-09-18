@@ -1,0 +1,4 @@
+*.pyc
+*__pycache__*
+*/*.pyc
+subscribers.csv
