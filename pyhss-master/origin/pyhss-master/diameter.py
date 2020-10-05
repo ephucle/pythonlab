@@ -6,8 +6,16 @@ import binascii
 import math
 import uuid
 import os
+import datetime
 sys.path.append(os.path.realpath('lib'))
 import S6a_crypt
+
+def get_now():
+	'''
+	>>> get_now()
+	'2020-06-26 08:18:43.147639'
+	'''
+	return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
 class Diameter:
 
@@ -49,10 +57,6 @@ class Diameter:
 
     #Converts a dotted-decimal IPv4 address to hex
     def ip_to_hex(self, ip):
-        '''
-        >>> d.ip_to_hex('10.11.12.13')
-        '00010a0b0c0d'
-        '''
         ip = ip.split('.')
         ip_hex = "0001"         #Only works for IPv4
         ip_hex = ip_hex + str(format(int(ip[0]), 'x').zfill(2))
@@ -63,23 +67,12 @@ class Diameter:
 
     #Converts string to hex
     def string_to_hex(self, string):
-        '''
-        >>> d.string_to_hex('abc')
-        '616263'
-        >>> d.string_to_hex('a')
-        '61'
-        >>> d.string_to_hex('b')
-        '62'
-        '''
         string_bytes = string.encode('utf-8')
         return str(binascii.hexlify(string_bytes), 'ascii')
 
     #Converts int to hex padded to required number of bytes
     def int_to_hex(self, input_int, output_bytes):
-        '''
-        >>> d.int_to_hex(2001, 4)
-        '000007d1'
-        '''
+        
         return format(input_int,"x").zfill(output_bytes*2)
 
     #Generates a valid random ID to use
@@ -88,21 +81,11 @@ class Diameter:
         return str(uuid.uuid4().hex[:length])
 
     def Reverse(self, str):
-        '''
-        >>> d.Reverse('abc')
-        'cba'
-        >>> d.Reverse('123')
-        '321'
-        '''
         stringlength=len(str)
         slicedString=str[stringlength::-1]
         return (slicedString)
 
     def DecodePLMN(self, plmn):
-        '''
-        >>> d.DecodePLMN('54f240')
-        ('452', '04')
-        '''
         logging.debug("Decoded PLMN: " + str(plmn))
         mcc = self.Reverse(plmn[0:2]) + self.Reverse(plmn[2:4]).replace('f', '')
         logging.debug("Decoded MCC: " + mcc)
@@ -112,10 +95,6 @@ class Diameter:
         return mcc, mnc
 
     def EncodePLMN(self, mcc, mnc):
-        '''
-        >>> d.EncodePLMN('452', '04')
-        '54f240'
-        '''
         plmn = list('XXXXXX')
         plmn[0] = self.Reverse(mcc)[1]
         plmn[1] = self.Reverse(mcc)[2]
@@ -141,12 +120,6 @@ class Diameter:
     #Generates an AVP with inputs provided (AVP Code, AVP Flags, AVP Content, Padding)
     #AVP content must already be in HEX - This can be done with binascii.hexlify(avp_content.encode())
     def generate_avp(self, avp_code, avp_flags, avp_content):
-        '''
-        >>> avp_content = d.int_to_hex(2001, 4)  #000007d1
-        >>> d.generate_avp(268, 40, avp_content)  #Result Code (DIAMETER_SUCESS (2001)), #268 Result-Code ; 40 = 0100 0000 = "M" bit means Mandatory
-        '0000010c4000000c000007d1'
-        
-        '''
         avp_code = format(avp_code,"x").zfill(8)
         
         avp_length = 1 ##This is a placeholder that's overwritten later
@@ -198,7 +171,7 @@ class Diameter:
     def generate_diameter_packet(self, packet_version, packet_flags, packet_command_code, packet_application_id, packet_hop_by_hop_id, packet_end_to_end_id, avp):
         #Placeholder that is updated later on
         packet_length = 228
-        packet_length = format(packet_length,"x").zfill(6)  #'0000e4'
+        packet_length = format(packet_length,"x").zfill(6)
        
         packet_command_code = format(packet_command_code,"x").zfill(6)
         
@@ -209,26 +182,21 @@ class Diameter:
         packet_length = format(packet_length,"x").zfill(6)
         
         packet_hex = packet_version + packet_length + packet_flags + packet_command_code + packet_application_id + packet_hop_by_hop_id + packet_end_to_end_id + avp
-        return packet_hex #string
+        return packet_hex
 
 
 
 
     def decode_diameter_packet(self, data):
-        '''
-		>>> data = '0100011880000101000000001ec78840c4c88cc2000001084000000f6e69636b2d70630000000128400000256d6e633030312e6d63633030312e336770706e6574776f726b2e6f7267000000000001014000000e00017f00010100000000010a4000000c000000000000010d0000001450794853532d636c69656e740000010b4000000c000027d90000010440000020000001024000000c010000230000010a4000000c000028af0000010440000020000001024000000c010000160000010a4000000c000028af0000010440000020000001024000000c010000000000010a4000000c000028af000001024000000cffffffff000001094000000c0000159f000001094000000c000028af000001094000000c000032db'
-        >>> packet_vars, avps = d.decode_diameter_packet(data)
-        >>> print(packet_vars)
-        {'packet_version': '01', 'length': 280, 'flags': '80', 'command_code': 257, 'ApplicationId': 0, 'hop-by-hop-identifier': '1ec78840', 'end-to-end-identifier': 'c4c88cc2'}
-        >>> print(avps)
-        [{'avp_code': 264, 'avp_flags': '40', 'avp_length': 15, 'misc_data': '6e69636b2d7063', 'padding': 2, 'padded_data': '00'}, {'avp_code': 296, 'avp_flags': '40', 'avp_length': 37, 'misc_data': '6d6e633030312e6d63633030312e336770706e6574776f726b2e6f7267', 'padding': 6, 'padded_data': '000000'}, {'avp_code': 257, 'avp_flags': '40', 'avp_length': 14, 'misc_data': '00017f000101', 'padding': 4, 'padded_data': '0000'}, {'avp_code': 266, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '00000000', 'padding': 0, 'padded_data': ''}, {'avp_code': 269, 'avp_flags': '00', 'avp_length': 20, 'misc_data': '50794853532d636c69656e74', 'padding': 0, 'padded_data': ''}, {'avp_code': 267, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '000027d9', 'padding': 0, 'padded_data': ''}, {'avp_code': 260, 'avp_flags': '40', 'avp_length': 32, 'misc_data': [{'avp_code': 258, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '01000023', 'padding': 0, 'padded_data': ''}, {'avp_code': 266, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '000028af', 'padding': 0, 'padded_data': ''}], 'padding': 0, 'padded_data': ''}, {'avp_code': 260, 'avp_flags': '40', 'avp_length': 32, 'misc_data': [{'avp_code': 258, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '01000016', 'padding': 0, 'padded_data': ''}, {'avp_code': 266, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '000028af', 'padding': 0, 'padded_data': ''}], 'padding': 0, 'padded_data': ''}, {'avp_code': 260, 'avp_flags': '40', 'avp_length': 32, 'misc_data': [{'avp_code': 258, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '01000000', 'padding': 0, 'padded_data': ''}, {'avp_code': 266, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '000028af', 'padding': 0, 'padded_data': ''}], 'padding': 0, 'padded_data': ''}, {'avp_code': 258, 'avp_flags': '40', 'avp_length': 12, 'misc_data': 'ffffffff', 'padding': 0, 'padded_data': ''}, {'avp_code': 265, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '0000159f', 'padding': 0, 'padded_data': ''}, {'avp_code': 265, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '000028af', 'padding': 0, 'padded_data': ''}, {'avp_code': 265, 'avp_flags': '40', 'avp_length': 12, 'misc_data': '000032db', 'padding': 0, 'padded_data': ''}]
-		'''
+        #print("Receive data in byte type----", data, type(data))
+        print(get_now(), "Receive data---------", data)
         packet_vars = {}
         avps = []
         
         if type(data) is bytes:
             data = data.hex()
 
+        print("Receive data converted to hex string---", data, type(data))
 
         packet_vars['packet_version'] = data[0:2]
         packet_vars['length'] = int(data[2:8], 16)
@@ -237,35 +205,50 @@ class Diameter:
         packet_vars['ApplicationId'] = int(data[16:24], 16)
         packet_vars['hop-by-hop-identifier'] = data[24:32]
         packet_vars['end-to-end-identifier'] = data[32:40]
-
+        print("Decoded receive data----------")
+        #print('	packet_version', packet_vars['packet_version'])
+        #print('	length', packet_vars['length'])
+        #print('	flags', packet_vars['flags'])
+        #print('	command_code', packet_vars['command_code'])
+        #print('	ApplicationId', packet_vars['ApplicationId'])
+        #print('	hop-by-hop-identifier', packet_vars['hop-by-hop-identifier'])
+        #print('	end-to-end-identifier', packet_vars['end-to-end-identifier'])
         avp_sum = data[40:]
-
-        avp_vars, remaining_avps = self.decode_avp_packet(avp_sum)
-        avps.append(avp_vars)
+        #print("	avp_sum", avp_sum, type(avp_sum))
         
+        avp_vars, remaining_avps = self.decode_avp_packet(avp_sum)
+        #print("avp_vars", avp_vars)
+        #print("remaining_avps", remaining_avps)
+        
+        avps.append(avp_vars)
+        #print(avps)
+        #test ok toi day roi
+        #avps = [{'avp_code': 264, 'avp_flags': '40', 'avp_length': 15, 'misc_data': '6e69636b2d7063', 'padding': 2, 'padded_data': '00'}]
+        #remaining_avps = '00000128400000256d6e633030312e6d63633030312e336770706e6574776f726b2e6f7267000000000001014000000e00017f00010100000000010a4000000c000000000000010d0000001450794853532d636c69656e740000010b4000000c000027d90000010440000020000001024000000c010000230000010a4000000c000028af0000010440000020000001024000000c010000160000010a4000000c000028af0000010440000020000001024000000c010000000000010a4000000c000028af000001024000000cffffffff000001094000000c0000159f000001094000000c000028af000001094000000c000032db'
         while len(remaining_avps) > 0:
             avp_vars, remaining_avps = self.decode_avp_packet(remaining_avps)
+            #print("second avp decode, avp_vars", avp_vars) #second avp decode, avp_vars {'avp_code': 296, 'avp_flags': '40', 'avp_length': 37, 'misc_data': '6d6e633030312e6d63633030312e336770706e6574776f726b2e6f7267', 'padding': 6, 'padded_data': '000000'}
+            #print("second avp decode, remaining_avps", remaining_avps) #second avp decode, remaining_avps 000001014000000e00017f00010100000000010a4000000c000000000000010d0000001450794853532d636c69656e740000010b4000000c000027d90000010440000020000001024000000c010000230000010a4000000c000028af0000010440000020000001024000000c010000160000010a4000000c000028af0000010440000020000001024000000c010000000000010a4000000c000028af000001024000000cffffffff000001094000000c0000159f000001094000000c000028af000001094000000c000032db
+            
             avps.append(avp_vars)
+            #print("new avps", avps)
         else:
             pass
 
+        print("	packet_vars", packet_vars)
+        print("	avps")
+        for avp in avps:
+            print("\t", avp)
+
+
         return packet_vars, avps
 
-    def decode_avp_packet(self, data):
-        print("receive data:")
-        print(data)
-        
+    def decode_avp_packet(self, data):                       
         avp_vars = {}
         avp_vars['avp_code'] = int(data[0:8], 16)
-        print("avp_code\n",avp_vars['avp_code'])
         
-
         avp_vars['avp_flags'] = data[8:10]
         avp_vars['avp_length'] = int(data[10:16], 16)
-        print("avp_flags\n",avp_vars['avp_flags'])
-        print("avp_length\n",avp_vars['avp_length'])
-        #sys.exit()
-
         if avp_vars['avp_flags'] == "c0":
             #If c0 is present AVP is Vendor AVP
             avp_vars['vendor_id'] = int(data[16:24], 16)
@@ -273,11 +256,6 @@ class Diameter:
         else:
             #if is not a vendor AVP
             avp_vars['misc_data'] = data[16:(avp_vars['avp_length']*2)]
-        
-        print("misc_data\n",avp_vars['misc_data'])
-        
-        print('''avp_vars['avp_length'] % 4''', avp_vars['avp_length'] % 4)
-
         if avp_vars['avp_length'] % 4  == 0:
             #Multiple of 4 - No Padding needed
             avp_vars['padding'] = 0
@@ -287,27 +265,21 @@ class Diameter:
             avp_vars['padding'] = int( rounded_value - avp_vars['avp_length']) * 2
         avp_vars['padded_data'] = data[(avp_vars['avp_length']*2):(avp_vars['avp_length']*2)+avp_vars['padding']]
 
-        print("avp_vars_padding", avp_vars['padding'])
-        print('avp_vars_padded_data', avp_vars['padded_data'])
-        #sys.exit()
 
         #If body of avp_vars['misc_data'] contains AVPs, then decode each of them as a list of dicts like avp_vars['misc_data'] = [avp_vars, avp_vars]
         try:
-                sub_avp_vars, sub_remaining_avps = self.decode_avp_packet(avp_vars['misc_data'])
-                print("sub_avp_vars",sub_avp_vars)
-                print("sub_remaining_avps",sub_remaining_avps)
-                
-                #Sanity check - If the avp code is greater than 9999 it's probably not an AVP after all...
-                if int(sub_avp_vars['avp_code']) > 9999:
-                    pass
-                else:
-                    #If the decoded AVP is valid store it
-                    avp_vars['misc_data'] = []
-                    avp_vars['misc_data'].append(sub_avp_vars)
-                    #While there are more AVPs to be decoded, decode them:
-                    while len(sub_remaining_avps) > 0:
-                        sub_avp_vars, sub_remaining_avps = self.decode_avp_packet(sub_remaining_avps)
-                        avp_vars['misc_data'].append(sub_avp_vars)
+              sub_avp_vars, sub_remaining_avps = self.decode_avp_packet(avp_vars['misc_data'])
+              #Sanity check - If the avp code is greater than 9999 it's probably not an AVP after all...
+              if int(sub_avp_vars['avp_code']) > 9999:
+                  pass
+              else:
+                  #If the decoded AVP is valid store it
+                  avp_vars['misc_data'] = []
+                  avp_vars['misc_data'].append(sub_avp_vars)
+                  #While there are more AVPs to be decoded, decode them:
+                  while len(sub_remaining_avps) > 0:
+                      sub_avp_vars, sub_remaining_avps = self.decode_avp_packet(sub_remaining_avps)
+                      avp_vars['misc_data'].append(sub_avp_vars)
               
         except Exception as e:
             logging.debug("failed to decode sub-avp - error: " + str(e))
@@ -329,12 +301,6 @@ class Diameter:
 
 
     def decode_diameter_packet_length(self, data):
-        '''
-        >>> data = bytes.fromhex("01000118")
-        >>> decode_diameter_packet_length(data)
-        280
-
-        '''
         packet_vars = {}
         data = data.hex()
 
@@ -429,7 +395,6 @@ class Diameter:
 
     #Capabilities Exchange Answer
     def Answer_257(self, packet_vars, avps, recv_ip):
-
         logging.debug("packet_vars for CEA is " + str(packet_vars))
         logging.debug("avps for CEA is " + str(avps))
         avp = ''                                                                                    #Initiate empty var AVP 
@@ -973,11 +938,6 @@ class Diameter:
 
     #Capabilities Exchange Request
     def Request_257(self):
-        '''
-        >>> d.Request_257()
-        '010001088000010100000000c89aa39a6771758f00000108400000176873732e6c6f63616c646f6d61696e0000000128400000136c6f63616c646f6d61696e00000001014000000e00017f00010100000000010a4000000c000000000000010d0000000d50794853530000000000010b4000000c000027d90000010440000020000001024000000c010000230000010a4000000c000028af0000010440000020000001024000000c010000160000010a4000000c000028af0000010440000020000001024000000c010000000000010a4000000c000028af000001024000000cffffffff000001094000000c0000159f000001094000000c000028af000001094000000c000032db'
-
-        '''
         avp = ''
         avp += self.generate_avp(264, 40, self.OriginHost)                                                    #Origin Host
         avp += self.generate_avp(296, 40, self.OriginRealm)                                                   #Origin Realm
@@ -993,7 +953,6 @@ class Diameter:
         avp += self.generate_avp(265, 40, format(int(10415),"x").zfill(8))                               #Supported-Vendor-ID (3GPP)
         avp += self.generate_avp(265, 40, format(int(13019),"x").zfill(8))                               #Supported-Vendor-ID 13019 (ETSI)
         response = self.generate_diameter_packet("01", "80", 257, 0, self.generate_id(4), self.generate_id(4), avp)            #Generate Diameter packet
-        #generate_diameter_packet(self, packet_version, packet_flags, packet_command_code, packet_application_id, packet_hop_by_hop_id, packet_end_to_end_id, avp):
         return response
 
     #Device Watchdog Request
@@ -1002,7 +961,6 @@ class Diameter:
         avp += self.generate_avp(264, 40, self.OriginHost)                                                    #Origin Host
         avp += self.generate_avp(296, 40, self.OriginRealm)                                                   #Origin Realm
         response = self.generate_diameter_packet("01", "80", 280, 0, self.generate_id(4), self.generate_id(4), avp)#Generate Diameter packet
-        
         return response
 
         
@@ -1036,10 +994,6 @@ class Diameter:
 
     #3GPP S6a/S6d Update Location Request (ULR)
     def Request_16777251_316(self, imsi):
-        '''
-        >>> d.Request_16777251_316('310120265624299')
-        '01000108c000013c01000023add9401edcd5d77b000001074000002f6e69636b70632e6c6f63616c646f6d61696e3b653461303363303930323b313b6170705f73366100000001154000000c0000000100000108400000176873732e6c6f63616c646f6d61696e0000000128400000136c6f63616c646f6d61696e000000011b400000136c6f63616c646f6d61696e000000000140000017333130313230323635363234323939000000040880000010000028af000003ec0000057dc0000010000028af000000020000057fc000000f000028af13f021000000064f80000010000028af0000000000000104400000200000010a4000000c000028af000001024000000c01000023'
-        '''
         mcc = imsi[0:3]
         mnc = imsi[3:5]
         avp = ''                                                                                    #Initiate empty var AVP                                                                                           #Session-ID
@@ -1206,16 +1160,3 @@ class Diameter:
         response = self.generate_diameter_packet("01", "c0", 324, 16777252, self.generate_id(4), self.generate_id(4), avp)     #Generate Diameter packet
         return response
 
-
-if __name__ == "__main__":
-    #how to test a single method
-    #d1 = Diameter('hss.localdomain', 'localdomain', 'PyHSS')
-    #print(d1.Request_257(), type(d1.Request_257()))
-    #010001088000010100000000c89aa39a6771758f00000108400000176873732e6c6f63616c646f6d61696e0000000128400000136c6f63616c646f6d61696e00000001014000000e00017f00010100000000010a4000000c000000000000010d0000000d50794853530000000000010b4000000c000027d90000010440000020000001024000000c010000230000010a4000000c000028af0000010440000020000001024000000c010000160000010a4000000c000028af0000010440000020000001024000000c010000000000010a4000000c000028af000001024000000cffffffff000001094000000c0000159f000001094000000c000028af000001094000000c000032db <class 'str'>
-    #sys.exit()
-
-    import doctest
-    #doctest.testmod()
-    #https://stackoverflow.com/questions/2708178/python-using-doctests-for-classes
-    #d = Diameter('hss.localdomain', 'localdomain', 'PyHSS')
-    doctest.testmod(extraglobs={'d': Diameter('hss.localdomain', 'localdomain', 'PyHSS')})

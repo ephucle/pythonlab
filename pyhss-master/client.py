@@ -4,12 +4,12 @@ import sys
 import diameter
 global recv_ip
 #recv_ip = "10.0.1.252"
-recv_ip = "150.236.101.148"
+recv_ip = "127.0.0.1"  #client ip address
 #hostname = input("Host to connect to:\t")
 #domain = input("Domain:\t")
 
 #hostname = "10.0.1.252"
-hostname = "150.236.101.148"  #ip of hss diameter server
+hostname = "127.0.0.1"  #ip of hss diameter server
 realm = "mnc001.mcc001.3gppnetwork.org"
 
 supported_calls = ["CER", "DWR", "AIR", "ULR", "UAR", "PUR", "SAR", "MAR", "MCR", "LIR"]
@@ -31,7 +31,8 @@ Authentication-Information-Request	AIR	318	3GPP TS 29.272 [RFC 5516]	AIR
 
 
 '''
-diameter = diameter.Diameter('nick-pc', 'mnc001.mcc001.3gppnetwork.org', 'PyHSS-client')
+#diameter = diameter.Diameter('nick-pc', 'mnc001.mcc001.3gppnetwork.org', 'PyHSS-client')
+diameter = diameter.Diameter('localhost', 'mnc001.mcc001.3gppnetwork.org', 'PyHSS-client')
 
 clientsocket = socket.socket()
 print("Connecting to " + str(hostname))
@@ -99,12 +100,12 @@ while True:
         #troubleshooting
         message = diameter.Request_257()
         print("message, Request_257:\n", message, type(message) )
-        sys.exit()
+        
         '''
 		message= 
 '0100011880000101000000001ec78840c4c88cc2000001084000000f6e69636b2d70630000000128400000256d6e633030312e6d63633030312e336770706e6574776f726b2e6f7267000000000001014000000e00017f00010100000000010a4000000c000000000000010d0000001450794853532d636c69656e740000010b4000000c000027d90000010440000020000001024000000c010000230000010a4000000c000028af0000010440000020000001024000000c010000160000010a4000000c000028af0000010440000020000001024000000c010000000000010a4000000c000028af000001024000000cffffffff000001094000000c0000159f000001094000000c000028af000001094000000c000032db'
         '''
-        #sys.exit()
+        
         print("Start send request....---------------------")
         SendRequest(diameter.Request_257())
         print("Request sent-------------------------------")

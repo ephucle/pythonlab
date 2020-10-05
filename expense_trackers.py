@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #https://realpython.com/intermediate-python-project-ideas/
 #https://pysimplegui.readthedocs.io/en/latest/
 import PySimpleGUI as sg
@@ -125,7 +126,9 @@ print(get_by_name(name))
 #print ("deleting done")
 
  
-sg.theme('DarkAmber')   # Add a touch of color
+#sg.theme('DarkAmber')   # Add a touch of color
+sg.theme('LightGrey3')   # Add a touch of color
+
 # All the stuff inside your window.
 layout = [[sg.Text('Some text on Row 1')],
 			[sg.Text('Name'), sg.InputText()],

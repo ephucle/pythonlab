@@ -13,16 +13,15 @@ import os
 
 
 #our_ip = "10.0.1.252"
-our_ip = "127.0.0.1"
+our_ip = "127.0.0.1" # no use localhost, just use 127.0.0.1
 #need to get this dynamically
 
 
-#diameter = diameter.Diameter('hss.localdomain', 'localdomain', 'PyHSS')
-diameter = diameter.Diameter('localhost', 'localdomain', 'PyHSS')
+diameter = diameter.Diameter('hss.localdomain', 'localdomain', 'PyHSS')
 
 
 class DiameterRequestHandler(socketserver.BaseRequestHandler):
-    print(f'PyHSS started - listening on host {our_ip} port 3868')
+    print('PyHSS started - listening on port 3868')
     data_sum = b''
     firstloop = 0
     def setup(self):
@@ -44,10 +43,21 @@ class DiameterRequestHandler(socketserver.BaseRequestHandler):
 
             #Send Capabilities Exchange Answer (CEA) response to Capabilites Exchange Request (CER)
             if packet_vars['command_code'] == 257 and packet_vars['ApplicationId'] == 0 and packet_vars['flags'] == "80":                    
-                print("Received Request with command code 257 (CER) from " + orignHost + "\n\tSending response (CEA)")
-                response = diameter.Answer_257(packet_vars, avps, our_ip)                   #Generate Diameter packet
-                self.request.sendall(bytes.fromhex(response))                       #Send it
+                print("Da nhan duoc command_code = 257, ApplicationId = 0, flags=80 ")
 
+                print("Received Request with command code 257 (CER) from " + orignHost + "\n\tSending response (CEA)")
+                #sys.exit()
+
+                response = diameter.Answer_257(packet_vars, avps, our_ip)                   #Generate Diameter packet
+                print("response Answer_257, hex string----", response, type(response))
+                
+                packet_vars, avps = diameter.decode_diameter_packet(response)
+                print("response Answer_257, packet_vars", packet_vars)
+                print("response Answer_257, avps", avps)
+                #sys.exit()
+                self.request.sendall(bytes.fromhex(response))                       #Send it
+                #sau khi send CEA thi dung
+                sys.exit()
 
             #Send Credit Control Answer (CCA) response to Credit Control Request (CCR)
             elif packet_vars['command_code'] == 272 and packet_vars['ApplicationId'] == 16777238:
@@ -80,6 +90,12 @@ class DiameterRequestHandler(socketserver.BaseRequestHandler):
             elif packet_vars['command_code'] == 316 and packet_vars['ApplicationId'] == 16777251:
                 print("Received Request with command code 316 (3GPP Update Location-Request) from " + orignHost + "\n\tGenerating (ULA)")
                 response = diameter.Answer_16777251_316(packet_vars, avps)      #Generate Diameter packet
+                packet_vars, avps = diameter.decode_diameter_packet(message)
+                print("packet_vars:", packet_vars)
+                print("avps:")
+                for item in avps:
+                    print("\t", item)
+                sys.exit()
                 self.request.sendall(bytes.fromhex(response))                   #Send it
 
 
@@ -140,7 +156,6 @@ class DiameterRequestHandler(socketserver.BaseRequestHandler):
 
 
 
-#server = socketserver.ThreadingTCPServer(('10.0.1.252', 3868), DiameterRequestHandler)  #To create a TCP network server that serve each its client connection in a separate thread the ThreadingTCPServer class can be used
-
-server = socketserver.ThreadingTCPServer((our_ip, 3868), DiameterRequestHandler)  #To create a TCP network server that serve each its client connection in a separate thread the ThreadingTCPServer class can be used
+#server = socketserver.ThreadingTCPServer(('10.0.1.252', 3868), DiameterRequestHandler)
+server = socketserver.ThreadingTCPServer((our_ip, 3868), DiameterRequestHandler)
 server.serve_forever()
