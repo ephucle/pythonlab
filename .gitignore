@@ -22,3 +22,4 @@ test_convert_gui_exe/output/hangman_dataflair.exe
 test_convert_gui_exe/output/hello_tkinter.exe
 test_convert_gui_exe/output/hello_world.exe
 app.log
+pyang/
