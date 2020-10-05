@@ -3,6 +3,7 @@
 """
 Created on Sat Sep 04 2020
 by Hoang Le P
+run only on window, do not run in WSL ( due to no support driver)
 """
 
 from selenium import webdriver
