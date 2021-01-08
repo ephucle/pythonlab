@@ -448,8 +448,10 @@ def new_crash_check(pandas_dataset):
 		
 	upgrade_pkg = dataset['UP']
 	sites_list = dataset['Site Name']
-	crash_daytimes = dataset['Date Time(KST)']
-	
+	if 'Date Time(KST)' in dataset.columns
+		crash_daytimes = dataset['Date Time(KST)']
+	else 
+		crash_daytimes = dataset['KST Time']
 
 	len1 = len(crash_details)
 	

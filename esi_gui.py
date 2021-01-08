@@ -383,6 +383,7 @@ choices = {
 	'favorite path',
 	root_path, 
 	'/mnt/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM',
+	'/mnt/c/cygwin/home/ephucle/moshell_logfiles/logs_moshell/dcg',
 	'/cygdrive/c/working/02-Project/16-SKT_5G_Project/03-1-DCGM'
 }
 
