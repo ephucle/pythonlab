@@ -1,0 +1,16 @@
+#5G eNB CPM has functional traces
+#Cell and sector traces:
+lh mp te default 
+te e all Ft_X2AP_ASN
+te e all Ft_RRC_ASN
+te e all Ft_S1AP_ASN
+te e all Ft_X2_COMMON_SIGNALING
+te e all Ft_ENDC_SETUP
+te e all Ft_ENDC_RELEASE
+te e all Ft_ENDC
+te e all Ft_NR_RRC_ASN
+te e all Ft_NR_LEG_RELEASE
+te filter set '[1] <> \$0A' Ft_S1AP_ASN
+ue enable -allcell -allUe -timeout 720
+te save *
+! $moncommand | tee C:\cygwin\home\ephucle\tool_script\python\pythonlab\tracetool\log\169.254.2.2_210125_094304_r.log | C:\Users\ephucle\ltng\bin\ltng-decoder -s | tee C:\cygwin\home\ephucle\tool_script\python\pythonlab\tracetool\log\169.254.2.2_210125_094304_d.log | C:\Users\ephucle\ltng\bin\ltng-flow | tee C:\cygwin\home\ephucle\tool_script\python\pythonlab\tracetool\log\169.254.2.2_210125_094304_f.log

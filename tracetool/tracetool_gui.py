@@ -15,9 +15,9 @@ decoder_path = os.path.join(home_path, "decoder")
 
 
 
-print(dir_path)
-print(home_path)
-print(ltng_path)
+print("Path of current script",dir_path)
+print("Path of home folder",home_path)
+print("ltng path current setting",ltng_path)
 
 log_path = os.path.join(dir_path, "log")
 if not os.path.isdir(log_path):
@@ -77,6 +77,7 @@ def createtrace():
 	nodetype = tkvar_nodetype.get()
 	nodename = nodename_var.get()
 	imsi = imsi_var.get()
+	cellid = cellid_var.get()
 	m = re.search('^\d{15}$', imsi)
 	check_imsi_length = False
 	if m:
@@ -90,27 +91,47 @@ def createtrace():
 	trace_cmd_filepath = os.path.join(log_path, "trace_"+nodetype+".mos")
 	f = open(trace_cmd_filepath, "w")
 	#print_to_textbox ("Button trace is pressed !!")
-	if nodetype == "RNC" and check_imsi_length:
-		f.write("#RNC TRACE" + "\n")
-		f.write("lh mod te default" + "\n")
-		f.write("lh mod ueidtrace off -ue -all" + "\n")
-		f.write("lh mod uerandtrace off -cell -all" + "\n")
-		f.write("lh mod ueidtrace -ue imsi "+ imsi+  "\n")
-		f.write("lh mod te e bus_send bus_receive UE_ASN_RRC" + "\n")
-		f.write("lh mod te e bus_send bus_receive UE_ASN_RANAP" + "\n")
-		f.write("lh mod te e bus_send bus_receive UE_ASN_RNSAP" + "\n")
-		f.write("lh mod te e bus_send bus_receive UE_ASN_NBAP" + "\n")
-		f.write("lh mod te e all UE_UEH_EXCEPTION" + "\n")
-		f.write("lh mod te e trace4 UE_GENERAL" + "\n")
-		f.write("lh mod te e trace1 trace3 UE_IU_IF" + "\n")
-		f.write("lh mod te e trace3 trace6 trace7 UE_CON_HANDL" + "\n")
-		f.write("mon-" + "\n")
-		f.write("mon mod" + "\n")
-		f.write("l-" + "\n")
-	else:
+	if nodetype == "RNC"  and not imsi == "":
+		if check_imsi_length:
+			f.write("#RNC TRACE" + "\n")
+			f.write("lh mod te default" + "\n")
+			f.write("lh mod ueidtrace off -ue -all" + "\n")
+			f.write("lh mod uerandtrace off -cell -all" + "\n")
+			f.write("lh mod ueidtrace -ue imsi "+ imsi+  "\n")
+			f.write("lh mod te e bus_send bus_receive UE_ASN_RRC" + "\n")
+			f.write("lh mod te e bus_send bus_receive UE_ASN_RANAP" + "\n")
+			f.write("lh mod te e bus_send bus_receive UE_ASN_RNSAP" + "\n")
+			f.write("lh mod te e bus_send bus_receive UE_ASN_NBAP" + "\n")
+			f.write("lh mod te e all UE_UEH_EXCEPTION" + "\n")
+			f.write("lh mod te e trace4 UE_GENERAL" + "\n")
+			f.write("lh mod te e trace1 trace3 UE_IU_IF" + "\n")
+			f.write("lh mod te e trace3 trace6 trace7 UE_CON_HANDL" + "\n")
+			f.write("mon-" + "\n")
+			f.write("mon mod" + "\n")
+			f.write("l-" + "\n")
+		else:
+			print_to_textbox("IMSI number is not corrected, check IMSI length")
+	
+	if nodetype == "RNC"  and not cellid == "":
+		f.write("$password = rnc" +"\n")
+		f.write("lh mod te default" +"\n")
+		f.write("lh mod ueidtrace off -ue -all" +"\n")
+		f.write("lh mod uerandtrace off -cell -all" +"\n")
+		f.write("lh mod uerandtrace on -cell "+ cellid +  "\n")
+		f.write("lh mod uerandtrace max -unlim" +"\n")
+		f.write("lh mod te e bus_send bus_receive UE_ASN_RRC" +"\n")
+		f.write("lh mod te e bus_send bus_receive UE_ASN_RANAP" +"\n")
+		f.write("lh mod te e bus_send bus_receive UE_ASN_RNSAP" +"\n")
+		f.write("lh mod te e bus_send bus_receive UE_ASN_NBAP" +"\n")
+		f.write("lh mod te e all UE_UEH_EXCEPTION" +"\n")
+		f.write("lh mod te e trace4 UE_GENERAL" +"\n")
+		#f.write("lh mod te e trace1 trace3 UE_IU_IF" +"\n")
+		#f.write("lh mod te e trace3 trace6 trace7 UE_CON_HANDL" +"\n")
+		f.write("mon-" +"\n")
+		f.write("mon mod" +"\n")
 		
-		print_to_textbox("IMSI number is not corrected, check IMSI length")
-		
+
+	
 	if nodetype == "ENODB_5G":
 		f.write( "#5G eNB CPM has functional traces" + "\n")
 		f.write( "#Cell and sector traces:" + "\n")
@@ -167,6 +188,9 @@ def createtrace():
 		print_to_textbox (all_lines)
 	
 	button_runtrace.config(state='normal')   #enable nut RUN
+	button_runtrace.config(bg='spring green')
+	output_scriptpath_var.set("Output PATH: "+trace_cmd_filepath)
+	outputscript_label.config(bg="spring green")
 
 def runtrace():
 	print("run trace button is pressed !!")
@@ -201,11 +225,24 @@ def ping_check():
 		print("ICMP Ping is NOK")
 		ping_result_var.set('PING---NOK')
 		root.update_idletasks()
+
+def OnEntryClick_imsi(event):
+	print("Entry IMSI is clicked")
+	entry_cellid.delete(0, 'end')
+	entry_cellid.config(state='disabled') 
+	entry_imsi.config(state='normal')
+	
+def OnEntryClick_cellid(event):
+	print("Entry CELLID is clicked")
+	entry_imsi.delete(0, 'end')
+	entry_imsi.config(state='disabled')
+	entry_cellid.config(state='normal')
+	
 def gui():
 	global root
 	root = tk.Tk()
-	root.title("TRACETOOL, RAN INTEGRATION, E///")
-	root.geometry("550x400")
+	root.title("TRACETOOL_RANIT_ERICSSON_" + current_time_stamp())
+	root.geometry("600x470")
 	
 	#cac bien de canh chinh GUI
 	tab1_width = 80
@@ -230,13 +267,13 @@ def gui():
 	label_nodename = Label(text="NODE NAME")
 	label_nodename.grid(row=1, column=0, sticky=W, padx=5)
 	global nodename_var
-	nodename_var = StringVar(value="eHI04309_modump.zip")
+	nodename_var = StringVar(value="169.254.2.2")
 	entry_nodename = Entry(root, width=column2_width, textvariable=nodename_var)
 	entry_nodename.grid(row = 1, column=0, sticky=W, padx = tab1_width)
 	
 	#PING
 	button_pingtest = tk.Button(root,text = "PING TEST", command=ping_check, bg="yellow")
-	button_pingtest.grid(row=1, column=0, sticky=W, padx=230)
+	button_pingtest.grid(row=1, column=0, sticky=W, padx=250)
 	
 	#IMSI, ROW2
 	label_imsi = Label(text="IMSI")
@@ -245,14 +282,18 @@ def gui():
 	imsi_var = StringVar(value="452041234512345")
 	entry_imsi = Entry(root, width=column2_width, textvariable=imsi_var)
 	entry_imsi.grid(row = 2, column=0, sticky=W, padx = tab1_width)
+	#entry_imsi.bind("<KeyRelease>", OnEntryClick_imsi) #keyup 
+	entry_imsi.bind("<1>", OnEntryClick_imsi) #left mouse button click 
 	
-	#CELLID, ROW3
+	
+	#CELLID, ROW2
 	label_cell = Label(text="CELLID")
-	label_cell.grid(row=3, column=0, sticky=W, padx=5)
+	label_cell.grid(row=2, column=0, sticky=W, padx=250)
 	global cellid_var, entry_cellid
 	cellid_var = StringVar(value="12345")
-	entry_cellid = Entry(root, width=column2_width, textvariable=cellid_var)
-	entry_cellid.grid(row = 3, column=0, sticky=W, padx = tab1_width)
+	entry_cellid = Entry(root, width=column2_width , textvariable=cellid_var)
+	entry_cellid.grid(row = 2, column=0, sticky=W, padx = tab1_width + 230)
+	entry_cellid.bind("<1>", OnEntryClick_cellid) #keyup 
 	
 	#BUTTON CREATE TRACE COMMAND, ROW4
 	button_createtrace = tk.Button(root,text = "CREATE TRACE CMD", command=createtrace, bg="yellow")
@@ -260,7 +301,8 @@ def gui():
 	
 	#BUTTON CREATE TRACE COMMAND, ROW4
 	global button_runtrace
-	button_runtrace = tk.Button(root,text = "RUN TRACE", command=runtrace, bg="green yellow")
+	#button_runtrace = tk.Button(root,text = "RUN TRACE", command=runtrace, bg="spring green")
+	button_runtrace = tk.Button(root,text = "RUN TRACE", command=runtrace)
 	button_runtrace.grid(row=4, column=0, sticky=W, padx=150)
 	button_runtrace.config(state='disabled')   #moi khoi tao thi disable nut nay
 	
@@ -270,7 +312,9 @@ def gui():
 	main_textbox.grid(row=5, column=0, sticky=W, padx =5, pady = 2)
 	
 	#BUTTON QUIT, ROW6
-	button_quit = tk.Button(root,text = "Quit", command=quit, bg="LightBlue1").grid(row=6, column=0, sticky=W, padx=5)
+	#button_quit = tk.Button(root,text = "Quit", command=quit, bg="LightBlue1").grid(row=6, column=0, sticky=W, padx=5)
+	#using root.destroy to avoid is issue when buid app by installer
+	button_quit = tk.Button(root,text = "Quit", command=root.destroy, bg="tomato").grid(row=6, column=0, sticky=W, padx=5)
 	
 	if os.path.isdir(decoder_path):
 		wcdmadecoder_var = StringVar(root, value="3G Decoder: "+decoder_path)
@@ -287,6 +331,18 @@ def gui():
 	ltngdecoder_label = Label(root, textvariable = ltngdecoder_var)
 	ltngdecoder_label.grid(row=8, column=0, sticky=W, padx = 5)
 
+	#LABEL OUTPUT SCRIPT, ROW 9
+	global output_scriptpath_var, outputscript_label
+	output_scriptpath_var = StringVar(root, value="Output PATH: ")
+	outputscript_label = Label(root, textvariable = output_scriptpath_var)
+	outputscript_label.grid(row=9, column=0, sticky=W, padx = 5)
+	
+	#LABEL CURRENT SYSTEM, ROW 10
+	global current_system_var, current_system_label
+	current_system_var = StringVar(root, value="Current system: " + platform.system())
+	current_system_label = Label(root, textvariable = current_system_var)
+	current_system_label.grid(row=10, column=0, sticky=W, padx = 5)
+	
 	root.mainloop()
 
 

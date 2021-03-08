@@ -1,0 +1,31 @@
+#RNC TRACE
+lh mod te default
+lh mod ueidtrace off -ue -all
+lh mod uerandtrace off -cell -all
+lh mod ueidtrace -ue imsi 452041234512345
+lh mod te e bus_send bus_receive UE_ASN_RRC
+lh mod te e bus_send bus_receive UE_ASN_RANAP
+lh mod te e bus_send bus_receive UE_ASN_RNSAP
+lh mod te e bus_send bus_receive UE_ASN_NBAP
+lh mod te e all UE_UEH_EXCEPTION
+lh mod te e trace4 UE_GENERAL
+lh mod te e trace1 trace3 UE_IU_IF
+lh mod te e trace3 trace6 trace7 UE_CON_HANDL
+mon-
+mon mod
+l-
+$password = rnc
+lh mod te default
+lh mod ueidtrace off -ue -all
+lh mod uerandtrace off -cell -all
+lh mod uerandtrace on -cell 12345
+lh mod uerandtrace max -unlim
+lh mod te e bus_send bus_receive UE_ASN_RRC
+lh mod te e bus_send bus_receive UE_ASN_RANAP
+lh mod te e bus_send bus_receive UE_ASN_RNSAP
+lh mod te e bus_send bus_receive UE_ASN_NBAP
+lh mod te e all UE_UEH_EXCEPTION
+lh mod te e trace4 UE_GENERAL
+mon-
+mon mod
+! $moncommand | tee /home/ephucle/tool_script/python/pythonlab/tracetool/log/169.254.2.2_210119_145031_r.log | /home/ephucle/decoder/decoder.pl --w18b | tee /home/ephucle/tool_script/python/pythonlab/tracetool/log/169.254.2.2_210119_145031_d.log | /home/ephucle/decoder/flow.pl -colour | tee /home/ephucle/tool_script/python/pythonlab/tracetool/log/169.254.2.2_210119_145031_f.log
