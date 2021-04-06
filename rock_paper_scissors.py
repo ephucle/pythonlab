@@ -6,17 +6,22 @@ user_point = 0
 computer_point = 0
 round = 0
 while True:
+	print("****************************************************************")
 	round +=1
+	user_input = input("PLAY GAME, YOUR CHOICE: 0 BAO, 1 BUA, 2 KEO , qQ QUIT\n >>>")
+	if user_input == "q" or user_input == "Q":
+		print("QUIT!!")
+		break
 	try:
-		user_input = int(input("Please select: 0_bao, 1_bua, 2_keo \n >>>"))
+		user_input = int(user_input)
 	except:
-		print("input only 0,1,2")
+		print("input only 0,1,2, q,Q")
+	
 	if user_input in [0,1,2]:
 		mapping = {0:"bao", 1:"bua", 2:"keo" }
 		user_input_text = mapping[user_input]
 		print("Your choice:",user_input_text)
 	else:
-		#The continue statement in Python returns the control to the beginning of the while loop.
 		print("input only 0,1,2")
 		continue
 	
@@ -45,8 +50,7 @@ while True:
 	
 	result = check_rule(user_input_text, computer_choice)
 	result_map = {1:"YOU WIN", 0:"YOU LOOSE", 0.5:"DRAW"}
-	print("COMPARE: ",result_map[result])
-	##point calcu##
+
 	if result == 0.5:
 		user_point += 0.5
 		computer_point += 0.5
@@ -56,6 +60,5 @@ while True:
 	if result == 0:
 		user_point += 0
 		computer_point += 1
-	print("Points Summary:")
-	print("round",round," | user:", user_point, "computer", computer_point)
-	print("****************")
+	print("round: ",round," | ",result_map[result]," | user points:", user_point, " | computer points", computer_point)
+	
