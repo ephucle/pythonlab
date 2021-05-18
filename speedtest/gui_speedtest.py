@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import tkinter as tk
 
-import os
+import os, sys
 import json
 import matplotlib.pyplot as plt
 import datetime
@@ -13,14 +13,13 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,  
 NavigationToolbar2Tk) 
 
-
-
 from datetime import datetime as dt
-# dd/mm/YY H:M:S
-#now = dt.now()
-#dt_string = now.strftime("%d%m%Y_%H%M%S")
-#workbook = xlsxwriter.Workbook('speedtest'+dt_string+'.xlsx')
-#worksheet = workbook.add_worksheet()
+
+
+# insert at 1, 0 is the script path (or '' in REPL)
+sys.path.insert(1, './speedtest-cli-master')
+
+import file
 
 
 def call(cmd):

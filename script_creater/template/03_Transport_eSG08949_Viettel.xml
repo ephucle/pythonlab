@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running />
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>eSG08949</managedElementId>
+        <Transport>
+          <transportId>1</transportId>
+          <SctpProfile xmlns="urn:com:ericsson:ecim:RtnSctpProfile">
+            <sctpProfileId>1</sctpProfileId>
+            <dscp>48</dscp>
+            <incCookieLife>30</incCookieLife>
+            <bundlingActivated>true</bundlingActivated>
+            <bundlingTimer>0</bundlingTimer>
+            <heartbeatInterval>2000</heartbeatInterval>
+            <hbMaxBurst>1</hbMaxBurst>
+            <initialHeartbeatInterval>500</initialHeartbeatInterval>
+            <initARWnd>16384</initARWnd>
+            <initRto>200</initRto>
+            <maxBurst>4</maxBurst>
+            <maxRto>400</maxRto>
+            <maxInStreams>2</maxInStreams>
+            <maxInitRt>8</maxInitRt>
+            <maxOutStreams>2</maxOutStreams>
+            <maxShutdownRt>5</maxShutdownRt>
+            <transmitBufferSize>64</transmitBufferSize>
+            <minRto>100</minRto>
+            <alphaIndex>ALPHA_1_8TH</alphaIndex>
+            <betaIndex>BETA_1_4TH</betaIndex>
+            <maxActivateThr>65535</maxActivateThr>
+            <minActivateThr>1</minActivateThr>
+            <sackTimer>10</sackTimer>
+            <cookieLife>60</cookieLife>
+            <assocMaxRtx>20</assocMaxRtx>
+            <pathMaxRtx>10</pathMaxRtx>
+            <primaryPathMaxRtx>0</primaryPathMaxRtx>
+            <maxSctpPduSize>1480</maxSctpPduSize>
+            <userLabel>Signalling</userLabel>
+          </SctpProfile>
+          <SctpEndpoint xmlns="urn:com:ericsson:ecim:RtnSctp">
+            <sctpEndpointId>1</sctpEndpointId>
+            <portNumber>36422</portNumber>
+            <sctpProfile>ManagedElement=eSG08949,Transport=1,SctpProfile=1</sctpProfile>
+            <localIpAddress>ManagedElement=eSG08949,Transport=1,Router=LTE,InterfaceIPv4=1,AddressIPv4=1</localIpAddress>
+          </SctpEndpoint>
+        </Transport>
+        <Transport>
+          <transportId>1</transportId>
+          <QosProfiles xmlns="urn:com:ericsson:ecim:RtnQosProfiles">
+            <qosProfilesId>1</qosProfilesId>
+            <DscpPcpMap>
+              <dscpPcpMapId>1</dscpPcpMapId>
+              <defaultPcp>0</defaultPcp>
+              <pcp0>1</pcp0>
+              <pcp0>2</pcp0>
+              <pcp0>3</pcp0>
+              <pcp0>4</pcp0>
+              <pcp0>5</pcp0>
+              <pcp0>6</pcp0>
+              <pcp0>7</pcp0>
+              <pcp0>8</pcp0>
+              <pcp0>9</pcp0>
+              <pcp0>11</pcp0>
+              <pcp0>13</pcp0>
+              <pcp0>15</pcp0>
+              <pcp0>16</pcp0>
+              <pcp0>17</pcp0>
+              <pcp0>18</pcp0>
+              <pcp0>19</pcp0>
+              <pcp0>20</pcp0>
+              <pcp0>21</pcp0>
+              <pcp0>22</pcp0>
+              <pcp0>23</pcp0>
+              <pcp0>24</pcp0>
+              <pcp0>25</pcp0>
+              <pcp0>27</pcp0>
+              <pcp0>28</pcp0>
+              <pcp0>29</pcp0>
+              <pcp0>30</pcp0>
+              <pcp0>31</pcp0>
+              <pcp0>32</pcp0>
+              <pcp0>33</pcp0>
+              <pcp0>34</pcp0>
+              <pcp0>35</pcp0>
+              <pcp0>37</pcp0>
+              <pcp0>38</pcp0>
+              <pcp0>39</pcp0>
+              <pcp0>41</pcp0>
+              <pcp0>42</pcp0>
+              <pcp0>43</pcp0>
+              <pcp0>44</pcp0>
+              <pcp0>45</pcp0>
+              <pcp0>47</pcp0>
+              <pcp0>48</pcp0>
+              <pcp0>49</pcp0>
+              <pcp0>50</pcp0>
+              <pcp0>51</pcp0>
+              <pcp0>52</pcp0>
+              <pcp0>53</pcp0>
+              <pcp0>54</pcp0>
+              <pcp0>55</pcp0>
+              <pcp0>56</pcp0>
+              <pcp0>57</pcp0>
+              <pcp0>58</pcp0>
+              <pcp0>59</pcp0>
+              <pcp0>60</pcp0>
+              <pcp0>61</pcp0>
+              <pcp0>62</pcp0>
+              <pcp0>63</pcp0>
+              <pcp0>46</pcp0>
+              <pcp0>36</pcp0>
+              <pcp0>40</pcp0>
+              <pcp0>26</pcp0>
+              <pcp0>10</pcp0>
+              <pcp0>12</pcp0>
+              <pcp0>14</pcp0>
+            </DscpPcpMap>
+          </QosProfiles>
+          <Router xmlns="urn:com:ericsson:ecim:RtnL3Router">
+            <routerId>vr_OAM</routerId>
+            <InterfaceIPv4 xmlns="urn:com:ericsson:ecim:RtnL3InterfaceIPv4">
+              <interfaceIPv4Id>1</interfaceIPv4Id>
+              <egressQosMarking>ManagedElement=eSG08949,Transport=1,QosProfiles=1,DscpPcpMap=1</egressQosMarking>
+            </InterfaceIPv4>
+          </Router>
+          
+          <Router xmlns="urn:com:ericsson:ecim:RtnL3Router">
+            <routerId>LTE</routerId>
+            <InterfaceIPv4 xmlns="urn:com:ericsson:ecim:RtnL3InterfaceIPv4">
+              <interfaceIPv4Id>1</interfaceIPv4Id>
+              <egressQosMarking>ManagedElement=eSG08949,Transport=1,QosProfiles=1,DscpPcpMap=1</egressQosMarking>
+            </InterfaceIPv4>
+          </Router>
+          
+          <!--PTP synchronization create-->
+          <Ptp xmlns="urn:com:ericsson:ecim:RsyncPtp">
+          	<ptpId>1</ptpId>
+          	<BoundaryOrdinaryClock>
+          		<boundaryOrdinaryClockId>1</boundaryOrdinaryClockId>
+          		<clockType>SLAVE_ONLY_ORDINARY_CLOCK</clockType>
+          		<domainNumber>0</domainNumber>
+          		<ptpProfile>G_8265_1</ptpProfile>
+          		<PtpBcOcPort>
+          			<ptpBcOcPortId>1</ptpBcOcPortId>
+          			<associatedGrandmaster>10.192.250.22</associatedGrandmaster>
+          			<transportInterface>ManagedElement=eSG08949,Transport=1,Router=LTE,InterfaceIPv4=1,AddressIPv4=1</transportInterface>
+          			<dscp>48</dscp>
+          			<pBit>6</pBit>
+          			<administrativeState>UNLOCKED</administrativeState>
+          		</PtpBcOcPort>
+          	</BoundaryOrdinaryClock>
+          	<BoundaryOrdinaryClock>
+          		<boundaryOrdinaryClockId>2</boundaryOrdinaryClockId>
+          		<clockType>SLAVE_ONLY_ORDINARY_CLOCK</clockType>
+          		<domainNumber>0</domainNumber>
+          		<ptpProfile>G_8265_1</ptpProfile>
+          		<PtpBcOcPort>
+          			<ptpBcOcPortId>1</ptpBcOcPortId>          			
+          			<associatedGrandmaster>10.196.250.2</associatedGrandmaster>
+          			<transportInterface>ManagedElement=eSG08949,Transport=1,Router=LTE,InterfaceIPv4=1,AddressIPv4=1</transportInterface>
+          			<dscp>48</dscp>
+          			<pBit>6</pBit>
+          			<administrativeState>UNLOCKED</administrativeState>
+          		</PtpBcOcPort>
+          	</BoundaryOrdinaryClock>
+          </Ptp>	
+          
+          <Synchronization xmlns="urn:com:ericsson:ecim:RsyncSynchronization">
+            <synchronizationId>1</synchronizationId>
+            <telecomStandard>OPTION_I</telecomStandard>
+            <fixedPosition>true</fixedPosition>
+            <RadioEquipmentClock xmlns="urn:com:ericsson:ecim:RsyncRadioEquipmentClock">
+              <radioEquipmentClockId>1</radioEquipmentClockId>
+              <selectionProcessMode>QL_DISABLED</selectionProcessMode>
+              <minQualityLevel>
+                <qualityLevelValueOptionI>SSU_A</qualityLevelValueOptionI>
+                <qualityLevelValueOptionII>STU</qualityLevelValueOptionII>
+                <qualityLevelValueOptionIII>UNK</qualityLevelValueOptionIII>
+              </minQualityLevel>
+			  <!--
+              <NodeGroupSyncMember xmlns="urn:com:ericsson:ecim:RsyncNodeGroupSyncMember">
+                <nodeGroupSyncMemberId>1</nodeGroupSyncMemberId>
+                <administrativeState>LOCKED</administrativeState>
+                <syncNodePriority>3</syncNodePriority>
+                <syncRiPortCandidate>ManagedElement=eSG08949,Equipment=1,FieldReplaceableUnit=1,RiPort=A</syncRiPortCandidate>
+                <syncRiPortCandidate>ManagedElement=eSG08949,Equipment=1,FieldReplaceableUnit=1,RiPort=B</syncRiPortCandidate>
+                <syncRiPortCandidate>ManagedElement=eSG08949,Equipment=1,FieldReplaceableUnit=1,RiPort=C</syncRiPortCandidate>
+              </NodeGroupSyncMember>
+			  -->
+            </RadioEquipmentClock>
+            <TimeSyncIO xmlns="urn:com:ericsson:ecim:RsyncTimeSyncIO">
+              <timeSyncIOId>1</timeSyncIOId>
+              <encapsulation>ManagedElement=eSG08949,Equipment=1,FieldReplaceableUnit=1,SyncPort=1</encapsulation>
+              <compensationDelay>0</compensationDelay>
+            </TimeSyncIO>
+            
+            
+            <RadioEquipmentClock xmlns="urn:com:ericsson:ecim:RsyncRadioEquipmentClock">
+              <radioEquipmentClockId>1</radioEquipmentClockId>              
+              <!-- First sync reference, PTP -->
+              <RadioEquipmentClockReference>
+                <radioEquipmentClockReferenceId>1</radioEquipmentClockReferenceId>
+                <administrativeState>UNLOCKED</administrativeState>
+                <holdOffTime>1000</holdOffTime>
+                <useQLFrom>RECEIVED_QL</useQLFrom>
+                <waitToRestoreTime>60</waitToRestoreTime>
+                <priority>1</priority>
+                <encapsulation>ManagedElement=eSG08949,Transport=1,Ptp=1,BoundaryOrdinaryClock=1</encapsulation>
+                <adminQualityLevel>
+                  <qualityLevelValueOptionI>SSU_A</qualityLevelValueOptionI>
+                  <qualityLevelValueOptionII>STU</qualityLevelValueOptionII>
+                  <qualityLevelValueOptionIII>UNK</qualityLevelValueOptionIII>
+                </adminQualityLevel>
+              </RadioEquipmentClockReference>
+                          
+              <!-- Second sync reference-->
+              <RadioEquipmentClockReference>
+                <radioEquipmentClockReferenceId>2</radioEquipmentClockReferenceId>
+                <administrativeState>LOCKED</administrativeState>
+                <holdOffTime>1000</holdOffTime>
+                <useQLFrom>RECEIVED_QL</useQLFrom>
+                <waitToRestoreTime>60</waitToRestoreTime>
+                <priority>2</priority>
+                <encapsulation>ManagedElement=eSG08949,Transport=1,Ptp=1,BoundaryOrdinaryClock=2</encapsulation>
+                <adminQualityLevel>
+                  <qualityLevelValueOptionI>SSU_A</qualityLevelValueOptionI>
+                  <qualityLevelValueOptionII>STU</qualityLevelValueOptionII>
+                  <qualityLevelValueOptionIII>UNK</qualityLevelValueOptionIII>
+                </adminQualityLevel>
+              </RadioEquipmentClockReference>              
+            </RadioEquipmentClock>
+            
+          </Synchronization>
+        </Transport>
+      </ManagedElement>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>
+

@@ -1,0 +1,84 @@
+!!!!!!!!!!!Chu y copy de tat ca file di kem vao thu muc tich hop!!!!!!!!!!!!!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!1. Load file Software, file Basic va Equipment!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!
+!!!!!Chi thuc hien tich hop khi da thong luong truyen dan!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!Su dung Ie hoac FireFox go dia chi http://169.254.2.2 thuc hien Auto Intergrate!!!!!
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!2. Load file TN va RN !!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!Su dung Cywin chay DT!!!!!
+cd C:/LTE                                !Trong do C:/LTE la thu muc chua cac file RN, TN!
+ssh -o PubKeyAuthentication=no -o UserKnownHostsFile=/dev/null -o ForwardX11=no -p 830 rbs@169.254.2.2 -s netconf < "03_Transport_eSG08949_Viettel.xml"
+yes
+ssh -o PubKeyAuthentication=no -o UserKnownHostsFile=/dev/null -o ForwardX11=no -p 830 rbs@169.254.2.2 -s netconf < "04_Radio_eSG08949_Viettel.xml"
+yes
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!3. Ket noi eNodeB dung EMCLI!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!Khai bao tham so va active cell!!!!!
+run C:/LTE/post_integration_eHI04309.mos
+
+!!!!!Check thong ip!!!!!
+get Transport=1,Router=vr_OAM,InterfaceIPv4=1,AddressIPv4=1 address
+st InterfaceIPv4
+!!!!!------>Dam bao dung quy hoach IP va 2 interface ENABLED:
+!!!!!       0 (ENABLED)  Transport=1,Router=LTE,InterfaceIPv4=1
+!!!!!       1 (ENABLED)   Transport=1,Router=vr_OAM,InterfaceIPv4=1
+
+!!!!!Kiem tra trang thai scan RET!!!!!
+get . scan
+!!!!!-->Dam bao trang thai scan la FINISHED:
+!!!!!   EquipmentDiscovery=1                                    antennaDeviceScanStatus 2 (FINISHED) 
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!4. Su dung macro Electrical Tilt sinh DT khai RET!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!Import file eHI04309_RET_Scan_Result.xml vao macro!!!!!
+
+!!!!!Chay DT trong file eHI04309_RET_Intergrate.txt tren EMCLI!!!!!
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!5. Active va kiem tra trang thai cell!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+st cell
+deb cell                                  !!!deblock cell!!!
+st cell
+bl cell                                  !!!halted cell!!!
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!6. Debug khi co loi!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!Ping len MME!!!!!
+mcc Router=LTE ping 10.202.17.193 --count 4
+y
+
+!!!!!!-->!!!!!!
+
+!!!!!Ping len OSS!!!!!
+mcc Router=vr_OAM ping 10.60.50.100  --count 4
+y
+
+!!!!!!--> Truong hop lenh ping khong chay thi can thoat ra/vao lai EMCLI!!!!!!
+
+!!!!!Kiem tra trang thai MME!!!!!
+st mme
+!!!!!!--> Truong hop lenh ping thong nhung MME van disable thi reset tram hoac cho khoang 10 phut!!!!!!
+facc Equipment=1,FieldReplaceableUnit=1 restartUnit RESTARTT_COLDWTEST PLANNED_RECONFIGURATION reset
+
+

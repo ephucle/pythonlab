@@ -1,0 +1,6 @@
+crn ENodeBFunction=1,EUtranCellFDD=**EUtranCellFDD**,GUtranFreqRelation=**GUtranFreqRelation**,GUtranCellRelation=**GUtranCellRelation**
+essEnabled **essEnabled**
+isRemoveAllowed **isRemoveAllowed**
+neighborCellRef **neighborCellRef**
+userLabel
+end

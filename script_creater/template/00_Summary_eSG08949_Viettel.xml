@@ -1,0 +1,4 @@
+<summary:AutoIntegrationRbsSummaryFile xmlns:summary="http://www.ericsson.se/RbsSummaryFileSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ericsson.se/RbsSummaryFileSchemaSummaryFile.xsd">
+  <Format revision="G" />
+  <ConfigurationFiles initialSecurityConfigurationFilePath="%ForIPsec_path, not supported yet%" upgradePackageFilePath="Baseband_Radio_Node-CXP9024418_15-R24F29" siteEquipmentFilePath="01_SiteEquipment_eSG08949_Viettel_BB6502.xml" siteBasicFilePath="02_SiteBasic_eSG08949_Viettel.xml" />
+</summary:AutoIntegrationRbsSummaryFile>

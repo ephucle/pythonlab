@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <capabilities>
+   <capability>urn:ietf:params:netconf:base:1.0</capability>
+ </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <edit-config>
+   <target>
+     <running />
+   </target>
+   <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+     <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+       <managedElementId>1</managedElementId>
+       <dnPrefix>SubNetwork=ONRM_ROOT_MO_R,SubNetwork=LTE,MeContext=eSG08949B</dnPrefix>
+       <SystemFunctions>
+         <systemFunctionsId>1</systemFunctionsId>
+         <Lm xmlns="urn:com:ericsson:ecim:RcsLM">
+           <lmId>1</lmId>
+           <fingerprint>eSG08949B</fingerprint>
+         </Lm>
+         
+         <SecM xmlns="urn:com:ericsson:ecim:ComSecM">
+           <secMId>1</secMId>
+           <CertM xmlns="urn:com:ericsson:ecim:RcsCertM">
+             <certMId>1</certMId>
+             <EnrollmentAuthority>
+               <enrollmentAuthorityId>1</enrollmentAuthorityId>
+               <enrollmentCaFingerprint>52:DD:C3:DE:D8:00:85:EB:0F:CE:B6:F9:4F:D7:AB:73:AB:E8:44:7A</enrollmentCaFingerprint>
+               <enrollmentAuthorityName>CN=ossfsNECertCA,OU=ericssonOAM,O=Ericsson</enrollmentAuthorityName>
+             </EnrollmentAuthority>
+             <EnrollmentServerGroup>
+               <enrollmentServerGroupId>1</enrollmentServerGroupId>
+               <EnrollmentServer>
+                 <enrollmentServerId>1</enrollmentServerId>
+                 <uri>http://10.60.149.68:26772/cmp</uri>
+                 <protocol>CMP</protocol>
+               </EnrollmentServer>
+             </EnrollmentServerGroup>
+             <NodeCredential>
+               <nodeCredentialId>1</nodeCredentialId>
+               <subjectName>CN=eSG08949B</subjectName>
+               <enrollmentServerGroup>ManagedElement=1,SystemFunctions=1,SecM=1,CertM=1,EnrollmentServerGroup=1</enrollmentServerGroup>
+               <enrollmentAuthority>ManagedElement=1,SystemFunctions=1,SecM=1,CertM=1,EnrollmentAuthority=1</enrollmentAuthority>
+               <keyInfo>RSA_2048</keyInfo>
+               <renewalMode>AUTOMATIC</renewalMode>
+             </NodeCredential>
+           </CertM>
+           <UserManagement>
+             <userManagementId>1</userManagementId>
+             <LdapAuthenticationMethod xmlns="urn:com:ericsson:ecim:RcsLdapAuthentication">
+               <ldapAuthenticationMethodId>1</ldapAuthenticationMethodId>
+               <administrativeState>UNLOCKED</administrativeState>
+             </LdapAuthenticationMethod>
+             <UserIdentity xmlns="urn:com:ericsson:ecim:RcsUser">
+               <userIdentityId>1</userIdentityId>
+               <MaintenanceUser>
+                 <maintenanceUserId>1</maintenanceUserId>
+                 <userName>rbs</userName>
+                 <password>
+                   <cleartext />
+                   <password>rbs</password>
+                 </password>
+               </MaintenanceUser>
+             </UserIdentity>
+           </UserManagement>
+         </SecM>
+         
+         <SysM xmlns="urn:com:ericsson:ecim:ComSysM">
+           <sysMId>1</sysMId>
+           <NtpServer>
+             <ntpServerId>1</ntpServerId>
+             <serverAddress>10.60.149.68</serverAddress>
+             <administrativeState>UNLOCKED</administrativeState>
+           </NtpServer>
+           <NtpServer>
+             <ntpServerId>2</ntpServerId>
+             <serverAddress>192.168.181.50</serverAddress>
+             <administrativeState>UNLOCKED</administrativeState>
+           </NtpServer>
+           <NetconfTls>
+           		<netconfTlsId>1</netconfTlsId>
+           		<administrativeState>UNLOCKED</administrativeState>
+           </NetconfTls>
+         </SysM>
+       </SystemFunctions>
+       <Transport>
+         <transportId>1</transportId>
+         <Router xmlns="urn:com:ericsson:ecim:RtnL3Router">
+           <routerId>vr_OAM</routerId>
+           <ttl>64</ttl>
+         </Router>
+         <EthernetPort xmlns="urn:com:ericsson:ecim:RtnL2EthernetPort">
+           <ethernetPortId>TN_B</ethernetPortId>
+           <autoNegEnable>false</autoNegEnable>
+           <admOperatingMode>1G_FULL</admOperatingMode>
+           <encapsulation>ManagedElement=1,Equipment=1,FieldReplaceableUnit=1,TnPort=TN_B</encapsulation>
+           <userLabel>TN_B</userLabel>
+           <administrativeState>UNLOCKED</administrativeState>
+         </EthernetPort>
+         <VlanPort xmlns="urn:com:ericsson:ecim:RtnL2VlanPort">
+           <vlanPortId>2637</vlanPortId>
+           <vlanId>2637</vlanId>
+           <userLabel>VlanOAM</userLabel>
+           <encapsulation>ManagedElement=1,Transport=1,EthernetPort=TN_B</encapsulation>
+           <isTagged>true</isTagged>
+         </VlanPort>
+         <Router xmlns="urn:com:ericsson:ecim:RtnL3Router">
+           <routerId>vr_OAM</routerId>
+           <InterfaceIPv4 xmlns="urn:com:ericsson:ecim:RtnL3InterfaceIPv4">
+             <interfaceIPv4Id>1</interfaceIPv4Id>
+             <encapsulation>ManagedElement=1,Transport=1,VlanPort=2637</encapsulation>
+             <mtu>1500</mtu>
+             <userLabel>IP-1</userLabel>
+             <AddressIPv4>
+               <addressIPv4Id>1</addressIPv4Id>
+               <address>10.171.66.41/29</address>
+             </AddressIPv4>
+           </InterfaceIPv4>
+         </Router>
+       </Transport>
+       <SystemFunctions>
+         <systemFunctionsId>1</systemFunctionsId>
+         <SysM xmlns="urn:com:ericsson:ecim:ComSysM">
+           <sysMId>1</sysMId>
+           <OamAccessPoint>
+             <oamAccessPointId>1</oamAccessPointId>
+             <accessPoint>ManagedElement=1,Transport=1,Router=vr_OAM,InterfaceIPv4=1,AddressIPv4=1</accessPoint>
+           </OamAccessPoint>
+           <Snmp xmlns="urn:com:ericsson:ecim:ComSnmp">
+             <snmpId>1</snmpId>
+             <administrativeState>UNLOCKED</administrativeState>
+             <agentAddress>
+               <host>0.0.0.0</host>
+               <port>161</port>
+             </agentAddress>
+             <!-- SnmpTargetV2C OSSRC: cat /etc/hosts = masterservice mashost IP address "Port = 162"-->
+             <SnmpTargetV2C>
+               <snmpTargetV2CId>1</snmpTargetV2CId>
+               <community>public</community>
+               <address>10.60.149.11</address>
+               <port>162</port>
+               <administrativeState>UNLOCKED</administrativeState>
+             </SnmpTargetV2C>
+           </Snmp>
+         </SysM>
+       </SystemFunctions>
+       <Transport>
+         <transportId>1</transportId>
+         <Router xmlns="urn:com:ericsson:ecim:RtnL3Router">
+           <routerId>vr_OAM</routerId>
+           <DnsClient xmlns="urn:com:ericsson:ecim:RtnDnsClient">
+             <dnsClientId>1</dnsClientId>
+             <!--
+             <serverAddress>10.21.6.100</serverAddress>
+             -->
+           </DnsClient>
+           <RouteTableIPv4Static xmlns="urn:com:ericsson:ecim:RtnRoutesStaticRouteIPv4">
+             <routeTableIPv4StaticId>1</routeTableIPv4StaticId>
+             <Dst>
+               <dstId>1</dstId>
+               <dst>0.0.0.0/0</dst>
+               <NextHop>
+                 <nextHopId>1</nextHopId>
+                 <address>10.171.66.46</address>
+                 <adminDistance>1</adminDistance>
+               </NextHop>
+             </Dst>
+           </RouteTableIPv4Static>
+         </Router>
+         <Router xmlns="urn:com:ericsson:ecim:RtnL3Router">
+           <routerId>LTE</routerId>
+           <ttl>64</ttl>
+         </Router>
+         <VlanPort xmlns="urn:com:ericsson:ecim:RtnL2VlanPort">
+           <vlanPortId>2636</vlanPortId>
+           <vlanId>2636</vlanId>
+           <userLabel>VlanS1</userLabel>
+           <encapsulation>ManagedElement=1,Transport=1,EthernetPort=TN_B</encapsulation>
+           <isTagged>true</isTagged>
+         </VlanPort>
+         <Router xmlns="urn:com:ericsson:ecim:RtnL3Router">
+           <routerId>LTE</routerId>
+           <InterfaceIPv4 xmlns="urn:com:ericsson:ecim:RtnL3InterfaceIPv4">
+             <interfaceIPv4Id>1</interfaceIPv4Id>
+             <encapsulation>ManagedElement=1,Transport=1,VlanPort=2636</encapsulation>
+             <mtu>1500</mtu>
+             <userLabel>IP-2</userLabel>
+             <AddressIPv4>
+               <addressIPv4Id>1</addressIPv4Id>
+               <address>10.170.66.41/29</address>
+             </AddressIPv4>
+           </InterfaceIPv4>
+           <RouteTableIPv4Static xmlns="urn:com:ericsson:ecim:RtnRoutesStaticRouteIPv4">
+             <routeTableIPv4StaticId>1</routeTableIPv4StaticId>
+             <Dst>
+               <dstId>1</dstId>
+               <dst>0.0.0.0/0</dst>
+               <NextHop>
+                 <nextHopId>1</nextHopId>
+                 <address>10.170.66.46</address>
+                 <adminDistance>1</adminDistance>
+               </NextHop>
+             </Dst>
+           </RouteTableIPv4Static>
+         </Router>
+       </Transport>
+     </ManagedElement>
+   </config>
+ </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <close-session></close-session>
+</rpc>
+]]>]]>
+
+<!-- CMPv2 OAM NodeCredential Enrollment -->
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+
+<!-- CMPv2 NodeCredential Enrollment -->
+<rpc message-id="CMPv2 NodeCredential Enrollment" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <action xmlns="urn:com:ericsson:ecim:1.0">
+    <data>
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>1</managedElementId>
+        <SystemFunctions>
+          <systemFunctionsId>1</systemFunctionsId>
+          <SecM xmlns="urn:com:ericsson:ecim:ComSecM">
+            <secMId>1</secMId>
+            <CertM xmlns="urn:com:ericsson:ecim:RcsCertM">
+              <certMId>1</certMId>
+              <NodeCredential>
+                <nodeCredentialId>1</nodeCredentialId>
+                <startOnlineEnrollment>
+                  <challengePassword></challengePassword>
+                </startOnlineEnrollment>
+              </NodeCredential>
+            </CertM>
+          </SecM>
+        </SystemFunctions>
+      </ManagedElement>
+    </data>
+  </action>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <capabilities>
+   <capability>urn:ietf:params:netconf:base:1.0</capability>
+ </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="2" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <edit-config>
+   <target>
+     <running />
+   </target>
+   <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+     <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+       <managedElementId>1</managedElementId>
+       <networkManagedElementId>eSG08949B</networkManagedElementId>
+     </ManagedElement>
+   </config>
+ </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <close-session></close-session>
+</rpc>
+]]>]]>

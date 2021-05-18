@@ -1,0 +1,10 @@
+crn GNBCUCPFunction=1,NRCellCU=**NRCellCUId**,NRCellRelation=**nRCellRelationId**
+cellIndividualOffsetNR **cellIndividualOffsetNR**
+coverageIndicator **coverageIndicator**
+includeInSIB **includeInSIB**
+isHoAllowed **isHoAllowed**
+isRemoveAllowed **isRemoveAllowed**
+nRCellRef **nRCellRef**
+nRFreqRelationRef **nRFreqRelationRef**
+sCellCandidate **sCellCandidate**
+end
