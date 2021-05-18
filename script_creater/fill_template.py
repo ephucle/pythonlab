@@ -2,7 +2,7 @@
 from string import Template
 
 import pandas as pd
-import os, sys
+import os, sys, re
 
 import tkinter as tk
 from tkinter import filedialog, E, W, LEFT
@@ -76,50 +76,73 @@ def fill_template():
 	global selected_sheet #dung bien nay de reuse lai trong funtion folder tag
 	selected_sheet = om_var.get()
 	print("selected_sheet:", selected_sheet)
+	global om_folder_var
 	
-	
-	#df2 = pd.read_excel(input_file_path, header=0, sheet_name='Sheet2')
-	df2 = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
+	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
 	print("SUMMARY DATA INPUT TABLE:")
-	print(df2)
+	print(df)
 	global column_header
-	column_header = list(df2.columns.values)
+	column_headers = list(df.columns.values)
 	f = open(template_filepath, "r")
 	input_file_content = f.read()
 	folder_tag = om_folder_var.get()
-	for index, row in df2.iterrows():
-		#rule: moi row se ghi ket qua ra 1 file
-		#tam thoi lay tagname la column eNBname
-		rowname = row["eNBname"]
+	f.close()
+	
+	folder, template_filename = os.path.split(template_filepath)
+	
+	#####
+	#find all variable in template
+	with open(template_filepath) as infile:
+		lines = infile.readlines()
 		
-		#print (row["eNBname"], row["ServiceIP"], row["ServiceVLAN"], row["ServiceDefaultGateway"])
-		data = {
-		'eNBname': row["eNBname"],
-		'ServiceIP' : row["ServiceIP"],
-		'ServiceVLAN' : row["ServiceVLAN"],
-		'ServiceDefaultGateway' : row["ServiceDefaultGateway"],
-		'OAMVLAN' : row["OAMVLAN"],
-		'OAMIP' : row["OAMIP"],
-		'OAMDefaultGateway' : row["OAMDefaultGateway"],
-		}
+		#find all variable string
+		var_set = set()
+		for index, line in enumerate(lines):
+			line = line.strip()
+			regex = '\$' + "(\w+)"
+			variables = re.findall(regex, line)
+			print(variables)
+			for item in variables:
+				var_set.add(item)
+		print("----------------all variable string--------------")
+		print(var_set)  #{'smtcOffset', 'smtcPeriodicity', 'smtcDuration', 'smtcScs', 'arfcnValueNRDl', 'nRFrequencyId'}
+		
+	#####
+	
+	for index, row in df.iterrows():
+		
+		
+		
+		data = {}
+		for column_name in var_set:
+			if column_name in column_headers:
+				#print(index,column_name,row[column_name])
+				data[column_name] = row[column_name]
+		print(data)
+		#will turning later
+		rowname = "row"+str(index)
 		src = Template(input_file_content)
 		result = src.substitute(data)
+		home_path = os.path.dirname(os.path.realpath(__file__))
+		#output_filepath=os.path.join(home_path, "output_script", str(rowname))
 		
 		#split script follow folder
 		if not var_foldersplit.get():
-			output_filepath = os.path.join(home_path, "output_script", rowname)
+			output_filepath = os.path.join(home_path, "output_script",template_filename + "_" + rowname)
 		else:
 			#neu folder ko ton tai thi tao them folder
 			if not os.path.exists(os.path.join(home_path, "output_script",row[folder_tag])):
 				os.mkdir(os.path.join(home_path, "output_script",row[folder_tag]))
-			output_filepath = os.path.join(home_path, "output_script",row[folder_tag], rowname)
-		
+			
+			#rule dat script name, co row, co template name
+			output_filepath = os.path.join(home_path, "output_script",row[folder_tag], template_filename + "_" + rowname)
 		output_text_file = open(output_filepath, "w")
 		output_text_file.write(result)
 		output_text_file.close()
-		print("FILL successful ROW with TAG", rowname, "to file", output_filepath)
-	f.close()
-	text_var_status.set("DONE")
+		print("Successful create script", output_filepath)
+		
+
+	text_var_status.set("FINISHED!!!")
 
 
 def folder_option_status_change():
@@ -128,12 +151,12 @@ def folder_option_status_change():
 	folder_split_select =  var_foldersplit.get()
 	global input_file_path
 	selected_sheet = om_var.get()
-	df2 = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
+	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
 	
-	choices = list(df2.columns.values)
+	choices = list(df.columns.values)
 	global om_folder_var
-	om_folder_var = tk.StringVar(root)
-	om_folder_var.set("Select tag")
+	#om_folder_var = tk.StringVar(root)
+	#om_folder_var.set("Select tag")
 	folder_select = tk.OptionMenu(root, om_folder_var, *choices)
 	
 	if folder_split_select:
@@ -143,7 +166,7 @@ def folder_option_status_change():
 			text_var_status.set("Select Input file first")
 	
 root = tk.Tk()
-root.title("SCRIPT CREATOR")
+root.title("SCRIPTING_TOOL_V01")
 #root.geometry("550x550")
 
 
@@ -153,31 +176,35 @@ root.title("SCRIPT CREATOR")
 text_var_inputpath = tk.StringVar()
 text_var_templatepath = tk.StringVar()
 text_var_status = tk.StringVar()
-text_var_status.set("STATU")
+text_var_status.set("STATUS: ")
+
+global om_folder_var
+om_folder_var = tk.StringVar(root)
+om_folder_var.set("6.Select tag")
 
 ##row1
-tk.Button(root, text ="EXCEL", command = browse_datainput_button).grid(row=0, column=1)
+tk.Button(root, text ="01.EXCEL", command = browse_datainput_button).grid(row=0, column=1)
 choices = ('select a sheet', '..')
 om_var = tk.StringVar(root)
-om_var.set("Select sheet")
+om_var.set("02.Select sheet")
 sheet_select = tk.OptionMenu(root, om_var, *choices)
 sheet_select.grid(row=0, column=2, sticky="ew")
 ##end row1
 
 ##row2
-tk.Button(root, text ="TEMPL", command = browse_template_button).grid(row=1, column=1)
+tk.Button(root, text ="03.TEMPL", command = browse_template_button).grid(row=1, column=1)
 tk.Entry(root, textvariable = text_var_templatepath).grid(row=1, column=2, sticky="ew")
 ##end row2
 
 #row3
 var_foldersplit = tk.IntVar(value=0)
-sector0_checkbox = tk.Checkbutton(root, text="folder split", variable=var_foldersplit, command = folder_option_status_change).grid(row=2,sticky="w", column=2)
+sector0_checkbox = tk.Checkbutton(root, text="04.FOLDER SPLIT", variable=var_foldersplit, command = folder_option_status_change).grid(row=2,sticky="w", column=2)
 
 
 #end row 3
 
 ##row4
-tk.Button(root, text ="FILL_",     command = fill_template).grid(row=3, column=1)
+tk.Button(root, text ="05.CREATE",     command = fill_template).grid(row=3, column=1)
 ##end row4
 
 ##row5

@@ -1,21 +1,18 @@
-crn GNBCUCPFunction=1,NRCellCU=**NRCellCU**,NRFreqRelation=**NRFreqRelation**
-cellReselectionPriority **cellReselectionPriority**
+crn GNBCUCPFunction=1,NRCellCU=$NRCellCU,NRFreqRelation=$NRFreqRelation
+cellReselectionPriority $cellReselectionPriority
 mcpcPCellNrFreqRelProfileRef
-nRFrequencyRef **nRFrequencyRef**
-pMax **pMax**
+nRFrequencyRef $nRFrequencyRef
+pMax $pMax
 plmnIdList
 plmnRestriction false
-qOffsetFreq **qOffsetFreq**
-qQualMin **qQualMin**
-qRxLevMin **qRxLevMin**
-sIntraSearchP **sIntraSearchP**
+qOffsetFreq $qOffsetFreq
+qQualMin $qQualMin
+qRxLevMin $qRxLevMin
+sIntraSearchP $sIntraSearchP
 sIntraSearchQ
-tReselectionNR **tReselectionNR**
-tReselectionNrSfHigh
-tReselectionNrSfMedium
-threshXHighP **threshXHighP**
+tReselectionNR $tReselectionNR
+threshXHighP $threshXHighP
 threshXHighQ
-threshXLowP **threshXLowP**
+threshXLowP $threshXLowP
 threshXLowQ
-ueMCNrFreqRelProfileRef
 end
