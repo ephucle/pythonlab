@@ -1,0 +1,10 @@
+crn GNBCUCPFunction=1,NRCellCU=gHIL2861J1,NRCellRelation= gHIL2861I1
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gHIL2861I1
+nRFreqRelationRef NRCellCU=gHIL2861J1,NRFreqRelation=2064999
+sCellCandidate 1
+end

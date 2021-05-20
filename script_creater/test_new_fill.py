@@ -4,8 +4,8 @@ saperate_pattern = "\*\*"
 import pandas as pd
 from string import Template
 
-template_filepath = "./template/relation/4.2.gNB.NRFrequency_new"
-#template_filepath = "./template/relation/4.3.gNB.NRFreqRelation"
+template_filepath = "./template/relation/4.4.gNB.NRCellRelation"
+
 
 
 #find all variable in template
@@ -22,14 +22,14 @@ with open(template_filepath) as infile:
 		for item in variables:
 			var_set.add(item)
 	print("----------------all variable string--------------")
-	print(var_set)  #{'smtcOffset', 'smtcPeriodicity', 'smtcDuration', 'smtcScs', 'arfcnValueNRDl', 'nRFrequencyId'}
-	#{'cellReselectionPriority', 'sIntraSearchP', 'nRFrequencyRef', 'qOffsetFreq', 'tReselectionNR', 'threshXLowP', 'pMax', 'NRFreqRelation', 'qQualMin', 'NRCellCU', 'qRxLevMin', 'threshXHighP'}
+	print(var_set)
+	
 
 
 
 #try to lookup variable from excel
-df = pd.read_excel("1.CDD_5G mmWave 8CC_HNI_B7_v07.xlsx", header=0, sheet_name="4.2.gNB.NRFrequency")
-#df = pd.read_excel("1.CDD_5G mmWave 8CC_HNI_B7_v07.xlsx", header=0, sheet_name="4.3.gNB.NRFreqRelation")
+df = pd.read_excel("1.CDD_5G mmWave 8CC_HNI_B7_v07.xlsx", header=0, sheet_name="4.4.gNB.NRCellRelation")
+
 column_headers = list(df.columns.values)
 
 #print(df)
