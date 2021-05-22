@@ -1,0 +1,36 @@
+#config 8CC CA
+lt all
+setFeatureState=CXC4012315 featureState 1
+setFeatureState=CXC4012353 featureState 1
+setFeatureState=CXC4012273 featureState 1
+
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId2 sCellCandidate 1
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId3 sCellCandidate 1
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId4 sCellCandidate 1
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId5 sCellCandidate 1
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId6 sCellCandidate 1
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId7 sCellCandidate 1
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId8 sCellCandidate 1
+
+
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId2 coverageIndicator 2
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId3 coverageIndicator 2
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId4 coverageIndicator 2
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId5 coverageIndicator 2
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId6 coverageIndicator 2
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId7 coverageIndicator 2
+set GNBCUCPFunction=1,NRCellCU=$nRCellCUId1,NRCellRelation=$nRCellCUId8 coverageIndicator 2
+
+
+
+set GNBDUFunction=1,NRSectorCarrier=1 txDirection 0
+set GNBDUFunction=1,NRSectorCarrier=2 txDirection 0
+set GNBDUFunction=1,NRSectorCarrier=3 txDirection 1
+set GNBDUFunction=1,NRSectorCarrier=4 txDirection 1
+set GNBDUFunction=1,NRSectorCarrier=5 txDirection 1
+set GNBDUFunction=1,NRSectorCarrier=6 txDirection 1
+set GNBDUFunction=1,NRSectorCarrier=7 txDirection 1
+set GNBDUFunction=1,NRSectorCarrier=8 txDirection 1
+
+#end config 8CC CA
+#################################

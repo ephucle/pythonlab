@@ -76,6 +76,8 @@ def browse_datainput_button():
 	browse_button.configure(bg = 'green2')
 	text_var_status.set("SELECTED EXCEL FILE")
 	foldersplit_checkbox.configure(state='normal')
+	
+	
 
 
 
@@ -435,6 +437,8 @@ def sheet_select_command():
 	mergefile = tk.Checkbutton(root, text="MERGE FILE", variable=var_mergefile, command = mergefile_option_status_change)
 	mergefile.grid(row=2,sticky="w", column=3)
 	####
+	#chi enable nut create sau khi chon xong file excel bang nut brow, va select sheet
+	create_button.configure(state='normal')
 
 def mergefile_option_status_change():
 	print("mergefile_option_status_change ticked !!")
@@ -491,6 +495,7 @@ foldersplit_checkbox.configure(state='disabled')
 ##row5
 create_button= tk.Button(root, text ="05.CREATE",     command = fill_template)
 create_button.grid(row=4, column=1)
+create_button.configure(state='disabled')
 ##end row5
 
 ##row6
