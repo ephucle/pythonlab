@@ -1,0 +1,8 @@
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=$nRFrequencyId
+arfcnValueNRDl $arfcnValueNRDl
+bandListManual 258
+smtcDuration $smtcDuration
+smtcOffset $smtcOffset
+smtcPeriodicity $smtcPeriodicity
+smtcScs $smtcScs
+end

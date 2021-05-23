@@ -140,12 +140,17 @@ def fill_template():
 			#doi voi truong hop thuong thi dung $variable
 			regex = '\$' + "(\w+)"
 			variables = re.findall(regex, line)
-			
-			
-			
 			#print(variables)
 			for item in variables:
 				var_set.add(item)
+			
+			#####
+			regex2 = '\$\{' + "(\w+)"+'\}'
+			variables2 = re.findall(regex2, line)
+			print(variables2)
+			for item in variables2:
+				var_set.add(item)
+			#####
 			
 		print("----------------all variable string come to here--------------")
 		print(var_set)  #{'smtcOffset', 'smtcPeriodicity', 'smtcDuration', 'smtcScs', 'arfcnValueNRDl', 'nRFrequencyId'}
@@ -164,7 +169,10 @@ def fill_template():
 		
 		rowname = filenametag_var.get()
 		src = Template(input_file_content)
-		result = src.substitute(data)
+		if not data: #EMPTY or no vaiable
+			result = input_file_content
+		else:
+			result = src.substitute(data)
 		home_path = os.path.dirname(os.path.realpath(__file__))
 		#output_filepath=os.path.join(home_path, "output_script", str(rowname))
 		
@@ -238,8 +246,9 @@ def save_profile_press():
 	
 	print("data to be save as below")
 	print(data)
-	
-	with open(os.path.join(home_path,'profile',profile_filename), 'w') as outfile:
+	profile_filepath = os.path.join(home_path,'profile',profile_filename)
+	#with open(os.path.join(home_path,'profile',profile_filename), 'w') as outfile:
+	with open(profile_filepath, 'w') as outfile:
 		json.dump(data, outfile)
 	#text_var_status.set("Save profile to "+ profile_filename)
 	
@@ -251,14 +260,11 @@ def save_profile_press():
 	package_filepath = os.path.join(home_path,'profile','profile_package',package_filename)
 	data2['package_name'] = package_name
 	
-	#data2['profiles_filepath'] = [template_filename]
-	
-	
 	print("package data to be save as below")
 	print(data2)
 	#neu file ko ton tai thi tao moi
 	if not os.path.exists(package_filepath):
-		data2['profiles_filepath'] = [template_filename]
+		data2['profiles_filepath'] = [profile_filepath]
 		with open(package_filepath, 'w') as outfile:
 			json.dump(data2, outfile)
 	else: #neu file co ton tai
@@ -267,8 +273,8 @@ def save_profile_press():
 			print(data_dict)
 		#profile_package_name = data_dict['package_name']
 		profiles_filepath = data_dict['profiles_filepath']
-		if template_filepath not in profiles_filepath:
-			profiles_filepath.append(template_filepath)
+		if profile_filepath not in profiles_filepath:
+			profiles_filepath.append(profile_filepath)
 		
 		data2['profiles_filepath'] = profiles_filepath
 	#save new package profile or update it with new data
@@ -354,9 +360,16 @@ def loadprofile():
 			line = line.strip()
 			regex = '\$' + "(\w+)"
 			variables = re.findall(regex, line)
-
 			for item in variables:
 				var_set.add(item)
+			
+			#####
+			regex2 = '\$\{' + "(\w+)"+'\}'
+			variables2 = re.findall(regex2, line)
+			print(variables2)
+			for item in variables2:
+				var_set.add(item)
+			#####
 			
 		print("----------------all variable string_from load profile--------------")
 		print(var_set)  #{'smtcOffset', 'smtcPeriodicity', 'smtcDuration', 'smtcScs', 'arfcnValueNRDl', 'nRFrequencyId'}
@@ -471,7 +484,8 @@ def sheet_select_command():
 	
 	####create checkbox merge file, cung row voi filename tag
 	global var_mergefile
-	var_mergefile = tk.IntVar(value=1)
+	#var_mergefile = tk.IntVar(value=1)
+	var_mergefile = tk.IntVar(value=0)
 	mergefile = tk.Checkbutton(root, text="MERGE FILE", variable=var_mergefile, command = mergefile_option_status_change)
 	mergefile.grid(row=2,sticky="w", column=3)
 	####
@@ -516,7 +530,8 @@ def loadprofile_procedure(profile_filepath):
 	print("creating script for profile", profile_filepath)
 	#log_textbox.delete("1.0","end")
 	#print profile name to text box
-	print_to_textbox("creating script for profile:" + profile_filepath)
+	print_to_textbox("---------------------------")
+	print_to_textbox("creating script for profile:" + get_filename(profile_filepath))
 	with open(profile_filepath) as json_file:
 		data_dict = json.load(json_file)
 		print(data_dict)
@@ -528,14 +543,14 @@ def loadprofile_procedure(profile_filepath):
 		filenametag = data_dict['filenametag']
 		mergefile = data_dict['mergefile']
 		
-		print_to_textbox("Excel Input: "+get_filename(input_file_path))
-		print_to_textbox("Sheet Name: "+selected_sheet)
-		print_to_textbox("Template Input: "+get_filename(template_filepath))
-		print_to_textbox("Folder_tag: "+folder_tag)
-		print_to_textbox("foldersplit: "+str(foldersplit))
-		print_to_textbox("filenametag: "+str(filenametag))
-		print_to_textbox("mergefile: "+str(mergefile))
-		print_to_textbox("-------------------------")
+		#print_to_textbox("Excel Input: "+get_filename(input_file_path))
+		#print_to_textbox("Sheet Name: "+selected_sheet)
+		#print_to_textbox("Template Input: "+get_filename(template_filepath))
+		#print_to_textbox("Folder_tag: "+folder_tag)
+		#print_to_textbox("foldersplit: "+str(foldersplit))
+		#print_to_textbox("filenametag: "+str(filenametag))
+		#print_to_textbox("mergefile: "+str(mergefile))
+		#print_to_textbox("-------------------------")
 		
 		input_filename = get_filename(input_file_path)[:20]
 	
@@ -565,9 +580,18 @@ def loadprofile_procedure(profile_filepath):
 			line = line.strip()
 			regex = '\$' + "(\w+)"
 			variables = re.findall(regex, line)
-
 			for item in variables:
 				var_set.add(item)
+			print(variables)
+			
+			#####
+			regex2 = '\$\{' + "(\w+)"+'\}'
+			variables2 = re.findall(regex2, line)
+			print(variables2)
+			for item in variables2:
+				var_set.add(item)
+			#####
+			
 			
 		print("----------------all variable string_from load profile--------------")
 		print(var_set)

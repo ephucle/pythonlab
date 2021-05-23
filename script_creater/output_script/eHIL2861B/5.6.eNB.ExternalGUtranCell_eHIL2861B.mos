@@ -1,0 +1,66 @@
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHIL2861,ExternalGUtranCell=4524-0000002928612-21
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2056669-120-20-0-3
+isRemoveAllowed false
+localCellId 21
+nRTAC
+physicalLayerCellIdGroup 335
+physicalLayerSubCellId 2
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHIL2861,ExternalGUtranCell=4524-0000002928612-31
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2058335-120-20-0-3
+isRemoveAllowed false
+localCellId 31
+nRTAC
+physicalLayerCellIdGroup 335
+physicalLayerSubCellId 1
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHIL2861,ExternalGUtranCell=4524-0000002928612-21
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2056669-120-20-0-3
+isRemoveAllowed false
+localCellId 21
+nRTAC
+physicalLayerCellIdGroup 335
+physicalLayerSubCellId 2
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHIL2861,ExternalGUtranCell=4524-0000002928612-31
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2058335-120-20-0-3
+isRemoveAllowed false
+localCellId 31
+nRTAC
+physicalLayerCellIdGroup 335
+physicalLayerSubCellId 1
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHIL2861,ExternalGUtranCell=4524-0000002928612-21
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2056669-120-20-0-3
+isRemoveAllowed false
+localCellId 21
+nRTAC
+physicalLayerCellIdGroup 335
+physicalLayerSubCellId 2
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHIL2861,ExternalGUtranCell=4524-0000002928612-31
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2058335-120-20-0-3
+isRemoveAllowed false
+localCellId 31
+nRTAC
+physicalLayerCellIdGroup 335
+physicalLayerSubCellId 1
+plmnIdList mcc=452,mnc=4,mncLength=2
+end

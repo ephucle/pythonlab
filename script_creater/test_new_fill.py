@@ -4,7 +4,8 @@ saperate_pattern = "\*\*"
 import pandas as pd
 from string import Template
 
-template_filepath = "./template/relation/4.4.gNB.NRCellRelation"
+template_filepath = "./template/5G_relation/4_4_gNB_NRCellRelation"
+
 
 
 
@@ -21,11 +22,19 @@ with open(template_filepath) as infile:
 		print(variables)
 		for item in variables:
 			var_set.add(item)
+		
+		#####
+		regex2 = '\$\{' + "(\w+)"+'\}'
+		variables2 = re.findall(regex2, line)
+		print(variables2)
+		for item in variables2:
+			var_set.add(item)
+		#####
 	print("----------------all variable string--------------")
 	print(var_set)
 	
 
-
+#sys.exit()
 
 #try to lookup variable from excel
 df = pd.read_excel("1.CDD_5G mmWave 8CC_HNI_B7_v07.xlsx", header=0, sheet_name="4.4.gNB.NRCellRelation")
