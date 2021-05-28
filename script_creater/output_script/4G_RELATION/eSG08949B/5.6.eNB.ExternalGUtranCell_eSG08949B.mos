@@ -1,0 +1,88 @@
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-1
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2056669-120-20-0-3
+isRemoveAllowed false
+localCellId 1
+nRTAC
+physicalLayerCellIdGroup 1
+physicalLayerSubCellId 2
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-2
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2058335-120-20-0-3
+isRemoveAllowed false
+localCellId 2
+nRTAC
+physicalLayerCellIdGroup 3
+physicalLayerSubCellId 1
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-3
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2060001-120-20-0-3
+isRemoveAllowed false
+localCellId 3
+nRTAC
+physicalLayerCellIdGroup 5
+physicalLayerSubCellId 0
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-4
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2061667-120-20-0-3
+isRemoveAllowed false
+localCellId 4
+nRTAC
+physicalLayerCellIdGroup 6
+physicalLayerSubCellId 2
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-5
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2063333-120-20-0-3
+isRemoveAllowed false
+localCellId 5
+nRTAC
+physicalLayerCellIdGroup 8
+physicalLayerSubCellId 1
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-6
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2064999-120-20-0-3
+isRemoveAllowed false
+localCellId 6
+nRTAC
+physicalLayerCellIdGroup 10
+physicalLayerSubCellId 0
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-7
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2066665-120-20-0-3
+isRemoveAllowed false
+localCellId 7
+nRTAC
+physicalLayerCellIdGroup 11
+physicalLayerSubCellId 2
+plmnIdList mcc=452,mnc=4,mncLength=2
+end
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949,ExternalGUtranCell=4524-0000001508949-8
+absSubFrameOffset 0
+absTimeOffset 0
+gUtranSyncSignalFrequencyRef GUtraNetwork=1,GUtranSyncSignalFrequency=2068331-120-20-0-3
+isRemoveAllowed false
+localCellId 8
+nRTAC
+physicalLayerCellIdGroup 13
+physicalLayerSubCellId 1
+plmnIdList mcc=452,mnc=4,mncLength=2
+end

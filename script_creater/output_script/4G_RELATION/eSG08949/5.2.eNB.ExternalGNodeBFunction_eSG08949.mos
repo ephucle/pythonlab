@@ -1,0 +1,7 @@
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gSG08949
+eNBVlanPortRef
+gNodeBId 1508949
+gNodeBIdLength 26
+gNodeBPlmnId mcc=452,mnc=4,mncLength=2
+userLabel
+end

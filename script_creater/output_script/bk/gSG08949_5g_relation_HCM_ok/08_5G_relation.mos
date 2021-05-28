@@ -1,0 +1,1785 @@
+crn GNBCUCPFunction=1,NRNetwork=1
+simpleNRFreqSmtc false
+end
+
+
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2056669-120-20-0-3
+arfcnValueNRDl 2056669
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2058335-120-20-0-3
+arfcnValueNRDl 2058335
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2060001-120-20-0-3
+arfcnValueNRDl 2060001
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2061667-120-20-0-3
+arfcnValueNRDl 2061667
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2063333-120-20-0-3
+arfcnValueNRDl 2063333
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2064999-120-20-0-3
+arfcnValueNRDl 2064999
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2066665-120-20-0-3
+arfcnValueNRDl 2066665
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2068331-120-20-0-3
+arfcnValueNRDl 2068331
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+
+
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2068331
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2068331-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2056669
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2056669-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2058335
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2058335-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2060001
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2060001-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2061667
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2061667-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2063333
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2063333-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2064999
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2064999-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRFreqRelation=2066665
+cellReselectionPriority 7
+mcpcPCellNrFreqRelProfileRef
+nRFrequencyRef NRNetwork=1,NRFrequency=2066665-120-20-0-3
+pMax 23
+plmnIdList
+plmnRestriction false
+qOffsetFreq 0
+qQualMin nan
+qRxLevMin -140
+sIntraSearchP 62
+sIntraSearchQ
+tReselectionNR 2
+threshXHighP 4
+threshXHighQ
+threshXLowP 0
+threshXLowQ
+end
+
+
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRCellRelation=gSG089492
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089492
+nRFreqRelationRef NRCellCU=gSG089491,NRFreqRelation=2058335
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRCellRelation=gSG089493
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089493
+nRFreqRelationRef NRCellCU=gSG089491,NRFreqRelation=2060001
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRCellRelation=gSG089494
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089494
+nRFreqRelationRef NRCellCU=gSG089491,NRFreqRelation=2061667
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRCellRelation=gSG089495
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089495
+nRFreqRelationRef NRCellCU=gSG089491,NRFreqRelation=2063333
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRCellRelation=gSG089496
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089496
+nRFreqRelationRef NRCellCU=gSG089491,NRFreqRelation=2064999
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRCellRelation=gSG089497
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089497
+nRFreqRelationRef NRCellCU=gSG089491,NRFreqRelation=2066665
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089491,NRCellRelation=gSG089498
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089498
+nRFreqRelationRef NRCellCU=gSG089491,NRFreqRelation=2068331
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRCellRelation=gSG089491
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089491
+nRFreqRelationRef NRCellCU=gSG089492,NRFreqRelation=2056669
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRCellRelation=gSG089493
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089493
+nRFreqRelationRef NRCellCU=gSG089492,NRFreqRelation=2060001
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRCellRelation=gSG089494
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089494
+nRFreqRelationRef NRCellCU=gSG089492,NRFreqRelation=2061667
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRCellRelation=gSG089495
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089495
+nRFreqRelationRef NRCellCU=gSG089492,NRFreqRelation=2063333
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRCellRelation=gSG089496
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089496
+nRFreqRelationRef NRCellCU=gSG089492,NRFreqRelation=2064999
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRCellRelation=gSG089497
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089497
+nRFreqRelationRef NRCellCU=gSG089492,NRFreqRelation=2066665
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089492,NRCellRelation=gSG089498
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089498
+nRFreqRelationRef NRCellCU=gSG089492,NRFreqRelation=2068331
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRCellRelation=gSG089491
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089491
+nRFreqRelationRef NRCellCU=gSG089493,NRFreqRelation=2056669
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRCellRelation=gSG089492
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089492
+nRFreqRelationRef NRCellCU=gSG089493,NRFreqRelation=2058335
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRCellRelation=gSG089494
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089494
+nRFreqRelationRef NRCellCU=gSG089493,NRFreqRelation=2061667
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRCellRelation=gSG089495
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089495
+nRFreqRelationRef NRCellCU=gSG089493,NRFreqRelation=2063333
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRCellRelation=gSG089496
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089496
+nRFreqRelationRef NRCellCU=gSG089493,NRFreqRelation=2064999
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRCellRelation=gSG089497
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089497
+nRFreqRelationRef NRCellCU=gSG089493,NRFreqRelation=2066665
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089493,NRCellRelation=gSG089498
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089498
+nRFreqRelationRef NRCellCU=gSG089493,NRFreqRelation=2068331
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRCellRelation=gSG089491
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089491
+nRFreqRelationRef NRCellCU=gSG089494,NRFreqRelation=2056669
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRCellRelation=gSG089492
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089492
+nRFreqRelationRef NRCellCU=gSG089494,NRFreqRelation=2058335
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRCellRelation=gSG089493
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089493
+nRFreqRelationRef NRCellCU=gSG089494,NRFreqRelation=2060001
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRCellRelation=gSG089495
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089495
+nRFreqRelationRef NRCellCU=gSG089494,NRFreqRelation=2063333
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRCellRelation=gSG089496
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089496
+nRFreqRelationRef NRCellCU=gSG089494,NRFreqRelation=2064999
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRCellRelation=gSG089497
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089497
+nRFreqRelationRef NRCellCU=gSG089494,NRFreqRelation=2066665
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089494,NRCellRelation=gSG089498
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089498
+nRFreqRelationRef NRCellCU=gSG089494,NRFreqRelation=2068331
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRCellRelation=gSG089491
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089491
+nRFreqRelationRef NRCellCU=gSG089495,NRFreqRelation=2056669
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRCellRelation=gSG089492
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089492
+nRFreqRelationRef NRCellCU=gSG089495,NRFreqRelation=2058335
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRCellRelation=gSG089493
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089493
+nRFreqRelationRef NRCellCU=gSG089495,NRFreqRelation=2060001
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRCellRelation=gSG089494
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089494
+nRFreqRelationRef NRCellCU=gSG089495,NRFreqRelation=2061667
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRCellRelation=gSG089496
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089496
+nRFreqRelationRef NRCellCU=gSG089495,NRFreqRelation=2064999
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRCellRelation=gSG089497
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089497
+nRFreqRelationRef NRCellCU=gSG089495,NRFreqRelation=2066665
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089495,NRCellRelation=gSG089498
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089498
+nRFreqRelationRef NRCellCU=gSG089495,NRFreqRelation=2068331
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRCellRelation=gSG089491
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089491
+nRFreqRelationRef NRCellCU=gSG089496,NRFreqRelation=2056669
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRCellRelation=gSG089492
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089492
+nRFreqRelationRef NRCellCU=gSG089496,NRFreqRelation=2058335
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRCellRelation=gSG089493
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089493
+nRFreqRelationRef NRCellCU=gSG089496,NRFreqRelation=2060001
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRCellRelation=gSG089494
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089494
+nRFreqRelationRef NRCellCU=gSG089496,NRFreqRelation=2061667
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRCellRelation=gSG089495
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089495
+nRFreqRelationRef NRCellCU=gSG089496,NRFreqRelation=2063333
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRCellRelation=gSG089497
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089497
+nRFreqRelationRef NRCellCU=gSG089496,NRFreqRelation=2066665
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089496,NRCellRelation=gSG089498
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089498
+nRFreqRelationRef NRCellCU=gSG089496,NRFreqRelation=2068331
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRCellRelation=gSG089491
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089491
+nRFreqRelationRef NRCellCU=gSG089497,NRFreqRelation=2056669
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRCellRelation=gSG089492
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089492
+nRFreqRelationRef NRCellCU=gSG089497,NRFreqRelation=2058335
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRCellRelation=gSG089493
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089493
+nRFreqRelationRef NRCellCU=gSG089497,NRFreqRelation=2060001
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRCellRelation=gSG089494
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089494
+nRFreqRelationRef NRCellCU=gSG089497,NRFreqRelation=2061667
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRCellRelation=gSG089495
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089495
+nRFreqRelationRef NRCellCU=gSG089497,NRFreqRelation=2063333
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRCellRelation=gSG089496
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089496
+nRFreqRelationRef NRCellCU=gSG089497,NRFreqRelation=2064999
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089497,NRCellRelation=gSG089498
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089498
+nRFreqRelationRef NRCellCU=gSG089497,NRFreqRelation=2068331
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRCellRelation=gSG089491
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089491
+nRFreqRelationRef NRCellCU=gSG089498,NRFreqRelation=2056669
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRCellRelation=gSG089492
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089492
+nRFreqRelationRef NRCellCU=gSG089498,NRFreqRelation=2058335
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRCellRelation=gSG089493
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089493
+nRFreqRelationRef NRCellCU=gSG089498,NRFreqRelation=2060001
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRCellRelation=gSG089494
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089494
+nRFreqRelationRef NRCellCU=gSG089498,NRFreqRelation=2061667
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRCellRelation=gSG089495
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089495
+nRFreqRelationRef NRCellCU=gSG089498,NRFreqRelation=2063333
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRCellRelation=gSG089496
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089496
+nRFreqRelationRef NRCellCU=gSG089498,NRFreqRelation=2064999
+sCellCandidate 1
+end
+crn GNBCUCPFunction=1,NRCellCU=gSG089498,NRCellRelation=gSG089497
+cellIndividualOffsetNR 0
+coverageIndicator 2
+includeInSIB True
+isHoAllowed True
+isRemoveAllowed False
+nRCellRef NRCellCU=gSG089497
+nRFreqRelationRef NRCellCU=gSG089498,NRFreqRelation=2066665
+sCellCandidate 1
+end

@@ -11,8 +11,9 @@ import datetime
 from myfunc import ls_name, get_filename, get_file_name_ext
 
 
-version = "V04_20052023"
+version = "V05_20052028"
 #version = "V04_20052023": support package profile, create script with many template as a sametime, create package profile
+#version = "V05_20052028": add merge folder button, de quy merge tat cac cac sub folder
 
 home_path = os.path.dirname(os.path.realpath(__file__))
 print(home_path)
@@ -659,6 +660,35 @@ def loadprofile_package():
 	
 	#cho xanh cai nut , de biet la chay thanh cong
 	loadprofile_package_button.configure(bg = 'green2')
+def press_merge_folder_button():
+	print("press_merge_folder_button press !!!")
+	merge_folder_path = filedialog.askdirectory()
+	print(merge_folder_path)
+	clear_textbox()
+	print_to_textbox("Merge folder path: \n"+merge_folder_path)
+	
+	filenames = []
+	filepaths = []
+	#merge_name = "test_merge.txt"
+	merge_name = text_var_mergefilename.get()
+	
+	print_to_textbox("Merged successful to below filepath:")
+	for path, subdirs, files in os.walk(merge_folder_path):
+		print("--------------------------------")
+		#sap xep file name theo thu tu roi moi write
+		for file in sorted(files):
+			print(path,"|",subdirs, "|" , files)
+			with open(os.path.join(path,merge_name), "a") as outfile:
+				#write small file to big file
+				#outfile.write(file+"\n")
+				with open(os.path.join(path,file), "r") as infile:
+					outfile.write(infile.read())
+		print_to_textbox(os.path.join(path,merge_name))
+	
+	#print("Successful merge all subfolder to file name",merge_name, "in each sub folder")
+	#print_to_textbox("Successful merge all subfolder to file name "+ merge_name + " in each sub folder")
+	
+	merger_folder_button.configure(bg = 'green2')
 
 root = tk.Tk()
 root.title("SCRIPTING_"+version)
@@ -673,6 +703,7 @@ text_var_templatepath = tk.StringVar()
 text_var_status = tk.StringVar()
 text_var_status.set("STATUS: PLS SELECT EXCEL OR CHOOSE PROFILE")
 text_var_packagename = tk.StringVar()
+text_var_mergefilename = tk.StringVar()
 
 global om_folder_var
 om_folder_var = tk.StringVar(root)
@@ -759,14 +790,25 @@ loadprofile_button.configure(state='disabled')
 loadprofile_package_button= tk.Button(root, text ="08_1.LOAD PROFILE PACKAGE & CREATE SCRIPT",     command = loadprofile_package)
 loadprofile_package_button.grid(row=10, column=2, sticky="ew", columnspan=2)
 loadprofile_package_button.configure(state='disabled')
-
-
 #end row11
 
 ##row12
-status_label = tk.Label(root, textvariable =text_var_status,)
-status_label.grid(row=11, column=1, columnspan=3)
+merge_folder_btn_text = tk.StringVar()
+merge_folder_btn_text.set("MERGE_FD")
+merger_folder_button = tk.Button(root, textvariable=merge_folder_btn_text, command = press_merge_folder_button)
+merger_folder_button.grid(row=11, column=1)
+
+#tk.Label(root, text="package_name").grid(row=5, column=2, sticky="w")
+entry_mergefilename = tk.Entry(root, textvariable = text_var_mergefilename)
+text_var_mergefilename.set("merged_file_name")
+entry_mergefilename.grid(row=11, column=2, sticky="w")
 ##end row12
+
+
+##row13
+status_label = tk.Label(root, textvariable =text_var_status)
+status_label.grid(row=12, column=1, columnspan=3)
+##end row13
 
 
 

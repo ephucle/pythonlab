@@ -1,0 +1,4 @@
+crn ENodeBFunction=1,GUtraNetwork=1
+simpleGUtranFreqSmtc false
+userLabel
+end
