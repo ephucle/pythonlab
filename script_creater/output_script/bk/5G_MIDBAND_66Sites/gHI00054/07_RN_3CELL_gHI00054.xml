@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running />
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>gHI00054</managedElementId>
+        <GNBCUCPFunction xmlns="urn:com:ericsson:ecim:GNBCUCP">
+          <gNBCUCPFunctionId>1</gNBCUCPFunctionId>
+          <EUtraNetwork>
+            <eUtraNetworkId>1</eUtraNetworkId>
+          </EUtraNetwork>
+
+          <NRNetwork>
+            <nRNetworkId>1</nRNetworkId>
+            <NRFrequency>
+              <arfcnValueNRDl>500910</arfcnValueNRDl>
+              <nRFrequencyId>500910-30-20-0-1</nRFrequencyId>
+              <smtcDuration>1</smtcDuration>
+              <smtcOffset>0</smtcOffset>
+              <smtcPeriodicity>20</smtcPeriodicity>
+              <smtcScs>30</smtcScs>
+            </NRFrequency>
+           </NRNetwork>
+          <NRCellCU>
+            <cellLocalId>1</cellLocalId>
+            <nRCellCUId>gHI00054A1</nRCellCUId>
+            <absFrameStartOffset>
+              <absSubFrameOffset>0</absSubFrameOffset>
+              <absTimeOffset>0</absTimeOffset>
+            </absFrameStartOffset>
+            <NRFreqRelation>
+              <nRFreqRelationId>500910</nRFreqRelationId>
+              <nRFrequencyRef>ManagedElement=gHI00054,GNBCUCPFunction=1,NRNetwork=1,NRFrequency=500910-30-20-0-1</nRFrequencyRef>
+            </NRFreqRelation>
+          </NRCellCU>
+          
+          <NRCellCU>
+            <cellLocalId>2</cellLocalId>
+            <nRCellCUId>gHI00054A2</nRCellCUId>
+            <absFrameStartOffset>
+              <absSubFrameOffset>0</absSubFrameOffset>
+              <absTimeOffset>0</absTimeOffset>
+            </absFrameStartOffset>
+            <NRFreqRelation>
+              <nRFreqRelationId>500910</nRFreqRelationId>
+              <nRFrequencyRef>ManagedElement=gHI00054,GNBCUCPFunction=1,NRNetwork=1,NRFrequency=500910-30-20-0-1</nRFrequencyRef>
+            </NRFreqRelation>
+          </NRCellCU>
+          <NRCellCU>
+            <cellLocalId>3</cellLocalId>
+            <nRCellCUId>gHI00054A3</nRCellCUId>
+            <absFrameStartOffset>
+              <absSubFrameOffset>0</absSubFrameOffset>
+              <absTimeOffset>0</absTimeOffset>
+            </absFrameStartOffset>
+            <NRFreqRelation>
+              <nRFreqRelationId>500910</nRFreqRelationId>
+              <nRFrequencyRef>ManagedElement=gHI00054,GNBCUCPFunction=1,NRNetwork=1,NRFrequency=500910-30-20-0-1</nRFrequencyRef>
+            </NRFreqRelation>
+          </NRCellCU>
+        </GNBCUCPFunction>
+      </ManagedElement>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>

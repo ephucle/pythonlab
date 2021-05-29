@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running />
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>gHI03772</managedElementId>
+        <GNBCUUPFunction xmlns="urn:com:ericsson:ecim:GNBCUUP">
+          <gNBCUUPFunctionId>1</gNBCUUPFunctionId>
+          <gNBId>2937721</gNBId>
+
+          <pLMNIdList>
+            <mcc>452</mcc>
+            <mnc>04</mnc>
+          </pLMNIdList>
+          <endpointResDepHEnabled>true</endpointResDepHEnabled>
+               <EndpointResource>
+                  <endpointResourceId>1</endpointResourceId>
+                  <LocalIpEndpoint>
+                     <localIpEndpointId>1</localIpEndpointId>
+                     <interfaceList>E1</interfaceList>
+                     <interfaceList>NG</interfaceList>
+                     <interfaceList>S1</interfaceList>
+                     <interfaceList>X2</interfaceList>
+                     <interfaceList>XN</interfaceList>
+                     <interfaceList>F1</interfaceList>
+                     <addressRef>ManagedElement=1,Transport=1,Router=Traffic,InterfaceIPv4=Traffic,AddressIPv4=Traffic</addressRef>
+                  </LocalIpEndpoint>
+               </EndpointResource>
+          <gNBIdLength>26</gNBIdLength>
+        </GNBCUUPFunction>
+      </ManagedElement>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>

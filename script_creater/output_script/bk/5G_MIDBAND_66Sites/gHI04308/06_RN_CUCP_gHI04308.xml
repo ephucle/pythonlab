@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running />
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>gHI04308</managedElementId>
+        <GNBCUCPFunction xmlns="urn:com:ericsson:ecim:GNBCUCP">
+          <gNBCUCPFunctionId>1</gNBCUCPFunctionId>
+          <gNBId>2943081</gNBId>
+          <pLMNId>
+            <mcc>452</mcc>
+            <mnc>04</mnc>
+          </pLMNId>
+          <endpointResDepHEnabled>true</endpointResDepHEnabled>
+               <EndpointResource>
+                  <endpointResourceId>1</endpointResourceId>
+                  <LocalSctpEndpoint>
+                     <localSctpEndpointId>2</localSctpEndpointId>
+                     <interfaceUsed>F1</interfaceUsed>
+                     <sctpEndpointRef>ManagedElement=1,Transport=1,SctpEndpoint=F1_NRCUCP</sctpEndpointRef>
+                  </LocalSctpEndpoint>
+                  <LocalSctpEndpoint>
+                     <localSctpEndpointId>1</localSctpEndpointId>
+                     <interfaceUsed>X2</interfaceUsed>
+                     <sctpEndpointRef>ManagedElement=1,Transport=1,SctpEndpoint=1</sctpEndpointRef>
+                  </LocalSctpEndpoint>
+               </EndpointResource>
+          <gNBIdLength>26</gNBIdLength>
+        </GNBCUCPFunction>
+      </ManagedElement>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>

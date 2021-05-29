@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running />
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>1</managedElementId>
+        <logicalName>gHI01228</logicalName>
+        <Equipment xmlns="urn:com:ericsson:ecim:ReqEquipment">
+          <equipmentId>1</equipmentId>
+          <FieldReplaceableUnit xmlns="urn:com:ericsson:ecim:ReqFieldReplaceableUnit">
+            <fieldReplaceableUnitId>BPU-1</fieldReplaceableUnitId>
+            <administrativeState>UNLOCKED</administrativeState>
+            <userLabel>BPU</userLabel>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>A</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>B</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>C</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>D</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>E</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>F</riPortId>
+            </RiPort>
+
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>G</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>H</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>J</riPortId>
+            </RiPort>
+          </FieldReplaceableUnit>
+          <FieldReplaceableUnit xmlns="urn:com:ericsson:ecim:ReqFieldReplaceableUnit">
+            <fieldReplaceableUnitId>AAS-1</fieldReplaceableUnitId>
+            <administrativeState>LOCKED</administrativeState>
+            <isSharedWithExternalMe>false</isSharedWithExternalMe>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_1</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_2</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_3</riPortId>
+            </RiPort>
+            <Transceiver xmlns="urn:com:ericsson:ecim:ReqTransceiver">
+              <transceiverId>1</transceiverId>
+            </Transceiver>
+          </FieldReplaceableUnit>
+          <FieldReplaceableUnit xmlns="urn:com:ericsson:ecim:ReqFieldReplaceableUnit">
+            <fieldReplaceableUnitId>AAS-2</fieldReplaceableUnitId>
+            <administrativeState>LOCKED</administrativeState>
+            <isSharedWithExternalMe>false</isSharedWithExternalMe>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_1</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_2</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_3</riPortId>
+            </RiPort>
+            <Transceiver xmlns="urn:com:ericsson:ecim:ReqTransceiver">
+              <transceiverId>1</transceiverId>
+            </Transceiver>
+          </FieldReplaceableUnit>
+          <FieldReplaceableUnit xmlns="urn:com:ericsson:ecim:ReqFieldReplaceableUnit">
+            <fieldReplaceableUnitId>AAS-3</fieldReplaceableUnitId>
+            <administrativeState>LOCKED</administrativeState>
+            <isSharedWithExternalMe>false</isSharedWithExternalMe>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_1</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_2</riPortId>
+            </RiPort>
+            <RiPort xmlns="urn:com:ericsson:ecim:ReqRiPort">
+              <riPortId>DATA_3</riPortId>
+            </RiPort>
+            <Transceiver xmlns="urn:com:ericsson:ecim:ReqTransceiver">
+              <transceiverId>1</transceiverId>
+            </Transceiver>
+          </FieldReplaceableUnit>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>1</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=A</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-1,RiPort=DATA_1</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>2</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=B</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-1,RiPort=DATA_2</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>3</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=C</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-1,RiPort=DATA_3</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>4</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=D</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-2,RiPort=DATA_1</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>5</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=E</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-2,RiPort=DATA_2</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>6</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=F</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-2,RiPort=DATA_3</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>7</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=G</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-3,RiPort=DATA_1</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>8</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=H</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-3,RiPort=DATA_2</riPortRef2>
+          </RiLink>
+          <RiLink xmlns="urn:com:ericsson:ecim:ReqRiLink">
+            <riLinkId>9</riLinkId>
+            <riPortRef1>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1,RiPort=J</riPortRef1>
+            <riPortRef2>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-3,RiPort=DATA_3</riPortRef2>
+          </RiLink>
+        </Equipment>
+        <NodeSupport xmlns="urn:com:ericsson:ecim:RmeSupport">
+          <nodeSupportId>1</nodeSupportId>
+          <MpClusterHandling xmlns="urn:com:ericsson:ecim:RmeMpClusterHandling">
+            <mpClusterHandlingId>1</mpClusterHandlingId>
+            <primaryCoreRef>ManagedElement=1,Equipment=1,FieldReplaceableUnit=BPU-1</primaryCoreRef>
+          </MpClusterHandling>
+          <SectorEquipmentFunction xmlns="urn:com:ericsson:ecim:RmeSectorEquipmentFunction">
+            <sectorEquipmentFunctionId>AAS-1</sectorEquipmentFunctionId>
+            <administrativeState>LOCKED</administrativeState>
+            <rfBranchRef>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-1,Transceiver=1</rfBranchRef>
+          </SectorEquipmentFunction>
+          <SectorEquipmentFunction xmlns="urn:com:ericsson:ecim:RmeSectorEquipmentFunction">
+            <sectorEquipmentFunctionId>AAS-2</sectorEquipmentFunctionId>
+            <administrativeState>LOCKED</administrativeState>
+            <rfBranchRef>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-2,Transceiver=1</rfBranchRef>
+          </SectorEquipmentFunction>
+          <SectorEquipmentFunction xmlns="urn:com:ericsson:ecim:RmeSectorEquipmentFunction">
+            <sectorEquipmentFunctionId>AAS-3</sectorEquipmentFunctionId>
+            <administrativeState>LOCKED</administrativeState>
+            <rfBranchRef>ManagedElement=1,Equipment=1,FieldReplaceableUnit=AAS-3,Transceiver=1</rfBranchRef>
+          </SectorEquipmentFunction>
+        </NodeSupport>
+      </ManagedElement>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>

@@ -8,15 +8,60 @@ from tkinter import filedialog, E, W, LEFT
 
 import json
 import datetime
-from myfunc import ls_name, get_filename, get_file_name_ext
+from myfunc import ls_name, get_filename, get_file_name_ext , Timer
+import time
+t = Timer()
 
 
-version = "V05_20052028"
+version = "V06_20052029"
 #version = "V04_20052023": support package profile, create script with many template as a sametime, create package profile
 #version = "V05_20052028": add merge folder button, de quy merge tat cac cac sub folder
+#version = "V06_20052029": beautiful printout in terminal, status, GUI printout, friendly progress update during script runing
 
 home_path = os.path.dirname(os.path.realpath(__file__))
 print(home_path)
+
+
+class Timer1:
+	'''
+	#example how to use:
+	#>>> t =Timer()
+	#>>> t.start()
+	#>>> t.stop()
+	#>>> Elapsed time: 10.0668 seconds  [00:00:10]
+	'''
+	def __init__(self):
+		self._start_time = None
+
+	def start(self):
+		"""Start a new timer"""
+		if self._start_time is not None:
+			raise TimerError("Timer is running. Use .stop() to stop it")
+			
+
+		self._start_time = time.perf_counter()
+		#print(">>> The action start at:", get_now())
+
+	def stop(self):
+		"""Stop the timer, and report the elapsed time"""
+		if self._start_time is None:
+			raise TimerError("Timer is not running. Use .start() to start it")
+
+		elapsed_time = time.perf_counter() - self._start_time
+		seconds = elapsed_time % (24 * 3600) 
+		hour = seconds // 3600
+		seconds %= 3600
+		minutes = seconds // 60
+		seconds %= 60
+		
+		self._start_time = None
+		time_string = "Elapsed time: %0.4f seconds  [%02d:%02d:%02d]" % (elapsed_time,hour, minutes, seconds)
+		#print(">>> Elapsed time: %0.4f seconds  [%02d:%02d:%02d]" % (elapsed_time,hour, minutes, seconds))
+		print_to_textbox(time_string)
+		text_var_status.set(text_var_status.get() + " " + time_string)
+		
+#to update GUI
+t1 = Timer1()
 
 def get_now_stamp():
 	'''
@@ -509,18 +554,20 @@ def show_profile_package_to_textbox():
 	
 	with open(os.path.join(home_path,"profile","profile_package",profile_package_filename_selected)) as json_file:
 		data_dict = json.load(json_file)
-		print(data_dict)
+		#print(data_dict)
 		profile_package_name = data_dict['package_name']
 		profiles_filepath = data_dict['profiles_filepath']
-		print(profile_package_name)
-		print(profiles_filepath)
+		#print(profile_package_name)
+		#print(profiles_filepath)
 		print_to_textbox("profile_package_name "+profile_package_name)
 		
 		print_to_textbox("-----------------------------------------")
 		print_to_textbox("profile_filepaths: ")
+		print("profile_filepaths: ")
 		for profile_filepath in profiles_filepath:
 			#print_to_textbox(profile_filepath)
 			print_to_textbox(get_filename(profile_filepath))
+			print(get_filename(profile_filepath))
 
 	profile_package_select.configure(bg="green2")
 	text_var_status.set("STATUS: PACKAGE SELECTED")
@@ -528,11 +575,10 @@ def show_profile_package_to_textbox():
 
 
 def loadprofile_procedure(profile_filepath):
-	print("creating script for profile", profile_filepath)
-	#log_textbox.delete("1.0","end")
-	#print profile name to text box
+	print("---------------------creating script for profile", profile_filepath, "--------------------")
 	print_to_textbox("---------------------------")
 	print_to_textbox("creating script for profile:" + get_filename(profile_filepath))
+	text_var_status.set("loading "+get_filename(profile_filepath))
 	with open(profile_filepath) as json_file:
 		data_dict = json.load(json_file)
 		print(data_dict)
@@ -543,16 +589,7 @@ def loadprofile_procedure(profile_filepath):
 		foldersplit = data_dict['foldersplit']
 		filenametag = data_dict['filenametag']
 		mergefile = data_dict['mergefile']
-		
-		#print_to_textbox("Excel Input: "+get_filename(input_file_path))
-		#print_to_textbox("Sheet Name: "+selected_sheet)
-		#print_to_textbox("Template Input: "+get_filename(template_filepath))
-		#print_to_textbox("Folder_tag: "+folder_tag)
-		#print_to_textbox("foldersplit: "+str(foldersplit))
-		#print_to_textbox("filenametag: "+str(filenametag))
-		#print_to_textbox("mergefile: "+str(mergefile))
-		#print_to_textbox("-------------------------")
-		
+
 		input_filename = get_filename(input_file_path)[:20]
 	
 	
@@ -583,19 +620,18 @@ def loadprofile_procedure(profile_filepath):
 			variables = re.findall(regex, line)
 			for item in variables:
 				var_set.add(item)
-			print(variables)
-			
 			#####
 			regex2 = '\$\{' + "(\w+)"+'\}'
 			variables2 = re.findall(regex2, line)
-			print(variables2)
+			#print(variables2)
 			for item in variables2:
 				var_set.add(item)
 			#####
-			
-			
-		print("----------------all variable string_from load profile--------------")
+		print("variables in ", template_filename)
 		print(var_set)
+	
+	
+	
 
 	#substitute data from each row of excel into to template
 	for index, row in df.iterrows():
@@ -604,7 +640,7 @@ def loadprofile_procedure(profile_filepath):
 			if column_name in column_headers:
 				#print(index,column_name,row[column_name])
 				data[column_name] = row[column_name]
-		print(data)
+		#print(data)
 		rowname = filenametag
 		
 		src = Template(input_file_content)
@@ -629,13 +665,16 @@ def loadprofile_procedure(profile_filepath):
 		output_text_file.write(result)
 		output_text_file.close()
 		print("write successful", data, "to", output_filepath)
-		print_to_textbox("write successful script "+  output_filepath)
+		#khong print cai nay ra textbox, vi no nhieu qua, kho doc
+		#print_to_textbox("write successful script "+  output_filepath)
 
 #########################
 
 def loadprofile_package():
 	#cho vang cai nut de biet la bat dau ==> de troubleshooting
 	loadprofile_package_button.configure(bg = 'yellow')
+	t.start()
+	t1.start()
 	print("loadprofile_package button press!!")
 	profile_package_filename_selected = om_profile_package_var.get()
 	print(profile_package_filename_selected)
@@ -646,20 +685,30 @@ def loadprofile_package():
 	
 	with open(os.path.join(home_path,"profile","profile_package",profile_package_filename_selected)) as json_file:
 		data_dict = json.load(json_file)
-		print(data_dict)
+		#print(data_dict)
 		profile_package_name = data_dict['package_name']
 		profiles_filepath = data_dict['profiles_filepath']
+		no_of_profile = len(profiles_filepath)
 		print(profile_package_name)
 		print(profiles_filepath)
-		print_to_textbox("profile_package_name "+profile_package_name)
-		print_to_textbox("-----------------------------------------")
-		print_to_textbox("profile_filepaths: ")
+		#print_to_textbox("profile_package_name "+profile_package_name)
+		#print_to_textbox("-----------------------------------------")
+		
+		count_profile = 0
 		for profile_filepath in profiles_filepath:
-			print_to_textbox(profile_filepath)
+			count_profile += 1
+			#print_to_textbox(profile_filepath)
+			print("Loading ",get_filename(profile_filepath), count_profile, "/", no_of_profile, "profiles")
+			print_to_textbox("Loading " + get_filename(profile_filepath) + " " + str(count_profile)+ "/"+str(no_of_profile) +" profiles")
+			
 			loadprofile_procedure(profile_filepath)
 	
 	#cho xanh cai nut , de biet la chay thanh cong
 	loadprofile_package_button.configure(bg = 'green2')
+	text_var_status.set("FINISHED:" +profile_package_filename_selected)
+	
+	t.stop()
+	t1.stop()
 def press_merge_folder_button():
 	print("press_merge_folder_button press !!!")
 	merge_folder_path = filedialog.askdirectory()

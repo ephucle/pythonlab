@@ -1,0 +1,4 @@
+<summary:AutoIntegrationRbsSummaryFile xmlns:summary="http://www.ericsson.se/RbsSummaryFileSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ericsson.se/RbsSummaryFileSchemaSummaryFile.xsd">
+  <Format revision="F" />
+  <ConfigurationFiles upgradePackageFilePath="Baseband_Radio_Node-CXP9024418_12-R70G14.zip" siteEquipmentFilePath="02_SiteEquipment_gHI04282.xml" siteBasicFilePath="01_SiteBasic_gHI04282.xml" />
+</summary:AutoIntegrationRbsSummaryFile>

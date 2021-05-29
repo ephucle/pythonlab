@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running />
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>gSG08949</managedElementId>
+        <GNBCUCPFunction xmlns="urn:com:ericsson:ecim:GNBCUCP">
+          <gNBCUCPFunctionId>1</gNBCUCPFunctionId>
+          <EUtraNetwork>
+            <eUtraNetworkId>1</eUtraNetworkId>
+          </EUtraNetwork>
+          <NRNetwork>
+            <nRNetworkId>1</nRNetworkId>
+            
+          </NRNetwork>
+          <NRCellCU>
+            <cellLocalId>1</cellLocalId>
+            <nRCellCUId>gSG089491</nRCellCUId>
+          </NRCellCU>
+		   <NRCellCU>
+            <cellLocalId>2</cellLocalId>
+            <nRCellCUId>gSG089492</nRCellCUId>
+			</NRCellCU>
+			<NRCellCU>
+            <cellLocalId>3</cellLocalId>
+            <nRCellCUId>gSG089493</nRCellCUId>
+			</NRCellCU>
+			<NRCellCU>
+            <cellLocalId>4</cellLocalId>
+            <nRCellCUId>gSG089494</nRCellCUId>
+			</NRCellCU>
+			<NRCellCU>
+            <cellLocalId>5</cellLocalId>
+            <nRCellCUId>gSG089495</nRCellCUId>
+			</NRCellCU>
+			<NRCellCU>
+            <cellLocalId>6</cellLocalId>
+            <nRCellCUId>gSG089496</nRCellCUId>
+			</NRCellCU>
+			<NRCellCU>
+            <cellLocalId>7</cellLocalId>
+            <nRCellCUId>gSG089497</nRCellCUId>
+			</NRCellCU>
+			<NRCellCU>
+            <cellLocalId>8</cellLocalId>
+            <nRCellCUId>gSG089498</nRCellCUId>
+			</NRCellCU>
+        </GNBCUCPFunction>
+      </ManagedElement>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>

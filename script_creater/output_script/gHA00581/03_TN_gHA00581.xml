@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running />
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <ManagedElement xmlns="urn:com:ericsson:ecim:ComTop">
+        <managedElementId>gHA00581</managedElementId>
+        <Transport>
+          <transportId>1</transportId>
+          <SctpProfile xmlns="urn:com:ericsson:ecim:RtnSctpProfile">
+            <dscp>40</dscp>
+            <maxInStreams>2</maxInStreams>
+            <maxOutStreams>2</maxOutStreams>
+            <minRto>100</minRto>
+            <sctpProfileId>1</sctpProfileId>
+          </SctpProfile>
+          <SctpEndpoint xmlns="urn:com:ericsson:ecim:RtnSctp">
+            <localIpAddress>ManagedElement=gHA00581,Transport=1,Router=Traffic,InterfaceIPv4=Traffic,AddressIPv4=Traffic</localIpAddress>
+            <portNumber>36422</portNumber>
+            <sctpEndpointId>1</sctpEndpointId>
+            <sctpProfile>ManagedElement=gHA00581,Transport=1,SctpProfile=1</sctpProfile>
+          </SctpEndpoint>
+          <SctpProfile xmlns="urn:com:ericsson:ecim:RtnSctpProfile">
+            <sctpProfileId>Node_Internal_F1</sctpProfileId>
+          </SctpProfile>
+          <SctpEndpoint xmlns="urn:com:ericsson:ecim:RtnSctp">
+            <localIpAddress>ManagedElement=gHA00581,Transport=1,Router=Node_Internal_F1,InterfaceIPv4=NRCUCP,AddressIPv4=1</localIpAddress>
+            <portNumber>38472</portNumber>
+            <sctpEndpointId>F1_NRCUCP</sctpEndpointId>
+            <sctpProfile>ManagedElement=gHA00581,Transport=1,SctpProfile=Node_Internal_F1</sctpProfile>
+          </SctpEndpoint>
+          <SctpEndpoint xmlns="urn:com:ericsson:ecim:RtnSctp">
+            <localIpAddress>ManagedElement=gHA00581,Transport=1,Router=Node_Internal_F1,InterfaceIPv4=NRDU,AddressIPv4=1</localIpAddress>
+            <portNumber>38472</portNumber>
+            <sctpEndpointId>F1_NRDU</sctpEndpointId>
+            <sctpProfile>ManagedElement=gHA00581,Transport=1,SctpProfile=Node_Internal_F1</sctpProfile>
+          </SctpEndpoint>
+        </Transport>
+      </ManagedElement>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<rpc message-id="Closing" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <close-session></close-session>
+</rpc>
+]]>]]>

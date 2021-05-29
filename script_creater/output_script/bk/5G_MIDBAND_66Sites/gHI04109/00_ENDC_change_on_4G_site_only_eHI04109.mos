@@ -1,0 +1,89 @@
+lt all
+$date = `date +%y%m%d_%H%M`
+cvms before_setting_ENDC_$date
+
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012218 featurestate 1
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012381 featureState 1
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012324 featureState 1
+set SystemFunctions=1,Lm=1,FeatureState=CXC4040008 featureState 1
+
+crn Transport=1,Synchronization=1,TimeSyncIO=1,GnssInfo=1
+end
+
+bl RadioEquipmentClockReference
+
+set Synchronization=1,RadioEquipmentClock=1,RadioEquipmentClockReference=2 priority 5
+set Synchronization=1,RadioEquipmentClock=1,RadioEquipmentClockReference=1 priority 4
+
+deb RadioEquipmentClockReference
+
+crn Transport=1,Synchronization=1,RadioEquipmentClock=1,RadioEquipmentClockReference=GPS
+adminQualityLevel qualityLevelValueOptionI=2,qualityLevelValueOptionII=2,qualityLevelValueOptionIII=1
+administrativeState 1
+encapsulation Synchronization=1,TimeSyncIO=1
+holdOffTime 1000
+priority 1
+useQLFrom 1
+waitToRestoreTime 60
+end
+
+set ENodeBFunction=1 intraRanIpAddressRef Transport=1,Router=LTE,InterfaceIPv4=1,AddressIPv4=1
+
+crn ENodeBFunction=1,GUtraNetwork=1
+end
+
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHI04109
+gNodeBId 2941091
+gNodeBIdLength 26
+gNodeBPlmnId mcc=452,mnc=4,mncLength=2
+userLabel
+end
+
+crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHI04109,TermPointToGNB=gHI04109
+administrativeState 1
+domainName
+ipAddress 10.178.132.41
+ipsecEpAddress ::
+ipv6Address ::
+upIpAddress ::
+end
+
+crn ENodeBFunction=1,EndcProfile=1
+end
+
+set EndcProfile=1 meNbS1TermReqArpLev 1
+set ENodeBFunction=1,EndcProfile=1 splitNotAllowedUeArpLev 0
+lset ENodeBFunction=1,QciTable=default,QciProfilePredefined=qci[6789]$ endcProfileRef ENodeBFunction=1,EndcProfile=1
+
+crn ENodeBFunction=1,EndcProfile=2
+end
+
+set EndcProfile=2 meNbS1TermReqArpLev 15
+set ENodeBFunction=1,EndcProfile=2 splitNotAllowedUeArpLev 0
+lset ENodeBFunction=1,QciTable=default,QciProfilePredefined=qci[15]$ endcProfileRef ENodeBFunction=1,EndcProfile=2
+
+lset EUtranCellFDD=e  endcAllowedPlmnList mcc=452,mnc=4,mnclength=2 
+
+lset EUtranCellFDD=e primaryUpperLayerInd 1
+fseti QciTable=default,QciProfilePredefined=qci6$ pdcpSNLengthNr 18
+fseti QciTable=default,QciProfilePredefined=qci7$ pdcpSNLengthNr 18
+fseti QciTable=default,QciProfilePredefined=qci8$ pdcpSNLengthNr 18
+fseti QciTable=default,QciProfilePredefined=qci9$ pdcpSNLengthNr 18
+
+fseti QciProfilePredefined dualConnInitUlConf 1
+
+###LTE baseline
+set EUtranCellFDD=eHI04109(1|2|3)$ primaryUpperLayerInd 1
+set CarrierAggregationFunction dcSCellActDeactDataThres  30
+set CarrierAggregationFunction dcSCellActDeactDataThresHys  30
+set CarrierAggregationFunction dcSCellDeactDelayTimer  200
+
+scw 4072:1,4052:2
+
+
+
+cvms after_setting_ENDC_$date
+gs-
+
+st cell
+
