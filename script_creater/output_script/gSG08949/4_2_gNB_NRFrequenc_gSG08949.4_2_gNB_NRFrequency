@@ -62,3 +62,131 @@ smtcOffset 0
 smtcPeriodicity 20
 smtcScs 120
 end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2056669-120-20-0-3
+arfcnValueNRDl 2056669
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2058335-120-20-0-3
+arfcnValueNRDl 2058335
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2060001-120-20-0-3
+arfcnValueNRDl 2060001
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2061667-120-20-0-3
+arfcnValueNRDl 2061667
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2063333-120-20-0-3
+arfcnValueNRDl 2063333
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2064999-120-20-0-3
+arfcnValueNRDl 2064999
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2066665-120-20-0-3
+arfcnValueNRDl 2066665
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2068331-120-20-0-3
+arfcnValueNRDl 2068331
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2056669-120-20-0-3
+arfcnValueNRDl 2056669
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2058335-120-20-0-3
+arfcnValueNRDl 2058335
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2060001-120-20-0-3
+arfcnValueNRDl 2060001
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2061667-120-20-0-3
+arfcnValueNRDl 2061667
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2063333-120-20-0-3
+arfcnValueNRDl 2063333
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2064999-120-20-0-3
+arfcnValueNRDl 2064999
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2066665-120-20-0-3
+arfcnValueNRDl 2066665
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end
+crn GNBCUCPFunction=1,NRNetwork=1,NRFrequency=2068331-120-20-0-3
+arfcnValueNRDl 2068331
+bandListManual 258
+smtcDuration 3
+smtcOffset 0
+smtcPeriodicity 20
+smtcScs 120
+end

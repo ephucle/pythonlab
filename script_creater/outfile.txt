@@ -1,4 +1,0 @@
-viettel1
-crn GNBCUCPFunction=1,NRNetwork=1
-simpleNRFreqSmtc false
-end

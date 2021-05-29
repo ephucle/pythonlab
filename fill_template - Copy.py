@@ -800,7 +800,8 @@ tk.Button(root, text ="06.BACKUP",     command = save_profile_press).grid(row=5,
 
 tk.Label(root, text="package_name").grid(row=5, column=2, sticky="w")
 entry_packagename = tk.Entry(root, textvariable = text_var_packagename)
-entry_packagename.grid(row=5, column=2, sticky="e")
+#entry_packagename.grid(row=5, column=2, sticky="e")
+entry_packagename.grid(row=5, column=2, sticky="") #central allign
 ##end row6
 
 ##row7
@@ -818,7 +819,7 @@ profile_select.grid(row=6, column=2, sticky="ew", columnspan=2)
 profile_package_files = ls_name(os.path.join(home_path,'profile','profile_package'))
 choices = profile_package_files
 om_profile_package_var = tk.StringVar(root)
-om_profile_package_var.set("07_1.Select a profile package")
+om_profile_package_var.set("07.1.Select a profile package")
 profile_package_select = tk.OptionMenu(root, om_profile_package_var, *choices,command=lambda _: show_profile_package_to_textbox())
 #mymenu = OptionMenu(root, optionvar, *t, command=lambda _: update())
 profile_package_select.grid(row=7, column=2, sticky="ew", columnspan=2)
@@ -836,7 +837,7 @@ loadprofile_button.configure(state='disabled')
 #end row10
 
 #row11
-loadprofile_package_button= tk.Button(root, text ="08_1.LOAD PROFILE PACKAGE & CREATE SCRIPT",     command = loadprofile_package)
+loadprofile_package_button= tk.Button(root, text ="08.1.LOAD PROFILE PACKAGE & CREATE SCRIPT",     command = loadprofile_package)
 loadprofile_package_button.grid(row=10, column=2, sticky="ew", columnspan=2)
 loadprofile_package_button.configure(state='disabled')
 #end row11
