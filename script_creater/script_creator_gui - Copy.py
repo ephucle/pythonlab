@@ -13,11 +13,10 @@ import time
 t = Timer()
 
 
-version = "V07_20052030"
+version = "V06_20052029"
 #version = "V04_20052023": support package profile, create script with many template as a sametime, create package profile
 #version = "V05_20052028": add merge folder button, de quy merge tat cac cac sub folder
 #version = "V06_20052029": beautiful printout in terminal, status, GUI printout, friendly progress update during script runing
-#version = "V07_20052030" support output template from ECT tool, support CIQ excel input from ECT tool
 
 home_path = os.path.dirname(os.path.realpath(__file__))
 print(home_path)
@@ -164,14 +163,6 @@ def fill_template():
 	
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
 	df = df.rename(columns=lambda x: x.strip())
-	
-	#remove decription data in CIQ template if exit
-	i = df[((df.Parameter == 'Area'))].index
-	df= df.drop(i)
-	#thay doi ":" bang dau ":"
-	#df.columns = df.columns.str.replace(r"[:]", "_")
-	df.columns = df.columns.str.replace(r"[:=\-]", "_")
-	
 	print("SUMMARY DATA INPUT TABLE:")
 	print(df)
 	global column_header
@@ -203,18 +194,8 @@ def fill_template():
 			#####
 			regex2 = '\$\{' + "(\w+)"+'\}'
 			variables2 = re.findall(regex2, line)
-			#print(variables2)
+			print(variables2)
 			for item in variables2:
-				var_set.add(item)
-			#####
-			
-			#####
-			#regex3 = '%' + "(\w+)"+'%'
-			#cai tien co dau : ben trong variable
-			regex3 = '%' + "([\w:=\-]+)"+'%'
-			variables3 = re.findall(regex3, line)
-			#print(variables3)
-			for item in variables3:
 				var_set.add(item)
 			#####
 			
@@ -223,35 +204,15 @@ def fill_template():
 		
 	#####
 	
-	#update input_file_content (replace variable from %string% to ${string}
-	regex = '%' + "([\w:=\-]+)"+'%'  #update to support : inside variablename
-	variables_percent = re.findall(regex, input_file_content)
-	print("#######################################")
-	print("variables_percent:",variables_percent)
-	print("#######################################")
-
-	for var in variables_percent:
-		#print (var)
-		new_var = var.replace(":","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		new_var = new_var.replace("-","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		new_var = new_var.replace("=","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		print ("new variable:",new_var)
-		#new_s = re.sub('%'+var+'%','${'+var+'}',input_file_content)
-		new_s = re.sub('%'+var+'%','${'+new_var+'}',input_file_content)
-		input_file_content = new_s
-
-	
 	for index, row in df.iterrows():
 		data = {}
 		for column_name in var_set:
-			column_name = column_name.replace(":","_")  #remove ":" in column
-			column_name = column_name.replace("=","_")  #remove ":" in column
-			column_name = column_name.replace("-","_")  #remove ":" in column
 			if column_name in column_headers:
+				#print(index,column_name,row[column_name])
 				data[column_name] = row[column_name]
 		print(data)
-		
-
+		#will turning later
+		#rowname = "row"+str(index)
 		
 		rowname = filenametag_var.get()
 		src = Template(input_file_content)
@@ -260,17 +221,19 @@ def fill_template():
 		else:
 			result = src.substitute(data)
 		home_path = os.path.dirname(os.path.realpath(__file__))
+		#output_filepath=os.path.join(home_path, "output_script", str(rowname))
 		
 		#split script follow folder
 		templatename, ext = get_file_name_ext(template_filename)
 		print("str(row[rowname]", str(row[rowname]))
 		if not var_foldersplit.get():
+			#output_filepath = os.path.join(home_path, "output_script",template_filename + "_" + rowname)
 			output_filepath = os.path.join(home_path, "output_script",templatename + "_" + str(row[rowname]) + "." + ext)
 		else:
 			#neu folder ko ton tai thi tao them folder
-			if not os.path.exists(os.path.join(home_path, "output_script",str(row[folder_tag]))):
-				os.mkdir(os.path.join(home_path, "output_script",str(row[folder_tag])))
-			output_filepath = os.path.join(home_path, "output_script",str(row[folder_tag]), templatename + "_" + str(row[rowname]) + "."+ ext)
+			if not os.path.exists(os.path.join(home_path, "output_script",row[folder_tag])):
+				os.mkdir(os.path.join(home_path, "output_script",row[folder_tag]))
+			output_filepath = os.path.join(home_path, "output_script",row[folder_tag], templatename + "_" + str(row[rowname]) + "."+ ext)
 		
 		global var_mergefile
 		if var_mergefile.get():
@@ -416,20 +379,12 @@ def loadprofile():
 		browse_button.configure(bg = 'green2')
 	
 	################
+	#selected_sheet = om_var.get()
 	print("selected_sheet:", selected_sheet)
 	
 	
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
 	df = df.rename(columns=lambda x: x.strip())
-	
-	#remove decription data in CIQ template if exit
-	i = df[((df.Parameter == 'Area'))].index
-	df= df.drop(i)
-	#thay doi ":" bang dau ":"
-	#df.columns = df.columns.str.replace(r"[:]", "_")
-	df.columns = df.columns.str.replace(r"[:=\-]", "_")   #( thay dau :,  = , - , thanh _), - la ky tu dac bietm thay thanh \-
-	
-	
 	
 	print("SUMMARY DATA INPUT TABLE:")
 	print(df)
@@ -461,59 +416,31 @@ def loadprofile():
 			#####
 			regex2 = '\$\{' + "(\w+)"+'\}'
 			variables2 = re.findall(regex2, line)
-			#print(variables2)
+			print(variables2)
 			for item in variables2:
 				var_set.add(item)
 			#####
-			
-			#####
-			#regex3 = '%' + "([\w:]+)"+'%' #cai tien co dau : ben trong variable
-			regex3 = '%' + "([\w:\-=]+)"+'%' #cai tien co dau : - = ben trong variable
-			variables3 = re.findall(regex3, line)
-			#print(variables3)
-			for item in variables3:
-				var_set.add(item)
-			#####
-			
 			
 		print("----------------all variable string_from load profile--------------")
 		print(var_set)  #{'smtcOffset', 'smtcPeriodicity', 'smtcDuration', 'smtcScs', 'arfcnValueNRDl', 'nRFrequencyId'}
 		
 	#####
 	
-	#update input_file_content (replace variable from %string% to ${string}
-	#regex = '%' + "([\w:]+)"+'%'  #update to support : inside variablename
-	regex = '%' + "([\w:\-=]+)"+'%'  #update to support :-= inside variablename
-	variables_percent = re.findall(regex, input_file_content)
-	print("#######################################")
-	print("variables_percent:",variables_percent)
-	print("#######################################")
-
-	for var in variables_percent:
-		new_var = var.replace(":","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		new_var = new_var.replace("=","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		new_var = new_var.replace("-","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		print (new_var)
-		#new_s = re.sub('%'+var+'%','${'+var+'}',input_file_content)
-		new_s = re.sub('%'+var+'%','${'+new_var+'}',input_file_content)
-		input_file_content = new_s
-	
-	
 	for index, row in df.iterrows():
 		data = {}
-		
 		for column_name in var_set:
-			column_name = column_name.replace(":","_")  #remove ":" in column
-			column_name = column_name.replace("-","_")  #remove ":" in column
-			column_name = column_name.replace("=","_")  #remove ":" in column
 			if column_name in column_headers:
+				#print(index,column_name,row[column_name])
 				data[column_name] = row[column_name]
 		print(data)
-		
+		#will turning later
+		#rowname = "row"+str(index)
 		rowname = filenametag
 		
 		src = Template(input_file_content)
 		result = src.substitute(data)
+		#home_path = os.path.dirname(os.path.realpath(__file__))
+		#output_filepath=os.path.join(home_path, "output_script", str(rowname))
 		
 		#split script follow folder
 		templatename, ext = get_file_name_ext(template_filename)
@@ -523,10 +450,11 @@ def loadprofile():
 		else:
 			#neu folder ko ton tai thi tao them folder
 			if not os.path.exists(os.path.join(home_path, "output_script",str(row[folder_tag]))):
-				os.mkdir(os.path.join(home_path, "output_script",str(row[folder_tag])))
+				os.mkdir(os.path.join(home_path, "output_script",row[folder_tag]))
 			
 			#rule dat script name, co row, co template name
-			output_filepath = os.path.join(home_path, "output_script",str(row[folder_tag]), templatename + "_" + row[rowname] + "."+ ext)
+			#output_filepath = os.path.join(home_path, "output_script",row[folder_tag], template_filename + "_" + rowname)
+			output_filepath = os.path.join(home_path, "output_script",row[folder_tag], templatename + "_" + row[rowname] + "."+ ext)
 		
 		#if var_mergefile.get():
 		if mergefile:
@@ -672,14 +600,6 @@ def loadprofile_procedure(profile_filepath):
 	print("selected_sheet:", selected_sheet)
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
 	df = df.rename(columns=lambda x: x.strip())
-	
-	#remove decription data in CIQ template if exit
-	i = df[((df.Parameter == 'Area'))].index
-	df= df.drop(i)
-	#thay doi ":" bang dau ":"
-	#df.columns = df.columns.str.replace(r"[:]", "_")
-	df.columns = df.columns.str.replace(r"[:=\-]", "_")
-	
 	print("SUMMARY DATA INPUT TABLE:")
 	print(df)
 	global column_header
@@ -712,45 +632,20 @@ def loadprofile_procedure(profile_filepath):
 			for item in variables2:
 				var_set.add(item)
 			#####
-			
-			#####
-			#cai tien co dau : ben trong variable
-			regex3 = '%' + "([\w:=\-]+)"+'%'
-			variables3 = re.findall(regex3, line)
-			for item in variables3:
-				var_set.add(item)
-			#####
 		print("variables in ", template_filename)
 		print(var_set)
 	
 	
-	#update input_file_content (replace variable from %string% to ${string}
-	regex = '%' + "([\w:=\-]+)"+'%'  #update to support : inside variablename
-	variables_percent = re.findall(regex, input_file_content)
-	print("#######################################")
-	print("variables_percent:",variables_percent)
-	print("#######################################")
-
-	for var in variables_percent:
-		#print (var)
-		new_var = var.replace(":","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		new_var = new_var.replace("-","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		new_var = new_var.replace("=","_")  #phai thay ":" bang "_" vi substitudte ko duoc
-		print ("new variable:",new_var)
-		#new_s = re.sub('%'+var+'%','${'+var+'}',input_file_content)
-		new_s = re.sub('%'+var+'%','${'+new_var+'}',input_file_content)
-		input_file_content = new_s
-
+	
 
 	#substitute data from each row of excel into to template
 	for index, row in df.iterrows():
 		data = {}
 		for column_name in var_set:
-			column_name = column_name.replace(":","_")  #remove ":" in column
-			column_name = column_name.replace("=","_")  #remove ":" in column
-			column_name = column_name.replace("-","_")  #remove ":" in column
 			if column_name in column_headers:
+				#print(index,column_name,row[column_name])
 				data[column_name] = row[column_name]
+		#print(data)
 		rowname = filenametag
 		
 		src = Template(input_file_content)
@@ -763,10 +658,10 @@ def loadprofile_procedure(profile_filepath):
 		else:
 			#neu folder ko ton tai thi tao them folder
 			if not os.path.exists(os.path.join(home_path, "output_script",str(row[folder_tag]))):
-				os.mkdir(os.path.join(home_path, "output_script",str(row[folder_tag])))
+				os.mkdir(os.path.join(home_path, "output_script",row[folder_tag]))
 			
 			#rule dat script name, co row, co template name
-			output_filepath = os.path.join(home_path, "output_script",str(row[folder_tag]), templatename + "_" + row[rowname] + "."+ ext)
+			output_filepath = os.path.join(home_path, "output_script",row[folder_tag], templatename + "_" + row[rowname] + "."+ ext)
 		
 		if mergefile:
 			output_text_file = open(output_filepath, "a")

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This xml is automatically generated from ECT. Validated upon UP version CXP9024418/15-R24C66 -->
+<nodeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="NodeInfo.xsd">
+   <name>%node_logical_name%</name>
+   <!--Substitution variable="node_logical_name" area="COMMON" description="The logical name of the node, as identified by the management system. The value must be unique. [Type: Text]" flags="UNIQUE"-->
+   <nodeIdentifier>1</nodeIdentifier>
+   <ipAddress>0.0.0.0</ipAddress>
+   <nodeType>RadioNode</nodeType>
+   <ossPrefix>%oss_local_prefix%,MeContext=%node_logical_name%</ossPrefix>
+   <!--Substitution variable="oss_local_prefix" area="COMMON" description="The local OSS prefix - Merged with the global prefix (that is part of the template) to form the OSS prefix.
+         Consist of the RDN's of the subnetworks that the node is organized under in ENM.
+         Each Subnetwork is identified by SubNetwork=aName. Example: SubNetwork=Sweden,SubNetwork=Stockholm. [Type: Text]"-->
+   <!--Substitution variable="node_logical_name" area="COMMON" description="The logical name of the node, as identified by the management system. The value must be unique. [Type: Text]" flags="UNIQUE"-->
+   <autoIntegration>
+      <upgradePackageName>CXP9024418/15_R24F29</upgradePackageName>
+   </autoIntegration>
+   <license>
+      <installLicense>true</installLicense>
+   </license>
+   <!--Adding maintenance user info such that ENM can enable initial services in the node-->
+   <users>
+      <secureUser>
+         <name>%username_maint_user%</name>
+         <!--Substitution variable="username_maint_user" area="COMMON" description="The name of the maintenance user. [Type: Text]"-->
+         <password>%password_maint_user%</password>
+         <!--Substitution variable="password_maint_user" area="COMMON" description="The SSH-based login password.
+         If the password is not set, SSH-based login is not available for the maintenance user.
+         The password should contain at least three lower-case, three upper-case, two numeric, and one special character. [Type: Text]"-->
+      </secureUser>
+   </users>
+   <artifacts>
+      <siteBasic>SiteBasic.xml</siteBasic>
+      <siteInstallation>SiteInstallation.xml</siteInstallation>
+      <siteEquipment>SiteEquipment.xml</siteEquipment>
+      <configurations>
+         <optionalFeature>FeatureActivation.xml</optionalFeature>
+         <nodeConfiguration>LteRadioNetwork.xml</nodeConfiguration>
+      </configurations>
+   </artifacts>
+</nodeInfo>

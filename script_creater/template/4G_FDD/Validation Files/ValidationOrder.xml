@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- This xml is automatically generated from ECT. Validated upon UP version CXP9024418/15-R24C66 -->
+<ValidationOrder version="1.0">
+    <File format="Netconf" type="preConfig" name="OssNodeProtocol.xml"/>
+    <File format="Netconf" type="template" name="SiteEquipment.xml"/>
+    <File format="Netconf" type="template" name="SiteBasic.xml"/>
+    <File format="Netconf" type="template" name="FeatureActivation.xml"/>
+    <File format="Netconf" type="template" name="LteRadioNetwork.xml"/>
+    <File format="XML" type="template" name="SiteInstallation.xml"/>
+    <File format="XML" type="template" name="NodeInfo.xml"/>
+</ValidationOrder>

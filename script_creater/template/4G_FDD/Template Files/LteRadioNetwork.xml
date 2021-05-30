@@ -1,0 +1,615 @@
+<!-- This xml is automatically generated from ECT. Validated upon UP version CXP9024418/15-R24C66 -->
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+   <capabilities>
+      <capability>urn:ietf:params:netconf:base:1.0</capability>
+      <capability>urn:com:ericsson:ebase:1.2.0</capability>
+   </capabilities>
+</hello>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+     message-id="Create ENodeBFunction and it's system created MO's">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <ENodeBFunction>
+               <eNodeBFunctionId>1</eNodeBFunctionId>
+               <eNodeBPlmnId>
+                  <mcc>452</mcc>
+                  <mnc>4</mnc>
+                  <mncLength>2</mncLength>
+               </eNodeBPlmnId>
+               <eNBId>%eNBId%</eNBId>
+               <!--Substitution variable="eNBId" area="LTE" description="The ENodeB ID - Part of the Cell Global Identity, also used to identify the node over the S1 interface. The value must be unique. [Type: Integer, Range: -1 : 1048575]" flags="UNIQUE"-->
+            </ENodeBFunction>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+     message-id="Configure Ericsson Recommeded setting for ENodeBFunction">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <ENodeBFunction>
+               <eNodeBFunctionId>1</eNodeBFunctionId>
+               <dlMaxWaitingTimeGlobal>500</dlMaxWaitingTimeGlobal>
+               <measuringEcgiWithAgActive>true</measuringEcgiWithAgActive>
+               <rrcConnReestActive>true</rrcConnReestActive>
+               <timeAndPhaseSynchAlignment>true</timeAndPhaseSynchAlignment>
+               <ulMaxWaitingTimeGlobal>500</ulMaxWaitingTimeGlobal>
+               <zzzTemporary39>1</zzzTemporary39>
+               <AdmissionControl>
+                  <admissionControlId>1</admissionControlId>
+                  <nrOfPaConnReservationsPerCell>5</nrOfPaConnReservationsPerCell>
+                  <resourceReservationForPAState>ACTIVATED</resourceReservationForPAState>
+               </AdmissionControl>
+               <AmoFunction>
+                  <amoFunctionId>1</amoFunctionId>
+                  <amoAllowedInterVendor>false</amoAllowedInterVendor>
+               </AmoFunction>
+               <AnrFunction>
+                  <anrFunctionId>1</anrFunctionId>
+                  <cellRelHoAttRateThreshold>10</cellRelHoAttRateThreshold>
+                  <detectObsoleteExtCellsEnabled>true</detectObsoleteExtCellsEnabled>
+                  <pciConflictDetectionEcgiMeas>true</pciConflictDetectionEcgiMeas>
+                  <pciConflictMobilityEcgiMeas>true</pciConflictMobilityEcgiMeas>
+                  <probCellDetectLowHoSuccThres>94</probCellDetectLowHoSuccThres>
+                  <probCellDetectLowHoSuccTime>1</probCellDetectLowHoSuccTime>
+                  <probCellDetectMedHoSuccThres>99</probCellDetectMedHoSuccThres>
+                  <probCellDetectMedHoSuccTime>1</probCellDetectMedHoSuccTime>
+                  <problematicCellPolicy>AUTO_DETECT_AND_BAR</problematicCellPolicy>
+                  <removeNcellTime>14</removeNcellTime>
+                  <AnrFunctionEUtran>
+                     <anrFunctionEUtranId>1</anrFunctionEUtranId>
+                     <anrEutranInterFMeasReportMax>0</anrEutranInterFMeasReportMax>
+                     <anrEutranInterFMeasReportMin>0</anrEutranInterFMeasReportMin>
+                     <anrInterFreqState>ACTIVATED</anrInterFreqState>
+                  </AnrFunctionEUtran>
+                  <AnrFunctionGeran>
+                     <anrFunctionGeranId>1</anrFunctionGeranId>
+                     <anrStateGsm>ACTIVATED</anrStateGsm>
+                     <problematicCellPolicy>AUTO_DETECT_AND_BAR</problematicCellPolicy>
+                  </AnrFunctionGeran>
+                  <AnrFunctionUtran>
+                     <anrFunctionUtranId>1</anrFunctionUtranId>
+                     <anrStateUtran>ACTIVATED</anrStateUtran>
+                  </AnrFunctionUtran>
+               </AnrFunction>
+               <CarrierAggregationFunction>
+                  <carrierAggregationFunctionId>1</carrierAggregationFunctionId>
+                  <a6TriggerSCellDeconfig>false</a6TriggerSCellDeconfig>
+                  <caPreference>DL</caPreference>
+                  <dynamicSCellSelectionMethod>PRIORITIZED</dynamicSCellSelectionMethod>
+                  <enhancedSelectionOfMimoAndCa>true</enhancedSelectionOfMimoAndCa>
+                  <fourLayerMimoPreferred>true</fourLayerMimoPreferred>
+                  <pdcchEnhancedLaForVolte>true</pdcchEnhancedLaForVolte>
+                  <sCellDeactOutOfCoverageTimer>500</sCellDeactOutOfCoverageTimer>
+                  <sCellSelectionMode>ACK_SIMULTANEOUS_SCELL_SELECTION</sCellSelectionMode>
+               </CarrierAggregationFunction>
+               <RadioBearerTable>
+                  <radioBearerTableId>default</radioBearerTableId>
+                  <DataRadioBearer>
+                     <dataRadioBearerId>1</dataRadioBearerId>
+                     <dlMaxRetxThreshold>16</dlMaxRetxThreshold>
+                     <ulMaxRetxThreshold>16</ulMaxRetxThreshold>
+                  </DataRadioBearer>
+                  <SignalingRadioBearer>
+                     <signalingRadioBearerId>1</signalingRadioBearerId>
+                     <dlMaxRetxThreshold>16</dlMaxRetxThreshold>
+                     <ulMaxRetxThreshold>16</ulMaxRetxThreshold>
+                  </SignalingRadioBearer>
+               </RadioBearerTable>
+               <LoadBalancingFunction>
+                  <loadBalancingFunctionId>1</loadBalancingFunctionId>
+                  <lbHitRateEUtranMeasUeIntensity>1</lbHitRateEUtranMeasUeIntensity>
+                  <lbHitRateEUtranMeasUeThreshold>2</lbHitRateEUtranMeasUeThreshold>
+                  <lbRateOffsetLoadThreshold>1500</lbRateOffsetLoadThreshold>
+               </LoadBalancingFunction>
+               <Paging>
+                  <pagingId>1</pagingId>
+                  <nB>T1_16</nB>
+               </Paging>
+               <Rcs>
+                  <rcsId>1</rcsId>
+               </Rcs>
+            </ENodeBFunction>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+     message-id="Create Sctp and transport relations">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <Transport>
+               <transportId>1</transportId>
+               <SctpProfile>
+                  <sctpProfileId>LTE</sctpProfileId>
+               </SctpProfile>
+               <SctpEndpoint>
+                  <sctpEndpointId>LTE</sctpEndpointId>
+                  <portNumber>36422</portNumber>
+                  <sctpProfile>ManagedElement=1,Transport=1,SctpProfile=LTE</sctpProfile>
+                  <localIpAddress>ManagedElement=1,Transport=1,Router=LTE,InterfaceIPv4=1,AddressIPv4=1</localIpAddress>
+               </SctpEndpoint>
+            </Transport>
+            <ENodeBFunction>
+               <eNodeBFunctionId>1</eNodeBFunctionId>
+               <upIpAddressRef>ManagedElement=1,Transport=1,Router=LTE,InterfaceIPv4=1,AddressIPv4=1</upIpAddressRef>
+               <sctpRef>ManagedElement=1,Transport=1,SctpEndpoint=LTE</sctpRef>
+            </ENodeBFunction>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+     message-id="Create TermPointToMME">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <ENodeBFunction>
+               <eNodeBFunctionId>1</eNodeBFunctionId>
+               <TermPointToMme>
+                  <termPointToMmeId>%MME_Identity:5%</termPointToMmeId>
+                  <!--Substitution variable="MME_Identity:5" area="LTE" description="A unique identity of MME:x [Type: Text]"-->
+                  <administrativeState>UNLOCKED</administrativeState>
+                  <ipAddress1>%MME_IP_Address:5%</ipAddress1>
+                  <!--Substitution variable="MME_IP_Address:5" area="LTE" description="The IP address of MME:x [IPv4 address in dotted decimal notation or IPv6 address (i.e. 134.45.34.45 or 2001:DB8::8:800:200C:417A)]"-->
+               </TermPointToMme>
+               <TermPointToMme>
+                  <termPointToMmeId>%MME_Identity:4%</termPointToMmeId>
+                  <!--Substitution variable="MME_Identity:4" area="LTE" description="A unique identity of MME:x [Type: Text]"-->
+                  <administrativeState>UNLOCKED</administrativeState>
+                  <ipAddress1>%MME_IP_Address:4%</ipAddress1>
+                  <!--Substitution variable="MME_IP_Address:4" area="LTE" description="The IP address of MME:x [IPv4 address in dotted decimal notation or IPv6 address (i.e. 134.45.34.45 or 2001:DB8::8:800:200C:417A)]"-->
+               </TermPointToMme>
+               <TermPointToMme>
+                  <termPointToMmeId>%MME_Identity:3%</termPointToMmeId>
+                  <!--Substitution variable="MME_Identity:3" area="LTE" description="A unique identity of MME:x [Type: Text]"-->
+                  <administrativeState>UNLOCKED</administrativeState>
+                  <ipAddress1>%MME_IP_Address:3%</ipAddress1>
+                  <!--Substitution variable="MME_IP_Address:3" area="LTE" description="The IP address of MME:x [IPv4 address in dotted decimal notation or IPv6 address (i.e. 134.45.34.45 or 2001:DB8::8:800:200C:417A)]"-->
+               </TermPointToMme>
+               <TermPointToMme>
+                  <termPointToMmeId>%MME_Identity:2%</termPointToMmeId>
+                  <!--Substitution variable="MME_Identity:2" area="LTE" description="A unique identity of MME:x [Type: Text]"-->
+                  <administrativeState>UNLOCKED</administrativeState>
+                  <ipAddress1>%MME_IP_Address:2%</ipAddress1>
+                  <!--Substitution variable="MME_IP_Address:2" area="LTE" description="The IP address of MME:x [IPv4 address in dotted decimal notation or IPv6 address (i.e. 134.45.34.45 or 2001:DB8::8:800:200C:417A)]"-->
+               </TermPointToMme>
+               <TermPointToMme>
+                  <termPointToMmeId>%MME_Identity:1%</termPointToMmeId>
+                  <!--Substitution variable="MME_Identity:1" area="LTE" description="A unique identity of MME:x [Type: Text]"-->
+                  <administrativeState>UNLOCKED</administrativeState>
+                  <ipAddress1>%MME_IP_Address:1%</ipAddress1>
+                  <!--Substitution variable="MME_IP_Address:1" area="LTE" description="The IP address of MME:x [IPv4 address in dotted decimal notation or IPv6 address (i.e. 134.45.34.45 or 2001:DB8::8:800:200C:417A)]"-->
+               </TermPointToMme>
+            </ENodeBFunction>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+     message-id="Create EUtranFrequency">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <ENodeBFunction>
+               <eNodeBFunctionId>1</eNodeBFunctionId>
+               <EUtraNetwork>
+                  <eUtraNetworkId>1</eUtraNetworkId>
+                  <EUtranFrequency>
+                     <eUtranFrequencyId>1700</eUtranFrequencyId>
+                     <arfcnValueEUtranDl>1700</arfcnValueEUtranDl>
+                     <userLabel>1700</userLabel>
+                  </EUtranFrequency>
+               </EUtraNetwork>
+            </ENodeBFunction>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+     message-id="Create cells and carriers">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <ENodeBFunction>
+               <eNodeBFunctionId>1</eNodeBFunctionId>
+               <!--Create SectorCarrier-->
+               <SectorCarrier>
+                  <sectorCarrierId>1</sectorCarrierId>
+                  <sectorFunctionRef>ManagedElement=1,NodeSupport=1,SectorEquipmentFunction=1</sectorFunctionRef>
+                  <noOfTxAntennas>4</noOfTxAntennas>
+                  <noOfRxAntennas>4</noOfRxAntennas>
+                  <configuredMaxTxPower>%lte_configuredMaxTxPower_C:1%</configuredMaxTxPower>
+                  <!--Substitution variable="lte_configuredMaxTxPower_C:1" area="LTE" description="Sets the maximum output power(in mW) of carrier:1. [Type: Integer, Range: 0 : 10000000]"-->
+               </SectorCarrier>
+               <SectorCarrier>
+                  <sectorCarrierId>2_S:2</sectorCarrierId>
+                  <sectorFunctionRef>ManagedElement=1,NodeSupport=1,SectorEquipmentFunction=2</sectorFunctionRef>
+                  <configuredMaxTxPower>%lte_configuredMaxTxPower_C:2_S:2%</configuredMaxTxPower>
+                  <!--Substitution variable="lte_configuredMaxTxPower_C:2_S:2" area="LTE" description="Sets the maximum output power(in mW) of carrier:2_S:2. [Type: Integer, Range: 0 : 10000000]"-->
+               </SectorCarrier>
+               <SectorCarrier>
+                  <sectorCarrierId>3</sectorCarrierId>
+                  <sectorFunctionRef>ManagedElement=1,NodeSupport=1,SectorEquipmentFunction=3</sectorFunctionRef>
+                  <configuredMaxTxPower>%lte_configuredMaxTxPower_C:3%</configuredMaxTxPower>
+                  <!--Substitution variable="lte_configuredMaxTxPower_C:3" area="LTE" description="Sets the maximum output power(in mW) of carrier:3. [Type: Integer, Range: 0 : 10000000]"-->
+               </SectorCarrier>
+               <!--Create Cells-->
+               <EUtranCellFDD>
+                  <eUtranCellFDDId>1</eUtranCellFDDId>
+                  <administrativeState>LOCKED</administrativeState>
+                  <earfcndl>1700</earfcndl>
+                  <earfcnul>19700</earfcnul>
+                  <cellId>%lte_cellId_C:1%</cellId>
+                  <!--Substitution variable="lte_cellId_C:1" area="LTE" description="The RBS internal ID attribute for cell:1 - Together with the Node ID and Public Land Mobile Network (PLMN) this is a universally unique cell ID. Must be unique in the RBS. [Type: Integer, Range: 0 : 255]"-->
+                  <physicalLayerCellIdGroup>%physicalLayerCellIdGroup_C:1%</physicalLayerCellIdGroup>
+                  <!--Substitution variable="physicalLayerCellIdGroup_C:1" area="LTE" description="The id of the physical layer cell identity group that cell:1 belongs to. [Type: Integer, Range: 0 : 167]"-->
+                  <physicalLayerSubCellId>%physicalLayerSubCellId_C:1%</physicalLayerSubCellId>
+                  <!--Substitution variable="physicalLayerSubCellId_C:1" area="LTE" description="The sub-identity within the physical layer cell ID group of cell:1. [Type: Integer, Range: 0 : 2]"-->
+                  <tac>%tac%</tac>
+                  <!--Substitution variable="tac" area="LTE" description="Tracking Area Code. [Type: Integer, Range: 0 : 65535]"-->
+                  <ulChannelBandwidth>20000</ulChannelBandwidth>
+                  <dlChannelBandwidth>20000</dlChannelBandwidth>
+                  <sectorCarrierRef>ManagedElement=1,ENodeBFunction=1,SectorCarrier=1</sectorCarrierRef>
+                  <rachRootSequence>%rachRootSequence_C:1%</rachRootSequence>
+                  <!--Substitution variable="rachRootSequence_C:1" area="LTE" description="The first root sequence number for Random Access Channel (RACH) preamble generation used by cell:1. [Type: Integer, Range: 0 : 837]"-->
+                  <emergencyAreaId>%emergencyAreaId_C:1%</emergencyAreaId>
+                  <!--Substitution variable="emergencyAreaId_C:1" area="LTE" description="The identity of the emergency area (used for broadcast of warning messages) used by cell:1. Value -1 means identity not set. [Type: Integer, Range: -1 : 16777215]"-->
+                  <EUtranFreqRelation>
+                     <eUtranFreqRelationId>1700</eUtranFreqRelationId>
+                     <eutranFrequencyRef>ManagedElement=1,ENodeBFunction=1,EUtraNetwork=1,EUtranFrequency=1700</eutranFrequencyRef>
+                  </EUtranFreqRelation>
+               </EUtranCellFDD>
+               <EUtranCellFDD>
+                  <eUtranCellFDDId>2</eUtranCellFDDId>
+                  <administrativeState>LOCKED</administrativeState>
+                  <earfcndl>1700</earfcndl>
+                  <earfcnul>19700</earfcnul>
+                  <cellId>%lte_cellId_C:2%</cellId>
+                  <!--Substitution variable="lte_cellId_C:2" area="LTE" description="The RBS internal ID attribute for cell:2 - Together with the Node ID and Public Land Mobile Network (PLMN) this is a universally unique cell ID. Must be unique in the RBS. [Type: Integer, Range: 0 : 255]"-->
+                  <physicalLayerCellIdGroup>%physicalLayerCellIdGroup_C:2%</physicalLayerCellIdGroup>
+                  <!--Substitution variable="physicalLayerCellIdGroup_C:2" area="LTE" description="The id of the physical layer cell identity group that cell:2 belongs to. [Type: Integer, Range: 0 : 167]"-->
+                  <physicalLayerSubCellId>%physicalLayerSubCellId_C:2%</physicalLayerSubCellId>
+                  <!--Substitution variable="physicalLayerSubCellId_C:2" area="LTE" description="The sub-identity within the physical layer cell ID group of cell:2. [Type: Integer, Range: 0 : 2]"-->
+                  <tac>%tac%</tac>
+                  <!--Substitution variable="tac" area="LTE" description="Tracking Area Code. [Type: Integer, Range: 0 : 65535]"-->
+                  <ulChannelBandwidth>20000</ulChannelBandwidth>
+                  <dlChannelBandwidth>20000</dlChannelBandwidth>
+                  <sectorCarrierRef>ManagedElement=1,ENodeBFunction=1,SectorCarrier=2_S:2</sectorCarrierRef>
+                  <rachRootSequence>%rachRootSequence_C:2%</rachRootSequence>
+                  <!--Substitution variable="rachRootSequence_C:2" area="LTE" description="The first root sequence number for Random Access Channel (RACH) preamble generation used by cell:2. [Type: Integer, Range: 0 : 837]"-->
+                  <emergencyAreaId>%emergencyAreaId_C:2%</emergencyAreaId>
+                  <!--Substitution variable="emergencyAreaId_C:2" area="LTE" description="The identity of the emergency area (used for broadcast of warning messages) used by cell:2. Value -1 means identity not set. [Type: Integer, Range: -1 : 16777215]"-->
+                  <EUtranFreqRelation>
+                     <eUtranFreqRelationId>1700</eUtranFreqRelationId>
+                     <eutranFrequencyRef>ManagedElement=1,ENodeBFunction=1,EUtraNetwork=1,EUtranFrequency=1700</eutranFrequencyRef>
+                  </EUtranFreqRelation>
+               </EUtranCellFDD>
+               <EUtranCellFDD>
+                  <eUtranCellFDDId>3</eUtranCellFDDId>
+                  <administrativeState>LOCKED</administrativeState>
+                  <earfcndl>1700</earfcndl>
+                  <earfcnul>19700</earfcnul>
+                  <cellId>%lte_cellId_C:3%</cellId>
+                  <!--Substitution variable="lte_cellId_C:3" area="LTE" description="The RBS internal ID attribute for cell:3 - Together with the Node ID and Public Land Mobile Network (PLMN) this is a universally unique cell ID. Must be unique in the RBS. [Type: Integer, Range: 0 : 255]"-->
+                  <physicalLayerCellIdGroup>%physicalLayerCellIdGroup_C:3%</physicalLayerCellIdGroup>
+                  <!--Substitution variable="physicalLayerCellIdGroup_C:3" area="LTE" description="The id of the physical layer cell identity group that cell:3 belongs to. [Type: Integer, Range: 0 : 167]"-->
+                  <physicalLayerSubCellId>%physicalLayerSubCellId_C:3%</physicalLayerSubCellId>
+                  <!--Substitution variable="physicalLayerSubCellId_C:3" area="LTE" description="The sub-identity within the physical layer cell ID group of cell:3. [Type: Integer, Range: 0 : 2]"-->
+                  <tac>%tac%</tac>
+                  <!--Substitution variable="tac" area="LTE" description="Tracking Area Code. [Type: Integer, Range: 0 : 65535]"-->
+                  <ulChannelBandwidth>20000</ulChannelBandwidth>
+                  <dlChannelBandwidth>20000</dlChannelBandwidth>
+                  <sectorCarrierRef>ManagedElement=1,ENodeBFunction=1,SectorCarrier=3</sectorCarrierRef>
+                  <rachRootSequence>%rachRootSequence_C:3%</rachRootSequence>
+                  <!--Substitution variable="rachRootSequence_C:3" area="LTE" description="The first root sequence number for Random Access Channel (RACH) preamble generation used by cell:3. [Type: Integer, Range: 0 : 837]"-->
+                  <emergencyAreaId>%emergencyAreaId_C:3%</emergencyAreaId>
+                  <!--Substitution variable="emergencyAreaId_C:3" area="LTE" description="The identity of the emergency area (used for broadcast of warning messages) used by cell:3. Value -1 means identity not set. [Type: Integer, Range: -1 : 16777215]"-->
+                  <EUtranFreqRelation>
+                     <eUtranFreqRelationId>1700</eUtranFreqRelationId>
+                     <eutranFrequencyRef>ManagedElement=1,ENodeBFunction=1,EUtraNetwork=1,EUtranFrequency=1700</eutranFrequencyRef>
+                  </EUtranFreqRelation>
+               </EUtranCellFDD>
+            </ENodeBFunction>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+     message-id="Set Ericsson recommended settings for cells ">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <ENodeBFunction>
+               <eNodeBFunctionId>1</eNodeBFunctionId>
+               <EUtranCellFDD>
+                  <eUtranCellFDDId>1</eUtranCellFDDId>
+                  <acBarringInfoPresent>true</acBarringInfoPresent>
+                  <acBarringSkipForMmtelVoice>true</acBarringSkipForMmtelVoice>
+                  <acBarringSkipForSms>true</acBarringSkipForSms>
+                  <cceDynUeAdmCtrlOverloadThr>900</cceDynUeAdmCtrlOverloadThr>
+                  <cceDynUeAdmCtrlPaOverloadThr>900</cceDynUeAdmCtrlPaOverloadThr>
+                  <cceDynUeAdmCtrlRetDiffThr>700</cceDynUeAdmCtrlRetDiffThr>
+                  <cellCapMaxCellSubCap>100000</cellCapMaxCellSubCap>
+                  <cellCapMinCellSubCap>1000</cellCapMinCellSubCap>
+                  <cellCapMinMaxWriProt>true</cellCapMinMaxWriProt>
+                  <cfraEnable>true</cfraEnable>
+                  <dlDynUeAdmCtrlOverloadThr>950</dlDynUeAdmCtrlOverloadThr>
+                  <dlDynUeAdmCtrlPaOverloadThr>950</dlDynUeAdmCtrlPaOverloadThr>
+                  <dlDynUeAdmCtrlRetDiffThr>850</dlDynUeAdmCtrlRetDiffThr>
+                  <dlInterferenceManagementActive>true</dlInterferenceManagementActive>
+                  <dlMaxRetxRrcReleaseThr>2</dlMaxRetxRrcReleaseThr>
+                  <elcEnabled>true</elcEnabled>
+                  <enableServiceSpecificHARQ>true</enableServiceSpecificHARQ>
+                  <filterUeDlThpVolThr>1000</filterUeDlThpVolThr>
+                  <instantDl256QamMode>DYNAMIC_HOM_MODE</instantDl256QamMode>
+                  <lbabPeriod>30</lbabPeriod>
+                  <lbabThreshRejectRateHigh>100</lbabThreshRejectRateHigh>
+                  <noOfPucchCqiUsers>320</noOfPucchCqiUsers>
+                  <pdcchCfiMode>CFI_AUTO_MAXIMUM_3</pdcchCfiMode>
+                  <qRxLevMin>-124</qRxLevMin>
+                  <sCellHandlingAtVolteCall>DECONF_SCELLS</sCellHandlingAtVolteCall>
+                  <srProcessingLevel>TWO_SR_FOR_LOW_THRESHOLD_SR_PROCESSING</srProcessingLevel>
+                  <subbandSrsActive>true</subbandSrsActive>
+                  <tPollRetxRrcReleaseDl>300</tPollRetxRrcReleaseDl>
+                  <tReorderingAutoConfiguration>true</tReorderingAutoConfiguration>
+                  <ulDynUeAdmCtrlOverloadThr>950</ulDynUeAdmCtrlOverloadThr>
+                  <ulDynUeAdmCtrlPaOverloadThr>950</ulDynUeAdmCtrlPaOverloadThr>
+                  <ulDynUeAdmCtrlRetDiffThr>850</ulDynUeAdmCtrlRetDiffThr>
+                  <acBarringPresence>
+                     <acBarringForMoDataPresence>AUTO</acBarringForMoDataPresence>
+                     <acBarringForMoSignPresence>AUTO</acBarringForMoSignPresence>
+                     <acBarringForMmtelVoicePresence>AUTO</acBarringForMmtelVoicePresence>
+                     <acBarringForMmtelVideoPresence>AUTO</acBarringForMmtelVideoPresence>
+                     <acBarringPriorityMmtelVoice>PRIORITY1</acBarringPriorityMmtelVoice>
+                     <acBarringPriorityMmtelVideo>PRIORITY1</acBarringPriorityMmtelVideo>
+                  </acBarringPresence>
+                  <systemInformationBlock3>
+                     <sNonIntraSearch>4</sNonIntraSearch>
+                     <sNonIntraSearchP>4</sNonIntraSearchP>
+                  </systemInformationBlock3>
+                  <UeMeasControl>
+                     <ueMeasControlId>1</ueMeasControlId>
+                     <ulSinrOffset>40</ulSinrOffset>
+                     <ReportConfigEUtraBestCell>
+                        <reportConfigEUtraBestCellId>1</reportConfigEUtraBestCellId>
+                        <timeToTriggerA3>320</timeToTriggerA3>
+                     </ReportConfigEUtraBestCell>
+                     <ReportConfigEUtraInterFreqLb>
+                        <reportConfigEUtraInterFreqLbId>1</reportConfigEUtraInterFreqLbId>
+                        <a5Threshold2Rsrp>-112</a5Threshold2Rsrp>
+                        <a5Threshold2Rsrq>-150</a5Threshold2Rsrq>
+                     </ReportConfigEUtraInterFreqLb>
+                     <ReportConfigSCellA1A2>
+                        <reportConfigSCellA1A2Id>1</reportConfigSCellA1A2Id>
+                        <a1a2ThresholdRsrp>-124</a1a2ThresholdRsrp>
+                        <a1a2ThresholdRsrq>-115</a1a2ThresholdRsrq>
+                     </ReportConfigSCellA1A2>
+                     <ReportConfigSearch>
+                        <reportConfigSearchId>1</reportConfigSearchId>
+                        <a1a2SearchThresholdRsrp>-115</a1a2SearchThresholdRsrp>
+                        <a1a2SearchThresholdRsrq>-195</a1a2SearchThresholdRsrq>
+                        <a1a2UlSearchThreshold>30</a1a2UlSearchThreshold>
+                        <a2CriticalThresholdRsrp>-126</a2CriticalThresholdRsrp>
+                        <a2UlCriticalThreshold>-90</a2UlCriticalThreshold>
+                        <inhibitA2SearchConfig>INHIBIT_A2SEARCH_RSRQ</inhibitA2SearchConfig>
+                        <timeToTriggerA1UlSearch>320</timeToTriggerA1UlSearch>
+                        <timeToTriggerA2Critical>512</timeToTriggerA2Critical>
+                        <timeToTriggerA2UlCritical>320</timeToTriggerA2UlCritical>
+                        <timeToTriggerA2UlSearch>320</timeToTriggerA2UlSearch>
+                     </ReportConfigSearch>
+                  </UeMeasControl>
+               </EUtranCellFDD>
+               <EUtranCellFDD>
+                  <eUtranCellFDDId>2</eUtranCellFDDId>
+                  <acBarringInfoPresent>true</acBarringInfoPresent>
+                  <acBarringSkipForMmtelVoice>true</acBarringSkipForMmtelVoice>
+                  <acBarringSkipForSms>true</acBarringSkipForSms>
+                  <cceDynUeAdmCtrlOverloadThr>900</cceDynUeAdmCtrlOverloadThr>
+                  <cceDynUeAdmCtrlPaOverloadThr>900</cceDynUeAdmCtrlPaOverloadThr>
+                  <cceDynUeAdmCtrlRetDiffThr>700</cceDynUeAdmCtrlRetDiffThr>
+                  <cellCapMaxCellSubCap>100000</cellCapMaxCellSubCap>
+                  <cellCapMinCellSubCap>1000</cellCapMinCellSubCap>
+                  <cellCapMinMaxWriProt>true</cellCapMinMaxWriProt>
+                  <cfraEnable>true</cfraEnable>
+                  <dlDynUeAdmCtrlOverloadThr>950</dlDynUeAdmCtrlOverloadThr>
+                  <dlDynUeAdmCtrlPaOverloadThr>950</dlDynUeAdmCtrlPaOverloadThr>
+                  <dlDynUeAdmCtrlRetDiffThr>850</dlDynUeAdmCtrlRetDiffThr>
+                  <dlInterferenceManagementActive>true</dlInterferenceManagementActive>
+                  <dlMaxRetxRrcReleaseThr>2</dlMaxRetxRrcReleaseThr>
+                  <elcEnabled>true</elcEnabled>
+                  <enableServiceSpecificHARQ>true</enableServiceSpecificHARQ>
+                  <filterUeDlThpVolThr>1000</filterUeDlThpVolThr>
+                  <instantDl256QamMode>DYNAMIC_HOM_MODE</instantDl256QamMode>
+                  <lbabPeriod>30</lbabPeriod>
+                  <lbabThreshRejectRateHigh>100</lbabThreshRejectRateHigh>
+                  <noOfPucchCqiUsers>320</noOfPucchCqiUsers>
+                  <pdcchCfiMode>CFI_AUTO_MAXIMUM_3</pdcchCfiMode>
+                  <qRxLevMin>-124</qRxLevMin>
+                  <sCellHandlingAtVolteCall>DECONF_SCELLS</sCellHandlingAtVolteCall>
+                  <srProcessingLevel>TWO_SR_FOR_LOW_THRESHOLD_SR_PROCESSING</srProcessingLevel>
+                  <subbandSrsActive>true</subbandSrsActive>
+                  <tPollRetxRrcReleaseDl>300</tPollRetxRrcReleaseDl>
+                  <tReorderingAutoConfiguration>true</tReorderingAutoConfiguration>
+                  <ulDynUeAdmCtrlOverloadThr>950</ulDynUeAdmCtrlOverloadThr>
+                  <ulDynUeAdmCtrlPaOverloadThr>950</ulDynUeAdmCtrlPaOverloadThr>
+                  <ulDynUeAdmCtrlRetDiffThr>850</ulDynUeAdmCtrlRetDiffThr>
+                  <acBarringPresence>
+                     <acBarringForMoDataPresence>AUTO</acBarringForMoDataPresence>
+                     <acBarringForMoSignPresence>AUTO</acBarringForMoSignPresence>
+                     <acBarringForMmtelVoicePresence>AUTO</acBarringForMmtelVoicePresence>
+                     <acBarringForMmtelVideoPresence>AUTO</acBarringForMmtelVideoPresence>
+                     <acBarringPriorityMmtelVoice>PRIORITY1</acBarringPriorityMmtelVoice>
+                     <acBarringPriorityMmtelVideo>PRIORITY1</acBarringPriorityMmtelVideo>
+                  </acBarringPresence>
+                  <systemInformationBlock3>
+                     <sNonIntraSearch>4</sNonIntraSearch>
+                     <sNonIntraSearchP>4</sNonIntraSearchP>
+                  </systemInformationBlock3>
+                  <UeMeasControl>
+                     <ueMeasControlId>1</ueMeasControlId>
+                     <ulSinrOffset>40</ulSinrOffset>
+                     <ReportConfigEUtraBestCell>
+                        <reportConfigEUtraBestCellId>1</reportConfigEUtraBestCellId>
+                        <timeToTriggerA3>320</timeToTriggerA3>
+                     </ReportConfigEUtraBestCell>
+                     <ReportConfigEUtraInterFreqLb>
+                        <reportConfigEUtraInterFreqLbId>1</reportConfigEUtraInterFreqLbId>
+                        <a5Threshold2Rsrp>-112</a5Threshold2Rsrp>
+                        <a5Threshold2Rsrq>-150</a5Threshold2Rsrq>
+                     </ReportConfigEUtraInterFreqLb>
+                     <ReportConfigSCellA1A2>
+                        <reportConfigSCellA1A2Id>1</reportConfigSCellA1A2Id>
+                        <a1a2ThresholdRsrp>-124</a1a2ThresholdRsrp>
+                        <a1a2ThresholdRsrq>-115</a1a2ThresholdRsrq>
+                     </ReportConfigSCellA1A2>
+                     <ReportConfigSearch>
+                        <reportConfigSearchId>1</reportConfigSearchId>
+                        <a1a2SearchThresholdRsrp>-115</a1a2SearchThresholdRsrp>
+                        <a1a2SearchThresholdRsrq>-195</a1a2SearchThresholdRsrq>
+                        <a1a2UlSearchThreshold>30</a1a2UlSearchThreshold>
+                        <a2CriticalThresholdRsrp>-126</a2CriticalThresholdRsrp>
+                        <a2UlCriticalThreshold>-90</a2UlCriticalThreshold>
+                        <inhibitA2SearchConfig>INHIBIT_A2SEARCH_RSRQ</inhibitA2SearchConfig>
+                        <timeToTriggerA1UlSearch>320</timeToTriggerA1UlSearch>
+                        <timeToTriggerA2Critical>512</timeToTriggerA2Critical>
+                        <timeToTriggerA2UlCritical>320</timeToTriggerA2UlCritical>
+                        <timeToTriggerA2UlSearch>320</timeToTriggerA2UlSearch>
+                     </ReportConfigSearch>
+                  </UeMeasControl>
+               </EUtranCellFDD>
+               <EUtranCellFDD>
+                  <eUtranCellFDDId>3</eUtranCellFDDId>
+                  <acBarringInfoPresent>true</acBarringInfoPresent>
+                  <acBarringSkipForMmtelVoice>true</acBarringSkipForMmtelVoice>
+                  <acBarringSkipForSms>true</acBarringSkipForSms>
+                  <cceDynUeAdmCtrlOverloadThr>900</cceDynUeAdmCtrlOverloadThr>
+                  <cceDynUeAdmCtrlPaOverloadThr>900</cceDynUeAdmCtrlPaOverloadThr>
+                  <cceDynUeAdmCtrlRetDiffThr>700</cceDynUeAdmCtrlRetDiffThr>
+                  <cellCapMaxCellSubCap>100000</cellCapMaxCellSubCap>
+                  <cellCapMinCellSubCap>1000</cellCapMinCellSubCap>
+                  <cellCapMinMaxWriProt>true</cellCapMinMaxWriProt>
+                  <cfraEnable>true</cfraEnable>
+                  <dlDynUeAdmCtrlOverloadThr>950</dlDynUeAdmCtrlOverloadThr>
+                  <dlDynUeAdmCtrlPaOverloadThr>950</dlDynUeAdmCtrlPaOverloadThr>
+                  <dlDynUeAdmCtrlRetDiffThr>850</dlDynUeAdmCtrlRetDiffThr>
+                  <dlInterferenceManagementActive>true</dlInterferenceManagementActive>
+                  <dlMaxRetxRrcReleaseThr>2</dlMaxRetxRrcReleaseThr>
+                  <elcEnabled>true</elcEnabled>
+                  <enableServiceSpecificHARQ>true</enableServiceSpecificHARQ>
+                  <filterUeDlThpVolThr>1000</filterUeDlThpVolThr>
+                  <instantDl256QamMode>DYNAMIC_HOM_MODE</instantDl256QamMode>
+                  <lbabPeriod>30</lbabPeriod>
+                  <lbabThreshRejectRateHigh>100</lbabThreshRejectRateHigh>
+                  <noOfPucchCqiUsers>320</noOfPucchCqiUsers>
+                  <pdcchCfiMode>CFI_AUTO_MAXIMUM_3</pdcchCfiMode>
+                  <qRxLevMin>-124</qRxLevMin>
+                  <sCellHandlingAtVolteCall>DECONF_SCELLS</sCellHandlingAtVolteCall>
+                  <srProcessingLevel>TWO_SR_FOR_LOW_THRESHOLD_SR_PROCESSING</srProcessingLevel>
+                  <subbandSrsActive>true</subbandSrsActive>
+                  <tPollRetxRrcReleaseDl>300</tPollRetxRrcReleaseDl>
+                  <tReorderingAutoConfiguration>true</tReorderingAutoConfiguration>
+                  <ulDynUeAdmCtrlOverloadThr>950</ulDynUeAdmCtrlOverloadThr>
+                  <ulDynUeAdmCtrlPaOverloadThr>950</ulDynUeAdmCtrlPaOverloadThr>
+                  <ulDynUeAdmCtrlRetDiffThr>850</ulDynUeAdmCtrlRetDiffThr>
+                  <acBarringPresence>
+                     <acBarringForMoDataPresence>AUTO</acBarringForMoDataPresence>
+                     <acBarringForMoSignPresence>AUTO</acBarringForMoSignPresence>
+                     <acBarringForMmtelVoicePresence>AUTO</acBarringForMmtelVoicePresence>
+                     <acBarringForMmtelVideoPresence>AUTO</acBarringForMmtelVideoPresence>
+                     <acBarringPriorityMmtelVoice>PRIORITY1</acBarringPriorityMmtelVoice>
+                     <acBarringPriorityMmtelVideo>PRIORITY1</acBarringPriorityMmtelVideo>
+                  </acBarringPresence>
+                  <systemInformationBlock3>
+                     <sNonIntraSearch>4</sNonIntraSearch>
+                     <sNonIntraSearchP>4</sNonIntraSearchP>
+                  </systemInformationBlock3>
+                  <UeMeasControl>
+                     <ueMeasControlId>1</ueMeasControlId>
+                     <ulSinrOffset>40</ulSinrOffset>
+                     <ReportConfigEUtraBestCell>
+                        <reportConfigEUtraBestCellId>1</reportConfigEUtraBestCellId>
+                        <timeToTriggerA3>320</timeToTriggerA3>
+                     </ReportConfigEUtraBestCell>
+                     <ReportConfigEUtraInterFreqLb>
+                        <reportConfigEUtraInterFreqLbId>1</reportConfigEUtraInterFreqLbId>
+                        <a5Threshold2Rsrp>-112</a5Threshold2Rsrp>
+                        <a5Threshold2Rsrq>-150</a5Threshold2Rsrq>
+                     </ReportConfigEUtraInterFreqLb>
+                     <ReportConfigSCellA1A2>
+                        <reportConfigSCellA1A2Id>1</reportConfigSCellA1A2Id>
+                        <a1a2ThresholdRsrp>-124</a1a2ThresholdRsrp>
+                        <a1a2ThresholdRsrq>-115</a1a2ThresholdRsrq>
+                     </ReportConfigSCellA1A2>
+                     <ReportConfigSearch>
+                        <reportConfigSearchId>1</reportConfigSearchId>
+                        <a1a2SearchThresholdRsrp>-115</a1a2SearchThresholdRsrp>
+                        <a1a2SearchThresholdRsrq>-195</a1a2SearchThresholdRsrq>
+                        <a1a2UlSearchThreshold>30</a1a2UlSearchThreshold>
+                        <a2CriticalThresholdRsrp>-126</a2CriticalThresholdRsrp>
+                        <a2UlCriticalThreshold>-90</a2UlCriticalThreshold>
+                        <inhibitA2SearchConfig>INHIBIT_A2SEARCH_RSRQ</inhibitA2SearchConfig>
+                        <timeToTriggerA1UlSearch>320</timeToTriggerA1UlSearch>
+                        <timeToTriggerA2Critical>512</timeToTriggerA2Critical>
+                        <timeToTriggerA2UlCritical>320</timeToTriggerA2UlCritical>
+                        <timeToTriggerA2UlSearch>320</timeToTriggerA2UlSearch>
+                     </ReportConfigSearch>
+                  </UeMeasControl>
+               </EUtranCellFDD>
+            </ENodeBFunction>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="Close Session">
+   <close-session/>
+</rpc>
+]]>]]>
+

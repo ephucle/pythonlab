@@ -1,0 +1,51 @@
+<!-- This xml is automatically generated from ECT. Validated upon UP version CXP9024418/15-R24C66 -->
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+   <capabilities>
+      <capability>urn:ietf:params:netconf:base:1.0</capability>
+      <capability>urn:com:ericsson:ebase:1.1.0</capability>
+   </capabilities>
+</hello>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+   <edit-config>
+      <target>
+         <running/>
+      </target>
+      <config>
+         <ManagedElement>
+            <managedElementId>1</managedElementId>
+            <SystemFunctions>
+               <systemFunctionsId>1</systemFunctionsId>
+               <SecM>
+                  <secMId>1</secMId>
+                  <CertM>
+                     <certMId>1</certMId>
+                     <NodeCredential>
+                        <nodeCredentialId>oamNodeCredential</nodeCredentialId>
+                     </NodeCredential>
+                     <NodeCredential>
+                        <nodeCredentialId>ipsecNodeCredential</nodeCredentialId>
+                     </NodeCredential>
+                     <TrustCategory>
+                        <trustCategoryId>oamTrustCategory</trustCategoryId>
+                        <trustedCertificates>ManagedElement=1,SystemFunctions=1,SecM=1,CertM=1,TrustedCertificate=1</trustedCertificates>
+                     </TrustCategory>
+                     <TrustCategory>
+                        <trustCategoryId>ipsecTrustCategory</trustCategoryId>
+                        <trustedCertificates>ManagedElement=1,SystemFunctions=1,SecM=1,CertM=1,TrustedCertificate=1</trustedCertificates>
+                     </TrustCategory>
+                  </CertM>
+               </SecM>
+            </SystemFunctions>
+         </ManagedElement>
+      </config>
+   </edit-config>
+</rpc>
+]]>]]>
+
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="Close Session">
+   <close-session/>
+</rpc>
+]]>]]>
+
