@@ -162,6 +162,7 @@ def fill_template():
 	global om_folder_var, filenametag_var
 	
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
+	df = df.rename(columns=lambda x: x.strip())
 	print("SUMMARY DATA INPUT TABLE:")
 	print(df)
 	global column_header
@@ -259,6 +260,7 @@ def folder_option_status_change():
 	global om_folder_var
 	selected_sheet = om_var.get()
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
+	df = df.rename(columns=lambda x: x.strip())
 	choices = list(df.columns.values)
 	#create folder option menu
 	folder_select = tk.OptionMenu(root, om_folder_var, *choices)
@@ -382,6 +384,8 @@ def loadprofile():
 	
 	
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
+	df = df.rename(columns=lambda x: x.strip())
+	
 	print("SUMMARY DATA INPUT TABLE:")
 	print(df)
 	global column_header
@@ -518,7 +522,7 @@ def sheet_select_command():
 	global input_file_path
 	selected_sheet = om_var.get()
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
-	
+	df = df.rename(columns=lambda x: x.strip())
 	#create filename tag option menu
 	choices = list(df.columns.values)
 	global filenametag_select, filenametag_var
@@ -595,6 +599,7 @@ def loadprofile_procedure(profile_filepath):
 	
 	print("selected_sheet:", selected_sheet)
 	df = pd.read_excel(input_file_path, header=0, sheet_name=selected_sheet)
+	df = df.rename(columns=lambda x: x.strip())
 	print("SUMMARY DATA INPUT TABLE:")
 	print(df)
 	global column_header
