@@ -708,3 +708,145 @@ deb NRCellDU
 
 cvms after_baseline5G
 
+######################################
+#5g baseline parameters for gSG08949
+######################################
+lt all
+
+
+#turn on integration unlock license
+acc Lm=1,IntegrationUnlock=1 activate
+
+############
+##5G FEATURE
+############
+
+#VirtualRouters
+set FeatureState=CXC4011823 featureState 1
+#10GE Port Capability
+set FeatureState=CXC4011838 featureState 1
+#Multiple GNSS Support (TN)
+set FeatureState=CXC4040019 featureState 1
+
+
+
+#NR 8CC Downlink Carrier Aggregation High-Band (NR High)
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012315 featureState 1
+
+
+#NR Uplink Carrier Aggregation High-Band (NR High)
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012376 featureState 1
+
+#Dynamic Component 
+lset Lm=1,FeatureState=CXC4012353 featureState 1
+
+#CpriCompression
+lset Lm=1,FeatureState=CXC4012051 featureState 1
+
+#LTE - NR DownLink Aggregation (NR Low/Mid/High)
+set FeatureState=CXC4012273 featureState 1
+
+#LTE-NR Uplink Aggregation (NR Low/Mid/High)
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012375 featureState 1
+
+#Streaming of PM Events
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012325 featureState 1
+
+#PTP Slave for Time and Phase Synchronization
+set SystemFunctions=1,Lm=1,FeatureState=CXC4040008 featureState 1
+
+#Coverage-Optimized Uplink Transmission High-Band
+set SystemFunctions=1,Lm=1,FeatureState=CXC4012408 featureState 1
+
+#endc x2 enable, this is due to missing in XML script
+set GNBCUCPFunction=1 endpointResourceRef GNBCUCPFunction=1,EndpointResource=1
+set GNBCUUPFunction=1 endpointResourceRef GNBCUUPFunction=1,EndpointResource=1
+set GNBDUFunction=1 endpointResourceRef GNBDUFunction=1,EndpointResource=1
+
+
+###########
+##5G SC
+##########
+
+#no setting system contant, using default
+#scw PP45:50,PP48:100,RP157:0,RP356:1,RP580:0,RP841:750
+
+
+########################
+##5G BASELINE PARAMETERS
+########################
+
+bl NRCellDU
+bl NRSectorCarrier
+
+set DataRadioBearer tPollRetransmitUl 40
+set DataRadioBearer tStatusProhibitUl 10
+set NRSectorCarrier configuredMaxTxPower 4000
+set NRCellDU rachPreambleRecTargetPower -110
+set NRCellDU rachPreambleFormat 
+set NRCellDU cellRange 1100
+set NRCellDU csiRsPeriodicity 40
+set NRCellDU dl256QamEnabled FALSE
+set NRCellDU dlMaxMuMimoLayers 0
+set NRCellDU drxInactivityTimer 7
+set NRCellDU drxLongCycle 8
+set NRCellDU drxOnDurationTimer 38
+set NRCellDU endcUlNrLowQualThresh 17
+set NRCellDU endcDlNrLowQualThresh 5
+set NRCellDU endcDlNrQualHyst 5
+set NRCellDU endcUlNrQualHyst 6
+set NRCellDU endcUlLegSwitchEnabled TRUE
+set NRCellDU maxUeSpeed 0
+set NRCellDU pZeroNomPucch -110
+set NRCellDU pZeroNomPuschGrant -106
+set NRCellDU qQualMin -34
+set NRCellDU qQualMinOffset 1
+set NRCellDU qRxLevMin -128
+set NRCellDU qRxLevMinOffset 2
+set NRCellDU ssbPeriodicity 20
+set NRCellDU ssbOffset 0
+set NRCellDU ssbDuration 3
+set NRCellDU ssbSubCarrierSpacing 120
+set NRCellDU subCarrierSpacing 120
+set NRCellDU pdschStartPrbStrategy 3
+set NRCellDU puschStartPrbStrategy 3
+set NRCellDU trsPowerBoosting 0
+set NRCellDU trsPeriodicity 20
+set QciProfileEndcConfigExt initialUplinkConf 1
+set NRCellDU nrLteCoexistence FALSE
+set NRCellDU secondaryCellOnly TRUE
+set NRCellDU csiRsShiftingPrimary 0
+set NRCellDU csiRsShiftingSecondary 0
+set NRCellDU ulMaxMuMimoLayers 0
+set NRCellDU pZeroUePuschOffset256Qam 0
+set NRCellDU dftSOfdmPuschStartRsrpThresh -156
+set GNBCUUPFunction dlPdcpSpsTargetTimeLTE 23
+set GNBCUUPFunction dlPdcpSpsTargetTimeNR 25
+set DataRadioBearer tPollRetransmitDl 40
+set NRCellDU dftSOfdmPuschEnabled false
+set NRCellDU drxEnable false
+set NRCellDU trsResourceShifting 0
+set NRCellDU bandListManual 258
+set AutoProvisioning rbsConfigLevel 4
+set NRCellDU tddSpecialSlotPattern 0
+set NRCellDU tddUlDlPattern 2
+set NRCellDU csiReportFormat 0
+
+set NRCellDU csiRsConfig32P csiRsControl32Ports=0,i11Restriction=,i12Restriction=
+set NRCellDU csiRsConfig16P csiRsControl16Ports=0,i11Restriction=,i12Restriction=
+set NRCellDU csiRsConfig8P csiRsControl8Ports=1,i11Restriction=FFFF,i12Restriction=
+set NRCellDU csiRsConfig4P csiRsControl4Ports=1,i11Restriction=FF,
+set NRCellDU csiRsConfig2P csiRsControl2Ports=1,aRestriction=3F
+
+set GNBCUUPFunction dcDLAggACtTime 1
+set GNBCUUPFunction dcDLAggExpiryTimer 100
+#set NRCellDU endcDlLegSwitchEnable TRUE
+set NRCellDU endcUlLegSwitchEnabled TRUE
+
+deb NRSectorCarrier
+deb NRCellDU
+
+
+
+cvms after_baseline5G
+

@@ -166,8 +166,9 @@ def fill_template():
 	df = df.rename(columns=lambda x: x.strip())
 	
 	#remove decription data in CIQ template if exit
-	i = df[((df.Parameter == 'Area'))].index
-	df= df.drop(i)
+	if "Parameter" in df.columns:
+		i = df[((df.Parameter == 'Area'))].index
+		df= df.drop(i)
 	#thay doi ":" bang dau ":"
 	#df.columns = df.columns.str.replace(r"[:]", "_")
 	df.columns = df.columns.str.replace(r"[:=\-]", "_")
@@ -423,8 +424,11 @@ def loadprofile():
 	df = df.rename(columns=lambda x: x.strip())
 	
 	#remove decription data in CIQ template if exit
-	i = df[((df.Parameter == 'Area'))].index
-	df= df.drop(i)
+	if "Parameter" in df.columns:
+		i = df[((df.Parameter == 'Area'))].index
+		df= df.drop(i)
+	
+	
 	#thay doi ":" bang dau ":"
 	#df.columns = df.columns.str.replace(r"[:]", "_")
 	df.columns = df.columns.str.replace(r"[:=\-]", "_")   #( thay dau :,  = , - , thanh _), - la ky tu dac bietm thay thanh \-
@@ -674,8 +678,9 @@ def loadprofile_procedure(profile_filepath):
 	df = df.rename(columns=lambda x: x.strip())
 	
 	#remove decription data in CIQ template if exit
-	i = df[((df.Parameter == 'Area'))].index
-	df= df.drop(i)
+	if "Parameter" in df.columns:
+		i = df[((df.Parameter == 'Area'))].index
+		df= df.drop(i)
 	#thay doi ":" bang dau ":"
 	#df.columns = df.columns.str.replace(r"[:]", "_")
 	df.columns = df.columns.str.replace(r"[:=\-]", "_")
