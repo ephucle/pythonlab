@@ -211,7 +211,7 @@ txaio==20.4.1
 typing-extensions==3.7.4.2
 ufw==0.36
 unattended-upgrades==0.1
-urllib3==1.25.8
+urllib3==1.26.5
 vpython==7.6.1
 walkdir==0.4.1
 wcwidth==0.2.4
