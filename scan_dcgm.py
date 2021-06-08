@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+#by Hoang Le P, 08Jun2021
+#version2:
+#fix scan rule
+#fix user input rule
+#fix term_menu printout for easier view
+#link to download: https://gist.github.com/ephucle/410d9e2a0e36158b2f852b341ca76364/archive/10f12796117d41d2c2bc863b7ca52628ec6b8b9f.zip
+
 from myfunc import ls, get_filename, Timer, call, call_moshell
 import re, sys, os, platform
 import pandas as pd
@@ -22,17 +29,21 @@ for path in paths:
 	dcgm_paths += ls(path)
 
 #filter
-dcgm_paths = [path for path in dcgm_paths if "dcgm.zip" in path or "modump.zip" in path]
+#dcgm_paths = [path for path in dcgm_paths if "dcgm.zip" in path or "modump.zip" in path]
+#dcgm_paths = [path for path in dcgm_paths if re.search(r"dcgm.zip$",path) or re.search(r"modump.zip$",path)]
+dcgm_paths = [path for path in dcgm_paths if re.search(r"dcgm.zip$",path) or re.search(r"modump.zip$",path)]
 
 #sap xep lai dcgm_path theo thu tu ngay thang modified
 dcgm_paths = sorted(dcgm_paths, key=lambda t: os.stat(t).st_mtime, reverse=True)
 
-#print("\n".join(dcgm_paths))
+print("\n".join(dcgm_paths))
+
 print("################################################")
 print("no of modump path found:", len(dcgm_paths))
 print("################################################")
 t.stop()
 
+sys.exit()
 
 
 def search_by_nodename():
@@ -57,9 +68,18 @@ def search_by_date():
 
 def get_dcgm_path_and_moshell():
 	global df
+	max_num_of_row = df.shape[0]
 	print("\n\n\n")
-	rowid = int(input("row id of dcgm:::"))
-	print(rowid)
+	try:
+		rowid = int(input("row id of dcgm:::"))
+		print(rowid)
+	except:
+		pass
+	
+	if rowid > max_num_of_row-1:
+		print("rowid shoud be lower than", max_num_of_row)
+		get_dcgm_path_and_moshell()  #loop back the code
+	
 	row_data = df.iloc[rowid] # second row of data frame (Evan Zigomalas)
 	print("#############################################")
 	print(row_data)
@@ -165,18 +185,21 @@ while not main_menu_exit:
 	terminal_sel = terminal_menu.show()
 	if terminal_sel == 0:
 		#os.system('clear')
-		print("search_dcgm_by_nodename----")
+		print("\n\n\n\n")
+		#print("search_dcgm_by_nodename----")
 		search_by_nodename()
 	if terminal_sel == 1:
 		#os.system('clear')
-		print("1.search_dcgm_by_sw")
+		print("\n\n\n\n")
+		#print("1.search_dcgm_by_sw")
 		search_by_sw()
 	if terminal_sel == 2:
 		#os.system('clear')
-		print("1.search_dcgm_by_date")
+		print("\n\n\n\n")
+		#print("1.search_dcgm_by_date")
 		search_by_date()
 	if terminal_sel == 3:
-		print("3.moshell_to_dcgm")
+		#print("3.moshell_to_dcgm")
 		get_dcgm_path_and_moshell()
 		#rowid = int(input("input row id of dcgm >>>:"))
 		#print(rowid)
