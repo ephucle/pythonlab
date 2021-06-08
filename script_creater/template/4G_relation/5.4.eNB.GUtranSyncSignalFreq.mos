@@ -1,9 +1,0 @@
-crn ENodeBFunction=1,GUtraNetwork=1,GUtranSyncSignalFrequency=$gUtranSyncSignalFrequency
-arfcn $arfcn
-band $band
-smtcDuration $smtcDuration
-smtcOffset $smtcOffset
-smtcPeriodicity $smtcPeriodicity
-smtcScs $smtcScs
-userLabel
-end

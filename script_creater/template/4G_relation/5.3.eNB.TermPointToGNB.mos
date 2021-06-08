@@ -1,8 +1,0 @@
-crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=${ExternalGNodeBFunctionId},TermPointToGNB=$ExternalGNodeBFunctionId
-administrativeState 1
-domainName
-ipAddress $ipAddress
-ipsecEpAddress ::
-ipv6Address ::
-upIpAddress ::
-end

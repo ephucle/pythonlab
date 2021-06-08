@@ -1,7 +1,0 @@
-crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=gHIL2861
-eNBVlanPortRef
-gNodeBId 2928612
-gNodeBIdLength 26
-gNodeBPlmnId mcc=452,mnc=4,mncLength=2
-userLabel
-end

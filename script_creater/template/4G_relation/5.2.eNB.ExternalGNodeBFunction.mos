@@ -1,7 +1,0 @@
-crn ENodeBFunction=1,GUtraNetwork=1,ExternalGNodeBFunction=$ExternalGNodeBFunction
-eNBVlanPortRef
-gNodeBId $gNodeBId
-gNodeBIdLength $gNodeBIdLength
-gNodeBPlmnId mcc=${gNodeBPlm_mcc},mnc=${gNodeBPlm_mnc},mncLength=${gNodeBPlm_mncLength}
-userLabel
-end
